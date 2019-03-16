@@ -1,0 +1,2111 @@
+type AggregateCategory {
+  count: Int!
+}
+
+type AggregateComment {
+  count: Int!
+}
+
+type AggregateOwner {
+  count: Int!
+}
+
+type AggregateReview {
+  count: Int!
+}
+
+type AggregateService {
+  count: Int!
+}
+
+type AggregateUser {
+  count: Int!
+}
+
+type BatchPayload {
+  count: Long!
+}
+
+type Category {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  services(
+    where: ServiceWhereInput
+    orderBy: ServiceOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [Service!]
+  shortDescription: String!
+  description: String!
+}
+
+type CategoryConnection {
+  pageInfo: PageInfo!
+  edges: [CategoryEdge]!
+  aggregate: AggregateCategory!
+}
+
+input CategoryCreateInput {
+  name: String!
+  services: ServiceCreateManyWithoutCategoryInput
+  shortDescription: String!
+  description: String!
+}
+
+input CategoryCreateOneWithoutServicesInput {
+  create: CategoryCreateWithoutServicesInput
+  connect: CategoryWhereUniqueInput
+}
+
+input CategoryCreateWithoutServicesInput {
+  name: String!
+  shortDescription: String!
+  description: String!
+}
+
+type CategoryEdge {
+  node: Category!
+  cursor: String!
+}
+
+enum CategoryOrderByInput {
+  id_ASC
+  id_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  name_ASC
+  name_DESC
+  shortDescription_ASC
+  shortDescription_DESC
+  description_ASC
+  description_DESC
+}
+
+type CategoryPreviousValues {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  shortDescription: String!
+  description: String!
+}
+
+type CategorySubscriptionPayload {
+  mutation: MutationType!
+  node: Category
+  updatedFields: [String!]
+  previousValues: CategoryPreviousValues
+}
+
+input CategorySubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: CategoryWhereInput
+  AND: [CategorySubscriptionWhereInput!]
+  OR: [CategorySubscriptionWhereInput!]
+  NOT: [CategorySubscriptionWhereInput!]
+}
+
+input CategoryUpdateInput {
+  name: String
+  services: ServiceUpdateManyWithoutCategoryInput
+  shortDescription: String
+  description: String
+}
+
+input CategoryUpdateManyMutationInput {
+  name: String
+  shortDescription: String
+  description: String
+}
+
+input CategoryUpdateOneWithoutServicesInput {
+  create: CategoryCreateWithoutServicesInput
+  update: CategoryUpdateWithoutServicesDataInput
+  upsert: CategoryUpsertWithoutServicesInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: CategoryWhereUniqueInput
+}
+
+input CategoryUpdateWithoutServicesDataInput {
+  name: String
+  shortDescription: String
+  description: String
+}
+
+input CategoryUpsertWithoutServicesInput {
+  update: CategoryUpdateWithoutServicesDataInput!
+  create: CategoryCreateWithoutServicesInput!
+}
+
+input CategoryWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  services_every: ServiceWhereInput
+  services_some: ServiceWhereInput
+  services_none: ServiceWhereInput
+  shortDescription: String
+  shortDescription_not: String
+  shortDescription_in: [String!]
+  shortDescription_not_in: [String!]
+  shortDescription_lt: String
+  shortDescription_lte: String
+  shortDescription_gt: String
+  shortDescription_gte: String
+  shortDescription_contains: String
+  shortDescription_not_contains: String
+  shortDescription_starts_with: String
+  shortDescription_not_starts_with: String
+  shortDescription_ends_with: String
+  shortDescription_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  AND: [CategoryWhereInput!]
+  OR: [CategoryWhereInput!]
+  NOT: [CategoryWhereInput!]
+}
+
+input CategoryWhereUniqueInput {
+  id: ID
+}
+
+type Comment {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  text: String!
+  service: Service!
+  ownerId: String
+}
+
+type CommentConnection {
+  pageInfo: PageInfo!
+  edges: [CommentEdge]!
+  aggregate: AggregateComment!
+}
+
+input CommentCreateInput {
+  text: String!
+  service: ServiceCreateOneInput!
+  ownerId: String
+}
+
+type CommentEdge {
+  node: Comment!
+  cursor: String!
+}
+
+enum CommentOrderByInput {
+  id_ASC
+  id_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  text_ASC
+  text_DESC
+  ownerId_ASC
+  ownerId_DESC
+}
+
+type CommentPreviousValues {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  text: String!
+  ownerId: String
+}
+
+type CommentSubscriptionPayload {
+  mutation: MutationType!
+  node: Comment
+  updatedFields: [String!]
+  previousValues: CommentPreviousValues
+}
+
+input CommentSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: CommentWhereInput
+  AND: [CommentSubscriptionWhereInput!]
+  OR: [CommentSubscriptionWhereInput!]
+  NOT: [CommentSubscriptionWhereInput!]
+}
+
+input CommentUpdateInput {
+  text: String
+  service: ServiceUpdateOneRequiredInput
+  ownerId: String
+}
+
+input CommentUpdateManyMutationInput {
+  text: String
+  ownerId: String
+}
+
+input CommentWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  text: String
+  text_not: String
+  text_in: [String!]
+  text_not_in: [String!]
+  text_lt: String
+  text_lte: String
+  text_gt: String
+  text_gte: String
+  text_contains: String
+  text_not_contains: String
+  text_starts_with: String
+  text_not_starts_with: String
+  text_ends_with: String
+  text_not_ends_with: String
+  service: ServiceWhereInput
+  ownerId: String
+  ownerId_not: String
+  ownerId_in: [String!]
+  ownerId_not_in: [String!]
+  ownerId_lt: String
+  ownerId_lte: String
+  ownerId_gt: String
+  ownerId_gte: String
+  ownerId_contains: String
+  ownerId_not_contains: String
+  ownerId_starts_with: String
+  ownerId_not_starts_with: String
+  ownerId_ends_with: String
+  ownerId_not_ends_with: String
+  AND: [CommentWhereInput!]
+  OR: [CommentWhereInput!]
+  NOT: [CommentWhereInput!]
+}
+
+input CommentWhereUniqueInput {
+  id: ID
+}
+
+scalar DateTime
+
+scalar Long
+
+type Mutation {
+  createCategory(data: CategoryCreateInput!): Category!
+  updateCategory(
+    data: CategoryUpdateInput!
+    where: CategoryWhereUniqueInput!
+  ): Category
+  updateManyCategories(
+    data: CategoryUpdateManyMutationInput!
+    where: CategoryWhereInput
+  ): BatchPayload!
+  upsertCategory(
+    where: CategoryWhereUniqueInput!
+    create: CategoryCreateInput!
+    update: CategoryUpdateInput!
+  ): Category!
+  deleteCategory(where: CategoryWhereUniqueInput!): Category
+  deleteManyCategories(where: CategoryWhereInput): BatchPayload!
+  createComment(data: CommentCreateInput!): Comment!
+  updateComment(
+    data: CommentUpdateInput!
+    where: CommentWhereUniqueInput!
+  ): Comment
+  updateManyComments(
+    data: CommentUpdateManyMutationInput!
+    where: CommentWhereInput
+  ): BatchPayload!
+  upsertComment(
+    where: CommentWhereUniqueInput!
+    create: CommentCreateInput!
+    update: CommentUpdateInput!
+  ): Comment!
+  deleteComment(where: CommentWhereUniqueInput!): Comment
+  deleteManyComments(where: CommentWhereInput): BatchPayload!
+  createOwner(data: OwnerCreateInput!): Owner!
+  updateOwner(data: OwnerUpdateInput!, where: OwnerWhereUniqueInput!): Owner
+  updateManyOwners(
+    data: OwnerUpdateManyMutationInput!
+    where: OwnerWhereInput
+  ): BatchPayload!
+  upsertOwner(
+    where: OwnerWhereUniqueInput!
+    create: OwnerCreateInput!
+    update: OwnerUpdateInput!
+  ): Owner!
+  deleteOwner(where: OwnerWhereUniqueInput!): Owner
+  deleteManyOwners(where: OwnerWhereInput): BatchPayload!
+  createReview(data: ReviewCreateInput!): Review!
+  updateReview(data: ReviewUpdateInput!, where: ReviewWhereUniqueInput!): Review
+  updateManyReviews(
+    data: ReviewUpdateManyMutationInput!
+    where: ReviewWhereInput
+  ): BatchPayload!
+  upsertReview(
+    where: ReviewWhereUniqueInput!
+    create: ReviewCreateInput!
+    update: ReviewUpdateInput!
+  ): Review!
+  deleteReview(where: ReviewWhereUniqueInput!): Review
+  deleteManyReviews(where: ReviewWhereInput): BatchPayload!
+  createService(data: ServiceCreateInput!): Service!
+  updateService(
+    data: ServiceUpdateInput!
+    where: ServiceWhereUniqueInput!
+  ): Service
+  updateManyServices(
+    data: ServiceUpdateManyMutationInput!
+    where: ServiceWhereInput
+  ): BatchPayload!
+  upsertService(
+    where: ServiceWhereUniqueInput!
+    create: ServiceCreateInput!
+    update: ServiceUpdateInput!
+  ): Service!
+  deleteService(where: ServiceWhereUniqueInput!): Service
+  deleteManyServices(where: ServiceWhereInput): BatchPayload!
+  createUser(data: UserCreateInput!): User!
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  updateManyUsers(
+    data: UserUpdateManyMutationInput!
+    where: UserWhereInput
+  ): BatchPayload!
+  upsertUser(
+    where: UserWhereUniqueInput!
+    create: UserCreateInput!
+    update: UserUpdateInput!
+  ): User!
+  deleteUser(where: UserWhereUniqueInput!): User
+  deleteManyUsers(where: UserWhereInput): BatchPayload!
+}
+
+enum MutationType {
+  CREATED
+  UPDATED
+  DELETED
+}
+
+interface Node {
+  id: ID!
+}
+
+type Owner {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  displayName: String!
+  username: String!
+  photoURL: String
+}
+
+type OwnerConnection {
+  pageInfo: PageInfo!
+  edges: [OwnerEdge]!
+  aggregate: AggregateOwner!
+}
+
+input OwnerCreateInput {
+  displayName: String!
+  username: String!
+  photoURL: String
+}
+
+type OwnerEdge {
+  node: Owner!
+  cursor: String!
+}
+
+enum OwnerOrderByInput {
+  id_ASC
+  id_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  displayName_ASC
+  displayName_DESC
+  username_ASC
+  username_DESC
+  photoURL_ASC
+  photoURL_DESC
+}
+
+type OwnerPreviousValues {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  displayName: String!
+  username: String!
+  photoURL: String
+}
+
+type OwnerSubscriptionPayload {
+  mutation: MutationType!
+  node: Owner
+  updatedFields: [String!]
+  previousValues: OwnerPreviousValues
+}
+
+input OwnerSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: OwnerWhereInput
+  AND: [OwnerSubscriptionWhereInput!]
+  OR: [OwnerSubscriptionWhereInput!]
+  NOT: [OwnerSubscriptionWhereInput!]
+}
+
+input OwnerUpdateInput {
+  displayName: String
+  username: String
+  photoURL: String
+}
+
+input OwnerUpdateManyMutationInput {
+  displayName: String
+  username: String
+  photoURL: String
+}
+
+input OwnerWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  displayName: String
+  displayName_not: String
+  displayName_in: [String!]
+  displayName_not_in: [String!]
+  displayName_lt: String
+  displayName_lte: String
+  displayName_gt: String
+  displayName_gte: String
+  displayName_contains: String
+  displayName_not_contains: String
+  displayName_starts_with: String
+  displayName_not_starts_with: String
+  displayName_ends_with: String
+  displayName_not_ends_with: String
+  username: String
+  username_not: String
+  username_in: [String!]
+  username_not_in: [String!]
+  username_lt: String
+  username_lte: String
+  username_gt: String
+  username_gte: String
+  username_contains: String
+  username_not_contains: String
+  username_starts_with: String
+  username_not_starts_with: String
+  username_ends_with: String
+  username_not_ends_with: String
+  photoURL: String
+  photoURL_not: String
+  photoURL_in: [String!]
+  photoURL_not_in: [String!]
+  photoURL_lt: String
+  photoURL_lte: String
+  photoURL_gt: String
+  photoURL_gte: String
+  photoURL_contains: String
+  photoURL_not_contains: String
+  photoURL_starts_with: String
+  photoURL_not_starts_with: String
+  photoURL_ends_with: String
+  photoURL_not_ends_with: String
+  AND: [OwnerWhereInput!]
+  OR: [OwnerWhereInput!]
+  NOT: [OwnerWhereInput!]
+}
+
+input OwnerWhereUniqueInput {
+  id: ID
+  username: String
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+type Query {
+  category(where: CategoryWhereUniqueInput!): Category
+  categories(
+    where: CategoryWhereInput
+    orderBy: CategoryOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [Category]!
+  categoriesConnection(
+    where: CategoryWhereInput
+    orderBy: CategoryOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): CategoryConnection!
+  comment(where: CommentWhereUniqueInput!): Comment
+  comments(
+    where: CommentWhereInput
+    orderBy: CommentOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [Comment]!
+  commentsConnection(
+    where: CommentWhereInput
+    orderBy: CommentOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): CommentConnection!
+  owner(where: OwnerWhereUniqueInput!): Owner
+  owners(
+    where: OwnerWhereInput
+    orderBy: OwnerOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [Owner]!
+  ownersConnection(
+    where: OwnerWhereInput
+    orderBy: OwnerOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): OwnerConnection!
+  review(where: ReviewWhereUniqueInput!): Review
+  reviews(
+    where: ReviewWhereInput
+    orderBy: ReviewOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [Review]!
+  reviewsConnection(
+    where: ReviewWhereInput
+    orderBy: ReviewOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): ReviewConnection!
+  service(where: ServiceWhereUniqueInput!): Service
+  services(
+    where: ServiceWhereInput
+    orderBy: ServiceOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [Service]!
+  servicesConnection(
+    where: ServiceWhereInput
+    orderBy: ServiceOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): ServiceConnection!
+  user(where: UserWhereUniqueInput!): User
+  users(
+    where: UserWhereInput
+    orderBy: UserOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [User]!
+  usersConnection(
+    where: UserWhereInput
+    orderBy: UserOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): UserConnection!
+  node(id: ID!): Node
+}
+
+type Review {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  rate: Int
+  rating: Int!
+  text: String!
+  serviceId: String!
+  service: Service!
+  ownerId: String
+}
+
+type ReviewConnection {
+  pageInfo: PageInfo!
+  edges: [ReviewEdge]!
+  aggregate: AggregateReview!
+}
+
+input ReviewCreateInput {
+  rate: Int
+  rating: Int!
+  text: String!
+  serviceId: String!
+  service: ServiceCreateOneWithoutReviewsInput!
+  ownerId: String
+}
+
+input ReviewCreateManyWithoutServiceInput {
+  create: [ReviewCreateWithoutServiceInput!]
+  connect: [ReviewWhereUniqueInput!]
+}
+
+input ReviewCreateWithoutServiceInput {
+  rate: Int
+  rating: Int!
+  text: String!
+  serviceId: String!
+  ownerId: String
+}
+
+type ReviewEdge {
+  node: Review!
+  cursor: String!
+}
+
+enum ReviewOrderByInput {
+  id_ASC
+  id_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  rate_ASC
+  rate_DESC
+  rating_ASC
+  rating_DESC
+  text_ASC
+  text_DESC
+  serviceId_ASC
+  serviceId_DESC
+  ownerId_ASC
+  ownerId_DESC
+}
+
+type ReviewPreviousValues {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  rate: Int
+  rating: Int!
+  text: String!
+  serviceId: String!
+  ownerId: String
+}
+
+input ReviewScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  rate: Int
+  rate_not: Int
+  rate_in: [Int!]
+  rate_not_in: [Int!]
+  rate_lt: Int
+  rate_lte: Int
+  rate_gt: Int
+  rate_gte: Int
+  rating: Int
+  rating_not: Int
+  rating_in: [Int!]
+  rating_not_in: [Int!]
+  rating_lt: Int
+  rating_lte: Int
+  rating_gt: Int
+  rating_gte: Int
+  text: String
+  text_not: String
+  text_in: [String!]
+  text_not_in: [String!]
+  text_lt: String
+  text_lte: String
+  text_gt: String
+  text_gte: String
+  text_contains: String
+  text_not_contains: String
+  text_starts_with: String
+  text_not_starts_with: String
+  text_ends_with: String
+  text_not_ends_with: String
+  serviceId: String
+  serviceId_not: String
+  serviceId_in: [String!]
+  serviceId_not_in: [String!]
+  serviceId_lt: String
+  serviceId_lte: String
+  serviceId_gt: String
+  serviceId_gte: String
+  serviceId_contains: String
+  serviceId_not_contains: String
+  serviceId_starts_with: String
+  serviceId_not_starts_with: String
+  serviceId_ends_with: String
+  serviceId_not_ends_with: String
+  ownerId: String
+  ownerId_not: String
+  ownerId_in: [String!]
+  ownerId_not_in: [String!]
+  ownerId_lt: String
+  ownerId_lte: String
+  ownerId_gt: String
+  ownerId_gte: String
+  ownerId_contains: String
+  ownerId_not_contains: String
+  ownerId_starts_with: String
+  ownerId_not_starts_with: String
+  ownerId_ends_with: String
+  ownerId_not_ends_with: String
+  AND: [ReviewScalarWhereInput!]
+  OR: [ReviewScalarWhereInput!]
+  NOT: [ReviewScalarWhereInput!]
+}
+
+type ReviewSubscriptionPayload {
+  mutation: MutationType!
+  node: Review
+  updatedFields: [String!]
+  previousValues: ReviewPreviousValues
+}
+
+input ReviewSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ReviewWhereInput
+  AND: [ReviewSubscriptionWhereInput!]
+  OR: [ReviewSubscriptionWhereInput!]
+  NOT: [ReviewSubscriptionWhereInput!]
+}
+
+input ReviewUpdateInput {
+  rate: Int
+  rating: Int
+  text: String
+  serviceId: String
+  service: ServiceUpdateOneRequiredWithoutReviewsInput
+  ownerId: String
+}
+
+input ReviewUpdateManyDataInput {
+  rate: Int
+  rating: Int
+  text: String
+  serviceId: String
+  ownerId: String
+}
+
+input ReviewUpdateManyMutationInput {
+  rate: Int
+  rating: Int
+  text: String
+  serviceId: String
+  ownerId: String
+}
+
+input ReviewUpdateManyWithoutServiceInput {
+  create: [ReviewCreateWithoutServiceInput!]
+  delete: [ReviewWhereUniqueInput!]
+  connect: [ReviewWhereUniqueInput!]
+  set: [ReviewWhereUniqueInput!]
+  disconnect: [ReviewWhereUniqueInput!]
+  update: [ReviewUpdateWithWhereUniqueWithoutServiceInput!]
+  upsert: [ReviewUpsertWithWhereUniqueWithoutServiceInput!]
+  deleteMany: [ReviewScalarWhereInput!]
+  updateMany: [ReviewUpdateManyWithWhereNestedInput!]
+}
+
+input ReviewUpdateManyWithWhereNestedInput {
+  where: ReviewScalarWhereInput!
+  data: ReviewUpdateManyDataInput!
+}
+
+input ReviewUpdateWithoutServiceDataInput {
+  rate: Int
+  rating: Int
+  text: String
+  serviceId: String
+  ownerId: String
+}
+
+input ReviewUpdateWithWhereUniqueWithoutServiceInput {
+  where: ReviewWhereUniqueInput!
+  data: ReviewUpdateWithoutServiceDataInput!
+}
+
+input ReviewUpsertWithWhereUniqueWithoutServiceInput {
+  where: ReviewWhereUniqueInput!
+  update: ReviewUpdateWithoutServiceDataInput!
+  create: ReviewCreateWithoutServiceInput!
+}
+
+input ReviewWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  rate: Int
+  rate_not: Int
+  rate_in: [Int!]
+  rate_not_in: [Int!]
+  rate_lt: Int
+  rate_lte: Int
+  rate_gt: Int
+  rate_gte: Int
+  rating: Int
+  rating_not: Int
+  rating_in: [Int!]
+  rating_not_in: [Int!]
+  rating_lt: Int
+  rating_lte: Int
+  rating_gt: Int
+  rating_gte: Int
+  text: String
+  text_not: String
+  text_in: [String!]
+  text_not_in: [String!]
+  text_lt: String
+  text_lte: String
+  text_gt: String
+  text_gte: String
+  text_contains: String
+  text_not_contains: String
+  text_starts_with: String
+  text_not_starts_with: String
+  text_ends_with: String
+  text_not_ends_with: String
+  serviceId: String
+  serviceId_not: String
+  serviceId_in: [String!]
+  serviceId_not_in: [String!]
+  serviceId_lt: String
+  serviceId_lte: String
+  serviceId_gt: String
+  serviceId_gte: String
+  serviceId_contains: String
+  serviceId_not_contains: String
+  serviceId_starts_with: String
+  serviceId_not_starts_with: String
+  serviceId_ends_with: String
+  serviceId_not_ends_with: String
+  service: ServiceWhereInput
+  ownerId: String
+  ownerId_not: String
+  ownerId_in: [String!]
+  ownerId_not_in: [String!]
+  ownerId_lt: String
+  ownerId_lte: String
+  ownerId_gt: String
+  ownerId_gte: String
+  ownerId_contains: String
+  ownerId_not_contains: String
+  ownerId_starts_with: String
+  ownerId_not_starts_with: String
+  ownerId_ends_with: String
+  ownerId_not_ends_with: String
+  AND: [ReviewWhereInput!]
+  OR: [ReviewWhereInput!]
+  NOT: [ReviewWhereInput!]
+}
+
+input ReviewWhereUniqueInput {
+  id: ID
+}
+
+type Service {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  title: String
+  description: String
+  url: String
+  photoURL: String
+  yomigana: String
+  price: Float
+  freetrial: String
+  note: String
+  place: String
+  address: String
+  tagline: String
+  inquiry: String
+  multiplans: String
+  phonenumber: String
+  category: Category
+  rating: Int
+  ratingCount: Int
+  reviews(
+    where: ReviewWhereInput
+    orderBy: ReviewOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [Review!]
+}
+
+type ServiceConnection {
+  pageInfo: PageInfo!
+  edges: [ServiceEdge]!
+  aggregate: AggregateService!
+}
+
+input ServiceCreateInput {
+  title: String
+  description: String
+  url: String
+  photoURL: String
+  yomigana: String
+  price: Float
+  freetrial: String
+  note: String
+  place: String
+  address: String
+  tagline: String
+  inquiry: String
+  multiplans: String
+  phonenumber: String
+  category: CategoryCreateOneWithoutServicesInput
+  rating: Int
+  ratingCount: Int
+  reviews: ReviewCreateManyWithoutServiceInput
+}
+
+input ServiceCreateManyWithoutCategoryInput {
+  create: [ServiceCreateWithoutCategoryInput!]
+  connect: [ServiceWhereUniqueInput!]
+}
+
+input ServiceCreateOneInput {
+  create: ServiceCreateInput
+  connect: ServiceWhereUniqueInput
+}
+
+input ServiceCreateOneWithoutReviewsInput {
+  create: ServiceCreateWithoutReviewsInput
+  connect: ServiceWhereUniqueInput
+}
+
+input ServiceCreateWithoutCategoryInput {
+  title: String
+  description: String
+  url: String
+  photoURL: String
+  yomigana: String
+  price: Float
+  freetrial: String
+  note: String
+  place: String
+  address: String
+  tagline: String
+  inquiry: String
+  multiplans: String
+  phonenumber: String
+  rating: Int
+  ratingCount: Int
+  reviews: ReviewCreateManyWithoutServiceInput
+}
+
+input ServiceCreateWithoutReviewsInput {
+  title: String
+  description: String
+  url: String
+  photoURL: String
+  yomigana: String
+  price: Float
+  freetrial: String
+  note: String
+  place: String
+  address: String
+  tagline: String
+  inquiry: String
+  multiplans: String
+  phonenumber: String
+  category: CategoryCreateOneWithoutServicesInput
+  rating: Int
+  ratingCount: Int
+}
+
+type ServiceEdge {
+  node: Service!
+  cursor: String!
+}
+
+enum ServiceOrderByInput {
+  id_ASC
+  id_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  title_ASC
+  title_DESC
+  description_ASC
+  description_DESC
+  url_ASC
+  url_DESC
+  photoURL_ASC
+  photoURL_DESC
+  yomigana_ASC
+  yomigana_DESC
+  price_ASC
+  price_DESC
+  freetrial_ASC
+  freetrial_DESC
+  note_ASC
+  note_DESC
+  place_ASC
+  place_DESC
+  address_ASC
+  address_DESC
+  tagline_ASC
+  tagline_DESC
+  inquiry_ASC
+  inquiry_DESC
+  multiplans_ASC
+  multiplans_DESC
+  phonenumber_ASC
+  phonenumber_DESC
+  rating_ASC
+  rating_DESC
+  ratingCount_ASC
+  ratingCount_DESC
+}
+
+type ServicePreviousValues {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  title: String
+  description: String
+  url: String
+  photoURL: String
+  yomigana: String
+  price: Float
+  freetrial: String
+  note: String
+  place: String
+  address: String
+  tagline: String
+  inquiry: String
+  multiplans: String
+  phonenumber: String
+  rating: Int
+  ratingCount: Int
+}
+
+input ServiceScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  url: String
+  url_not: String
+  url_in: [String!]
+  url_not_in: [String!]
+  url_lt: String
+  url_lte: String
+  url_gt: String
+  url_gte: String
+  url_contains: String
+  url_not_contains: String
+  url_starts_with: String
+  url_not_starts_with: String
+  url_ends_with: String
+  url_not_ends_with: String
+  photoURL: String
+  photoURL_not: String
+  photoURL_in: [String!]
+  photoURL_not_in: [String!]
+  photoURL_lt: String
+  photoURL_lte: String
+  photoURL_gt: String
+  photoURL_gte: String
+  photoURL_contains: String
+  photoURL_not_contains: String
+  photoURL_starts_with: String
+  photoURL_not_starts_with: String
+  photoURL_ends_with: String
+  photoURL_not_ends_with: String
+  yomigana: String
+  yomigana_not: String
+  yomigana_in: [String!]
+  yomigana_not_in: [String!]
+  yomigana_lt: String
+  yomigana_lte: String
+  yomigana_gt: String
+  yomigana_gte: String
+  yomigana_contains: String
+  yomigana_not_contains: String
+  yomigana_starts_with: String
+  yomigana_not_starts_with: String
+  yomigana_ends_with: String
+  yomigana_not_ends_with: String
+  price: Float
+  price_not: Float
+  price_in: [Float!]
+  price_not_in: [Float!]
+  price_lt: Float
+  price_lte: Float
+  price_gt: Float
+  price_gte: Float
+  freetrial: String
+  freetrial_not: String
+  freetrial_in: [String!]
+  freetrial_not_in: [String!]
+  freetrial_lt: String
+  freetrial_lte: String
+  freetrial_gt: String
+  freetrial_gte: String
+  freetrial_contains: String
+  freetrial_not_contains: String
+  freetrial_starts_with: String
+  freetrial_not_starts_with: String
+  freetrial_ends_with: String
+  freetrial_not_ends_with: String
+  note: String
+  note_not: String
+  note_in: [String!]
+  note_not_in: [String!]
+  note_lt: String
+  note_lte: String
+  note_gt: String
+  note_gte: String
+  note_contains: String
+  note_not_contains: String
+  note_starts_with: String
+  note_not_starts_with: String
+  note_ends_with: String
+  note_not_ends_with: String
+  place: String
+  place_not: String
+  place_in: [String!]
+  place_not_in: [String!]
+  place_lt: String
+  place_lte: String
+  place_gt: String
+  place_gte: String
+  place_contains: String
+  place_not_contains: String
+  place_starts_with: String
+  place_not_starts_with: String
+  place_ends_with: String
+  place_not_ends_with: String
+  address: String
+  address_not: String
+  address_in: [String!]
+  address_not_in: [String!]
+  address_lt: String
+  address_lte: String
+  address_gt: String
+  address_gte: String
+  address_contains: String
+  address_not_contains: String
+  address_starts_with: String
+  address_not_starts_with: String
+  address_ends_with: String
+  address_not_ends_with: String
+  tagline: String
+  tagline_not: String
+  tagline_in: [String!]
+  tagline_not_in: [String!]
+  tagline_lt: String
+  tagline_lte: String
+  tagline_gt: String
+  tagline_gte: String
+  tagline_contains: String
+  tagline_not_contains: String
+  tagline_starts_with: String
+  tagline_not_starts_with: String
+  tagline_ends_with: String
+  tagline_not_ends_with: String
+  inquiry: String
+  inquiry_not: String
+  inquiry_in: [String!]
+  inquiry_not_in: [String!]
+  inquiry_lt: String
+  inquiry_lte: String
+  inquiry_gt: String
+  inquiry_gte: String
+  inquiry_contains: String
+  inquiry_not_contains: String
+  inquiry_starts_with: String
+  inquiry_not_starts_with: String
+  inquiry_ends_with: String
+  inquiry_not_ends_with: String
+  multiplans: String
+  multiplans_not: String
+  multiplans_in: [String!]
+  multiplans_not_in: [String!]
+  multiplans_lt: String
+  multiplans_lte: String
+  multiplans_gt: String
+  multiplans_gte: String
+  multiplans_contains: String
+  multiplans_not_contains: String
+  multiplans_starts_with: String
+  multiplans_not_starts_with: String
+  multiplans_ends_with: String
+  multiplans_not_ends_with: String
+  phonenumber: String
+  phonenumber_not: String
+  phonenumber_in: [String!]
+  phonenumber_not_in: [String!]
+  phonenumber_lt: String
+  phonenumber_lte: String
+  phonenumber_gt: String
+  phonenumber_gte: String
+  phonenumber_contains: String
+  phonenumber_not_contains: String
+  phonenumber_starts_with: String
+  phonenumber_not_starts_with: String
+  phonenumber_ends_with: String
+  phonenumber_not_ends_with: String
+  rating: Int
+  rating_not: Int
+  rating_in: [Int!]
+  rating_not_in: [Int!]
+  rating_lt: Int
+  rating_lte: Int
+  rating_gt: Int
+  rating_gte: Int
+  ratingCount: Int
+  ratingCount_not: Int
+  ratingCount_in: [Int!]
+  ratingCount_not_in: [Int!]
+  ratingCount_lt: Int
+  ratingCount_lte: Int
+  ratingCount_gt: Int
+  ratingCount_gte: Int
+  AND: [ServiceScalarWhereInput!]
+  OR: [ServiceScalarWhereInput!]
+  NOT: [ServiceScalarWhereInput!]
+}
+
+type ServiceSubscriptionPayload {
+  mutation: MutationType!
+  node: Service
+  updatedFields: [String!]
+  previousValues: ServicePreviousValues
+}
+
+input ServiceSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ServiceWhereInput
+  AND: [ServiceSubscriptionWhereInput!]
+  OR: [ServiceSubscriptionWhereInput!]
+  NOT: [ServiceSubscriptionWhereInput!]
+}
+
+input ServiceUpdateDataInput {
+  title: String
+  description: String
+  url: String
+  photoURL: String
+  yomigana: String
+  price: Float
+  freetrial: String
+  note: String
+  place: String
+  address: String
+  tagline: String
+  inquiry: String
+  multiplans: String
+  phonenumber: String
+  category: CategoryUpdateOneWithoutServicesInput
+  rating: Int
+  ratingCount: Int
+  reviews: ReviewUpdateManyWithoutServiceInput
+}
+
+input ServiceUpdateInput {
+  title: String
+  description: String
+  url: String
+  photoURL: String
+  yomigana: String
+  price: Float
+  freetrial: String
+  note: String
+  place: String
+  address: String
+  tagline: String
+  inquiry: String
+  multiplans: String
+  phonenumber: String
+  category: CategoryUpdateOneWithoutServicesInput
+  rating: Int
+  ratingCount: Int
+  reviews: ReviewUpdateManyWithoutServiceInput
+}
+
+input ServiceUpdateManyDataInput {
+  title: String
+  description: String
+  url: String
+  photoURL: String
+  yomigana: String
+  price: Float
+  freetrial: String
+  note: String
+  place: String
+  address: String
+  tagline: String
+  inquiry: String
+  multiplans: String
+  phonenumber: String
+  rating: Int
+  ratingCount: Int
+}
+
+input ServiceUpdateManyMutationInput {
+  title: String
+  description: String
+  url: String
+  photoURL: String
+  yomigana: String
+  price: Float
+  freetrial: String
+  note: String
+  place: String
+  address: String
+  tagline: String
+  inquiry: String
+  multiplans: String
+  phonenumber: String
+  rating: Int
+  ratingCount: Int
+}
+
+input ServiceUpdateManyWithoutCategoryInput {
+  create: [ServiceCreateWithoutCategoryInput!]
+  delete: [ServiceWhereUniqueInput!]
+  connect: [ServiceWhereUniqueInput!]
+  set: [ServiceWhereUniqueInput!]
+  disconnect: [ServiceWhereUniqueInput!]
+  update: [ServiceUpdateWithWhereUniqueWithoutCategoryInput!]
+  upsert: [ServiceUpsertWithWhereUniqueWithoutCategoryInput!]
+  deleteMany: [ServiceScalarWhereInput!]
+  updateMany: [ServiceUpdateManyWithWhereNestedInput!]
+}
+
+input ServiceUpdateManyWithWhereNestedInput {
+  where: ServiceScalarWhereInput!
+  data: ServiceUpdateManyDataInput!
+}
+
+input ServiceUpdateOneRequiredInput {
+  create: ServiceCreateInput
+  update: ServiceUpdateDataInput
+  upsert: ServiceUpsertNestedInput
+  connect: ServiceWhereUniqueInput
+}
+
+input ServiceUpdateOneRequiredWithoutReviewsInput {
+  create: ServiceCreateWithoutReviewsInput
+  update: ServiceUpdateWithoutReviewsDataInput
+  upsert: ServiceUpsertWithoutReviewsInput
+  connect: ServiceWhereUniqueInput
+}
+
+input ServiceUpdateWithoutCategoryDataInput {
+  title: String
+  description: String
+  url: String
+  photoURL: String
+  yomigana: String
+  price: Float
+  freetrial: String
+  note: String
+  place: String
+  address: String
+  tagline: String
+  inquiry: String
+  multiplans: String
+  phonenumber: String
+  rating: Int
+  ratingCount: Int
+  reviews: ReviewUpdateManyWithoutServiceInput
+}
+
+input ServiceUpdateWithoutReviewsDataInput {
+  title: String
+  description: String
+  url: String
+  photoURL: String
+  yomigana: String
+  price: Float
+  freetrial: String
+  note: String
+  place: String
+  address: String
+  tagline: String
+  inquiry: String
+  multiplans: String
+  phonenumber: String
+  category: CategoryUpdateOneWithoutServicesInput
+  rating: Int
+  ratingCount: Int
+}
+
+input ServiceUpdateWithWhereUniqueWithoutCategoryInput {
+  where: ServiceWhereUniqueInput!
+  data: ServiceUpdateWithoutCategoryDataInput!
+}
+
+input ServiceUpsertNestedInput {
+  update: ServiceUpdateDataInput!
+  create: ServiceCreateInput!
+}
+
+input ServiceUpsertWithoutReviewsInput {
+  update: ServiceUpdateWithoutReviewsDataInput!
+  create: ServiceCreateWithoutReviewsInput!
+}
+
+input ServiceUpsertWithWhereUniqueWithoutCategoryInput {
+  where: ServiceWhereUniqueInput!
+  update: ServiceUpdateWithoutCategoryDataInput!
+  create: ServiceCreateWithoutCategoryInput!
+}
+
+input ServiceWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  url: String
+  url_not: String
+  url_in: [String!]
+  url_not_in: [String!]
+  url_lt: String
+  url_lte: String
+  url_gt: String
+  url_gte: String
+  url_contains: String
+  url_not_contains: String
+  url_starts_with: String
+  url_not_starts_with: String
+  url_ends_with: String
+  url_not_ends_with: String
+  photoURL: String
+  photoURL_not: String
+  photoURL_in: [String!]
+  photoURL_not_in: [String!]
+  photoURL_lt: String
+  photoURL_lte: String
+  photoURL_gt: String
+  photoURL_gte: String
+  photoURL_contains: String
+  photoURL_not_contains: String
+  photoURL_starts_with: String
+  photoURL_not_starts_with: String
+  photoURL_ends_with: String
+  photoURL_not_ends_with: String
+  yomigana: String
+  yomigana_not: String
+  yomigana_in: [String!]
+  yomigana_not_in: [String!]
+  yomigana_lt: String
+  yomigana_lte: String
+  yomigana_gt: String
+  yomigana_gte: String
+  yomigana_contains: String
+  yomigana_not_contains: String
+  yomigana_starts_with: String
+  yomigana_not_starts_with: String
+  yomigana_ends_with: String
+  yomigana_not_ends_with: String
+  price: Float
+  price_not: Float
+  price_in: [Float!]
+  price_not_in: [Float!]
+  price_lt: Float
+  price_lte: Float
+  price_gt: Float
+  price_gte: Float
+  freetrial: String
+  freetrial_not: String
+  freetrial_in: [String!]
+  freetrial_not_in: [String!]
+  freetrial_lt: String
+  freetrial_lte: String
+  freetrial_gt: String
+  freetrial_gte: String
+  freetrial_contains: String
+  freetrial_not_contains: String
+  freetrial_starts_with: String
+  freetrial_not_starts_with: String
+  freetrial_ends_with: String
+  freetrial_not_ends_with: String
+  note: String
+  note_not: String
+  note_in: [String!]
+  note_not_in: [String!]
+  note_lt: String
+  note_lte: String
+  note_gt: String
+  note_gte: String
+  note_contains: String
+  note_not_contains: String
+  note_starts_with: String
+  note_not_starts_with: String
+  note_ends_with: String
+  note_not_ends_with: String
+  place: String
+  place_not: String
+  place_in: [String!]
+  place_not_in: [String!]
+  place_lt: String
+  place_lte: String
+  place_gt: String
+  place_gte: String
+  place_contains: String
+  place_not_contains: String
+  place_starts_with: String
+  place_not_starts_with: String
+  place_ends_with: String
+  place_not_ends_with: String
+  address: String
+  address_not: String
+  address_in: [String!]
+  address_not_in: [String!]
+  address_lt: String
+  address_lte: String
+  address_gt: String
+  address_gte: String
+  address_contains: String
+  address_not_contains: String
+  address_starts_with: String
+  address_not_starts_with: String
+  address_ends_with: String
+  address_not_ends_with: String
+  tagline: String
+  tagline_not: String
+  tagline_in: [String!]
+  tagline_not_in: [String!]
+  tagline_lt: String
+  tagline_lte: String
+  tagline_gt: String
+  tagline_gte: String
+  tagline_contains: String
+  tagline_not_contains: String
+  tagline_starts_with: String
+  tagline_not_starts_with: String
+  tagline_ends_with: String
+  tagline_not_ends_with: String
+  inquiry: String
+  inquiry_not: String
+  inquiry_in: [String!]
+  inquiry_not_in: [String!]
+  inquiry_lt: String
+  inquiry_lte: String
+  inquiry_gt: String
+  inquiry_gte: String
+  inquiry_contains: String
+  inquiry_not_contains: String
+  inquiry_starts_with: String
+  inquiry_not_starts_with: String
+  inquiry_ends_with: String
+  inquiry_not_ends_with: String
+  multiplans: String
+  multiplans_not: String
+  multiplans_in: [String!]
+  multiplans_not_in: [String!]
+  multiplans_lt: String
+  multiplans_lte: String
+  multiplans_gt: String
+  multiplans_gte: String
+  multiplans_contains: String
+  multiplans_not_contains: String
+  multiplans_starts_with: String
+  multiplans_not_starts_with: String
+  multiplans_ends_with: String
+  multiplans_not_ends_with: String
+  phonenumber: String
+  phonenumber_not: String
+  phonenumber_in: [String!]
+  phonenumber_not_in: [String!]
+  phonenumber_lt: String
+  phonenumber_lte: String
+  phonenumber_gt: String
+  phonenumber_gte: String
+  phonenumber_contains: String
+  phonenumber_not_contains: String
+  phonenumber_starts_with: String
+  phonenumber_not_starts_with: String
+  phonenumber_ends_with: String
+  phonenumber_not_ends_with: String
+  category: CategoryWhereInput
+  rating: Int
+  rating_not: Int
+  rating_in: [Int!]
+  rating_not_in: [Int!]
+  rating_lt: Int
+  rating_lte: Int
+  rating_gt: Int
+  rating_gte: Int
+  ratingCount: Int
+  ratingCount_not: Int
+  ratingCount_in: [Int!]
+  ratingCount_not_in: [Int!]
+  ratingCount_lt: Int
+  ratingCount_lte: Int
+  ratingCount_gt: Int
+  ratingCount_gte: Int
+  reviews_every: ReviewWhereInput
+  reviews_some: ReviewWhereInput
+  reviews_none: ReviewWhereInput
+  AND: [ServiceWhereInput!]
+  OR: [ServiceWhereInput!]
+  NOT: [ServiceWhereInput!]
+}
+
+input ServiceWhereUniqueInput {
+  id: ID
+}
+
+type Subscription {
+  category(where: CategorySubscriptionWhereInput): CategorySubscriptionPayload
+  comment(where: CommentSubscriptionWhereInput): CommentSubscriptionPayload
+  owner(where: OwnerSubscriptionWhereInput): OwnerSubscriptionPayload
+  review(where: ReviewSubscriptionWhereInput): ReviewSubscriptionPayload
+  service(where: ServiceSubscriptionWhereInput): ServiceSubscriptionPayload
+  user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
+}
+
+type User {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+}
+
+type UserConnection {
+  pageInfo: PageInfo!
+  edges: [UserEdge]!
+  aggregate: AggregateUser!
+}
+
+input UserCreateInput {
+  name: String!
+}
+
+type UserEdge {
+  node: User!
+  cursor: String!
+}
+
+enum UserOrderByInput {
+  id_ASC
+  id_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  name_ASC
+  name_DESC
+}
+
+type UserPreviousValues {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+}
+
+type UserSubscriptionPayload {
+  mutation: MutationType!
+  node: User
+  updatedFields: [String!]
+  previousValues: UserPreviousValues
+}
+
+input UserSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: UserWhereInput
+  AND: [UserSubscriptionWhereInput!]
+  OR: [UserSubscriptionWhereInput!]
+  NOT: [UserSubscriptionWhereInput!]
+}
+
+input UserUpdateInput {
+  name: String
+}
+
+input UserUpdateManyMutationInput {
+  name: String
+}
+
+input UserWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  AND: [UserWhereInput!]
+  OR: [UserWhereInput!]
+  NOT: [UserWhereInput!]
+}
+
+input UserWhereUniqueInput {
+  id: ID
+}

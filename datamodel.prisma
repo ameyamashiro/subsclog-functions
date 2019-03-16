@@ -1,0 +1,70 @@
+type User {
+  id: ID! @unique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+}
+
+type Owner {
+  id: ID! @unique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  displayName: String!
+  username: String! @unique
+  photoURL: String
+}
+
+type Comment {
+  id: ID! @unique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  text: String!
+  service: Service!
+  ownerId: String
+}
+
+type Review {
+  id: ID! @unique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  rate: Int
+  rating: Int!
+  text: String!
+  serviceId: String!
+  service: Service!
+  ownerId: String
+}
+
+type Category {
+  id: ID! @unique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  services: [Service!]!
+  shortDescription: String!
+  description: String!
+}
+
+type Service {
+  id: ID! @unique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  title: String
+  description: String
+  url: String
+  photoURL: String
+  yomigana: String
+  price: Float
+  freetrial: String
+  note: String
+  place: String
+  address: String
+  tagline: String
+  inquiry: String
+  multiplans: String
+  phonenumber: String
+  category: Category
+  rating: Int @default(value: 0)
+  ratingCount: Int @default(value: 0)
+  reviews: [Review!]!
+}

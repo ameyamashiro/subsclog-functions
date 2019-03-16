@@ -1,9 +1,14 @@
 const admin = require('firebase-admin')
+const { config } = require('firebase-functions')
 
 admin.initializeApp()
 admin.firestore().settings({ timestampsInSnapshots: true })
 
+const { projectId } = JSON.parse(process.env.FIREBASE_CONFIG)
+
 const FUNCTION_NAME = process.env.FUNCTION_NAME
+
+process.env['SECRET'] = config().prisma.secret
 
 // firestore
 
@@ -23,6 +28,10 @@ if (!FUNCTION_NAME || FUNCTION_NAME === 'deleteFile') {
 
 if (!FUNCTION_NAME || FUNCTION_NAME === 'getSitemap') {
   exports.getSitemap = require('./lib/https/getSitemap')
+}
+
+if (!FUNCTION_NAME || FUNCTION_NAME === 'graphql') {
+  exports.graphql = require('./lib/https/graphql')
 }
 
 // storage
