@@ -42,4 +42,4 @@ const getCategoryIds = async (): Promise<string[]> => {
   return res.data.data.categories.map((category: any) => category.id)
 }
 
-export = region(US_CENTRAL1).https.onRequest(handler)
+module.exports = region(US_CENTRAL1).https.onRequest(handler)

@@ -1,25 +1,20 @@
-import fetch from 'node-fetch'
-import { getConfig } from '../utils/getConfig'
+import axios from 'axios'
 
 export const createImageURL = async (filePath: string) => {
   const { projectId } = JSON.parse(process.env.FIREBASE_CONFIG as string)
 
-  const config = getConfig()
+  const bucketName = `${projectId}.appspot.com`
 
-  const res = await fetch(config.app.images, {
-    method: 'POST',
-    body: JSON.stringify({
-      bucketName: `${projectId}.appspot.com`,
-      filePath: filePath
-    }),
+  const res = await axios({
+    method: 'post',
+    url: `https://${projectId}.appspot.com/images`,
+    data: { bucketName, filePath },
     headers: { 'Content-Type': 'application/json' }
   })
 
-  const { data } = await res.json()
-
-  if (!data) {
+  if (!res.data) {
     return null
   }
 
-  return data
+  return res.data
 }

@@ -1,8 +1,7 @@
-import { Document } from './document';
-import { Node } from './node';
+import { Doc } from './doc'
 
-export interface Image extends Node, Document {
-  bucketName: string,
-  filePath: string,
-  imageURL: string,
+export interface Image extends Doc {
+  bucketName: string
+  filePath: string
+  imageURL: string
 }

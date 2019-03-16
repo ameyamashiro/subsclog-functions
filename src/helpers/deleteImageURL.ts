@@ -1,12 +1,14 @@
-import fetch from 'node-fetch'
-import { getConfig } from '../utils/getConfig'
+import axios from 'axios'
 
-export const deleteImageURL = async (bucketName: string, filePath: string) => {
-  const config = getConfig()
+export const deleteImageURL = async (filePath: string) => {
+  const { projectId } = JSON.parse(process.env.FIREBASE_CONFIG as string)
 
-  await fetch(config.app.images, {
-    method: 'DELETE',
-    body: JSON.stringify({ bucketName, filePath }),
+  const bucketName = `${projectId}.appspot.com`
+
+  await axios({
+    method: 'post',
+    url: `https://${projectId}.appspot.com/images`,
+    data: { bucketName, filePath },
     headers: { 'Content-Type': 'application/json' }
   })
 

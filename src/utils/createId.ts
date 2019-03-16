@@ -1,5 +1,7 @@
-import { firestore } from 'firebase-admin';
+import { firestore } from 'firebase-admin'
 
 export const createId = (): string => {
-  return firestore().collection('sample').doc().id;
-};
+  return firestore()
+    .collection('default')
+    .doc().id
+}

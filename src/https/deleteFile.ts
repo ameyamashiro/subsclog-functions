@@ -1,30 +1,34 @@
 import { https, region } from 'firebase-functions'
+import { CODE } from '../constants/code'
 import { FILES } from '../constants/collection'
 import { US_CENTRAL1 } from '../constants/region'
 import { DeleteFile } from '../interfaces/https/DeleteFile'
-import { document } from '../utils/document'
+import { doc } from '../utils/doc'
 import { getUserId } from '../utils/getUserId'
-import { internalError } from '../utils/internalError'
+import { HttpsErrorInternal } from '../utils/httpsErrorInternal'
 import { isUndefined } from '../utils/isUndefined'
 
-const handler = async (data: DeleteFile, context: https.CallableContext): Promise<null> => {
+const handler = async (
+  data: DeleteFile,
+  context: https.CallableContext
+): Promise<null> => {
   if (isUndefined(data.fileId)) {
-    throw new https.HttpsError('invalid-argument', 'fileId not found')
+    throw new https.HttpsError(CODE.INVALID_ARGUMENT, CODE.INVALID_ARGUMENT)
   }
 
   const uid = getUserId(context)
 
   if (!uid) {
-    throw new https.HttpsError('unauthenticated')
+    throw new https.HttpsError(CODE.UNAUTHENTICATED, CODE.UNAUTHENTICATED)
   }
 
   try {
-    await document(FILES, data.fileId).delete()
+    await doc(FILES, data.fileId).delete()
   } catch (e) {
-    throw internalError(e)
+    throw new HttpsErrorInternal(e)
   }
 
   return null
 }
 
-export = region(US_CENTRAL1).https.onCall(handler)
+module.exports = region(US_CENTRAL1).https.onCall(handler)

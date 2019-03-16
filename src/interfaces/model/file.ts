@@ -1,9 +1,8 @@
-import { Document } from './document'
-import { Node } from './node'
+import { Doc } from './doc'
 
-export interface File extends Node, Document {
-  bucketName: string;
-  contentType: string;
-  filePath: string;
-  size: number;
+export interface File extends Doc {
+  bucketName: string
+  contentType: string
+  filePath: string
+  size: number
 }

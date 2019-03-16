@@ -2,7 +2,7 @@ import { firestore } from 'firebase-admin'
 import { createPath } from './createPath'
 import { isUndefined } from './isUndefined'
 
-export const document = (...paths: string[]): firestore.DocumentReference => {
+export const doc = (...paths: string[]): firestore.DocumentReference => {
   if (paths.length % 2 !== 0) {
     throw new Error('paths.length !== 0')
   }

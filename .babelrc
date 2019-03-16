@@ -4,14 +4,10 @@
       "@babel/env",
       {
         "targets": {
-          "node": "current"
+          "node": 6
         }
       }
     ],
     "@babel/typescript"
-  ],
-  "plugins": [
-    "@babel/proposal-class-properties",
-    "@babel/proposal-object-rest-spread"
   ]
 }

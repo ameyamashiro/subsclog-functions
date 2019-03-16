@@ -1,18 +1,27 @@
 import { region } from 'firebase-functions'
 import { ObjectMetadata } from 'firebase-functions/lib/providers/storage'
-import { IMAGES } from '../constants/collection'
+import { FILES, IMAGES } from '../constants/collection'
 import { US_CENTRAL1 } from '../constants/region'
-import { document } from '../utils/document'
+import { doc } from '../utils/doc'
 import { toFileName } from '../utils/toFileName'
 
 const handler = async (object: ObjectMetadata) => {
   if (typeof object.name !== 'string') {
-    throw new Error('object.name not found')
+    console.error('object.name not found')
+    return
   }
 
-  const imageId = toFileName(object.name)
+  const fileId = toFileName(object.name)
 
-  await document(IMAGES, imageId).delete()
+  await doc(IMAGES, fileId).delete()
+
+  const file = await doc(FILES, fileId).get()
+
+  if (file.exists) {
+    await doc(FILES, fileId).delete()
+  }
 }
 
-export = region(US_CENTRAL1).storage.object().onDelete(handler)
+module.exports = region(US_CENTRAL1)
+  .storage.object()
+  .onDelete(handler)
