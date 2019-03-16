@@ -4,8 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "tsc",
-    "watch": "tsc --watch"
+    "start": "tsc --watch",
+    "build:watch": "tsc --watch"
   },
   "dependencies": {
     "@babel/cli": "^7.1.2",
@@ -14,6 +14,7 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-typescript": "^7.1.0",
+    "axios": "^0.18.0",
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "firebase-admin": "^6.0.0",
