@@ -1,7 +1,7 @@
 import { region } from 'firebase-functions'
 import { ObjectMetadata } from 'firebase-functions/lib/providers/storage'
 import { IMAGES } from '../constants/collection'
-import { ASIA_NORTHEAST1 } from '../constants/region'
+import { US_CENTRAL1 } from '../constants/region'
 import { document } from '../utils/document'
 import { toFileName } from '../utils/toFileName'
 
@@ -15,4 +15,4 @@ const handler = async (object: ObjectMetadata) => {
   await document(IMAGES, imageId).delete()
 }
 
-export = region(ASIA_NORTHEAST1).storage.object().onDelete(handler)
+export = region(US_CENTRAL1).storage.object().onDelete(handler)

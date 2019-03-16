@@ -1,6 +1,7 @@
 import { firestore } from 'firebase-admin'
 import { region } from 'firebase-functions'
 import { IMAGES } from '../constants/collection'
+import { US_CENTRAL1 } from '../constants/region'
 import { deleteImageURL } from '../helpers/deleteImageURL'
 import { Image } from '../interfaces/model/image'
 import { toNode } from '../utils/toNode'
@@ -13,4 +14,4 @@ const handler = async (snapshot: firestore.DocumentSnapshot): Promise<void> => {
   await deleteImageURL(image.bucketName, image.filePath)
 }
 
-export = region('asia-northeast1').firestore.document(path).onDelete(handler)
+export = region(US_CENTRAL1).firestore.document(path).onDelete(handler)

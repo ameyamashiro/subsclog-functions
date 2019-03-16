@@ -21,8 +21,8 @@ if (!FUNCTION_NAME || FUNCTION_NAME === 'deleteFile') {
   exports.deleteFile = require('./lib/https/deleteFile')
 }
 
-if (!FUNCTION_NAME || FUNCTION_NAME === 'sitemap') {
-  exports.sitemap = require('./lib/https/sitemap')
+if (!FUNCTION_NAME || FUNCTION_NAME === 'getSitemap') {
+  exports.getSitemap = require('./lib/https/getSitemap')
 }
 
 // storage

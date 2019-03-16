@@ -1,7 +1,7 @@
 import { region } from 'firebase-functions'
 import { ObjectMetadata } from 'firebase-functions/lib/providers/storage'
 import { FILES, IMAGES } from '../constants/collection'
-import { ASIA_NORTHEAST1 } from '../constants/region'
+import { US_CENTRAL1 } from '../constants/region'
 import { createImageURL } from '../helpers/createImageURL'
 import { createFile } from '../models/file/createFile'
 import { createImage } from '../models/image/createImage'
@@ -39,4 +39,4 @@ const handler = async (object: ObjectMetadata) => {
   await document(FILES, fileId).set(file)
 }
 
-export = region(ASIA_NORTHEAST1).storage.object().onFinalize(handler)
+export = region(US_CENTRAL1).storage.object().onFinalize(handler)
