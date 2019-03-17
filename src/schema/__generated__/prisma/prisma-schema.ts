@@ -1129,8 +1129,8 @@ export const typeDefs = /* GraphQL */ `
     id: ID!
     createdAt: DateTime!
     updatedAt: DateTime!
-    title: String
-    description: String
+    title: String!
+    description: String!
     url: String
     photoURL: String
     yomigana: String
@@ -1164,8 +1164,8 @@ export const typeDefs = /* GraphQL */ `
   }
 
   input ServiceCreateInput {
-    title: String
-    description: String
+    title: String!
+    description: String!
     url: String
     photoURL: String
     yomigana: String
@@ -1200,8 +1200,8 @@ export const typeDefs = /* GraphQL */ `
   }
 
   input ServiceCreateWithoutCategoryInput {
-    title: String
-    description: String
+    title: String!
+    description: String!
     url: String
     photoURL: String
     yomigana: String
@@ -1220,8 +1220,8 @@ export const typeDefs = /* GraphQL */ `
   }
 
   input ServiceCreateWithoutReviewsInput {
-    title: String
-    description: String
+    title: String!
+    description: String!
     url: String
     photoURL: String
     yomigana: String
@@ -1289,8 +1289,8 @@ export const typeDefs = /* GraphQL */ `
     id: ID!
     createdAt: DateTime!
     updatedAt: DateTime!
-    title: String
-    description: String
+    title: String!
+    description: String!
     url: String
     photoURL: String
     yomigana: String

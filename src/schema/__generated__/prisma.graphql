@@ -1121,8 +1121,8 @@ type Service {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
-  title: String
-  description: String
+  title: String!
+  description: String!
   url: String
   photoURL: String
   yomigana: String
@@ -1156,8 +1156,8 @@ type ServiceConnection {
 }
 
 input ServiceCreateInput {
-  title: String
-  description: String
+  title: String!
+  description: String!
   url: String
   photoURL: String
   yomigana: String
@@ -1192,8 +1192,8 @@ input ServiceCreateOneWithoutReviewsInput {
 }
 
 input ServiceCreateWithoutCategoryInput {
-  title: String
-  description: String
+  title: String!
+  description: String!
   url: String
   photoURL: String
   yomigana: String
@@ -1212,8 +1212,8 @@ input ServiceCreateWithoutCategoryInput {
 }
 
 input ServiceCreateWithoutReviewsInput {
-  title: String
-  description: String
+  title: String!
+  description: String!
   url: String
   photoURL: String
   yomigana: String
@@ -1281,8 +1281,8 @@ type ServicePreviousValues {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
-  title: String
-  description: String
+  title: String!
+  description: String!
   url: String
   photoURL: String
   yomigana: String

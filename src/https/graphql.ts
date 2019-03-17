@@ -10,6 +10,8 @@ const server = new ApolloServer({
   playground: true
 })
 
-const handler = server.createHandler()
+const handler = server.createHandler({
+  cors: { origin: '*', credentials: true }
+})
 
 module.exports = region(US_CENTRAL1).https.onRequest(handler)

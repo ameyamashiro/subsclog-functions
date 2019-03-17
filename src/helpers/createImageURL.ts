@@ -16,5 +16,5 @@ export const createImageURL = async (filePath: string) => {
     return null
   }
 
-  return res.data
+  return res.data.data
 }

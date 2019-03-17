@@ -6,7 +6,7 @@ export const deleteImageURL = async (filePath: string) => {
   const bucketName = `${projectId}.appspot.com`
 
   await axios({
-    method: 'post',
+    method: 'delete',
     url: `https://${projectId}.appspot.com/images`,
     data: { bucketName, filePath },
     headers: { 'Content-Type': 'application/json' }

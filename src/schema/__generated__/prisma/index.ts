@@ -744,8 +744,8 @@ export interface ServiceUpdateInput {
 }
 
 export interface ServiceCreateWithoutCategoryInput {
-  title?: String
-  description?: String
+  title: String
+  description: String
   url?: String
   photoURL?: String
   yomigana?: String
@@ -1820,8 +1820,8 @@ export interface OwnerUpdateManyMutationInput {
 }
 
 export interface ServiceCreateInput {
-  title?: String
-  description?: String
+  title: String
+  description: String
   url?: String
   photoURL?: String
   yomigana?: String
@@ -1863,8 +1863,8 @@ export interface CommentUpdateManyMutationInput {
 }
 
 export interface ServiceCreateWithoutReviewsInput {
-  title?: String
-  description?: String
+  title: String
+  description: String
   url?: String
   photoURL?: String
   yomigana?: String
@@ -1945,8 +1945,8 @@ export interface Service {
   id: ID_Output
   createdAt: DateTimeOutput
   updatedAt: DateTimeOutput
-  title?: String
-  description?: String
+  title: String
+  description: String
   url?: String
   photoURL?: String
   yomigana?: String
@@ -2164,8 +2164,8 @@ export interface ServicePreviousValues {
   id: ID_Output
   createdAt: DateTimeOutput
   updatedAt: DateTimeOutput
-  title?: String
-  description?: String
+  title: String
+  description: String
   url?: String
   photoURL?: String
   yomigana?: String
@@ -2960,7 +2960,7 @@ export const models: Model[] = [
 export const Prisma = makePrismaClientClass<ClientConstructor<Prisma>>({
   typeDefs,
   models,
-  endpoint: `https://subsclog-prisma.now.sh/default/default`,
+  endpoint: `https://subsclog.now.sh/default/default`,
   secret: `${process.env['SECRET']}`
 })
 export const prisma = new Prisma()

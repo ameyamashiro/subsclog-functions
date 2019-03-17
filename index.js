@@ -2,7 +2,6 @@ const admin = require('firebase-admin')
 const { config } = require('firebase-functions')
 
 admin.initializeApp()
-admin.firestore().settings({ timestampsInSnapshots: true })
 
 const { projectId } = JSON.parse(process.env.FIREBASE_CONFIG)
 
