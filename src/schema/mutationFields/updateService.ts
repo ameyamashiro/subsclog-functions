@@ -7,10 +7,7 @@ export const updateService = mutationField('updateService', {
     where: arg({ type: 'ServiceWhereUniqueInput', required: true })
   },
   type: 'Service',
-  resolve: async (_, { data }) => {
-    return prisma.updateService({
-      data: data.data,
-      where: data.where
-    })
+  resolve: async (_, { data, where }) => {
+    return prisma.updateService({ data, where })
   }
 })
