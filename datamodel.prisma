@@ -49,8 +49,8 @@ type Service {
   id: ID! @unique
   createdAt: DateTime!
   updatedAt: DateTime!
-  title: String
-  description: String
+  title: String!
+  description: String!
   url: String
   photoURL: String
   yomigana: String
