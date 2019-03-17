@@ -15,5 +15,6 @@ $ yarn firebase deploy --only functions
 ## Deploy Rrisma
 
 ```
-$ SECRET={prisma-management-api-secret} prisima deploy
+$ prisma login
+$ prisima deploy
 ```
