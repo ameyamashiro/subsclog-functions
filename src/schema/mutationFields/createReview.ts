@@ -1,5 +1,5 @@
 import { arg, mutationField } from 'nexus'
-import { prisma } from '../__generated__/prisma'
+import { prisma } from '../../__generated__/prisma'
 
 export const createReview = mutationField('createReview', {
   args: { data: arg({ type: 'ReviewCreateInput', required: true }) },

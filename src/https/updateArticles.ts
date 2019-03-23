@@ -9,6 +9,7 @@ import { Article } from '../types/firestore/article'
 import { NewsapiEverything } from '../types/newapi/everything'
 import { createId } from '../utils/createId'
 import { systemFields } from '../utils/systemFIelds'
+import { prisma } from '../__generated__/prisma'
 
 const handler = async (req: Request, res: Response) => {
   const apiKey = config().newsapi.api_key
@@ -16,6 +17,10 @@ const handler = async (req: Request, res: Response) => {
   const newsapi = new NewsAPI(apiKey)
 
   const fromDate = get4DaysAgoDate()
+
+  const services = await prisma.services()
+
+  console.log(services)
 
   const result = await newsapi.v2.everything({
     q: 'サブスク',

@@ -1,6 +1,6 @@
 import { makePrismaSchema } from 'nexus-prisma'
-import datamodelInfo from './__generated__/nexus'
-import { prisma } from './__generated__/prisma'
+import datamodelInfo from '../__generated__/nexus'
+import { prisma } from '../__generated__/prisma'
 import { ReviewCreateInput } from './inputObjectTypes/ReviewCreateInput'
 import { ServiceUpdateViewCountInput } from './inputObjectTypes/ServiceUpdateViewCountInput'
 import { createReview } from './mutationFields/createReview'

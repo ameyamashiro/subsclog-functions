@@ -1,5 +1,5 @@
 import { arg, mutationField } from 'nexus'
-import { prisma } from '../__generated__/prisma'
+import { prisma } from '../../__generated__/prisma'
 
 export const updateServiceViewCount = mutationField('updateServiceViewCount', {
   args: { data: arg({ type: 'ServiceUpdateViewCountInput', required: true }) },
