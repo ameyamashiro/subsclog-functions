@@ -33,10 +33,6 @@ if (!FUNCTION_NAME || FUNCTION_NAME === 'graphql') {
   exports.graphql = require('./lib/graphql')
 }
 
-if (!FUNCTION_NAME || FUNCTION_NAME === 'updateArticles') {
-  exports.updateArticles = require('./lib/updateArticles')
-}
-
 // storage
 
 if (!FUNCTION_NAME || FUNCTION_NAME === 'onDeleteStorageObject') {
@@ -51,4 +47,8 @@ if (!FUNCTION_NAME || FUNCTION_NAME === 'onFinalizeStorageObject') {
 
 if (!FUNCTION_NAME || FUNCTION_NAME === 'onPublishPing') {
   exports.onPublishPing = require('./lib/onPublishPing')
+}
+
+if (!FUNCTION_NAME || FUNCTION_NAME === 'onPublishPrisma') {
+  exports.onPublishPrisma = require('./lib/onPublishPrisma')
 }
