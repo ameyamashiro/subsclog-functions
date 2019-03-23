@@ -1139,50 +1139,54 @@ export interface CommentFieldDetails {
 
 type ServiceObject =
   | ServiceFields
-  | { name: 'id'; args?: [] | false; alias?: string }
-  | { name: 'createdAt'; args?: [] | false; alias?: string }
-  | { name: 'updatedAt'; args?: [] | false; alias?: string }
-  | { name: 'title'; args?: [] | false; alias?: string }
-  | { name: 'description'; args?: [] | false; alias?: string }
-  | { name: 'url'; args?: [] | false; alias?: string }
-  | { name: 'photoURL'; args?: [] | false; alias?: string }
-  | { name: 'yomigana'; args?: [] | false; alias?: string }
-  | { name: 'price'; args?: [] | false; alias?: string }
-  | { name: 'freetrial'; args?: [] | false; alias?: string }
-  | { name: 'note'; args?: [] | false; alias?: string }
-  | { name: 'place'; args?: [] | false; alias?: string }
   | { name: 'address'; args?: [] | false; alias?: string }
-  | { name: 'tagline'; args?: [] | false; alias?: string }
-  | { name: 'inquiry'; args?: [] | false; alias?: string }
-  | { name: 'multiplans'; args?: [] | false; alias?: string }
-  | { name: 'phonenumber'; args?: [] | false; alias?: string }
   | { name: 'category'; args?: [] | false; alias?: string }
+  | { name: 'createdAt'; args?: [] | false; alias?: string }
+  | { name: 'description'; args?: [] | false; alias?: string }
+  | { name: 'freetrial'; args?: [] | false; alias?: string }
+  | { name: 'id'; args?: [] | false; alias?: string }
+  | { name: 'inquiry'; args?: [] | false; alias?: string }
+  | { name: 'likeCount'; args?: [] | false; alias?: string }
+  | { name: 'multiplans'; args?: [] | false; alias?: string }
+  | { name: 'note'; args?: [] | false; alias?: string }
+  | { name: 'phonenumber'; args?: [] | false; alias?: string }
+  | { name: 'photoURL'; args?: [] | false; alias?: string }
+  | { name: 'place'; args?: [] | false; alias?: string }
+  | { name: 'price'; args?: [] | false; alias?: string }
   | { name: 'rating'; args?: [] | false; alias?: string }
   | { name: 'ratingCount'; args?: [] | false; alias?: string }
   | { name: 'reviews'; args?: ServiceReviewsArgs[] | false; alias?: string }
+  | { name: 'tagline'; args?: [] | false; alias?: string }
+  | { name: 'title'; args?: [] | false; alias?: string }
+  | { name: 'updatedAt'; args?: [] | false; alias?: string }
+  | { name: 'url'; args?: [] | false; alias?: string }
+  | { name: 'viewCount'; args?: [] | false; alias?: string }
+  | { name: 'yomigana'; args?: [] | false; alias?: string }
 
 type ServiceFields =
-  | 'id'
-  | 'createdAt'
-  | 'updatedAt'
-  | 'title'
-  | 'description'
-  | 'url'
-  | 'photoURL'
-  | 'yomigana'
-  | 'price'
-  | 'freetrial'
-  | 'note'
-  | 'place'
   | 'address'
-  | 'tagline'
-  | 'inquiry'
-  | 'multiplans'
-  | 'phonenumber'
   | 'category'
+  | 'createdAt'
+  | 'description'
+  | 'freetrial'
+  | 'id'
+  | 'inquiry'
+  | 'likeCount'
+  | 'multiplans'
+  | 'note'
+  | 'phonenumber'
+  | 'photoURL'
+  | 'place'
+  | 'price'
   | 'rating'
   | 'ratingCount'
   | 'reviews'
+  | 'tagline'
+  | 'title'
+  | 'updatedAt'
+  | 'url'
+  | 'viewCount'
+  | 'yomigana'
 
 type ServiceReviewsArgs =
   | 'where'
@@ -1194,135 +1198,7 @@ type ServiceReviewsArgs =
   | 'last'
 
 export interface ServiceFieldDetails {
-  id: {
-    type: 'ID'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  createdAt: {
-    type: 'DateTime'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  updatedAt: {
-    type: 'DateTime'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  title: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  description: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  url: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-  photoURL: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-  yomigana: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-  price: {
-    type: 'Float'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-  freetrial: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-  note: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-  place: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
   address: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-  tagline: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-  inquiry: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-  multiplans: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-  phonenumber: {
     type: 'String'
     args: {}
     description: string
@@ -1342,6 +1218,102 @@ export interface ServiceFieldDetails {
       context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Category | null> | prisma.Category | null
+  }
+  createdAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  description: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  freetrial: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  inquiry: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  likeCount: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  multiplans: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  note: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  phonenumber: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  photoURL: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  place: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  price: {
+    type: 'Float'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
   }
   rating: {
     type: 'Int'
@@ -1379,6 +1351,54 @@ export interface ServiceFieldDetails {
       context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Review[]> | prisma.Review[]
+  }
+  tagline: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  title: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  updatedAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  url: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  viewCount: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  yomigana: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
   }
 }
 
@@ -3682,74 +3702,62 @@ export interface ServiceSubscriptionPayloadFieldDetails {
 
 type ServicePreviousValuesObject =
   | ServicePreviousValuesFields
-  | { name: 'id'; args?: [] | false; alias?: string }
-  | { name: 'createdAt'; args?: [] | false; alias?: string }
-  | { name: 'updatedAt'; args?: [] | false; alias?: string }
-  | { name: 'title'; args?: [] | false; alias?: string }
-  | { name: 'description'; args?: [] | false; alias?: string }
-  | { name: 'url'; args?: [] | false; alias?: string }
-  | { name: 'photoURL'; args?: [] | false; alias?: string }
-  | { name: 'yomigana'; args?: [] | false; alias?: string }
-  | { name: 'price'; args?: [] | false; alias?: string }
-  | { name: 'freetrial'; args?: [] | false; alias?: string }
-  | { name: 'note'; args?: [] | false; alias?: string }
-  | { name: 'place'; args?: [] | false; alias?: string }
   | { name: 'address'; args?: [] | false; alias?: string }
-  | { name: 'tagline'; args?: [] | false; alias?: string }
+  | { name: 'createdAt'; args?: [] | false; alias?: string }
+  | { name: 'description'; args?: [] | false; alias?: string }
+  | { name: 'freetrial'; args?: [] | false; alias?: string }
+  | { name: 'id'; args?: [] | false; alias?: string }
   | { name: 'inquiry'; args?: [] | false; alias?: string }
+  | { name: 'likeCount'; args?: [] | false; alias?: string }
   | { name: 'multiplans'; args?: [] | false; alias?: string }
+  | { name: 'note'; args?: [] | false; alias?: string }
   | { name: 'phonenumber'; args?: [] | false; alias?: string }
+  | { name: 'photoURL'; args?: [] | false; alias?: string }
+  | { name: 'place'; args?: [] | false; alias?: string }
+  | { name: 'price'; args?: [] | false; alias?: string }
   | { name: 'rating'; args?: [] | false; alias?: string }
   | { name: 'ratingCount'; args?: [] | false; alias?: string }
+  | { name: 'tagline'; args?: [] | false; alias?: string }
+  | { name: 'title'; args?: [] | false; alias?: string }
+  | { name: 'updatedAt'; args?: [] | false; alias?: string }
+  | { name: 'url'; args?: [] | false; alias?: string }
+  | { name: 'viewCount'; args?: [] | false; alias?: string }
+  | { name: 'yomigana'; args?: [] | false; alias?: string }
 
 type ServicePreviousValuesFields =
-  | 'id'
-  | 'createdAt'
-  | 'updatedAt'
-  | 'title'
-  | 'description'
-  | 'url'
-  | 'photoURL'
-  | 'yomigana'
-  | 'price'
-  | 'freetrial'
-  | 'note'
-  | 'place'
   | 'address'
-  | 'tagline'
+  | 'createdAt'
+  | 'description'
+  | 'freetrial'
+  | 'id'
   | 'inquiry'
+  | 'likeCount'
   | 'multiplans'
+  | 'note'
   | 'phonenumber'
+  | 'photoURL'
+  | 'place'
+  | 'price'
   | 'rating'
   | 'ratingCount'
+  | 'tagline'
+  | 'title'
+  | 'updatedAt'
+  | 'url'
+  | 'viewCount'
+  | 'yomigana'
 
 export interface ServicePreviousValuesFieldDetails {
-  id: {
-    type: 'ID'
+  address: {
+    type: 'String'
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
   createdAt: {
     type: 'DateTime'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  updatedAt: {
-    type: 'DateTime'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  title: {
-    type: 'String'
     args: {}
     description: string
     list: undefined
@@ -3764,39 +3772,39 @@ export interface ServicePreviousValuesFieldDetails {
     nullable: false
     resolve: undefined
   }
-  url: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-  photoURL: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-  yomigana: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-  price: {
-    type: 'Float'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
   freetrial: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  inquiry: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  likeCount: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  multiplans: {
     type: 'String'
     args: {}
     description: string
@@ -3812,6 +3820,22 @@ export interface ServicePreviousValuesFieldDetails {
     nullable: true
     resolve: undefined
   }
+  phonenumber: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  photoURL: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
   place: {
     type: 'String'
     args: {}
@@ -3820,40 +3844,8 @@ export interface ServicePreviousValuesFieldDetails {
     nullable: true
     resolve: undefined
   }
-  address: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-  tagline: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-  inquiry: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-  multiplans: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-  phonenumber: {
-    type: 'String'
+  price: {
+    type: 'Float'
     args: {}
     description: string
     list: undefined
@@ -3870,6 +3862,54 @@ export interface ServicePreviousValuesFieldDetails {
   }
   ratingCount: {
     type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  tagline: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  title: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  updatedAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  url: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  viewCount: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  yomigana: {
+    type: 'String'
     args: {}
     description: string
     list: undefined
@@ -4156,156 +4196,6 @@ export type CommentWhereUniqueInputInputObject =
   | { name: 'id'; alias?: string }
 
 export interface ServiceWhereInput {
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[]
-  id_not_in?: string[]
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
-  createdAt?: string | null
-  createdAt_not?: string | null
-  createdAt_in?: string[]
-  createdAt_not_in?: string[]
-  createdAt_lt?: string | null
-  createdAt_lte?: string | null
-  createdAt_gt?: string | null
-  createdAt_gte?: string | null
-  updatedAt?: string | null
-  updatedAt_not?: string | null
-  updatedAt_in?: string[]
-  updatedAt_not_in?: string[]
-  updatedAt_lt?: string | null
-  updatedAt_lte?: string | null
-  updatedAt_gt?: string | null
-  updatedAt_gte?: string | null
-  title?: string | null
-  title_not?: string | null
-  title_in?: string[]
-  title_not_in?: string[]
-  title_lt?: string | null
-  title_lte?: string | null
-  title_gt?: string | null
-  title_gte?: string | null
-  title_contains?: string | null
-  title_not_contains?: string | null
-  title_starts_with?: string | null
-  title_not_starts_with?: string | null
-  title_ends_with?: string | null
-  title_not_ends_with?: string | null
-  description?: string | null
-  description_not?: string | null
-  description_in?: string[]
-  description_not_in?: string[]
-  description_lt?: string | null
-  description_lte?: string | null
-  description_gt?: string | null
-  description_gte?: string | null
-  description_contains?: string | null
-  description_not_contains?: string | null
-  description_starts_with?: string | null
-  description_not_starts_with?: string | null
-  description_ends_with?: string | null
-  description_not_ends_with?: string | null
-  url?: string | null
-  url_not?: string | null
-  url_in?: string[]
-  url_not_in?: string[]
-  url_lt?: string | null
-  url_lte?: string | null
-  url_gt?: string | null
-  url_gte?: string | null
-  url_contains?: string | null
-  url_not_contains?: string | null
-  url_starts_with?: string | null
-  url_not_starts_with?: string | null
-  url_ends_with?: string | null
-  url_not_ends_with?: string | null
-  photoURL?: string | null
-  photoURL_not?: string | null
-  photoURL_in?: string[]
-  photoURL_not_in?: string[]
-  photoURL_lt?: string | null
-  photoURL_lte?: string | null
-  photoURL_gt?: string | null
-  photoURL_gte?: string | null
-  photoURL_contains?: string | null
-  photoURL_not_contains?: string | null
-  photoURL_starts_with?: string | null
-  photoURL_not_starts_with?: string | null
-  photoURL_ends_with?: string | null
-  photoURL_not_ends_with?: string | null
-  yomigana?: string | null
-  yomigana_not?: string | null
-  yomigana_in?: string[]
-  yomigana_not_in?: string[]
-  yomigana_lt?: string | null
-  yomigana_lte?: string | null
-  yomigana_gt?: string | null
-  yomigana_gte?: string | null
-  yomigana_contains?: string | null
-  yomigana_not_contains?: string | null
-  yomigana_starts_with?: string | null
-  yomigana_not_starts_with?: string | null
-  yomigana_ends_with?: string | null
-  yomigana_not_ends_with?: string | null
-  price?: number | null
-  price_not?: number | null
-  price_in?: number[]
-  price_not_in?: number[]
-  price_lt?: number | null
-  price_lte?: number | null
-  price_gt?: number | null
-  price_gte?: number | null
-  freetrial?: string | null
-  freetrial_not?: string | null
-  freetrial_in?: string[]
-  freetrial_not_in?: string[]
-  freetrial_lt?: string | null
-  freetrial_lte?: string | null
-  freetrial_gt?: string | null
-  freetrial_gte?: string | null
-  freetrial_contains?: string | null
-  freetrial_not_contains?: string | null
-  freetrial_starts_with?: string | null
-  freetrial_not_starts_with?: string | null
-  freetrial_ends_with?: string | null
-  freetrial_not_ends_with?: string | null
-  note?: string | null
-  note_not?: string | null
-  note_in?: string[]
-  note_not_in?: string[]
-  note_lt?: string | null
-  note_lte?: string | null
-  note_gt?: string | null
-  note_gte?: string | null
-  note_contains?: string | null
-  note_not_contains?: string | null
-  note_starts_with?: string | null
-  note_not_starts_with?: string | null
-  note_ends_with?: string | null
-  note_not_ends_with?: string | null
-  place?: string | null
-  place_not?: string | null
-  place_in?: string[]
-  place_not_in?: string[]
-  place_lt?: string | null
-  place_lte?: string | null
-  place_gt?: string | null
-  place_gte?: string | null
-  place_contains?: string | null
-  place_not_contains?: string | null
-  place_starts_with?: string | null
-  place_not_starts_with?: string | null
-  place_ends_with?: string | null
-  place_not_ends_with?: string | null
   address?: string | null
   address_not?: string | null
   address_in?: string[]
@@ -4320,20 +4210,57 @@ export interface ServiceWhereInput {
   address_not_starts_with?: string | null
   address_ends_with?: string | null
   address_not_ends_with?: string | null
-  tagline?: string | null
-  tagline_not?: string | null
-  tagline_in?: string[]
-  tagline_not_in?: string[]
-  tagline_lt?: string | null
-  tagline_lte?: string | null
-  tagline_gt?: string | null
-  tagline_gte?: string | null
-  tagline_contains?: string | null
-  tagline_not_contains?: string | null
-  tagline_starts_with?: string | null
-  tagline_not_starts_with?: string | null
-  tagline_ends_with?: string | null
-  tagline_not_ends_with?: string | null
+  category?: CategoryWhereInput | null
+  createdAt?: string | null
+  createdAt_not?: string | null
+  createdAt_in?: string[]
+  createdAt_not_in?: string[]
+  createdAt_lt?: string | null
+  createdAt_lte?: string | null
+  createdAt_gt?: string | null
+  createdAt_gte?: string | null
+  description?: string | null
+  description_not?: string | null
+  description_in?: string[]
+  description_not_in?: string[]
+  description_lt?: string | null
+  description_lte?: string | null
+  description_gt?: string | null
+  description_gte?: string | null
+  description_contains?: string | null
+  description_not_contains?: string | null
+  description_starts_with?: string | null
+  description_not_starts_with?: string | null
+  description_ends_with?: string | null
+  description_not_ends_with?: string | null
+  freetrial?: string | null
+  freetrial_not?: string | null
+  freetrial_in?: string[]
+  freetrial_not_in?: string[]
+  freetrial_lt?: string | null
+  freetrial_lte?: string | null
+  freetrial_gt?: string | null
+  freetrial_gte?: string | null
+  freetrial_contains?: string | null
+  freetrial_not_contains?: string | null
+  freetrial_starts_with?: string | null
+  freetrial_not_starts_with?: string | null
+  freetrial_ends_with?: string | null
+  freetrial_not_ends_with?: string | null
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
   inquiry?: string | null
   inquiry_not?: string | null
   inquiry_in?: string[]
@@ -4348,6 +4275,14 @@ export interface ServiceWhereInput {
   inquiry_not_starts_with?: string | null
   inquiry_ends_with?: string | null
   inquiry_not_ends_with?: string | null
+  likeCount?: number | null
+  likeCount_not?: number | null
+  likeCount_in?: number[]
+  likeCount_not_in?: number[]
+  likeCount_lt?: number | null
+  likeCount_lte?: number | null
+  likeCount_gt?: number | null
+  likeCount_gte?: number | null
   multiplans?: string | null
   multiplans_not?: string | null
   multiplans_in?: string[]
@@ -4362,6 +4297,20 @@ export interface ServiceWhereInput {
   multiplans_not_starts_with?: string | null
   multiplans_ends_with?: string | null
   multiplans_not_ends_with?: string | null
+  note?: string | null
+  note_not?: string | null
+  note_in?: string[]
+  note_not_in?: string[]
+  note_lt?: string | null
+  note_lte?: string | null
+  note_gt?: string | null
+  note_gte?: string | null
+  note_contains?: string | null
+  note_not_contains?: string | null
+  note_starts_with?: string | null
+  note_not_starts_with?: string | null
+  note_ends_with?: string | null
+  note_not_ends_with?: string | null
   phonenumber?: string | null
   phonenumber_not?: string | null
   phonenumber_in?: string[]
@@ -4376,7 +4325,42 @@ export interface ServiceWhereInput {
   phonenumber_not_starts_with?: string | null
   phonenumber_ends_with?: string | null
   phonenumber_not_ends_with?: string | null
-  category?: CategoryWhereInput | null
+  photoURL?: string | null
+  photoURL_not?: string | null
+  photoURL_in?: string[]
+  photoURL_not_in?: string[]
+  photoURL_lt?: string | null
+  photoURL_lte?: string | null
+  photoURL_gt?: string | null
+  photoURL_gte?: string | null
+  photoURL_contains?: string | null
+  photoURL_not_contains?: string | null
+  photoURL_starts_with?: string | null
+  photoURL_not_starts_with?: string | null
+  photoURL_ends_with?: string | null
+  photoURL_not_ends_with?: string | null
+  place?: string | null
+  place_not?: string | null
+  place_in?: string[]
+  place_not_in?: string[]
+  place_lt?: string | null
+  place_lte?: string | null
+  place_gt?: string | null
+  place_gte?: string | null
+  place_contains?: string | null
+  place_not_contains?: string | null
+  place_starts_with?: string | null
+  place_not_starts_with?: string | null
+  place_ends_with?: string | null
+  place_not_ends_with?: string | null
+  price?: number | null
+  price_not?: number | null
+  price_in?: number[]
+  price_not_in?: number[]
+  price_lt?: number | null
+  price_lte?: number | null
+  price_gt?: number | null
+  price_gte?: number | null
   rating?: number | null
   rating_not?: number | null
   rating_in?: number[]
@@ -4396,162 +4380,84 @@ export interface ServiceWhereInput {
   reviews_every?: ReviewWhereInput | null
   reviews_some?: ReviewWhereInput | null
   reviews_none?: ReviewWhereInput | null
+  tagline?: string | null
+  tagline_not?: string | null
+  tagline_in?: string[]
+  tagline_not_in?: string[]
+  tagline_lt?: string | null
+  tagline_lte?: string | null
+  tagline_gt?: string | null
+  tagline_gte?: string | null
+  tagline_contains?: string | null
+  tagline_not_contains?: string | null
+  tagline_starts_with?: string | null
+  tagline_not_starts_with?: string | null
+  tagline_ends_with?: string | null
+  tagline_not_ends_with?: string | null
+  title?: string | null
+  title_not?: string | null
+  title_in?: string[]
+  title_not_in?: string[]
+  title_lt?: string | null
+  title_lte?: string | null
+  title_gt?: string | null
+  title_gte?: string | null
+  title_contains?: string | null
+  title_not_contains?: string | null
+  title_starts_with?: string | null
+  title_not_starts_with?: string | null
+  title_ends_with?: string | null
+  title_not_ends_with?: string | null
+  updatedAt?: string | null
+  updatedAt_not?: string | null
+  updatedAt_in?: string[]
+  updatedAt_not_in?: string[]
+  updatedAt_lt?: string | null
+  updatedAt_lte?: string | null
+  updatedAt_gt?: string | null
+  updatedAt_gte?: string | null
+  url?: string | null
+  url_not?: string | null
+  url_in?: string[]
+  url_not_in?: string[]
+  url_lt?: string | null
+  url_lte?: string | null
+  url_gt?: string | null
+  url_gte?: string | null
+  url_contains?: string | null
+  url_not_contains?: string | null
+  url_starts_with?: string | null
+  url_not_starts_with?: string | null
+  url_ends_with?: string | null
+  url_not_ends_with?: string | null
+  viewCount?: number | null
+  viewCount_not?: number | null
+  viewCount_in?: number[]
+  viewCount_not_in?: number[]
+  viewCount_lt?: number | null
+  viewCount_lte?: number | null
+  viewCount_gt?: number | null
+  viewCount_gte?: number | null
+  yomigana?: string | null
+  yomigana_not?: string | null
+  yomigana_in?: string[]
+  yomigana_not_in?: string[]
+  yomigana_lt?: string | null
+  yomigana_lte?: string | null
+  yomigana_gt?: string | null
+  yomigana_gte?: string | null
+  yomigana_contains?: string | null
+  yomigana_not_contains?: string | null
+  yomigana_starts_with?: string | null
+  yomigana_not_starts_with?: string | null
+  yomigana_ends_with?: string | null
+  yomigana_not_ends_with?: string | null
   AND?: ServiceWhereInput[]
   OR?: ServiceWhereInput[]
   NOT?: ServiceWhereInput[]
 }
 export type ServiceWhereInputInputObject =
   | Extract<keyof ServiceWhereInput, string>
-  | { name: 'id'; alias?: string }
-  | { name: 'id_not'; alias?: string }
-  | { name: 'id_in'; alias?: string }
-  | { name: 'id_not_in'; alias?: string }
-  | { name: 'id_lt'; alias?: string }
-  | { name: 'id_lte'; alias?: string }
-  | { name: 'id_gt'; alias?: string }
-  | { name: 'id_gte'; alias?: string }
-  | { name: 'id_contains'; alias?: string }
-  | { name: 'id_not_contains'; alias?: string }
-  | { name: 'id_starts_with'; alias?: string }
-  | { name: 'id_not_starts_with'; alias?: string }
-  | { name: 'id_ends_with'; alias?: string }
-  | { name: 'id_not_ends_with'; alias?: string }
-  | { name: 'createdAt'; alias?: string }
-  | { name: 'createdAt_not'; alias?: string }
-  | { name: 'createdAt_in'; alias?: string }
-  | { name: 'createdAt_not_in'; alias?: string }
-  | { name: 'createdAt_lt'; alias?: string }
-  | { name: 'createdAt_lte'; alias?: string }
-  | { name: 'createdAt_gt'; alias?: string }
-  | { name: 'createdAt_gte'; alias?: string }
-  | { name: 'updatedAt'; alias?: string }
-  | { name: 'updatedAt_not'; alias?: string }
-  | { name: 'updatedAt_in'; alias?: string }
-  | { name: 'updatedAt_not_in'; alias?: string }
-  | { name: 'updatedAt_lt'; alias?: string }
-  | { name: 'updatedAt_lte'; alias?: string }
-  | { name: 'updatedAt_gt'; alias?: string }
-  | { name: 'updatedAt_gte'; alias?: string }
-  | { name: 'title'; alias?: string }
-  | { name: 'title_not'; alias?: string }
-  | { name: 'title_in'; alias?: string }
-  | { name: 'title_not_in'; alias?: string }
-  | { name: 'title_lt'; alias?: string }
-  | { name: 'title_lte'; alias?: string }
-  | { name: 'title_gt'; alias?: string }
-  | { name: 'title_gte'; alias?: string }
-  | { name: 'title_contains'; alias?: string }
-  | { name: 'title_not_contains'; alias?: string }
-  | { name: 'title_starts_with'; alias?: string }
-  | { name: 'title_not_starts_with'; alias?: string }
-  | { name: 'title_ends_with'; alias?: string }
-  | { name: 'title_not_ends_with'; alias?: string }
-  | { name: 'description'; alias?: string }
-  | { name: 'description_not'; alias?: string }
-  | { name: 'description_in'; alias?: string }
-  | { name: 'description_not_in'; alias?: string }
-  | { name: 'description_lt'; alias?: string }
-  | { name: 'description_lte'; alias?: string }
-  | { name: 'description_gt'; alias?: string }
-  | { name: 'description_gte'; alias?: string }
-  | { name: 'description_contains'; alias?: string }
-  | { name: 'description_not_contains'; alias?: string }
-  | { name: 'description_starts_with'; alias?: string }
-  | { name: 'description_not_starts_with'; alias?: string }
-  | { name: 'description_ends_with'; alias?: string }
-  | { name: 'description_not_ends_with'; alias?: string }
-  | { name: 'url'; alias?: string }
-  | { name: 'url_not'; alias?: string }
-  | { name: 'url_in'; alias?: string }
-  | { name: 'url_not_in'; alias?: string }
-  | { name: 'url_lt'; alias?: string }
-  | { name: 'url_lte'; alias?: string }
-  | { name: 'url_gt'; alias?: string }
-  | { name: 'url_gte'; alias?: string }
-  | { name: 'url_contains'; alias?: string }
-  | { name: 'url_not_contains'; alias?: string }
-  | { name: 'url_starts_with'; alias?: string }
-  | { name: 'url_not_starts_with'; alias?: string }
-  | { name: 'url_ends_with'; alias?: string }
-  | { name: 'url_not_ends_with'; alias?: string }
-  | { name: 'photoURL'; alias?: string }
-  | { name: 'photoURL_not'; alias?: string }
-  | { name: 'photoURL_in'; alias?: string }
-  | { name: 'photoURL_not_in'; alias?: string }
-  | { name: 'photoURL_lt'; alias?: string }
-  | { name: 'photoURL_lte'; alias?: string }
-  | { name: 'photoURL_gt'; alias?: string }
-  | { name: 'photoURL_gte'; alias?: string }
-  | { name: 'photoURL_contains'; alias?: string }
-  | { name: 'photoURL_not_contains'; alias?: string }
-  | { name: 'photoURL_starts_with'; alias?: string }
-  | { name: 'photoURL_not_starts_with'; alias?: string }
-  | { name: 'photoURL_ends_with'; alias?: string }
-  | { name: 'photoURL_not_ends_with'; alias?: string }
-  | { name: 'yomigana'; alias?: string }
-  | { name: 'yomigana_not'; alias?: string }
-  | { name: 'yomigana_in'; alias?: string }
-  | { name: 'yomigana_not_in'; alias?: string }
-  | { name: 'yomigana_lt'; alias?: string }
-  | { name: 'yomigana_lte'; alias?: string }
-  | { name: 'yomigana_gt'; alias?: string }
-  | { name: 'yomigana_gte'; alias?: string }
-  | { name: 'yomigana_contains'; alias?: string }
-  | { name: 'yomigana_not_contains'; alias?: string }
-  | { name: 'yomigana_starts_with'; alias?: string }
-  | { name: 'yomigana_not_starts_with'; alias?: string }
-  | { name: 'yomigana_ends_with'; alias?: string }
-  | { name: 'yomigana_not_ends_with'; alias?: string }
-  | { name: 'price'; alias?: string }
-  | { name: 'price_not'; alias?: string }
-  | { name: 'price_in'; alias?: string }
-  | { name: 'price_not_in'; alias?: string }
-  | { name: 'price_lt'; alias?: string }
-  | { name: 'price_lte'; alias?: string }
-  | { name: 'price_gt'; alias?: string }
-  | { name: 'price_gte'; alias?: string }
-  | { name: 'freetrial'; alias?: string }
-  | { name: 'freetrial_not'; alias?: string }
-  | { name: 'freetrial_in'; alias?: string }
-  | { name: 'freetrial_not_in'; alias?: string }
-  | { name: 'freetrial_lt'; alias?: string }
-  | { name: 'freetrial_lte'; alias?: string }
-  | { name: 'freetrial_gt'; alias?: string }
-  | { name: 'freetrial_gte'; alias?: string }
-  | { name: 'freetrial_contains'; alias?: string }
-  | { name: 'freetrial_not_contains'; alias?: string }
-  | { name: 'freetrial_starts_with'; alias?: string }
-  | { name: 'freetrial_not_starts_with'; alias?: string }
-  | { name: 'freetrial_ends_with'; alias?: string }
-  | { name: 'freetrial_not_ends_with'; alias?: string }
-  | { name: 'note'; alias?: string }
-  | { name: 'note_not'; alias?: string }
-  | { name: 'note_in'; alias?: string }
-  | { name: 'note_not_in'; alias?: string }
-  | { name: 'note_lt'; alias?: string }
-  | { name: 'note_lte'; alias?: string }
-  | { name: 'note_gt'; alias?: string }
-  | { name: 'note_gte'; alias?: string }
-  | { name: 'note_contains'; alias?: string }
-  | { name: 'note_not_contains'; alias?: string }
-  | { name: 'note_starts_with'; alias?: string }
-  | { name: 'note_not_starts_with'; alias?: string }
-  | { name: 'note_ends_with'; alias?: string }
-  | { name: 'note_not_ends_with'; alias?: string }
-  | { name: 'place'; alias?: string }
-  | { name: 'place_not'; alias?: string }
-  | { name: 'place_in'; alias?: string }
-  | { name: 'place_not_in'; alias?: string }
-  | { name: 'place_lt'; alias?: string }
-  | { name: 'place_lte'; alias?: string }
-  | { name: 'place_gt'; alias?: string }
-  | { name: 'place_gte'; alias?: string }
-  | { name: 'place_contains'; alias?: string }
-  | { name: 'place_not_contains'; alias?: string }
-  | { name: 'place_starts_with'; alias?: string }
-  | { name: 'place_not_starts_with'; alias?: string }
-  | { name: 'place_ends_with'; alias?: string }
-  | { name: 'place_not_ends_with'; alias?: string }
   | { name: 'address'; alias?: string }
   | { name: 'address_not'; alias?: string }
   | { name: 'address_in'; alias?: string }
@@ -4566,20 +4472,57 @@ export type ServiceWhereInputInputObject =
   | { name: 'address_not_starts_with'; alias?: string }
   | { name: 'address_ends_with'; alias?: string }
   | { name: 'address_not_ends_with'; alias?: string }
-  | { name: 'tagline'; alias?: string }
-  | { name: 'tagline_not'; alias?: string }
-  | { name: 'tagline_in'; alias?: string }
-  | { name: 'tagline_not_in'; alias?: string }
-  | { name: 'tagline_lt'; alias?: string }
-  | { name: 'tagline_lte'; alias?: string }
-  | { name: 'tagline_gt'; alias?: string }
-  | { name: 'tagline_gte'; alias?: string }
-  | { name: 'tagline_contains'; alias?: string }
-  | { name: 'tagline_not_contains'; alias?: string }
-  | { name: 'tagline_starts_with'; alias?: string }
-  | { name: 'tagline_not_starts_with'; alias?: string }
-  | { name: 'tagline_ends_with'; alias?: string }
-  | { name: 'tagline_not_ends_with'; alias?: string }
+  | { name: 'category'; alias?: string }
+  | { name: 'createdAt'; alias?: string }
+  | { name: 'createdAt_not'; alias?: string }
+  | { name: 'createdAt_in'; alias?: string }
+  | { name: 'createdAt_not_in'; alias?: string }
+  | { name: 'createdAt_lt'; alias?: string }
+  | { name: 'createdAt_lte'; alias?: string }
+  | { name: 'createdAt_gt'; alias?: string }
+  | { name: 'createdAt_gte'; alias?: string }
+  | { name: 'description'; alias?: string }
+  | { name: 'description_not'; alias?: string }
+  | { name: 'description_in'; alias?: string }
+  | { name: 'description_not_in'; alias?: string }
+  | { name: 'description_lt'; alias?: string }
+  | { name: 'description_lte'; alias?: string }
+  | { name: 'description_gt'; alias?: string }
+  | { name: 'description_gte'; alias?: string }
+  | { name: 'description_contains'; alias?: string }
+  | { name: 'description_not_contains'; alias?: string }
+  | { name: 'description_starts_with'; alias?: string }
+  | { name: 'description_not_starts_with'; alias?: string }
+  | { name: 'description_ends_with'; alias?: string }
+  | { name: 'description_not_ends_with'; alias?: string }
+  | { name: 'freetrial'; alias?: string }
+  | { name: 'freetrial_not'; alias?: string }
+  | { name: 'freetrial_in'; alias?: string }
+  | { name: 'freetrial_not_in'; alias?: string }
+  | { name: 'freetrial_lt'; alias?: string }
+  | { name: 'freetrial_lte'; alias?: string }
+  | { name: 'freetrial_gt'; alias?: string }
+  | { name: 'freetrial_gte'; alias?: string }
+  | { name: 'freetrial_contains'; alias?: string }
+  | { name: 'freetrial_not_contains'; alias?: string }
+  | { name: 'freetrial_starts_with'; alias?: string }
+  | { name: 'freetrial_not_starts_with'; alias?: string }
+  | { name: 'freetrial_ends_with'; alias?: string }
+  | { name: 'freetrial_not_ends_with'; alias?: string }
+  | { name: 'id'; alias?: string }
+  | { name: 'id_not'; alias?: string }
+  | { name: 'id_in'; alias?: string }
+  | { name: 'id_not_in'; alias?: string }
+  | { name: 'id_lt'; alias?: string }
+  | { name: 'id_lte'; alias?: string }
+  | { name: 'id_gt'; alias?: string }
+  | { name: 'id_gte'; alias?: string }
+  | { name: 'id_contains'; alias?: string }
+  | { name: 'id_not_contains'; alias?: string }
+  | { name: 'id_starts_with'; alias?: string }
+  | { name: 'id_not_starts_with'; alias?: string }
+  | { name: 'id_ends_with'; alias?: string }
+  | { name: 'id_not_ends_with'; alias?: string }
   | { name: 'inquiry'; alias?: string }
   | { name: 'inquiry_not'; alias?: string }
   | { name: 'inquiry_in'; alias?: string }
@@ -4594,6 +4537,14 @@ export type ServiceWhereInputInputObject =
   | { name: 'inquiry_not_starts_with'; alias?: string }
   | { name: 'inquiry_ends_with'; alias?: string }
   | { name: 'inquiry_not_ends_with'; alias?: string }
+  | { name: 'likeCount'; alias?: string }
+  | { name: 'likeCount_not'; alias?: string }
+  | { name: 'likeCount_in'; alias?: string }
+  | { name: 'likeCount_not_in'; alias?: string }
+  | { name: 'likeCount_lt'; alias?: string }
+  | { name: 'likeCount_lte'; alias?: string }
+  | { name: 'likeCount_gt'; alias?: string }
+  | { name: 'likeCount_gte'; alias?: string }
   | { name: 'multiplans'; alias?: string }
   | { name: 'multiplans_not'; alias?: string }
   | { name: 'multiplans_in'; alias?: string }
@@ -4608,6 +4559,20 @@ export type ServiceWhereInputInputObject =
   | { name: 'multiplans_not_starts_with'; alias?: string }
   | { name: 'multiplans_ends_with'; alias?: string }
   | { name: 'multiplans_not_ends_with'; alias?: string }
+  | { name: 'note'; alias?: string }
+  | { name: 'note_not'; alias?: string }
+  | { name: 'note_in'; alias?: string }
+  | { name: 'note_not_in'; alias?: string }
+  | { name: 'note_lt'; alias?: string }
+  | { name: 'note_lte'; alias?: string }
+  | { name: 'note_gt'; alias?: string }
+  | { name: 'note_gte'; alias?: string }
+  | { name: 'note_contains'; alias?: string }
+  | { name: 'note_not_contains'; alias?: string }
+  | { name: 'note_starts_with'; alias?: string }
+  | { name: 'note_not_starts_with'; alias?: string }
+  | { name: 'note_ends_with'; alias?: string }
+  | { name: 'note_not_ends_with'; alias?: string }
   | { name: 'phonenumber'; alias?: string }
   | { name: 'phonenumber_not'; alias?: string }
   | { name: 'phonenumber_in'; alias?: string }
@@ -4622,7 +4587,42 @@ export type ServiceWhereInputInputObject =
   | { name: 'phonenumber_not_starts_with'; alias?: string }
   | { name: 'phonenumber_ends_with'; alias?: string }
   | { name: 'phonenumber_not_ends_with'; alias?: string }
-  | { name: 'category'; alias?: string }
+  | { name: 'photoURL'; alias?: string }
+  | { name: 'photoURL_not'; alias?: string }
+  | { name: 'photoURL_in'; alias?: string }
+  | { name: 'photoURL_not_in'; alias?: string }
+  | { name: 'photoURL_lt'; alias?: string }
+  | { name: 'photoURL_lte'; alias?: string }
+  | { name: 'photoURL_gt'; alias?: string }
+  | { name: 'photoURL_gte'; alias?: string }
+  | { name: 'photoURL_contains'; alias?: string }
+  | { name: 'photoURL_not_contains'; alias?: string }
+  | { name: 'photoURL_starts_with'; alias?: string }
+  | { name: 'photoURL_not_starts_with'; alias?: string }
+  | { name: 'photoURL_ends_with'; alias?: string }
+  | { name: 'photoURL_not_ends_with'; alias?: string }
+  | { name: 'place'; alias?: string }
+  | { name: 'place_not'; alias?: string }
+  | { name: 'place_in'; alias?: string }
+  | { name: 'place_not_in'; alias?: string }
+  | { name: 'place_lt'; alias?: string }
+  | { name: 'place_lte'; alias?: string }
+  | { name: 'place_gt'; alias?: string }
+  | { name: 'place_gte'; alias?: string }
+  | { name: 'place_contains'; alias?: string }
+  | { name: 'place_not_contains'; alias?: string }
+  | { name: 'place_starts_with'; alias?: string }
+  | { name: 'place_not_starts_with'; alias?: string }
+  | { name: 'place_ends_with'; alias?: string }
+  | { name: 'place_not_ends_with'; alias?: string }
+  | { name: 'price'; alias?: string }
+  | { name: 'price_not'; alias?: string }
+  | { name: 'price_in'; alias?: string }
+  | { name: 'price_not_in'; alias?: string }
+  | { name: 'price_lt'; alias?: string }
+  | { name: 'price_lte'; alias?: string }
+  | { name: 'price_gt'; alias?: string }
+  | { name: 'price_gte'; alias?: string }
   | { name: 'rating'; alias?: string }
   | { name: 'rating_not'; alias?: string }
   | { name: 'rating_in'; alias?: string }
@@ -4642,6 +4642,78 @@ export type ServiceWhereInputInputObject =
   | { name: 'reviews_every'; alias?: string }
   | { name: 'reviews_some'; alias?: string }
   | { name: 'reviews_none'; alias?: string }
+  | { name: 'tagline'; alias?: string }
+  | { name: 'tagline_not'; alias?: string }
+  | { name: 'tagline_in'; alias?: string }
+  | { name: 'tagline_not_in'; alias?: string }
+  | { name: 'tagline_lt'; alias?: string }
+  | { name: 'tagline_lte'; alias?: string }
+  | { name: 'tagline_gt'; alias?: string }
+  | { name: 'tagline_gte'; alias?: string }
+  | { name: 'tagline_contains'; alias?: string }
+  | { name: 'tagline_not_contains'; alias?: string }
+  | { name: 'tagline_starts_with'; alias?: string }
+  | { name: 'tagline_not_starts_with'; alias?: string }
+  | { name: 'tagline_ends_with'; alias?: string }
+  | { name: 'tagline_not_ends_with'; alias?: string }
+  | { name: 'title'; alias?: string }
+  | { name: 'title_not'; alias?: string }
+  | { name: 'title_in'; alias?: string }
+  | { name: 'title_not_in'; alias?: string }
+  | { name: 'title_lt'; alias?: string }
+  | { name: 'title_lte'; alias?: string }
+  | { name: 'title_gt'; alias?: string }
+  | { name: 'title_gte'; alias?: string }
+  | { name: 'title_contains'; alias?: string }
+  | { name: 'title_not_contains'; alias?: string }
+  | { name: 'title_starts_with'; alias?: string }
+  | { name: 'title_not_starts_with'; alias?: string }
+  | { name: 'title_ends_with'; alias?: string }
+  | { name: 'title_not_ends_with'; alias?: string }
+  | { name: 'updatedAt'; alias?: string }
+  | { name: 'updatedAt_not'; alias?: string }
+  | { name: 'updatedAt_in'; alias?: string }
+  | { name: 'updatedAt_not_in'; alias?: string }
+  | { name: 'updatedAt_lt'; alias?: string }
+  | { name: 'updatedAt_lte'; alias?: string }
+  | { name: 'updatedAt_gt'; alias?: string }
+  | { name: 'updatedAt_gte'; alias?: string }
+  | { name: 'url'; alias?: string }
+  | { name: 'url_not'; alias?: string }
+  | { name: 'url_in'; alias?: string }
+  | { name: 'url_not_in'; alias?: string }
+  | { name: 'url_lt'; alias?: string }
+  | { name: 'url_lte'; alias?: string }
+  | { name: 'url_gt'; alias?: string }
+  | { name: 'url_gte'; alias?: string }
+  | { name: 'url_contains'; alias?: string }
+  | { name: 'url_not_contains'; alias?: string }
+  | { name: 'url_starts_with'; alias?: string }
+  | { name: 'url_not_starts_with'; alias?: string }
+  | { name: 'url_ends_with'; alias?: string }
+  | { name: 'url_not_ends_with'; alias?: string }
+  | { name: 'viewCount'; alias?: string }
+  | { name: 'viewCount_not'; alias?: string }
+  | { name: 'viewCount_in'; alias?: string }
+  | { name: 'viewCount_not_in'; alias?: string }
+  | { name: 'viewCount_lt'; alias?: string }
+  | { name: 'viewCount_lte'; alias?: string }
+  | { name: 'viewCount_gt'; alias?: string }
+  | { name: 'viewCount_gte'; alias?: string }
+  | { name: 'yomigana'; alias?: string }
+  | { name: 'yomigana_not'; alias?: string }
+  | { name: 'yomigana_in'; alias?: string }
+  | { name: 'yomigana_not_in'; alias?: string }
+  | { name: 'yomigana_lt'; alias?: string }
+  | { name: 'yomigana_lte'; alias?: string }
+  | { name: 'yomigana_gt'; alias?: string }
+  | { name: 'yomigana_gte'; alias?: string }
+  | { name: 'yomigana_contains'; alias?: string }
+  | { name: 'yomigana_not_contains'; alias?: string }
+  | { name: 'yomigana_starts_with'; alias?: string }
+  | { name: 'yomigana_not_starts_with'; alias?: string }
+  | { name: 'yomigana_ends_with'; alias?: string }
+  | { name: 'yomigana_not_ends_with'; alias?: string }
   | { name: 'AND'; alias?: string }
   | { name: 'OR'; alias?: string }
   | { name: 'NOT'; alias?: string }
@@ -5221,45 +5293,49 @@ export type ServiceCreateOneInputInputObject =
   | { name: 'connect'; alias?: string }
 
 export interface ServiceCreateInput {
-  title?: string
-  description?: string
-  url?: string | null
-  photoURL?: string | null
-  yomigana?: string | null
-  price?: number | null
-  freetrial?: string | null
-  note?: string | null
-  place?: string | null
   address?: string | null
-  tagline?: string | null
-  inquiry?: string | null
-  multiplans?: string | null
-  phonenumber?: string | null
   category?: CategoryCreateOneWithoutServicesInput | null
+  description?: string
+  freetrial?: string | null
+  inquiry?: string | null
+  likeCount?: number | null
+  multiplans?: string | null
+  note?: string | null
+  phonenumber?: string | null
+  photoURL?: string | null
+  place?: string | null
+  price?: number | null
   rating?: number | null
   ratingCount?: number | null
   reviews?: ReviewCreateManyWithoutServiceInput | null
+  tagline?: string | null
+  title?: string
+  url?: string | null
+  viewCount?: number | null
+  yomigana?: string | null
 }
 export type ServiceCreateInputInputObject =
   | Extract<keyof ServiceCreateInput, string>
-  | { name: 'title'; alias?: string }
-  | { name: 'description'; alias?: string }
-  | { name: 'url'; alias?: string }
-  | { name: 'photoURL'; alias?: string }
-  | { name: 'yomigana'; alias?: string }
-  | { name: 'price'; alias?: string }
-  | { name: 'freetrial'; alias?: string }
-  | { name: 'note'; alias?: string }
-  | { name: 'place'; alias?: string }
   | { name: 'address'; alias?: string }
-  | { name: 'tagline'; alias?: string }
-  | { name: 'inquiry'; alias?: string }
-  | { name: 'multiplans'; alias?: string }
-  | { name: 'phonenumber'; alias?: string }
   | { name: 'category'; alias?: string }
+  | { name: 'description'; alias?: string }
+  | { name: 'freetrial'; alias?: string }
+  | { name: 'inquiry'; alias?: string }
+  | { name: 'likeCount'; alias?: string }
+  | { name: 'multiplans'; alias?: string }
+  | { name: 'note'; alias?: string }
+  | { name: 'phonenumber'; alias?: string }
+  | { name: 'photoURL'; alias?: string }
+  | { name: 'place'; alias?: string }
+  | { name: 'price'; alias?: string }
   | { name: 'rating'; alias?: string }
   | { name: 'ratingCount'; alias?: string }
   | { name: 'reviews'; alias?: string }
+  | { name: 'tagline'; alias?: string }
+  | { name: 'title'; alias?: string }
+  | { name: 'url'; alias?: string }
+  | { name: 'viewCount'; alias?: string }
+  | { name: 'yomigana'; alias?: string }
 
 export interface CategoryCreateOneWithoutServicesInput {
   create?: CategoryCreateWithoutServicesInput | null
@@ -5330,45 +5406,49 @@ export type ServiceUpdateOneRequiredInputInputObject =
   | { name: 'connect'; alias?: string }
 
 export interface ServiceUpdateDataInput {
-  title?: string | null
-  description?: string | null
-  url?: string | null
-  photoURL?: string | null
-  yomigana?: string | null
-  price?: number | null
-  freetrial?: string | null
-  note?: string | null
-  place?: string | null
   address?: string | null
-  tagline?: string | null
-  inquiry?: string | null
-  multiplans?: string | null
-  phonenumber?: string | null
   category?: CategoryUpdateOneWithoutServicesInput | null
+  description?: string | null
+  freetrial?: string | null
+  inquiry?: string | null
+  likeCount?: number | null
+  multiplans?: string | null
+  note?: string | null
+  phonenumber?: string | null
+  photoURL?: string | null
+  place?: string | null
+  price?: number | null
   rating?: number | null
   ratingCount?: number | null
   reviews?: ReviewUpdateManyWithoutServiceInput | null
+  tagline?: string | null
+  title?: string | null
+  url?: string | null
+  viewCount?: number | null
+  yomigana?: string | null
 }
 export type ServiceUpdateDataInputInputObject =
   | Extract<keyof ServiceUpdateDataInput, string>
-  | { name: 'title'; alias?: string }
-  | { name: 'description'; alias?: string }
-  | { name: 'url'; alias?: string }
-  | { name: 'photoURL'; alias?: string }
-  | { name: 'yomigana'; alias?: string }
-  | { name: 'price'; alias?: string }
-  | { name: 'freetrial'; alias?: string }
-  | { name: 'note'; alias?: string }
-  | { name: 'place'; alias?: string }
   | { name: 'address'; alias?: string }
-  | { name: 'tagline'; alias?: string }
-  | { name: 'inquiry'; alias?: string }
-  | { name: 'multiplans'; alias?: string }
-  | { name: 'phonenumber'; alias?: string }
   | { name: 'category'; alias?: string }
+  | { name: 'description'; alias?: string }
+  | { name: 'freetrial'; alias?: string }
+  | { name: 'inquiry'; alias?: string }
+  | { name: 'likeCount'; alias?: string }
+  | { name: 'multiplans'; alias?: string }
+  | { name: 'note'; alias?: string }
+  | { name: 'phonenumber'; alias?: string }
+  | { name: 'photoURL'; alias?: string }
+  | { name: 'place'; alias?: string }
+  | { name: 'price'; alias?: string }
   | { name: 'rating'; alias?: string }
   | { name: 'ratingCount'; alias?: string }
   | { name: 'reviews'; alias?: string }
+  | { name: 'tagline'; alias?: string }
+  | { name: 'title'; alias?: string }
+  | { name: 'url'; alias?: string }
+  | { name: 'viewCount'; alias?: string }
+  | { name: 'yomigana'; alias?: string }
 
 export interface CategoryUpdateOneWithoutServicesInput {
   create?: CategoryCreateWithoutServicesInput | null
@@ -5721,43 +5801,47 @@ export type ServiceCreateOneWithoutReviewsInputInputObject =
   | { name: 'connect'; alias?: string }
 
 export interface ServiceCreateWithoutReviewsInput {
-  title?: string
-  description?: string
-  url?: string | null
-  photoURL?: string | null
-  yomigana?: string | null
-  price?: number | null
-  freetrial?: string | null
-  note?: string | null
-  place?: string | null
   address?: string | null
-  tagline?: string | null
-  inquiry?: string | null
-  multiplans?: string | null
-  phonenumber?: string | null
   category?: CategoryCreateOneWithoutServicesInput | null
+  description?: string
+  freetrial?: string | null
+  inquiry?: string | null
+  likeCount?: number | null
+  multiplans?: string | null
+  note?: string | null
+  phonenumber?: string | null
+  photoURL?: string | null
+  place?: string | null
+  price?: number | null
   rating?: number | null
   ratingCount?: number | null
+  tagline?: string | null
+  title?: string
+  url?: string | null
+  viewCount?: number | null
+  yomigana?: string | null
 }
 export type ServiceCreateWithoutReviewsInputInputObject =
   | Extract<keyof ServiceCreateWithoutReviewsInput, string>
-  | { name: 'title'; alias?: string }
-  | { name: 'description'; alias?: string }
-  | { name: 'url'; alias?: string }
-  | { name: 'photoURL'; alias?: string }
-  | { name: 'yomigana'; alias?: string }
-  | { name: 'price'; alias?: string }
-  | { name: 'freetrial'; alias?: string }
-  | { name: 'note'; alias?: string }
-  | { name: 'place'; alias?: string }
   | { name: 'address'; alias?: string }
-  | { name: 'tagline'; alias?: string }
-  | { name: 'inquiry'; alias?: string }
-  | { name: 'multiplans'; alias?: string }
-  | { name: 'phonenumber'; alias?: string }
   | { name: 'category'; alias?: string }
+  | { name: 'description'; alias?: string }
+  | { name: 'freetrial'; alias?: string }
+  | { name: 'inquiry'; alias?: string }
+  | { name: 'likeCount'; alias?: string }
+  | { name: 'multiplans'; alias?: string }
+  | { name: 'note'; alias?: string }
+  | { name: 'phonenumber'; alias?: string }
+  | { name: 'photoURL'; alias?: string }
+  | { name: 'place'; alias?: string }
+  | { name: 'price'; alias?: string }
   | { name: 'rating'; alias?: string }
   | { name: 'ratingCount'; alias?: string }
+  | { name: 'tagline'; alias?: string }
+  | { name: 'title'; alias?: string }
+  | { name: 'url'; alias?: string }
+  | { name: 'viewCount'; alias?: string }
+  | { name: 'yomigana'; alias?: string }
 
 export interface ReviewUpdateInput {
   rate?: number | null
@@ -5790,43 +5874,47 @@ export type ServiceUpdateOneRequiredWithoutReviewsInputInputObject =
   | { name: 'connect'; alias?: string }
 
 export interface ServiceUpdateWithoutReviewsDataInput {
-  title?: string | null
-  description?: string | null
-  url?: string | null
-  photoURL?: string | null
-  yomigana?: string | null
-  price?: number | null
-  freetrial?: string | null
-  note?: string | null
-  place?: string | null
   address?: string | null
-  tagline?: string | null
-  inquiry?: string | null
-  multiplans?: string | null
-  phonenumber?: string | null
   category?: CategoryUpdateOneWithoutServicesInput | null
+  description?: string | null
+  freetrial?: string | null
+  inquiry?: string | null
+  likeCount?: number | null
+  multiplans?: string | null
+  note?: string | null
+  phonenumber?: string | null
+  photoURL?: string | null
+  place?: string | null
+  price?: number | null
   rating?: number | null
   ratingCount?: number | null
+  tagline?: string | null
+  title?: string | null
+  url?: string | null
+  viewCount?: number | null
+  yomigana?: string | null
 }
 export type ServiceUpdateWithoutReviewsDataInputInputObject =
   | Extract<keyof ServiceUpdateWithoutReviewsDataInput, string>
-  | { name: 'title'; alias?: string }
-  | { name: 'description'; alias?: string }
-  | { name: 'url'; alias?: string }
-  | { name: 'photoURL'; alias?: string }
-  | { name: 'yomigana'; alias?: string }
-  | { name: 'price'; alias?: string }
-  | { name: 'freetrial'; alias?: string }
-  | { name: 'note'; alias?: string }
-  | { name: 'place'; alias?: string }
   | { name: 'address'; alias?: string }
-  | { name: 'tagline'; alias?: string }
-  | { name: 'inquiry'; alias?: string }
-  | { name: 'multiplans'; alias?: string }
-  | { name: 'phonenumber'; alias?: string }
   | { name: 'category'; alias?: string }
+  | { name: 'description'; alias?: string }
+  | { name: 'freetrial'; alias?: string }
+  | { name: 'inquiry'; alias?: string }
+  | { name: 'likeCount'; alias?: string }
+  | { name: 'multiplans'; alias?: string }
+  | { name: 'note'; alias?: string }
+  | { name: 'phonenumber'; alias?: string }
+  | { name: 'photoURL'; alias?: string }
+  | { name: 'place'; alias?: string }
+  | { name: 'price'; alias?: string }
   | { name: 'rating'; alias?: string }
   | { name: 'ratingCount'; alias?: string }
+  | { name: 'tagline'; alias?: string }
+  | { name: 'title'; alias?: string }
+  | { name: 'url'; alias?: string }
+  | { name: 'viewCount'; alias?: string }
+  | { name: 'yomigana'; alias?: string }
 
 export interface ServiceUpsertWithoutReviewsInput {
   update?: ServiceUpdateWithoutReviewsDataInput
@@ -5875,43 +5963,47 @@ export type ServiceCreateManyWithoutCategoryInputInputObject =
   | { name: 'connect'; alias?: string }
 
 export interface ServiceCreateWithoutCategoryInput {
-  title?: string
-  description?: string
-  url?: string | null
-  photoURL?: string | null
-  yomigana?: string | null
-  price?: number | null
-  freetrial?: string | null
-  note?: string | null
-  place?: string | null
   address?: string | null
-  tagline?: string | null
+  description?: string
+  freetrial?: string | null
   inquiry?: string | null
+  likeCount?: number | null
   multiplans?: string | null
+  note?: string | null
   phonenumber?: string | null
+  photoURL?: string | null
+  place?: string | null
+  price?: number | null
   rating?: number | null
   ratingCount?: number | null
   reviews?: ReviewCreateManyWithoutServiceInput | null
+  tagline?: string | null
+  title?: string
+  url?: string | null
+  viewCount?: number | null
+  yomigana?: string | null
 }
 export type ServiceCreateWithoutCategoryInputInputObject =
   | Extract<keyof ServiceCreateWithoutCategoryInput, string>
-  | { name: 'title'; alias?: string }
-  | { name: 'description'; alias?: string }
-  | { name: 'url'; alias?: string }
-  | { name: 'photoURL'; alias?: string }
-  | { name: 'yomigana'; alias?: string }
-  | { name: 'price'; alias?: string }
-  | { name: 'freetrial'; alias?: string }
-  | { name: 'note'; alias?: string }
-  | { name: 'place'; alias?: string }
   | { name: 'address'; alias?: string }
-  | { name: 'tagline'; alias?: string }
+  | { name: 'description'; alias?: string }
+  | { name: 'freetrial'; alias?: string }
   | { name: 'inquiry'; alias?: string }
+  | { name: 'likeCount'; alias?: string }
   | { name: 'multiplans'; alias?: string }
+  | { name: 'note'; alias?: string }
   | { name: 'phonenumber'; alias?: string }
+  | { name: 'photoURL'; alias?: string }
+  | { name: 'place'; alias?: string }
+  | { name: 'price'; alias?: string }
   | { name: 'rating'; alias?: string }
   | { name: 'ratingCount'; alias?: string }
   | { name: 'reviews'; alias?: string }
+  | { name: 'tagline'; alias?: string }
+  | { name: 'title'; alias?: string }
+  | { name: 'url'; alias?: string }
+  | { name: 'viewCount'; alias?: string }
+  | { name: 'yomigana'; alias?: string }
 
 export interface CategoryUpdateInput {
   name?: string | null
@@ -5959,43 +6051,47 @@ export type ServiceUpdateWithWhereUniqueWithoutCategoryInputInputObject =
   | { name: 'data'; alias?: string }
 
 export interface ServiceUpdateWithoutCategoryDataInput {
-  title?: string | null
-  description?: string | null
-  url?: string | null
-  photoURL?: string | null
-  yomigana?: string | null
-  price?: number | null
-  freetrial?: string | null
-  note?: string | null
-  place?: string | null
   address?: string | null
-  tagline?: string | null
+  description?: string | null
+  freetrial?: string | null
   inquiry?: string | null
+  likeCount?: number | null
   multiplans?: string | null
+  note?: string | null
   phonenumber?: string | null
+  photoURL?: string | null
+  place?: string | null
+  price?: number | null
   rating?: number | null
   ratingCount?: number | null
   reviews?: ReviewUpdateManyWithoutServiceInput | null
+  tagline?: string | null
+  title?: string | null
+  url?: string | null
+  viewCount?: number | null
+  yomigana?: string | null
 }
 export type ServiceUpdateWithoutCategoryDataInputInputObject =
   | Extract<keyof ServiceUpdateWithoutCategoryDataInput, string>
-  | { name: 'title'; alias?: string }
-  | { name: 'description'; alias?: string }
-  | { name: 'url'; alias?: string }
-  | { name: 'photoURL'; alias?: string }
-  | { name: 'yomigana'; alias?: string }
-  | { name: 'price'; alias?: string }
-  | { name: 'freetrial'; alias?: string }
-  | { name: 'note'; alias?: string }
-  | { name: 'place'; alias?: string }
   | { name: 'address'; alias?: string }
-  | { name: 'tagline'; alias?: string }
+  | { name: 'description'; alias?: string }
+  | { name: 'freetrial'; alias?: string }
   | { name: 'inquiry'; alias?: string }
+  | { name: 'likeCount'; alias?: string }
   | { name: 'multiplans'; alias?: string }
+  | { name: 'note'; alias?: string }
   | { name: 'phonenumber'; alias?: string }
+  | { name: 'photoURL'; alias?: string }
+  | { name: 'place'; alias?: string }
+  | { name: 'price'; alias?: string }
   | { name: 'rating'; alias?: string }
   | { name: 'ratingCount'; alias?: string }
   | { name: 'reviews'; alias?: string }
+  | { name: 'tagline'; alias?: string }
+  | { name: 'title'; alias?: string }
+  | { name: 'url'; alias?: string }
+  | { name: 'viewCount'; alias?: string }
+  | { name: 'yomigana'; alias?: string }
 
 export interface ServiceUpsertWithWhereUniqueWithoutCategoryInput {
   where?: ServiceWhereUniqueInput
@@ -6009,156 +6105,6 @@ export type ServiceUpsertWithWhereUniqueWithoutCategoryInputInputObject =
   | { name: 'create'; alias?: string }
 
 export interface ServiceScalarWhereInput {
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[]
-  id_not_in?: string[]
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
-  createdAt?: string | null
-  createdAt_not?: string | null
-  createdAt_in?: string[]
-  createdAt_not_in?: string[]
-  createdAt_lt?: string | null
-  createdAt_lte?: string | null
-  createdAt_gt?: string | null
-  createdAt_gte?: string | null
-  updatedAt?: string | null
-  updatedAt_not?: string | null
-  updatedAt_in?: string[]
-  updatedAt_not_in?: string[]
-  updatedAt_lt?: string | null
-  updatedAt_lte?: string | null
-  updatedAt_gt?: string | null
-  updatedAt_gte?: string | null
-  title?: string | null
-  title_not?: string | null
-  title_in?: string[]
-  title_not_in?: string[]
-  title_lt?: string | null
-  title_lte?: string | null
-  title_gt?: string | null
-  title_gte?: string | null
-  title_contains?: string | null
-  title_not_contains?: string | null
-  title_starts_with?: string | null
-  title_not_starts_with?: string | null
-  title_ends_with?: string | null
-  title_not_ends_with?: string | null
-  description?: string | null
-  description_not?: string | null
-  description_in?: string[]
-  description_not_in?: string[]
-  description_lt?: string | null
-  description_lte?: string | null
-  description_gt?: string | null
-  description_gte?: string | null
-  description_contains?: string | null
-  description_not_contains?: string | null
-  description_starts_with?: string | null
-  description_not_starts_with?: string | null
-  description_ends_with?: string | null
-  description_not_ends_with?: string | null
-  url?: string | null
-  url_not?: string | null
-  url_in?: string[]
-  url_not_in?: string[]
-  url_lt?: string | null
-  url_lte?: string | null
-  url_gt?: string | null
-  url_gte?: string | null
-  url_contains?: string | null
-  url_not_contains?: string | null
-  url_starts_with?: string | null
-  url_not_starts_with?: string | null
-  url_ends_with?: string | null
-  url_not_ends_with?: string | null
-  photoURL?: string | null
-  photoURL_not?: string | null
-  photoURL_in?: string[]
-  photoURL_not_in?: string[]
-  photoURL_lt?: string | null
-  photoURL_lte?: string | null
-  photoURL_gt?: string | null
-  photoURL_gte?: string | null
-  photoURL_contains?: string | null
-  photoURL_not_contains?: string | null
-  photoURL_starts_with?: string | null
-  photoURL_not_starts_with?: string | null
-  photoURL_ends_with?: string | null
-  photoURL_not_ends_with?: string | null
-  yomigana?: string | null
-  yomigana_not?: string | null
-  yomigana_in?: string[]
-  yomigana_not_in?: string[]
-  yomigana_lt?: string | null
-  yomigana_lte?: string | null
-  yomigana_gt?: string | null
-  yomigana_gte?: string | null
-  yomigana_contains?: string | null
-  yomigana_not_contains?: string | null
-  yomigana_starts_with?: string | null
-  yomigana_not_starts_with?: string | null
-  yomigana_ends_with?: string | null
-  yomigana_not_ends_with?: string | null
-  price?: number | null
-  price_not?: number | null
-  price_in?: number[]
-  price_not_in?: number[]
-  price_lt?: number | null
-  price_lte?: number | null
-  price_gt?: number | null
-  price_gte?: number | null
-  freetrial?: string | null
-  freetrial_not?: string | null
-  freetrial_in?: string[]
-  freetrial_not_in?: string[]
-  freetrial_lt?: string | null
-  freetrial_lte?: string | null
-  freetrial_gt?: string | null
-  freetrial_gte?: string | null
-  freetrial_contains?: string | null
-  freetrial_not_contains?: string | null
-  freetrial_starts_with?: string | null
-  freetrial_not_starts_with?: string | null
-  freetrial_ends_with?: string | null
-  freetrial_not_ends_with?: string | null
-  note?: string | null
-  note_not?: string | null
-  note_in?: string[]
-  note_not_in?: string[]
-  note_lt?: string | null
-  note_lte?: string | null
-  note_gt?: string | null
-  note_gte?: string | null
-  note_contains?: string | null
-  note_not_contains?: string | null
-  note_starts_with?: string | null
-  note_not_starts_with?: string | null
-  note_ends_with?: string | null
-  note_not_ends_with?: string | null
-  place?: string | null
-  place_not?: string | null
-  place_in?: string[]
-  place_not_in?: string[]
-  place_lt?: string | null
-  place_lte?: string | null
-  place_gt?: string | null
-  place_gte?: string | null
-  place_contains?: string | null
-  place_not_contains?: string | null
-  place_starts_with?: string | null
-  place_not_starts_with?: string | null
-  place_ends_with?: string | null
-  place_not_ends_with?: string | null
   address?: string | null
   address_not?: string | null
   address_in?: string[]
@@ -6173,20 +6119,56 @@ export interface ServiceScalarWhereInput {
   address_not_starts_with?: string | null
   address_ends_with?: string | null
   address_not_ends_with?: string | null
-  tagline?: string | null
-  tagline_not?: string | null
-  tagline_in?: string[]
-  tagline_not_in?: string[]
-  tagline_lt?: string | null
-  tagline_lte?: string | null
-  tagline_gt?: string | null
-  tagline_gte?: string | null
-  tagline_contains?: string | null
-  tagline_not_contains?: string | null
-  tagline_starts_with?: string | null
-  tagline_not_starts_with?: string | null
-  tagline_ends_with?: string | null
-  tagline_not_ends_with?: string | null
+  createdAt?: string | null
+  createdAt_not?: string | null
+  createdAt_in?: string[]
+  createdAt_not_in?: string[]
+  createdAt_lt?: string | null
+  createdAt_lte?: string | null
+  createdAt_gt?: string | null
+  createdAt_gte?: string | null
+  description?: string | null
+  description_not?: string | null
+  description_in?: string[]
+  description_not_in?: string[]
+  description_lt?: string | null
+  description_lte?: string | null
+  description_gt?: string | null
+  description_gte?: string | null
+  description_contains?: string | null
+  description_not_contains?: string | null
+  description_starts_with?: string | null
+  description_not_starts_with?: string | null
+  description_ends_with?: string | null
+  description_not_ends_with?: string | null
+  freetrial?: string | null
+  freetrial_not?: string | null
+  freetrial_in?: string[]
+  freetrial_not_in?: string[]
+  freetrial_lt?: string | null
+  freetrial_lte?: string | null
+  freetrial_gt?: string | null
+  freetrial_gte?: string | null
+  freetrial_contains?: string | null
+  freetrial_not_contains?: string | null
+  freetrial_starts_with?: string | null
+  freetrial_not_starts_with?: string | null
+  freetrial_ends_with?: string | null
+  freetrial_not_ends_with?: string | null
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
   inquiry?: string | null
   inquiry_not?: string | null
   inquiry_in?: string[]
@@ -6201,6 +6183,14 @@ export interface ServiceScalarWhereInput {
   inquiry_not_starts_with?: string | null
   inquiry_ends_with?: string | null
   inquiry_not_ends_with?: string | null
+  likeCount?: number | null
+  likeCount_not?: number | null
+  likeCount_in?: number[]
+  likeCount_not_in?: number[]
+  likeCount_lt?: number | null
+  likeCount_lte?: number | null
+  likeCount_gt?: number | null
+  likeCount_gte?: number | null
   multiplans?: string | null
   multiplans_not?: string | null
   multiplans_in?: string[]
@@ -6215,6 +6205,20 @@ export interface ServiceScalarWhereInput {
   multiplans_not_starts_with?: string | null
   multiplans_ends_with?: string | null
   multiplans_not_ends_with?: string | null
+  note?: string | null
+  note_not?: string | null
+  note_in?: string[]
+  note_not_in?: string[]
+  note_lt?: string | null
+  note_lte?: string | null
+  note_gt?: string | null
+  note_gte?: string | null
+  note_contains?: string | null
+  note_not_contains?: string | null
+  note_starts_with?: string | null
+  note_not_starts_with?: string | null
+  note_ends_with?: string | null
+  note_not_ends_with?: string | null
   phonenumber?: string | null
   phonenumber_not?: string | null
   phonenumber_in?: string[]
@@ -6229,6 +6233,42 @@ export interface ServiceScalarWhereInput {
   phonenumber_not_starts_with?: string | null
   phonenumber_ends_with?: string | null
   phonenumber_not_ends_with?: string | null
+  photoURL?: string | null
+  photoURL_not?: string | null
+  photoURL_in?: string[]
+  photoURL_not_in?: string[]
+  photoURL_lt?: string | null
+  photoURL_lte?: string | null
+  photoURL_gt?: string | null
+  photoURL_gte?: string | null
+  photoURL_contains?: string | null
+  photoURL_not_contains?: string | null
+  photoURL_starts_with?: string | null
+  photoURL_not_starts_with?: string | null
+  photoURL_ends_with?: string | null
+  photoURL_not_ends_with?: string | null
+  place?: string | null
+  place_not?: string | null
+  place_in?: string[]
+  place_not_in?: string[]
+  place_lt?: string | null
+  place_lte?: string | null
+  place_gt?: string | null
+  place_gte?: string | null
+  place_contains?: string | null
+  place_not_contains?: string | null
+  place_starts_with?: string | null
+  place_not_starts_with?: string | null
+  place_ends_with?: string | null
+  place_not_ends_with?: string | null
+  price?: number | null
+  price_not?: number | null
+  price_in?: number[]
+  price_not_in?: number[]
+  price_lt?: number | null
+  price_lte?: number | null
+  price_gt?: number | null
+  price_gte?: number | null
   rating?: number | null
   rating_not?: number | null
   rating_in?: number[]
@@ -6245,162 +6285,84 @@ export interface ServiceScalarWhereInput {
   ratingCount_lte?: number | null
   ratingCount_gt?: number | null
   ratingCount_gte?: number | null
+  tagline?: string | null
+  tagline_not?: string | null
+  tagline_in?: string[]
+  tagline_not_in?: string[]
+  tagline_lt?: string | null
+  tagline_lte?: string | null
+  tagline_gt?: string | null
+  tagline_gte?: string | null
+  tagline_contains?: string | null
+  tagline_not_contains?: string | null
+  tagline_starts_with?: string | null
+  tagline_not_starts_with?: string | null
+  tagline_ends_with?: string | null
+  tagline_not_ends_with?: string | null
+  title?: string | null
+  title_not?: string | null
+  title_in?: string[]
+  title_not_in?: string[]
+  title_lt?: string | null
+  title_lte?: string | null
+  title_gt?: string | null
+  title_gte?: string | null
+  title_contains?: string | null
+  title_not_contains?: string | null
+  title_starts_with?: string | null
+  title_not_starts_with?: string | null
+  title_ends_with?: string | null
+  title_not_ends_with?: string | null
+  updatedAt?: string | null
+  updatedAt_not?: string | null
+  updatedAt_in?: string[]
+  updatedAt_not_in?: string[]
+  updatedAt_lt?: string | null
+  updatedAt_lte?: string | null
+  updatedAt_gt?: string | null
+  updatedAt_gte?: string | null
+  url?: string | null
+  url_not?: string | null
+  url_in?: string[]
+  url_not_in?: string[]
+  url_lt?: string | null
+  url_lte?: string | null
+  url_gt?: string | null
+  url_gte?: string | null
+  url_contains?: string | null
+  url_not_contains?: string | null
+  url_starts_with?: string | null
+  url_not_starts_with?: string | null
+  url_ends_with?: string | null
+  url_not_ends_with?: string | null
+  viewCount?: number | null
+  viewCount_not?: number | null
+  viewCount_in?: number[]
+  viewCount_not_in?: number[]
+  viewCount_lt?: number | null
+  viewCount_lte?: number | null
+  viewCount_gt?: number | null
+  viewCount_gte?: number | null
+  yomigana?: string | null
+  yomigana_not?: string | null
+  yomigana_in?: string[]
+  yomigana_not_in?: string[]
+  yomigana_lt?: string | null
+  yomigana_lte?: string | null
+  yomigana_gt?: string | null
+  yomigana_gte?: string | null
+  yomigana_contains?: string | null
+  yomigana_not_contains?: string | null
+  yomigana_starts_with?: string | null
+  yomigana_not_starts_with?: string | null
+  yomigana_ends_with?: string | null
+  yomigana_not_ends_with?: string | null
   AND?: ServiceScalarWhereInput[]
   OR?: ServiceScalarWhereInput[]
   NOT?: ServiceScalarWhereInput[]
 }
 export type ServiceScalarWhereInputInputObject =
   | Extract<keyof ServiceScalarWhereInput, string>
-  | { name: 'id'; alias?: string }
-  | { name: 'id_not'; alias?: string }
-  | { name: 'id_in'; alias?: string }
-  | { name: 'id_not_in'; alias?: string }
-  | { name: 'id_lt'; alias?: string }
-  | { name: 'id_lte'; alias?: string }
-  | { name: 'id_gt'; alias?: string }
-  | { name: 'id_gte'; alias?: string }
-  | { name: 'id_contains'; alias?: string }
-  | { name: 'id_not_contains'; alias?: string }
-  | { name: 'id_starts_with'; alias?: string }
-  | { name: 'id_not_starts_with'; alias?: string }
-  | { name: 'id_ends_with'; alias?: string }
-  | { name: 'id_not_ends_with'; alias?: string }
-  | { name: 'createdAt'; alias?: string }
-  | { name: 'createdAt_not'; alias?: string }
-  | { name: 'createdAt_in'; alias?: string }
-  | { name: 'createdAt_not_in'; alias?: string }
-  | { name: 'createdAt_lt'; alias?: string }
-  | { name: 'createdAt_lte'; alias?: string }
-  | { name: 'createdAt_gt'; alias?: string }
-  | { name: 'createdAt_gte'; alias?: string }
-  | { name: 'updatedAt'; alias?: string }
-  | { name: 'updatedAt_not'; alias?: string }
-  | { name: 'updatedAt_in'; alias?: string }
-  | { name: 'updatedAt_not_in'; alias?: string }
-  | { name: 'updatedAt_lt'; alias?: string }
-  | { name: 'updatedAt_lte'; alias?: string }
-  | { name: 'updatedAt_gt'; alias?: string }
-  | { name: 'updatedAt_gte'; alias?: string }
-  | { name: 'title'; alias?: string }
-  | { name: 'title_not'; alias?: string }
-  | { name: 'title_in'; alias?: string }
-  | { name: 'title_not_in'; alias?: string }
-  | { name: 'title_lt'; alias?: string }
-  | { name: 'title_lte'; alias?: string }
-  | { name: 'title_gt'; alias?: string }
-  | { name: 'title_gte'; alias?: string }
-  | { name: 'title_contains'; alias?: string }
-  | { name: 'title_not_contains'; alias?: string }
-  | { name: 'title_starts_with'; alias?: string }
-  | { name: 'title_not_starts_with'; alias?: string }
-  | { name: 'title_ends_with'; alias?: string }
-  | { name: 'title_not_ends_with'; alias?: string }
-  | { name: 'description'; alias?: string }
-  | { name: 'description_not'; alias?: string }
-  | { name: 'description_in'; alias?: string }
-  | { name: 'description_not_in'; alias?: string }
-  | { name: 'description_lt'; alias?: string }
-  | { name: 'description_lte'; alias?: string }
-  | { name: 'description_gt'; alias?: string }
-  | { name: 'description_gte'; alias?: string }
-  | { name: 'description_contains'; alias?: string }
-  | { name: 'description_not_contains'; alias?: string }
-  | { name: 'description_starts_with'; alias?: string }
-  | { name: 'description_not_starts_with'; alias?: string }
-  | { name: 'description_ends_with'; alias?: string }
-  | { name: 'description_not_ends_with'; alias?: string }
-  | { name: 'url'; alias?: string }
-  | { name: 'url_not'; alias?: string }
-  | { name: 'url_in'; alias?: string }
-  | { name: 'url_not_in'; alias?: string }
-  | { name: 'url_lt'; alias?: string }
-  | { name: 'url_lte'; alias?: string }
-  | { name: 'url_gt'; alias?: string }
-  | { name: 'url_gte'; alias?: string }
-  | { name: 'url_contains'; alias?: string }
-  | { name: 'url_not_contains'; alias?: string }
-  | { name: 'url_starts_with'; alias?: string }
-  | { name: 'url_not_starts_with'; alias?: string }
-  | { name: 'url_ends_with'; alias?: string }
-  | { name: 'url_not_ends_with'; alias?: string }
-  | { name: 'photoURL'; alias?: string }
-  | { name: 'photoURL_not'; alias?: string }
-  | { name: 'photoURL_in'; alias?: string }
-  | { name: 'photoURL_not_in'; alias?: string }
-  | { name: 'photoURL_lt'; alias?: string }
-  | { name: 'photoURL_lte'; alias?: string }
-  | { name: 'photoURL_gt'; alias?: string }
-  | { name: 'photoURL_gte'; alias?: string }
-  | { name: 'photoURL_contains'; alias?: string }
-  | { name: 'photoURL_not_contains'; alias?: string }
-  | { name: 'photoURL_starts_with'; alias?: string }
-  | { name: 'photoURL_not_starts_with'; alias?: string }
-  | { name: 'photoURL_ends_with'; alias?: string }
-  | { name: 'photoURL_not_ends_with'; alias?: string }
-  | { name: 'yomigana'; alias?: string }
-  | { name: 'yomigana_not'; alias?: string }
-  | { name: 'yomigana_in'; alias?: string }
-  | { name: 'yomigana_not_in'; alias?: string }
-  | { name: 'yomigana_lt'; alias?: string }
-  | { name: 'yomigana_lte'; alias?: string }
-  | { name: 'yomigana_gt'; alias?: string }
-  | { name: 'yomigana_gte'; alias?: string }
-  | { name: 'yomigana_contains'; alias?: string }
-  | { name: 'yomigana_not_contains'; alias?: string }
-  | { name: 'yomigana_starts_with'; alias?: string }
-  | { name: 'yomigana_not_starts_with'; alias?: string }
-  | { name: 'yomigana_ends_with'; alias?: string }
-  | { name: 'yomigana_not_ends_with'; alias?: string }
-  | { name: 'price'; alias?: string }
-  | { name: 'price_not'; alias?: string }
-  | { name: 'price_in'; alias?: string }
-  | { name: 'price_not_in'; alias?: string }
-  | { name: 'price_lt'; alias?: string }
-  | { name: 'price_lte'; alias?: string }
-  | { name: 'price_gt'; alias?: string }
-  | { name: 'price_gte'; alias?: string }
-  | { name: 'freetrial'; alias?: string }
-  | { name: 'freetrial_not'; alias?: string }
-  | { name: 'freetrial_in'; alias?: string }
-  | { name: 'freetrial_not_in'; alias?: string }
-  | { name: 'freetrial_lt'; alias?: string }
-  | { name: 'freetrial_lte'; alias?: string }
-  | { name: 'freetrial_gt'; alias?: string }
-  | { name: 'freetrial_gte'; alias?: string }
-  | { name: 'freetrial_contains'; alias?: string }
-  | { name: 'freetrial_not_contains'; alias?: string }
-  | { name: 'freetrial_starts_with'; alias?: string }
-  | { name: 'freetrial_not_starts_with'; alias?: string }
-  | { name: 'freetrial_ends_with'; alias?: string }
-  | { name: 'freetrial_not_ends_with'; alias?: string }
-  | { name: 'note'; alias?: string }
-  | { name: 'note_not'; alias?: string }
-  | { name: 'note_in'; alias?: string }
-  | { name: 'note_not_in'; alias?: string }
-  | { name: 'note_lt'; alias?: string }
-  | { name: 'note_lte'; alias?: string }
-  | { name: 'note_gt'; alias?: string }
-  | { name: 'note_gte'; alias?: string }
-  | { name: 'note_contains'; alias?: string }
-  | { name: 'note_not_contains'; alias?: string }
-  | { name: 'note_starts_with'; alias?: string }
-  | { name: 'note_not_starts_with'; alias?: string }
-  | { name: 'note_ends_with'; alias?: string }
-  | { name: 'note_not_ends_with'; alias?: string }
-  | { name: 'place'; alias?: string }
-  | { name: 'place_not'; alias?: string }
-  | { name: 'place_in'; alias?: string }
-  | { name: 'place_not_in'; alias?: string }
-  | { name: 'place_lt'; alias?: string }
-  | { name: 'place_lte'; alias?: string }
-  | { name: 'place_gt'; alias?: string }
-  | { name: 'place_gte'; alias?: string }
-  | { name: 'place_contains'; alias?: string }
-  | { name: 'place_not_contains'; alias?: string }
-  | { name: 'place_starts_with'; alias?: string }
-  | { name: 'place_not_starts_with'; alias?: string }
-  | { name: 'place_ends_with'; alias?: string }
-  | { name: 'place_not_ends_with'; alias?: string }
   | { name: 'address'; alias?: string }
   | { name: 'address_not'; alias?: string }
   | { name: 'address_in'; alias?: string }
@@ -6415,20 +6377,56 @@ export type ServiceScalarWhereInputInputObject =
   | { name: 'address_not_starts_with'; alias?: string }
   | { name: 'address_ends_with'; alias?: string }
   | { name: 'address_not_ends_with'; alias?: string }
-  | { name: 'tagline'; alias?: string }
-  | { name: 'tagline_not'; alias?: string }
-  | { name: 'tagline_in'; alias?: string }
-  | { name: 'tagline_not_in'; alias?: string }
-  | { name: 'tagline_lt'; alias?: string }
-  | { name: 'tagline_lte'; alias?: string }
-  | { name: 'tagline_gt'; alias?: string }
-  | { name: 'tagline_gte'; alias?: string }
-  | { name: 'tagline_contains'; alias?: string }
-  | { name: 'tagline_not_contains'; alias?: string }
-  | { name: 'tagline_starts_with'; alias?: string }
-  | { name: 'tagline_not_starts_with'; alias?: string }
-  | { name: 'tagline_ends_with'; alias?: string }
-  | { name: 'tagline_not_ends_with'; alias?: string }
+  | { name: 'createdAt'; alias?: string }
+  | { name: 'createdAt_not'; alias?: string }
+  | { name: 'createdAt_in'; alias?: string }
+  | { name: 'createdAt_not_in'; alias?: string }
+  | { name: 'createdAt_lt'; alias?: string }
+  | { name: 'createdAt_lte'; alias?: string }
+  | { name: 'createdAt_gt'; alias?: string }
+  | { name: 'createdAt_gte'; alias?: string }
+  | { name: 'description'; alias?: string }
+  | { name: 'description_not'; alias?: string }
+  | { name: 'description_in'; alias?: string }
+  | { name: 'description_not_in'; alias?: string }
+  | { name: 'description_lt'; alias?: string }
+  | { name: 'description_lte'; alias?: string }
+  | { name: 'description_gt'; alias?: string }
+  | { name: 'description_gte'; alias?: string }
+  | { name: 'description_contains'; alias?: string }
+  | { name: 'description_not_contains'; alias?: string }
+  | { name: 'description_starts_with'; alias?: string }
+  | { name: 'description_not_starts_with'; alias?: string }
+  | { name: 'description_ends_with'; alias?: string }
+  | { name: 'description_not_ends_with'; alias?: string }
+  | { name: 'freetrial'; alias?: string }
+  | { name: 'freetrial_not'; alias?: string }
+  | { name: 'freetrial_in'; alias?: string }
+  | { name: 'freetrial_not_in'; alias?: string }
+  | { name: 'freetrial_lt'; alias?: string }
+  | { name: 'freetrial_lte'; alias?: string }
+  | { name: 'freetrial_gt'; alias?: string }
+  | { name: 'freetrial_gte'; alias?: string }
+  | { name: 'freetrial_contains'; alias?: string }
+  | { name: 'freetrial_not_contains'; alias?: string }
+  | { name: 'freetrial_starts_with'; alias?: string }
+  | { name: 'freetrial_not_starts_with'; alias?: string }
+  | { name: 'freetrial_ends_with'; alias?: string }
+  | { name: 'freetrial_not_ends_with'; alias?: string }
+  | { name: 'id'; alias?: string }
+  | { name: 'id_not'; alias?: string }
+  | { name: 'id_in'; alias?: string }
+  | { name: 'id_not_in'; alias?: string }
+  | { name: 'id_lt'; alias?: string }
+  | { name: 'id_lte'; alias?: string }
+  | { name: 'id_gt'; alias?: string }
+  | { name: 'id_gte'; alias?: string }
+  | { name: 'id_contains'; alias?: string }
+  | { name: 'id_not_contains'; alias?: string }
+  | { name: 'id_starts_with'; alias?: string }
+  | { name: 'id_not_starts_with'; alias?: string }
+  | { name: 'id_ends_with'; alias?: string }
+  | { name: 'id_not_ends_with'; alias?: string }
   | { name: 'inquiry'; alias?: string }
   | { name: 'inquiry_not'; alias?: string }
   | { name: 'inquiry_in'; alias?: string }
@@ -6443,6 +6441,14 @@ export type ServiceScalarWhereInputInputObject =
   | { name: 'inquiry_not_starts_with'; alias?: string }
   | { name: 'inquiry_ends_with'; alias?: string }
   | { name: 'inquiry_not_ends_with'; alias?: string }
+  | { name: 'likeCount'; alias?: string }
+  | { name: 'likeCount_not'; alias?: string }
+  | { name: 'likeCount_in'; alias?: string }
+  | { name: 'likeCount_not_in'; alias?: string }
+  | { name: 'likeCount_lt'; alias?: string }
+  | { name: 'likeCount_lte'; alias?: string }
+  | { name: 'likeCount_gt'; alias?: string }
+  | { name: 'likeCount_gte'; alias?: string }
   | { name: 'multiplans'; alias?: string }
   | { name: 'multiplans_not'; alias?: string }
   | { name: 'multiplans_in'; alias?: string }
@@ -6457,6 +6463,20 @@ export type ServiceScalarWhereInputInputObject =
   | { name: 'multiplans_not_starts_with'; alias?: string }
   | { name: 'multiplans_ends_with'; alias?: string }
   | { name: 'multiplans_not_ends_with'; alias?: string }
+  | { name: 'note'; alias?: string }
+  | { name: 'note_not'; alias?: string }
+  | { name: 'note_in'; alias?: string }
+  | { name: 'note_not_in'; alias?: string }
+  | { name: 'note_lt'; alias?: string }
+  | { name: 'note_lte'; alias?: string }
+  | { name: 'note_gt'; alias?: string }
+  | { name: 'note_gte'; alias?: string }
+  | { name: 'note_contains'; alias?: string }
+  | { name: 'note_not_contains'; alias?: string }
+  | { name: 'note_starts_with'; alias?: string }
+  | { name: 'note_not_starts_with'; alias?: string }
+  | { name: 'note_ends_with'; alias?: string }
+  | { name: 'note_not_ends_with'; alias?: string }
   | { name: 'phonenumber'; alias?: string }
   | { name: 'phonenumber_not'; alias?: string }
   | { name: 'phonenumber_in'; alias?: string }
@@ -6471,6 +6491,42 @@ export type ServiceScalarWhereInputInputObject =
   | { name: 'phonenumber_not_starts_with'; alias?: string }
   | { name: 'phonenumber_ends_with'; alias?: string }
   | { name: 'phonenumber_not_ends_with'; alias?: string }
+  | { name: 'photoURL'; alias?: string }
+  | { name: 'photoURL_not'; alias?: string }
+  | { name: 'photoURL_in'; alias?: string }
+  | { name: 'photoURL_not_in'; alias?: string }
+  | { name: 'photoURL_lt'; alias?: string }
+  | { name: 'photoURL_lte'; alias?: string }
+  | { name: 'photoURL_gt'; alias?: string }
+  | { name: 'photoURL_gte'; alias?: string }
+  | { name: 'photoURL_contains'; alias?: string }
+  | { name: 'photoURL_not_contains'; alias?: string }
+  | { name: 'photoURL_starts_with'; alias?: string }
+  | { name: 'photoURL_not_starts_with'; alias?: string }
+  | { name: 'photoURL_ends_with'; alias?: string }
+  | { name: 'photoURL_not_ends_with'; alias?: string }
+  | { name: 'place'; alias?: string }
+  | { name: 'place_not'; alias?: string }
+  | { name: 'place_in'; alias?: string }
+  | { name: 'place_not_in'; alias?: string }
+  | { name: 'place_lt'; alias?: string }
+  | { name: 'place_lte'; alias?: string }
+  | { name: 'place_gt'; alias?: string }
+  | { name: 'place_gte'; alias?: string }
+  | { name: 'place_contains'; alias?: string }
+  | { name: 'place_not_contains'; alias?: string }
+  | { name: 'place_starts_with'; alias?: string }
+  | { name: 'place_not_starts_with'; alias?: string }
+  | { name: 'place_ends_with'; alias?: string }
+  | { name: 'place_not_ends_with'; alias?: string }
+  | { name: 'price'; alias?: string }
+  | { name: 'price_not'; alias?: string }
+  | { name: 'price_in'; alias?: string }
+  | { name: 'price_not_in'; alias?: string }
+  | { name: 'price_lt'; alias?: string }
+  | { name: 'price_lte'; alias?: string }
+  | { name: 'price_gt'; alias?: string }
+  | { name: 'price_gte'; alias?: string }
   | { name: 'rating'; alias?: string }
   | { name: 'rating_not'; alias?: string }
   | { name: 'rating_in'; alias?: string }
@@ -6487,6 +6543,78 @@ export type ServiceScalarWhereInputInputObject =
   | { name: 'ratingCount_lte'; alias?: string }
   | { name: 'ratingCount_gt'; alias?: string }
   | { name: 'ratingCount_gte'; alias?: string }
+  | { name: 'tagline'; alias?: string }
+  | { name: 'tagline_not'; alias?: string }
+  | { name: 'tagline_in'; alias?: string }
+  | { name: 'tagline_not_in'; alias?: string }
+  | { name: 'tagline_lt'; alias?: string }
+  | { name: 'tagline_lte'; alias?: string }
+  | { name: 'tagline_gt'; alias?: string }
+  | { name: 'tagline_gte'; alias?: string }
+  | { name: 'tagline_contains'; alias?: string }
+  | { name: 'tagline_not_contains'; alias?: string }
+  | { name: 'tagline_starts_with'; alias?: string }
+  | { name: 'tagline_not_starts_with'; alias?: string }
+  | { name: 'tagline_ends_with'; alias?: string }
+  | { name: 'tagline_not_ends_with'; alias?: string }
+  | { name: 'title'; alias?: string }
+  | { name: 'title_not'; alias?: string }
+  | { name: 'title_in'; alias?: string }
+  | { name: 'title_not_in'; alias?: string }
+  | { name: 'title_lt'; alias?: string }
+  | { name: 'title_lte'; alias?: string }
+  | { name: 'title_gt'; alias?: string }
+  | { name: 'title_gte'; alias?: string }
+  | { name: 'title_contains'; alias?: string }
+  | { name: 'title_not_contains'; alias?: string }
+  | { name: 'title_starts_with'; alias?: string }
+  | { name: 'title_not_starts_with'; alias?: string }
+  | { name: 'title_ends_with'; alias?: string }
+  | { name: 'title_not_ends_with'; alias?: string }
+  | { name: 'updatedAt'; alias?: string }
+  | { name: 'updatedAt_not'; alias?: string }
+  | { name: 'updatedAt_in'; alias?: string }
+  | { name: 'updatedAt_not_in'; alias?: string }
+  | { name: 'updatedAt_lt'; alias?: string }
+  | { name: 'updatedAt_lte'; alias?: string }
+  | { name: 'updatedAt_gt'; alias?: string }
+  | { name: 'updatedAt_gte'; alias?: string }
+  | { name: 'url'; alias?: string }
+  | { name: 'url_not'; alias?: string }
+  | { name: 'url_in'; alias?: string }
+  | { name: 'url_not_in'; alias?: string }
+  | { name: 'url_lt'; alias?: string }
+  | { name: 'url_lte'; alias?: string }
+  | { name: 'url_gt'; alias?: string }
+  | { name: 'url_gte'; alias?: string }
+  | { name: 'url_contains'; alias?: string }
+  | { name: 'url_not_contains'; alias?: string }
+  | { name: 'url_starts_with'; alias?: string }
+  | { name: 'url_not_starts_with'; alias?: string }
+  | { name: 'url_ends_with'; alias?: string }
+  | { name: 'url_not_ends_with'; alias?: string }
+  | { name: 'viewCount'; alias?: string }
+  | { name: 'viewCount_not'; alias?: string }
+  | { name: 'viewCount_in'; alias?: string }
+  | { name: 'viewCount_not_in'; alias?: string }
+  | { name: 'viewCount_lt'; alias?: string }
+  | { name: 'viewCount_lte'; alias?: string }
+  | { name: 'viewCount_gt'; alias?: string }
+  | { name: 'viewCount_gte'; alias?: string }
+  | { name: 'yomigana'; alias?: string }
+  | { name: 'yomigana_not'; alias?: string }
+  | { name: 'yomigana_in'; alias?: string }
+  | { name: 'yomigana_not_in'; alias?: string }
+  | { name: 'yomigana_lt'; alias?: string }
+  | { name: 'yomigana_lte'; alias?: string }
+  | { name: 'yomigana_gt'; alias?: string }
+  | { name: 'yomigana_gte'; alias?: string }
+  | { name: 'yomigana_contains'; alias?: string }
+  | { name: 'yomigana_not_contains'; alias?: string }
+  | { name: 'yomigana_starts_with'; alias?: string }
+  | { name: 'yomigana_not_starts_with'; alias?: string }
+  | { name: 'yomigana_ends_with'; alias?: string }
+  | { name: 'yomigana_not_ends_with'; alias?: string }
   | { name: 'AND'; alias?: string }
   | { name: 'OR'; alias?: string }
   | { name: 'NOT'; alias?: string }
@@ -6501,41 +6629,45 @@ export type ServiceUpdateManyWithWhereNestedInputInputObject =
   | { name: 'data'; alias?: string }
 
 export interface ServiceUpdateManyDataInput {
-  title?: string | null
-  description?: string | null
-  url?: string | null
-  photoURL?: string | null
-  yomigana?: string | null
-  price?: number | null
-  freetrial?: string | null
-  note?: string | null
-  place?: string | null
   address?: string | null
-  tagline?: string | null
+  description?: string | null
+  freetrial?: string | null
   inquiry?: string | null
+  likeCount?: number | null
   multiplans?: string | null
+  note?: string | null
   phonenumber?: string | null
+  photoURL?: string | null
+  place?: string | null
+  price?: number | null
   rating?: number | null
   ratingCount?: number | null
+  tagline?: string | null
+  title?: string | null
+  url?: string | null
+  viewCount?: number | null
+  yomigana?: string | null
 }
 export type ServiceUpdateManyDataInputInputObject =
   | Extract<keyof ServiceUpdateManyDataInput, string>
-  | { name: 'title'; alias?: string }
-  | { name: 'description'; alias?: string }
-  | { name: 'url'; alias?: string }
-  | { name: 'photoURL'; alias?: string }
-  | { name: 'yomigana'; alias?: string }
-  | { name: 'price'; alias?: string }
-  | { name: 'freetrial'; alias?: string }
-  | { name: 'note'; alias?: string }
-  | { name: 'place'; alias?: string }
   | { name: 'address'; alias?: string }
-  | { name: 'tagline'; alias?: string }
+  | { name: 'description'; alias?: string }
+  | { name: 'freetrial'; alias?: string }
   | { name: 'inquiry'; alias?: string }
+  | { name: 'likeCount'; alias?: string }
   | { name: 'multiplans'; alias?: string }
+  | { name: 'note'; alias?: string }
   | { name: 'phonenumber'; alias?: string }
+  | { name: 'photoURL'; alias?: string }
+  | { name: 'place'; alias?: string }
+  | { name: 'price'; alias?: string }
   | { name: 'rating'; alias?: string }
   | { name: 'ratingCount'; alias?: string }
+  | { name: 'tagline'; alias?: string }
+  | { name: 'title'; alias?: string }
+  | { name: 'url'; alias?: string }
+  | { name: 'viewCount'; alias?: string }
+  | { name: 'yomigana'; alias?: string }
 
 export interface CategoryUpdateManyMutationInput {
   name?: string | null
@@ -6549,82 +6681,90 @@ export type CategoryUpdateManyMutationInputInputObject =
   | { name: 'description'; alias?: string }
 
 export interface ServiceUpdateInput {
-  title?: string | null
-  description?: string | null
-  url?: string | null
-  photoURL?: string | null
-  yomigana?: string | null
-  price?: number | null
-  freetrial?: string | null
-  note?: string | null
-  place?: string | null
   address?: string | null
-  tagline?: string | null
-  inquiry?: string | null
-  multiplans?: string | null
-  phonenumber?: string | null
   category?: CategoryUpdateOneWithoutServicesInput | null
+  description?: string | null
+  freetrial?: string | null
+  inquiry?: string | null
+  likeCount?: number | null
+  multiplans?: string | null
+  note?: string | null
+  phonenumber?: string | null
+  photoURL?: string | null
+  place?: string | null
+  price?: number | null
   rating?: number | null
   ratingCount?: number | null
   reviews?: ReviewUpdateManyWithoutServiceInput | null
+  tagline?: string | null
+  title?: string | null
+  url?: string | null
+  viewCount?: number | null
+  yomigana?: string | null
 }
 export type ServiceUpdateInputInputObject =
   | Extract<keyof ServiceUpdateInput, string>
-  | { name: 'title'; alias?: string }
-  | { name: 'description'; alias?: string }
-  | { name: 'url'; alias?: string }
-  | { name: 'photoURL'; alias?: string }
-  | { name: 'yomigana'; alias?: string }
-  | { name: 'price'; alias?: string }
-  | { name: 'freetrial'; alias?: string }
-  | { name: 'note'; alias?: string }
-  | { name: 'place'; alias?: string }
   | { name: 'address'; alias?: string }
-  | { name: 'tagline'; alias?: string }
-  | { name: 'inquiry'; alias?: string }
-  | { name: 'multiplans'; alias?: string }
-  | { name: 'phonenumber'; alias?: string }
   | { name: 'category'; alias?: string }
+  | { name: 'description'; alias?: string }
+  | { name: 'freetrial'; alias?: string }
+  | { name: 'inquiry'; alias?: string }
+  | { name: 'likeCount'; alias?: string }
+  | { name: 'multiplans'; alias?: string }
+  | { name: 'note'; alias?: string }
+  | { name: 'phonenumber'; alias?: string }
+  | { name: 'photoURL'; alias?: string }
+  | { name: 'place'; alias?: string }
+  | { name: 'price'; alias?: string }
   | { name: 'rating'; alias?: string }
   | { name: 'ratingCount'; alias?: string }
   | { name: 'reviews'; alias?: string }
+  | { name: 'tagline'; alias?: string }
+  | { name: 'title'; alias?: string }
+  | { name: 'url'; alias?: string }
+  | { name: 'viewCount'; alias?: string }
+  | { name: 'yomigana'; alias?: string }
 
 export interface ServiceUpdateManyMutationInput {
-  title?: string | null
-  description?: string | null
-  url?: string | null
-  photoURL?: string | null
-  yomigana?: string | null
-  price?: number | null
-  freetrial?: string | null
-  note?: string | null
-  place?: string | null
   address?: string | null
-  tagline?: string | null
+  description?: string | null
+  freetrial?: string | null
   inquiry?: string | null
+  likeCount?: number | null
   multiplans?: string | null
+  note?: string | null
   phonenumber?: string | null
+  photoURL?: string | null
+  place?: string | null
+  price?: number | null
   rating?: number | null
   ratingCount?: number | null
+  tagline?: string | null
+  title?: string | null
+  url?: string | null
+  viewCount?: number | null
+  yomigana?: string | null
 }
 export type ServiceUpdateManyMutationInputInputObject =
   | Extract<keyof ServiceUpdateManyMutationInput, string>
-  | { name: 'title'; alias?: string }
-  | { name: 'description'; alias?: string }
-  | { name: 'url'; alias?: string }
-  | { name: 'photoURL'; alias?: string }
-  | { name: 'yomigana'; alias?: string }
-  | { name: 'price'; alias?: string }
-  | { name: 'freetrial'; alias?: string }
-  | { name: 'note'; alias?: string }
-  | { name: 'place'; alias?: string }
   | { name: 'address'; alias?: string }
-  | { name: 'tagline'; alias?: string }
+  | { name: 'description'; alias?: string }
+  | { name: 'freetrial'; alias?: string }
   | { name: 'inquiry'; alias?: string }
+  | { name: 'likeCount'; alias?: string }
   | { name: 'multiplans'; alias?: string }
+  | { name: 'note'; alias?: string }
   | { name: 'phonenumber'; alias?: string }
+  | { name: 'photoURL'; alias?: string }
+  | { name: 'place'; alias?: string }
+  | { name: 'price'; alias?: string }
   | { name: 'rating'; alias?: string }
   | { name: 'ratingCount'; alias?: string }
+  | { name: 'tagline'; alias?: string }
+  | { name: 'title'; alias?: string }
+  | { name: 'url'; alias?: string }
+  | { name: 'viewCount'; alias?: string }
+  | { name: 'yomigana'; alias?: string }
 
 export interface UserSubscriptionWhereInput {
   mutation_in?: prisma.MutationType[]
@@ -6777,44 +6917,48 @@ export type OwnerOrderByInputValues =
   | 'photoURL_DESC'
 
 export type ServiceOrderByInputValues =
-  | 'id_ASC'
-  | 'id_DESC'
-  | 'createdAt_ASC'
-  | 'createdAt_DESC'
-  | 'updatedAt_ASC'
-  | 'updatedAt_DESC'
-  | 'title_ASC'
-  | 'title_DESC'
-  | 'description_ASC'
-  | 'description_DESC'
-  | 'url_ASC'
-  | 'url_DESC'
-  | 'photoURL_ASC'
-  | 'photoURL_DESC'
-  | 'yomigana_ASC'
-  | 'yomigana_DESC'
-  | 'price_ASC'
-  | 'price_DESC'
-  | 'freetrial_ASC'
-  | 'freetrial_DESC'
-  | 'note_ASC'
-  | 'note_DESC'
-  | 'place_ASC'
-  | 'place_DESC'
   | 'address_ASC'
   | 'address_DESC'
-  | 'tagline_ASC'
-  | 'tagline_DESC'
+  | 'createdAt_ASC'
+  | 'createdAt_DESC'
+  | 'description_ASC'
+  | 'description_DESC'
+  | 'freetrial_ASC'
+  | 'freetrial_DESC'
+  | 'id_ASC'
+  | 'id_DESC'
   | 'inquiry_ASC'
   | 'inquiry_DESC'
+  | 'likeCount_ASC'
+  | 'likeCount_DESC'
   | 'multiplans_ASC'
   | 'multiplans_DESC'
+  | 'note_ASC'
+  | 'note_DESC'
   | 'phonenumber_ASC'
   | 'phonenumber_DESC'
+  | 'photoURL_ASC'
+  | 'photoURL_DESC'
+  | 'place_ASC'
+  | 'place_DESC'
+  | 'price_ASC'
+  | 'price_DESC'
   | 'rating_ASC'
   | 'rating_DESC'
   | 'ratingCount_ASC'
   | 'ratingCount_DESC'
+  | 'tagline_ASC'
+  | 'tagline_DESC'
+  | 'title_ASC'
+  | 'title_DESC'
+  | 'updatedAt_ASC'
+  | 'updatedAt_DESC'
+  | 'url_ASC'
+  | 'url_DESC'
+  | 'viewCount_ASC'
+  | 'viewCount_DESC'
+  | 'yomigana_ASC'
+  | 'yomigana_DESC'
 
 export type ReviewOrderByInputValues =
   | 'id_ASC'

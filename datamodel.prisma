@@ -46,25 +46,27 @@ type Category {
 }
 
 type Service {
-  id: ID! @unique
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  title: String!
-  description: String!
-  url: String
-  photoURL: String
-  yomigana: String
-  price: Float
-  freetrial: String
-  note: String
-  place: String
   address: String
-  tagline: String
-  inquiry: String
-  multiplans: String
-  phonenumber: String
   category: Category
+  createdAt: DateTime!
+  description: String!
+  freetrial: String
+  id: ID! @unique
+  inquiry: String
+  likeCount: Int! @default(value: 0)
+  multiplans: String
+  note: String
+  phonenumber: String
+  photoURL: String
+  place: String
+  price: Float
   rating: Int @default(value: 0)
   ratingCount: Int @default(value: 0)
   reviews: [Review!]!
+  tagline: String
+  title: String!
+  updatedAt: DateTime!
+  url: String
+  viewCount: Int! @default(value: 0)
+  yomigana: String
 }
