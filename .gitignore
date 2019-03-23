@@ -1,6 +1,7 @@
 # Firebase
 /config.json
 /.runtimeconfig.json
+/firebase-debug.log
 
 # TypeScript
 /lib

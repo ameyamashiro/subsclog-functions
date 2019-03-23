@@ -15,20 +15,12 @@ export interface NexusPrismaTypes {
   objectTypes: {
     fields: {
       Query: QueryObject
-      User: UserObject
-      UserConnection: UserConnectionObject
-      PageInfo: PageInfoObject
-      UserEdge: UserEdgeObject
-      AggregateUser: AggregateUserObject
-      Owner: OwnerObject
-      OwnerConnection: OwnerConnectionObject
-      OwnerEdge: OwnerEdgeObject
-      AggregateOwner: AggregateOwnerObject
       Comment: CommentObject
       Service: ServiceObject
       Category: CategoryObject
       Review: ReviewObject
       CommentConnection: CommentConnectionObject
+      PageInfo: PageInfoObject
       CommentEdge: CommentEdgeObject
       AggregateComment: AggregateCommentObject
       ReviewConnection: ReviewConnectionObject
@@ -43,10 +35,6 @@ export interface NexusPrismaTypes {
       Mutation: MutationObject
       BatchPayload: BatchPayloadObject
       Subscription: SubscriptionObject
-      UserSubscriptionPayload: UserSubscriptionPayloadObject
-      UserPreviousValues: UserPreviousValuesObject
-      OwnerSubscriptionPayload: OwnerSubscriptionPayloadObject
-      OwnerPreviousValues: OwnerPreviousValuesObject
       CommentSubscriptionPayload: CommentSubscriptionPayloadObject
       CommentPreviousValues: CommentPreviousValuesObject
       ReviewSubscriptionPayload: ReviewSubscriptionPayloadObject
@@ -58,20 +46,12 @@ export interface NexusPrismaTypes {
     }
     fieldsDetails: {
       Query: QueryFieldDetails
-      User: UserFieldDetails
-      UserConnection: UserConnectionFieldDetails
-      PageInfo: PageInfoFieldDetails
-      UserEdge: UserEdgeFieldDetails
-      AggregateUser: AggregateUserFieldDetails
-      Owner: OwnerFieldDetails
-      OwnerConnection: OwnerConnectionFieldDetails
-      OwnerEdge: OwnerEdgeFieldDetails
-      AggregateOwner: AggregateOwnerFieldDetails
       Comment: CommentFieldDetails
       Service: ServiceFieldDetails
       Category: CategoryFieldDetails
       Review: ReviewFieldDetails
       CommentConnection: CommentConnectionFieldDetails
+      PageInfo: PageInfoFieldDetails
       CommentEdge: CommentEdgeFieldDetails
       AggregateComment: AggregateCommentFieldDetails
       ReviewConnection: ReviewConnectionFieldDetails
@@ -86,10 +66,6 @@ export interface NexusPrismaTypes {
       Mutation: MutationFieldDetails
       BatchPayload: BatchPayloadFieldDetails
       Subscription: SubscriptionFieldDetails
-      UserSubscriptionPayload: UserSubscriptionPayloadFieldDetails
-      UserPreviousValues: UserPreviousValuesFieldDetails
-      OwnerSubscriptionPayload: OwnerSubscriptionPayloadFieldDetails
-      OwnerPreviousValues: OwnerPreviousValuesFieldDetails
       CommentSubscriptionPayload: CommentSubscriptionPayloadFieldDetails
       CommentPreviousValues: CommentPreviousValuesFieldDetails
       ReviewSubscriptionPayload: ReviewSubscriptionPayloadFieldDetails
@@ -102,10 +78,6 @@ export interface NexusPrismaTypes {
   }
   inputTypes: {
     fields: {
-      UserWhereUniqueInput: UserWhereUniqueInputInputObject
-      UserWhereInput: UserWhereInputInputObject
-      OwnerWhereUniqueInput: OwnerWhereUniqueInputInputObject
-      OwnerWhereInput: OwnerWhereInputInputObject
       CommentWhereUniqueInput: CommentWhereUniqueInputInputObject
       ServiceWhereInput: ServiceWhereInputInputObject
       CategoryWhereInput: CategoryWhereInputInputObject
@@ -114,12 +86,6 @@ export interface NexusPrismaTypes {
       ReviewWhereUniqueInput: ReviewWhereUniqueInputInputObject
       CategoryWhereUniqueInput: CategoryWhereUniqueInputInputObject
       ServiceWhereUniqueInput: ServiceWhereUniqueInputInputObject
-      UserCreateInput: UserCreateInputInputObject
-      UserUpdateInput: UserUpdateInputInputObject
-      UserUpdateManyMutationInput: UserUpdateManyMutationInputInputObject
-      OwnerCreateInput: OwnerCreateInputInputObject
-      OwnerUpdateInput: OwnerUpdateInputInputObject
-      OwnerUpdateManyMutationInput: OwnerUpdateManyMutationInputInputObject
       CommentCreateInput: CommentCreateInputInputObject
       ServiceCreateOneInput: ServiceCreateOneInputInputObject
       ServiceCreateInput: ServiceCreateInputInputObject
@@ -164,8 +130,6 @@ export interface NexusPrismaTypes {
       CategoryUpdateManyMutationInput: CategoryUpdateManyMutationInputInputObject
       ServiceUpdateInput: ServiceUpdateInputInputObject
       ServiceUpdateManyMutationInput: ServiceUpdateManyMutationInputInputObject
-      UserSubscriptionWhereInput: UserSubscriptionWhereInputInputObject
-      OwnerSubscriptionWhereInput: OwnerSubscriptionWhereInputInputObject
       CommentSubscriptionWhereInput: CommentSubscriptionWhereInputInputObject
       ReviewSubscriptionWhereInput: ReviewSubscriptionWhereInputInputObject
       CategorySubscriptionWhereInput: CategorySubscriptionWhereInputInputObject
@@ -173,8 +137,6 @@ export interface NexusPrismaTypes {
     }
   }
   enumTypes: {
-    UserOrderByInput: UserOrderByInputValues
-    OwnerOrderByInput: OwnerOrderByInputValues
     ServiceOrderByInput: ServiceOrderByInputValues
     ReviewOrderByInput: ReviewOrderByInputValues
     CommentOrderByInput: CommentOrderByInputValues
@@ -187,20 +149,6 @@ export interface NexusPrismaTypes {
 
 type QueryObject =
   | QueryFields
-  | { name: 'user'; args?: QueryUserArgs[] | false; alias?: string }
-  | { name: 'users'; args?: QueryUsersArgs[] | false; alias?: string }
-  | {
-      name: 'usersConnection'
-      args?: QueryUsersConnectionArgs[] | false
-      alias?: string
-    }
-  | { name: 'owner'; args?: QueryOwnerArgs[] | false; alias?: string }
-  | { name: 'owners'; args?: QueryOwnersArgs[] | false; alias?: string }
-  | {
-      name: 'ownersConnection'
-      args?: QueryOwnersConnectionArgs[] | false
-      alias?: string
-    }
   | { name: 'comment'; args?: QueryCommentArgs[] | false; alias?: string }
   | { name: 'comments'; args?: QueryCommentsArgs[] | false; alias?: string }
   | {
@@ -231,12 +179,6 @@ type QueryObject =
     }
 
 type QueryFields =
-  | 'user'
-  | 'users'
-  | 'usersConnection'
-  | 'owner'
-  | 'owners'
-  | 'ownersConnection'
   | 'comment'
   | 'comments'
   | 'commentsConnection'
@@ -250,40 +192,6 @@ type QueryFields =
   | 'services'
   | 'servicesConnection'
 
-type QueryUserArgs = 'where'
-type QueryUsersArgs =
-  | 'where'
-  | 'orderBy'
-  | 'skip'
-  | 'after'
-  | 'before'
-  | 'first'
-  | 'last'
-type QueryUsersConnectionArgs =
-  | 'where'
-  | 'orderBy'
-  | 'skip'
-  | 'after'
-  | 'before'
-  | 'first'
-  | 'last'
-type QueryOwnerArgs = 'where'
-type QueryOwnersArgs =
-  | 'where'
-  | 'orderBy'
-  | 'skip'
-  | 'after'
-  | 'before'
-  | 'first'
-  | 'last'
-type QueryOwnersConnectionArgs =
-  | 'where'
-  | 'orderBy'
-  | 'skip'
-  | 'after'
-  | 'before'
-  | 'first'
-  | 'last'
 type QueryCommentArgs = 'where'
 type QueryCommentsArgs =
   | 'where'
@@ -354,116 +262,6 @@ type QueryServicesConnectionArgs =
   | 'last'
 
 export interface QueryFieldDetails {
-  user: {
-    type: 'User'
-    args: Record<QueryUserArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: true
-    resolve: (
-      root: core.RootValue<'Query'>,
-      args: { where: UserWhereUniqueInput },
-      context: core.GetGen<'context'>,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.User | null> | prisma.User | null
-  }
-  users: {
-    type: 'User'
-    args: Record<QueryUsersArgs, core.NexusArgDef<string>>
-    description: string
-    list: true
-    nullable: false
-    resolve: (
-      root: core.RootValue<'Query'>,
-      args: {
-        where?: UserWhereInput | null
-        orderBy?: prisma.UserOrderByInput | null
-        skip?: number | null
-        after?: string | null
-        before?: string | null
-        first?: number | null
-        last?: number | null
-      },
-      context: core.GetGen<'context'>,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.User[]> | prisma.User[]
-  }
-  usersConnection: {
-    type: 'UserConnection'
-    args: Record<QueryUsersConnectionArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<'Query'>,
-      args: {
-        where?: UserWhereInput | null
-        orderBy?: prisma.UserOrderByInput | null
-        skip?: number | null
-        after?: string | null
-        before?: string | null
-        first?: number | null
-        last?: number | null
-      },
-      context: core.GetGen<'context'>,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.UserConnection> | prisma.UserConnection
-  }
-  owner: {
-    type: 'Owner'
-    args: Record<QueryOwnerArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: true
-    resolve: (
-      root: core.RootValue<'Query'>,
-      args: { where: OwnerWhereUniqueInput },
-      context: core.GetGen<'context'>,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Owner | null> | prisma.Owner | null
-  }
-  owners: {
-    type: 'Owner'
-    args: Record<QueryOwnersArgs, core.NexusArgDef<string>>
-    description: string
-    list: true
-    nullable: false
-    resolve: (
-      root: core.RootValue<'Query'>,
-      args: {
-        where?: OwnerWhereInput | null
-        orderBy?: prisma.OwnerOrderByInput | null
-        skip?: number | null
-        after?: string | null
-        before?: string | null
-        first?: number | null
-        last?: number | null
-      },
-      context: core.GetGen<'context'>,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Owner[]> | prisma.Owner[]
-  }
-  ownersConnection: {
-    type: 'OwnerConnection'
-    args: Record<QueryOwnersConnectionArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<'Query'>,
-      args: {
-        where?: OwnerWhereInput | null
-        orderBy?: prisma.OwnerOrderByInput | null
-        skip?: number | null
-        after?: string | null
-        before?: string | null
-        first?: number | null
-        last?: number | null
-      },
-      context: core.GetGen<'context'>,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.OwnerConnection> | prisma.OwnerConnection
-  }
   comment: {
     type: 'Comment'
     args: Record<QueryCommentArgs, core.NexusArgDef<string>>
@@ -686,380 +484,6 @@ export interface QueryFieldDetails {
   }
 }
 
-// Types for User
-
-type UserObject =
-  | UserFields
-  | { name: 'id'; args?: [] | false; alias?: string }
-  | { name: 'createdAt'; args?: [] | false; alias?: string }
-  | { name: 'updatedAt'; args?: [] | false; alias?: string }
-  | { name: 'name'; args?: [] | false; alias?: string }
-
-type UserFields = 'id' | 'createdAt' | 'updatedAt' | 'name'
-
-export interface UserFieldDetails {
-  id: {
-    type: 'ID'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  createdAt: {
-    type: 'DateTime'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  updatedAt: {
-    type: 'DateTime'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  name: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-}
-
-// Types for UserConnection
-
-type UserConnectionObject =
-  | UserConnectionFields
-  | { name: 'pageInfo'; args?: [] | false; alias?: string }
-  | { name: 'edges'; args?: [] | false; alias?: string }
-  | { name: 'aggregate'; args?: [] | false; alias?: string }
-
-type UserConnectionFields = 'pageInfo' | 'edges' | 'aggregate'
-
-export interface UserConnectionFieldDetails {
-  pageInfo: {
-    type: 'PageInfo'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<'UserConnection'>,
-      args: {},
-      context: core.GetGen<'context'>,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.PageInfo> | prisma.PageInfo
-  }
-  edges: {
-    type: 'UserEdge'
-    args: {}
-    description: string
-    list: true
-    nullable: false
-    resolve: (
-      root: core.RootValue<'UserConnection'>,
-      args: {},
-      context: core.GetGen<'context'>,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.UserEdge[]> | prisma.UserEdge[]
-  }
-  aggregate: {
-    type: 'AggregateUser'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<'UserConnection'>,
-      args: {},
-      context: core.GetGen<'context'>,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.AggregateUser> | prisma.AggregateUser
-  }
-}
-
-// Types for PageInfo
-
-type PageInfoObject =
-  | PageInfoFields
-  | { name: 'hasNextPage'; args?: [] | false; alias?: string }
-  | { name: 'hasPreviousPage'; args?: [] | false; alias?: string }
-  | { name: 'startCursor'; args?: [] | false; alias?: string }
-  | { name: 'endCursor'; args?: [] | false; alias?: string }
-
-type PageInfoFields =
-  | 'hasNextPage'
-  | 'hasPreviousPage'
-  | 'startCursor'
-  | 'endCursor'
-
-export interface PageInfoFieldDetails {
-  hasNextPage: {
-    type: 'Boolean'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  hasPreviousPage: {
-    type: 'Boolean'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  startCursor: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-  endCursor: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-}
-
-// Types for UserEdge
-
-type UserEdgeObject =
-  | UserEdgeFields
-  | { name: 'node'; args?: [] | false; alias?: string }
-  | { name: 'cursor'; args?: [] | false; alias?: string }
-
-type UserEdgeFields = 'node' | 'cursor'
-
-export interface UserEdgeFieldDetails {
-  node: {
-    type: 'User'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<'UserEdge'>,
-      args: {},
-      context: core.GetGen<'context'>,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.User> | prisma.User
-  }
-  cursor: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-}
-
-// Types for AggregateUser
-
-type AggregateUserObject =
-  | AggregateUserFields
-  | { name: 'count'; args?: [] | false; alias?: string }
-
-type AggregateUserFields = 'count'
-
-export interface AggregateUserFieldDetails {
-  count: {
-    type: 'Int'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-}
-
-// Types for Owner
-
-type OwnerObject =
-  | OwnerFields
-  | { name: 'id'; args?: [] | false; alias?: string }
-  | { name: 'createdAt'; args?: [] | false; alias?: string }
-  | { name: 'updatedAt'; args?: [] | false; alias?: string }
-  | { name: 'displayName'; args?: [] | false; alias?: string }
-  | { name: 'username'; args?: [] | false; alias?: string }
-  | { name: 'photoURL'; args?: [] | false; alias?: string }
-
-type OwnerFields =
-  | 'id'
-  | 'createdAt'
-  | 'updatedAt'
-  | 'displayName'
-  | 'username'
-  | 'photoURL'
-
-export interface OwnerFieldDetails {
-  id: {
-    type: 'ID'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  createdAt: {
-    type: 'DateTime'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  updatedAt: {
-    type: 'DateTime'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  displayName: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  username: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  photoURL: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-}
-
-// Types for OwnerConnection
-
-type OwnerConnectionObject =
-  | OwnerConnectionFields
-  | { name: 'pageInfo'; args?: [] | false; alias?: string }
-  | { name: 'edges'; args?: [] | false; alias?: string }
-  | { name: 'aggregate'; args?: [] | false; alias?: string }
-
-type OwnerConnectionFields = 'pageInfo' | 'edges' | 'aggregate'
-
-export interface OwnerConnectionFieldDetails {
-  pageInfo: {
-    type: 'PageInfo'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<'OwnerConnection'>,
-      args: {},
-      context: core.GetGen<'context'>,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.PageInfo> | prisma.PageInfo
-  }
-  edges: {
-    type: 'OwnerEdge'
-    args: {}
-    description: string
-    list: true
-    nullable: false
-    resolve: (
-      root: core.RootValue<'OwnerConnection'>,
-      args: {},
-      context: core.GetGen<'context'>,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.OwnerEdge[]> | prisma.OwnerEdge[]
-  }
-  aggregate: {
-    type: 'AggregateOwner'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<'OwnerConnection'>,
-      args: {},
-      context: core.GetGen<'context'>,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.AggregateOwner> | prisma.AggregateOwner
-  }
-}
-
-// Types for OwnerEdge
-
-type OwnerEdgeObject =
-  | OwnerEdgeFields
-  | { name: 'node'; args?: [] | false; alias?: string }
-  | { name: 'cursor'; args?: [] | false; alias?: string }
-
-type OwnerEdgeFields = 'node' | 'cursor'
-
-export interface OwnerEdgeFieldDetails {
-  node: {
-    type: 'Owner'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<'OwnerEdge'>,
-      args: {},
-      context: core.GetGen<'context'>,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Owner> | prisma.Owner
-  }
-  cursor: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-}
-
-// Types for AggregateOwner
-
-type AggregateOwnerObject =
-  | AggregateOwnerFields
-  | { name: 'count'; args?: [] | false; alias?: string }
-
-type AggregateOwnerFields = 'count'
-
-export interface AggregateOwnerFieldDetails {
-  count: {
-    type: 'Int'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-}
-
 // Types for Comment
 
 type CommentObject =
@@ -1145,6 +569,7 @@ type ServiceObject =
   | { name: 'description'; args?: [] | false; alias?: string }
   | { name: 'freetrial'; args?: [] | false; alias?: string }
   | { name: 'id'; args?: [] | false; alias?: string }
+  | { name: 'isOnline'; args?: [] | false; alias?: string }
   | { name: 'inquiry'; args?: [] | false; alias?: string }
   | { name: 'likeCount'; args?: [] | false; alias?: string }
   | { name: 'multiplans'; args?: [] | false; alias?: string }
@@ -1170,6 +595,7 @@ type ServiceFields =
   | 'description'
   | 'freetrial'
   | 'id'
+  | 'isOnline'
   | 'inquiry'
   | 'likeCount'
   | 'multiplans'
@@ -1249,6 +675,14 @@ export interface ServiceFieldDetails {
     description: string
     list: undefined
     nullable: false
+    resolve: undefined
+  }
+  isOnline: {
+    type: 'Boolean'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
     resolve: undefined
   }
   inquiry: {
@@ -1661,6 +1095,56 @@ export interface CommentConnectionFieldDetails {
   }
 }
 
+// Types for PageInfo
+
+type PageInfoObject =
+  | PageInfoFields
+  | { name: 'hasNextPage'; args?: [] | false; alias?: string }
+  | { name: 'hasPreviousPage'; args?: [] | false; alias?: string }
+  | { name: 'startCursor'; args?: [] | false; alias?: string }
+  | { name: 'endCursor'; args?: [] | false; alias?: string }
+
+type PageInfoFields =
+  | 'hasNextPage'
+  | 'hasPreviousPage'
+  | 'startCursor'
+  | 'endCursor'
+
+export interface PageInfoFieldDetails {
+  hasNextPage: {
+    type: 'Boolean'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  hasPreviousPage: {
+    type: 'Boolean'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  startCursor: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  endCursor: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+}
+
 // Types for CommentEdge
 
 type CommentEdgeObject =
@@ -2030,66 +1514,6 @@ export interface AggregateServiceFieldDetails {
 type MutationObject =
   | MutationFields
   | {
-      name: 'createUser'
-      args?: MutationCreateUserArgs[] | false
-      alias?: string
-    }
-  | {
-      name: 'updateUser'
-      args?: MutationUpdateUserArgs[] | false
-      alias?: string
-    }
-  | {
-      name: 'updateManyUsers'
-      args?: MutationUpdateManyUsersArgs[] | false
-      alias?: string
-    }
-  | {
-      name: 'upsertUser'
-      args?: MutationUpsertUserArgs[] | false
-      alias?: string
-    }
-  | {
-      name: 'deleteUser'
-      args?: MutationDeleteUserArgs[] | false
-      alias?: string
-    }
-  | {
-      name: 'deleteManyUsers'
-      args?: MutationDeleteManyUsersArgs[] | false
-      alias?: string
-    }
-  | {
-      name: 'createOwner'
-      args?: MutationCreateOwnerArgs[] | false
-      alias?: string
-    }
-  | {
-      name: 'updateOwner'
-      args?: MutationUpdateOwnerArgs[] | false
-      alias?: string
-    }
-  | {
-      name: 'updateManyOwners'
-      args?: MutationUpdateManyOwnersArgs[] | false
-      alias?: string
-    }
-  | {
-      name: 'upsertOwner'
-      args?: MutationUpsertOwnerArgs[] | false
-      alias?: string
-    }
-  | {
-      name: 'deleteOwner'
-      args?: MutationDeleteOwnerArgs[] | false
-      alias?: string
-    }
-  | {
-      name: 'deleteManyOwners'
-      args?: MutationDeleteManyOwnersArgs[] | false
-      alias?: string
-    }
-  | {
       name: 'createComment'
       args?: MutationCreateCommentArgs[] | false
       alias?: string
@@ -2211,18 +1635,6 @@ type MutationObject =
     }
 
 type MutationFields =
-  | 'createUser'
-  | 'updateUser'
-  | 'updateManyUsers'
-  | 'upsertUser'
-  | 'deleteUser'
-  | 'deleteManyUsers'
-  | 'createOwner'
-  | 'updateOwner'
-  | 'updateManyOwners'
-  | 'upsertOwner'
-  | 'deleteOwner'
-  | 'deleteManyOwners'
   | 'createComment'
   | 'updateComment'
   | 'updateManyComments'
@@ -2248,18 +1660,6 @@ type MutationFields =
   | 'deleteService'
   | 'deleteManyServices'
 
-type MutationCreateUserArgs = 'data'
-type MutationUpdateUserArgs = 'data' | 'where'
-type MutationUpdateManyUsersArgs = 'data' | 'where'
-type MutationUpsertUserArgs = 'where' | 'create' | 'update'
-type MutationDeleteUserArgs = 'where'
-type MutationDeleteManyUsersArgs = 'where'
-type MutationCreateOwnerArgs = 'data'
-type MutationUpdateOwnerArgs = 'data' | 'where'
-type MutationUpdateManyOwnersArgs = 'data' | 'where'
-type MutationUpsertOwnerArgs = 'where' | 'create' | 'update'
-type MutationDeleteOwnerArgs = 'where'
-type MutationDeleteManyOwnersArgs = 'where'
 type MutationCreateCommentArgs = 'data'
 type MutationUpdateCommentArgs = 'data' | 'where'
 type MutationUpdateManyCommentsArgs = 'data' | 'where'
@@ -2286,176 +1686,6 @@ type MutationDeleteServiceArgs = 'where'
 type MutationDeleteManyServicesArgs = 'where'
 
 export interface MutationFieldDetails {
-  createUser: {
-    type: 'User'
-    args: Record<MutationCreateUserArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<'Mutation'>,
-      args: { data: UserCreateInput },
-      context: core.GetGen<'context'>,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.User> | prisma.User
-  }
-  updateUser: {
-    type: 'User'
-    args: Record<MutationUpdateUserArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: true
-    resolve: (
-      root: core.RootValue<'Mutation'>,
-      args: { data: UserUpdateInput; where: UserWhereUniqueInput },
-      context: core.GetGen<'context'>,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.User | null> | prisma.User | null
-  }
-  updateManyUsers: {
-    type: 'BatchPayload'
-    args: Record<MutationUpdateManyUsersArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<'Mutation'>,
-      args: {
-        data: UserUpdateManyMutationInput
-        where?: UserWhereInput | null
-      },
-      context: core.GetGen<'context'>,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
-  }
-  upsertUser: {
-    type: 'User'
-    args: Record<MutationUpsertUserArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<'Mutation'>,
-      args: {
-        where: UserWhereUniqueInput
-        create: UserCreateInput
-        update: UserUpdateInput
-      },
-      context: core.GetGen<'context'>,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.User> | prisma.User
-  }
-  deleteUser: {
-    type: 'User'
-    args: Record<MutationDeleteUserArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: true
-    resolve: (
-      root: core.RootValue<'Mutation'>,
-      args: { where: UserWhereUniqueInput },
-      context: core.GetGen<'context'>,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.User | null> | prisma.User | null
-  }
-  deleteManyUsers: {
-    type: 'BatchPayload'
-    args: Record<MutationDeleteManyUsersArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<'Mutation'>,
-      args: { where?: UserWhereInput | null },
-      context: core.GetGen<'context'>,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
-  }
-  createOwner: {
-    type: 'Owner'
-    args: Record<MutationCreateOwnerArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<'Mutation'>,
-      args: { data: OwnerCreateInput },
-      context: core.GetGen<'context'>,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Owner> | prisma.Owner
-  }
-  updateOwner: {
-    type: 'Owner'
-    args: Record<MutationUpdateOwnerArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: true
-    resolve: (
-      root: core.RootValue<'Mutation'>,
-      args: { data: OwnerUpdateInput; where: OwnerWhereUniqueInput },
-      context: core.GetGen<'context'>,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Owner | null> | prisma.Owner | null
-  }
-  updateManyOwners: {
-    type: 'BatchPayload'
-    args: Record<MutationUpdateManyOwnersArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<'Mutation'>,
-      args: {
-        data: OwnerUpdateManyMutationInput
-        where?: OwnerWhereInput | null
-      },
-      context: core.GetGen<'context'>,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
-  }
-  upsertOwner: {
-    type: 'Owner'
-    args: Record<MutationUpsertOwnerArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<'Mutation'>,
-      args: {
-        where: OwnerWhereUniqueInput
-        create: OwnerCreateInput
-        update: OwnerUpdateInput
-      },
-      context: core.GetGen<'context'>,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Owner> | prisma.Owner
-  }
-  deleteOwner: {
-    type: 'Owner'
-    args: Record<MutationDeleteOwnerArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: true
-    resolve: (
-      root: core.RootValue<'Mutation'>,
-      args: { where: OwnerWhereUniqueInput },
-      context: core.GetGen<'context'>,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Owner | null> | prisma.Owner | null
-  }
-  deleteManyOwners: {
-    type: 'BatchPayload'
-    args: Record<MutationDeleteManyOwnersArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<'Mutation'>,
-      args: { where?: OwnerWhereInput | null },
-      context: core.GetGen<'context'>,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
-  }
   createComment: {
     type: 'Comment'
     args: Record<MutationCreateCommentArgs, core.NexusArgDef<string>>
@@ -2821,8 +2051,6 @@ export interface BatchPayloadFieldDetails {
 
 type SubscriptionObject =
   | SubscriptionFields
-  | { name: 'user'; args?: SubscriptionUserArgs[] | false; alias?: string }
-  | { name: 'owner'; args?: SubscriptionOwnerArgs[] | false; alias?: string }
   | {
       name: 'comment'
       args?: SubscriptionCommentArgs[] | false
@@ -2840,54 +2068,14 @@ type SubscriptionObject =
       alias?: string
     }
 
-type SubscriptionFields =
-  | 'user'
-  | 'owner'
-  | 'comment'
-  | 'review'
-  | 'category'
-  | 'service'
+type SubscriptionFields = 'comment' | 'review' | 'category' | 'service'
 
-type SubscriptionUserArgs = 'where'
-type SubscriptionOwnerArgs = 'where'
 type SubscriptionCommentArgs = 'where'
 type SubscriptionReviewArgs = 'where'
 type SubscriptionCategoryArgs = 'where'
 type SubscriptionServiceArgs = 'where'
 
 export interface SubscriptionFieldDetails {
-  user: {
-    type: 'UserSubscriptionPayload'
-    args: Record<SubscriptionUserArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: true
-    resolve: (
-      root: core.RootValue<'Subscription'>,
-      args: { where?: UserSubscriptionWhereInput | null },
-      context: core.GetGen<'context'>,
-      info?: GraphQLResolveInfo
-    ) =>
-      | Promise<prisma.UserSubscriptionPayload | null>
-      | prisma.UserSubscriptionPayload
-      | null
-  }
-  owner: {
-    type: 'OwnerSubscriptionPayload'
-    args: Record<SubscriptionOwnerArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: true
-    resolve: (
-      root: core.RootValue<'Subscription'>,
-      args: { where?: OwnerSubscriptionWhereInput | null },
-      context: core.GetGen<'context'>,
-      info?: GraphQLResolveInfo
-    ) =>
-      | Promise<prisma.OwnerSubscriptionPayload | null>
-      | prisma.OwnerSubscriptionPayload
-      | null
-  }
   comment: {
     type: 'CommentSubscriptionPayload'
     args: Record<SubscriptionCommentArgs, core.NexusArgDef<string>>
@@ -2951,258 +2139,6 @@ export interface SubscriptionFieldDetails {
       | Promise<prisma.ServiceSubscriptionPayload | null>
       | prisma.ServiceSubscriptionPayload
       | null
-  }
-}
-
-// Types for UserSubscriptionPayload
-
-type UserSubscriptionPayloadObject =
-  | UserSubscriptionPayloadFields
-  | { name: 'mutation'; args?: [] | false; alias?: string }
-  | { name: 'node'; args?: [] | false; alias?: string }
-  | { name: 'updatedFields'; args?: [] | false; alias?: string }
-  | { name: 'previousValues'; args?: [] | false; alias?: string }
-
-type UserSubscriptionPayloadFields =
-  | 'mutation'
-  | 'node'
-  | 'updatedFields'
-  | 'previousValues'
-
-export interface UserSubscriptionPayloadFieldDetails {
-  mutation: {
-    type: 'MutationType'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<'UserSubscriptionPayload'>,
-      args: {},
-      context: core.GetGen<'context'>,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.MutationType> | prisma.MutationType
-  }
-  node: {
-    type: 'User'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: (
-      root: core.RootValue<'UserSubscriptionPayload'>,
-      args: {},
-      context: core.GetGen<'context'>,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.User | null> | prisma.User | null
-  }
-  updatedFields: {
-    type: 'String'
-    args: {}
-    description: string
-    list: true
-    nullable: false
-    resolve: undefined
-  }
-  previousValues: {
-    type: 'UserPreviousValues'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: (
-      root: core.RootValue<'UserSubscriptionPayload'>,
-      args: {},
-      context: core.GetGen<'context'>,
-      info?: GraphQLResolveInfo
-    ) =>
-      | Promise<prisma.UserPreviousValues | null>
-      | prisma.UserPreviousValues
-      | null
-  }
-}
-
-// Types for UserPreviousValues
-
-type UserPreviousValuesObject =
-  | UserPreviousValuesFields
-  | { name: 'id'; args?: [] | false; alias?: string }
-  | { name: 'createdAt'; args?: [] | false; alias?: string }
-  | { name: 'updatedAt'; args?: [] | false; alias?: string }
-  | { name: 'name'; args?: [] | false; alias?: string }
-
-type UserPreviousValuesFields = 'id' | 'createdAt' | 'updatedAt' | 'name'
-
-export interface UserPreviousValuesFieldDetails {
-  id: {
-    type: 'ID'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  createdAt: {
-    type: 'DateTime'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  updatedAt: {
-    type: 'DateTime'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  name: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-}
-
-// Types for OwnerSubscriptionPayload
-
-type OwnerSubscriptionPayloadObject =
-  | OwnerSubscriptionPayloadFields
-  | { name: 'mutation'; args?: [] | false; alias?: string }
-  | { name: 'node'; args?: [] | false; alias?: string }
-  | { name: 'updatedFields'; args?: [] | false; alias?: string }
-  | { name: 'previousValues'; args?: [] | false; alias?: string }
-
-type OwnerSubscriptionPayloadFields =
-  | 'mutation'
-  | 'node'
-  | 'updatedFields'
-  | 'previousValues'
-
-export interface OwnerSubscriptionPayloadFieldDetails {
-  mutation: {
-    type: 'MutationType'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<'OwnerSubscriptionPayload'>,
-      args: {},
-      context: core.GetGen<'context'>,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.MutationType> | prisma.MutationType
-  }
-  node: {
-    type: 'Owner'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: (
-      root: core.RootValue<'OwnerSubscriptionPayload'>,
-      args: {},
-      context: core.GetGen<'context'>,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Owner | null> | prisma.Owner | null
-  }
-  updatedFields: {
-    type: 'String'
-    args: {}
-    description: string
-    list: true
-    nullable: false
-    resolve: undefined
-  }
-  previousValues: {
-    type: 'OwnerPreviousValues'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: (
-      root: core.RootValue<'OwnerSubscriptionPayload'>,
-      args: {},
-      context: core.GetGen<'context'>,
-      info?: GraphQLResolveInfo
-    ) =>
-      | Promise<prisma.OwnerPreviousValues | null>
-      | prisma.OwnerPreviousValues
-      | null
-  }
-}
-
-// Types for OwnerPreviousValues
-
-type OwnerPreviousValuesObject =
-  | OwnerPreviousValuesFields
-  | { name: 'id'; args?: [] | false; alias?: string }
-  | { name: 'createdAt'; args?: [] | false; alias?: string }
-  | { name: 'updatedAt'; args?: [] | false; alias?: string }
-  | { name: 'displayName'; args?: [] | false; alias?: string }
-  | { name: 'username'; args?: [] | false; alias?: string }
-  | { name: 'photoURL'; args?: [] | false; alias?: string }
-
-type OwnerPreviousValuesFields =
-  | 'id'
-  | 'createdAt'
-  | 'updatedAt'
-  | 'displayName'
-  | 'username'
-  | 'photoURL'
-
-export interface OwnerPreviousValuesFieldDetails {
-  id: {
-    type: 'ID'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  createdAt: {
-    type: 'DateTime'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  updatedAt: {
-    type: 'DateTime'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  displayName: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  username: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  photoURL: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
   }
 }
 
@@ -3707,6 +2643,7 @@ type ServicePreviousValuesObject =
   | { name: 'description'; args?: [] | false; alias?: string }
   | { name: 'freetrial'; args?: [] | false; alias?: string }
   | { name: 'id'; args?: [] | false; alias?: string }
+  | { name: 'isOnline'; args?: [] | false; alias?: string }
   | { name: 'inquiry'; args?: [] | false; alias?: string }
   | { name: 'likeCount'; args?: [] | false; alias?: string }
   | { name: 'multiplans'; args?: [] | false; alias?: string }
@@ -3730,6 +2667,7 @@ type ServicePreviousValuesFields =
   | 'description'
   | 'freetrial'
   | 'id'
+  | 'isOnline'
   | 'inquiry'
   | 'likeCount'
   | 'multiplans'
@@ -3786,6 +2724,14 @@ export interface ServicePreviousValuesFieldDetails {
     description: string
     list: undefined
     nullable: false
+    resolve: undefined
+  }
+  isOnline: {
+    type: 'Boolean'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
     resolve: undefined
   }
   inquiry: {
@@ -3918,276 +2864,6 @@ export interface ServicePreviousValuesFieldDetails {
   }
 }
 
-export interface UserWhereUniqueInput {
-  id?: string | null
-}
-export type UserWhereUniqueInputInputObject =
-  | Extract<keyof UserWhereUniqueInput, string>
-  | { name: 'id'; alias?: string }
-
-export interface UserWhereInput {
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[]
-  id_not_in?: string[]
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
-  createdAt?: string | null
-  createdAt_not?: string | null
-  createdAt_in?: string[]
-  createdAt_not_in?: string[]
-  createdAt_lt?: string | null
-  createdAt_lte?: string | null
-  createdAt_gt?: string | null
-  createdAt_gte?: string | null
-  updatedAt?: string | null
-  updatedAt_not?: string | null
-  updatedAt_in?: string[]
-  updatedAt_not_in?: string[]
-  updatedAt_lt?: string | null
-  updatedAt_lte?: string | null
-  updatedAt_gt?: string | null
-  updatedAt_gte?: string | null
-  name?: string | null
-  name_not?: string | null
-  name_in?: string[]
-  name_not_in?: string[]
-  name_lt?: string | null
-  name_lte?: string | null
-  name_gt?: string | null
-  name_gte?: string | null
-  name_contains?: string | null
-  name_not_contains?: string | null
-  name_starts_with?: string | null
-  name_not_starts_with?: string | null
-  name_ends_with?: string | null
-  name_not_ends_with?: string | null
-  AND?: UserWhereInput[]
-  OR?: UserWhereInput[]
-  NOT?: UserWhereInput[]
-}
-export type UserWhereInputInputObject =
-  | Extract<keyof UserWhereInput, string>
-  | { name: 'id'; alias?: string }
-  | { name: 'id_not'; alias?: string }
-  | { name: 'id_in'; alias?: string }
-  | { name: 'id_not_in'; alias?: string }
-  | { name: 'id_lt'; alias?: string }
-  | { name: 'id_lte'; alias?: string }
-  | { name: 'id_gt'; alias?: string }
-  | { name: 'id_gte'; alias?: string }
-  | { name: 'id_contains'; alias?: string }
-  | { name: 'id_not_contains'; alias?: string }
-  | { name: 'id_starts_with'; alias?: string }
-  | { name: 'id_not_starts_with'; alias?: string }
-  | { name: 'id_ends_with'; alias?: string }
-  | { name: 'id_not_ends_with'; alias?: string }
-  | { name: 'createdAt'; alias?: string }
-  | { name: 'createdAt_not'; alias?: string }
-  | { name: 'createdAt_in'; alias?: string }
-  | { name: 'createdAt_not_in'; alias?: string }
-  | { name: 'createdAt_lt'; alias?: string }
-  | { name: 'createdAt_lte'; alias?: string }
-  | { name: 'createdAt_gt'; alias?: string }
-  | { name: 'createdAt_gte'; alias?: string }
-  | { name: 'updatedAt'; alias?: string }
-  | { name: 'updatedAt_not'; alias?: string }
-  | { name: 'updatedAt_in'; alias?: string }
-  | { name: 'updatedAt_not_in'; alias?: string }
-  | { name: 'updatedAt_lt'; alias?: string }
-  | { name: 'updatedAt_lte'; alias?: string }
-  | { name: 'updatedAt_gt'; alias?: string }
-  | { name: 'updatedAt_gte'; alias?: string }
-  | { name: 'name'; alias?: string }
-  | { name: 'name_not'; alias?: string }
-  | { name: 'name_in'; alias?: string }
-  | { name: 'name_not_in'; alias?: string }
-  | { name: 'name_lt'; alias?: string }
-  | { name: 'name_lte'; alias?: string }
-  | { name: 'name_gt'; alias?: string }
-  | { name: 'name_gte'; alias?: string }
-  | { name: 'name_contains'; alias?: string }
-  | { name: 'name_not_contains'; alias?: string }
-  | { name: 'name_starts_with'; alias?: string }
-  | { name: 'name_not_starts_with'; alias?: string }
-  | { name: 'name_ends_with'; alias?: string }
-  | { name: 'name_not_ends_with'; alias?: string }
-  | { name: 'AND'; alias?: string }
-  | { name: 'OR'; alias?: string }
-  | { name: 'NOT'; alias?: string }
-
-export interface OwnerWhereUniqueInput {
-  id?: string | null
-  username?: string | null
-}
-export type OwnerWhereUniqueInputInputObject =
-  | Extract<keyof OwnerWhereUniqueInput, string>
-  | { name: 'id'; alias?: string }
-  | { name: 'username'; alias?: string }
-
-export interface OwnerWhereInput {
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[]
-  id_not_in?: string[]
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
-  createdAt?: string | null
-  createdAt_not?: string | null
-  createdAt_in?: string[]
-  createdAt_not_in?: string[]
-  createdAt_lt?: string | null
-  createdAt_lte?: string | null
-  createdAt_gt?: string | null
-  createdAt_gte?: string | null
-  updatedAt?: string | null
-  updatedAt_not?: string | null
-  updatedAt_in?: string[]
-  updatedAt_not_in?: string[]
-  updatedAt_lt?: string | null
-  updatedAt_lte?: string | null
-  updatedAt_gt?: string | null
-  updatedAt_gte?: string | null
-  displayName?: string | null
-  displayName_not?: string | null
-  displayName_in?: string[]
-  displayName_not_in?: string[]
-  displayName_lt?: string | null
-  displayName_lte?: string | null
-  displayName_gt?: string | null
-  displayName_gte?: string | null
-  displayName_contains?: string | null
-  displayName_not_contains?: string | null
-  displayName_starts_with?: string | null
-  displayName_not_starts_with?: string | null
-  displayName_ends_with?: string | null
-  displayName_not_ends_with?: string | null
-  username?: string | null
-  username_not?: string | null
-  username_in?: string[]
-  username_not_in?: string[]
-  username_lt?: string | null
-  username_lte?: string | null
-  username_gt?: string | null
-  username_gte?: string | null
-  username_contains?: string | null
-  username_not_contains?: string | null
-  username_starts_with?: string | null
-  username_not_starts_with?: string | null
-  username_ends_with?: string | null
-  username_not_ends_with?: string | null
-  photoURL?: string | null
-  photoURL_not?: string | null
-  photoURL_in?: string[]
-  photoURL_not_in?: string[]
-  photoURL_lt?: string | null
-  photoURL_lte?: string | null
-  photoURL_gt?: string | null
-  photoURL_gte?: string | null
-  photoURL_contains?: string | null
-  photoURL_not_contains?: string | null
-  photoURL_starts_with?: string | null
-  photoURL_not_starts_with?: string | null
-  photoURL_ends_with?: string | null
-  photoURL_not_ends_with?: string | null
-  AND?: OwnerWhereInput[]
-  OR?: OwnerWhereInput[]
-  NOT?: OwnerWhereInput[]
-}
-export type OwnerWhereInputInputObject =
-  | Extract<keyof OwnerWhereInput, string>
-  | { name: 'id'; alias?: string }
-  | { name: 'id_not'; alias?: string }
-  | { name: 'id_in'; alias?: string }
-  | { name: 'id_not_in'; alias?: string }
-  | { name: 'id_lt'; alias?: string }
-  | { name: 'id_lte'; alias?: string }
-  | { name: 'id_gt'; alias?: string }
-  | { name: 'id_gte'; alias?: string }
-  | { name: 'id_contains'; alias?: string }
-  | { name: 'id_not_contains'; alias?: string }
-  | { name: 'id_starts_with'; alias?: string }
-  | { name: 'id_not_starts_with'; alias?: string }
-  | { name: 'id_ends_with'; alias?: string }
-  | { name: 'id_not_ends_with'; alias?: string }
-  | { name: 'createdAt'; alias?: string }
-  | { name: 'createdAt_not'; alias?: string }
-  | { name: 'createdAt_in'; alias?: string }
-  | { name: 'createdAt_not_in'; alias?: string }
-  | { name: 'createdAt_lt'; alias?: string }
-  | { name: 'createdAt_lte'; alias?: string }
-  | { name: 'createdAt_gt'; alias?: string }
-  | { name: 'createdAt_gte'; alias?: string }
-  | { name: 'updatedAt'; alias?: string }
-  | { name: 'updatedAt_not'; alias?: string }
-  | { name: 'updatedAt_in'; alias?: string }
-  | { name: 'updatedAt_not_in'; alias?: string }
-  | { name: 'updatedAt_lt'; alias?: string }
-  | { name: 'updatedAt_lte'; alias?: string }
-  | { name: 'updatedAt_gt'; alias?: string }
-  | { name: 'updatedAt_gte'; alias?: string }
-  | { name: 'displayName'; alias?: string }
-  | { name: 'displayName_not'; alias?: string }
-  | { name: 'displayName_in'; alias?: string }
-  | { name: 'displayName_not_in'; alias?: string }
-  | { name: 'displayName_lt'; alias?: string }
-  | { name: 'displayName_lte'; alias?: string }
-  | { name: 'displayName_gt'; alias?: string }
-  | { name: 'displayName_gte'; alias?: string }
-  | { name: 'displayName_contains'; alias?: string }
-  | { name: 'displayName_not_contains'; alias?: string }
-  | { name: 'displayName_starts_with'; alias?: string }
-  | { name: 'displayName_not_starts_with'; alias?: string }
-  | { name: 'displayName_ends_with'; alias?: string }
-  | { name: 'displayName_not_ends_with'; alias?: string }
-  | { name: 'username'; alias?: string }
-  | { name: 'username_not'; alias?: string }
-  | { name: 'username_in'; alias?: string }
-  | { name: 'username_not_in'; alias?: string }
-  | { name: 'username_lt'; alias?: string }
-  | { name: 'username_lte'; alias?: string }
-  | { name: 'username_gt'; alias?: string }
-  | { name: 'username_gte'; alias?: string }
-  | { name: 'username_contains'; alias?: string }
-  | { name: 'username_not_contains'; alias?: string }
-  | { name: 'username_starts_with'; alias?: string }
-  | { name: 'username_not_starts_with'; alias?: string }
-  | { name: 'username_ends_with'; alias?: string }
-  | { name: 'username_not_ends_with'; alias?: string }
-  | { name: 'photoURL'; alias?: string }
-  | { name: 'photoURL_not'; alias?: string }
-  | { name: 'photoURL_in'; alias?: string }
-  | { name: 'photoURL_not_in'; alias?: string }
-  | { name: 'photoURL_lt'; alias?: string }
-  | { name: 'photoURL_lte'; alias?: string }
-  | { name: 'photoURL_gt'; alias?: string }
-  | { name: 'photoURL_gte'; alias?: string }
-  | { name: 'photoURL_contains'; alias?: string }
-  | { name: 'photoURL_not_contains'; alias?: string }
-  | { name: 'photoURL_starts_with'; alias?: string }
-  | { name: 'photoURL_not_starts_with'; alias?: string }
-  | { name: 'photoURL_ends_with'; alias?: string }
-  | { name: 'photoURL_not_ends_with'; alias?: string }
-  | { name: 'AND'; alias?: string }
-  | { name: 'OR'; alias?: string }
-  | { name: 'NOT'; alias?: string }
-
 export interface CommentWhereUniqueInput {
   id?: string | null
 }
@@ -4261,6 +2937,8 @@ export interface ServiceWhereInput {
   id_not_starts_with?: string | null
   id_ends_with?: string | null
   id_not_ends_with?: string | null
+  isOnline?: boolean | null
+  isOnline_not?: boolean | null
   inquiry?: string | null
   inquiry_not?: string | null
   inquiry_in?: string[]
@@ -4523,6 +3201,8 @@ export type ServiceWhereInputInputObject =
   | { name: 'id_not_starts_with'; alias?: string }
   | { name: 'id_ends_with'; alias?: string }
   | { name: 'id_not_ends_with'; alias?: string }
+  | { name: 'isOnline'; alias?: string }
+  | { name: 'isOnline_not'; alias?: string }
   | { name: 'inquiry'; alias?: string }
   | { name: 'inquiry_not'; alias?: string }
   | { name: 'inquiry_in'; alias?: string }
@@ -5218,60 +3898,6 @@ export type ServiceWhereUniqueInputInputObject =
   | Extract<keyof ServiceWhereUniqueInput, string>
   | { name: 'id'; alias?: string }
 
-export interface UserCreateInput {
-  name?: string
-}
-export type UserCreateInputInputObject =
-  | Extract<keyof UserCreateInput, string>
-  | { name: 'name'; alias?: string }
-
-export interface UserUpdateInput {
-  name?: string | null
-}
-export type UserUpdateInputInputObject =
-  | Extract<keyof UserUpdateInput, string>
-  | { name: 'name'; alias?: string }
-
-export interface UserUpdateManyMutationInput {
-  name?: string | null
-}
-export type UserUpdateManyMutationInputInputObject =
-  | Extract<keyof UserUpdateManyMutationInput, string>
-  | { name: 'name'; alias?: string }
-
-export interface OwnerCreateInput {
-  displayName?: string
-  username?: string
-  photoURL?: string | null
-}
-export type OwnerCreateInputInputObject =
-  | Extract<keyof OwnerCreateInput, string>
-  | { name: 'displayName'; alias?: string }
-  | { name: 'username'; alias?: string }
-  | { name: 'photoURL'; alias?: string }
-
-export interface OwnerUpdateInput {
-  displayName?: string | null
-  username?: string | null
-  photoURL?: string | null
-}
-export type OwnerUpdateInputInputObject =
-  | Extract<keyof OwnerUpdateInput, string>
-  | { name: 'displayName'; alias?: string }
-  | { name: 'username'; alias?: string }
-  | { name: 'photoURL'; alias?: string }
-
-export interface OwnerUpdateManyMutationInput {
-  displayName?: string | null
-  username?: string | null
-  photoURL?: string | null
-}
-export type OwnerUpdateManyMutationInputInputObject =
-  | Extract<keyof OwnerUpdateManyMutationInput, string>
-  | { name: 'displayName'; alias?: string }
-  | { name: 'username'; alias?: string }
-  | { name: 'photoURL'; alias?: string }
-
 export interface CommentCreateInput {
   text?: string
   service?: ServiceCreateOneInput
@@ -5297,6 +3923,7 @@ export interface ServiceCreateInput {
   category?: CategoryCreateOneWithoutServicesInput | null
   description?: string
   freetrial?: string | null
+  isOnline?: boolean | null
   inquiry?: string | null
   likeCount?: number | null
   multiplans?: string | null
@@ -5320,6 +3947,7 @@ export type ServiceCreateInputInputObject =
   | { name: 'category'; alias?: string }
   | { name: 'description'; alias?: string }
   | { name: 'freetrial'; alias?: string }
+  | { name: 'isOnline'; alias?: string }
   | { name: 'inquiry'; alias?: string }
   | { name: 'likeCount'; alias?: string }
   | { name: 'multiplans'; alias?: string }
@@ -5410,6 +4038,7 @@ export interface ServiceUpdateDataInput {
   category?: CategoryUpdateOneWithoutServicesInput | null
   description?: string | null
   freetrial?: string | null
+  isOnline?: boolean | null
   inquiry?: string | null
   likeCount?: number | null
   multiplans?: string | null
@@ -5433,6 +4062,7 @@ export type ServiceUpdateDataInputInputObject =
   | { name: 'category'; alias?: string }
   | { name: 'description'; alias?: string }
   | { name: 'freetrial'; alias?: string }
+  | { name: 'isOnline'; alias?: string }
   | { name: 'inquiry'; alias?: string }
   | { name: 'likeCount'; alias?: string }
   | { name: 'multiplans'; alias?: string }
@@ -5805,6 +4435,7 @@ export interface ServiceCreateWithoutReviewsInput {
   category?: CategoryCreateOneWithoutServicesInput | null
   description?: string
   freetrial?: string | null
+  isOnline?: boolean | null
   inquiry?: string | null
   likeCount?: number | null
   multiplans?: string | null
@@ -5827,6 +4458,7 @@ export type ServiceCreateWithoutReviewsInputInputObject =
   | { name: 'category'; alias?: string }
   | { name: 'description'; alias?: string }
   | { name: 'freetrial'; alias?: string }
+  | { name: 'isOnline'; alias?: string }
   | { name: 'inquiry'; alias?: string }
   | { name: 'likeCount'; alias?: string }
   | { name: 'multiplans'; alias?: string }
@@ -5878,6 +4510,7 @@ export interface ServiceUpdateWithoutReviewsDataInput {
   category?: CategoryUpdateOneWithoutServicesInput | null
   description?: string | null
   freetrial?: string | null
+  isOnline?: boolean | null
   inquiry?: string | null
   likeCount?: number | null
   multiplans?: string | null
@@ -5900,6 +4533,7 @@ export type ServiceUpdateWithoutReviewsDataInputInputObject =
   | { name: 'category'; alias?: string }
   | { name: 'description'; alias?: string }
   | { name: 'freetrial'; alias?: string }
+  | { name: 'isOnline'; alias?: string }
   | { name: 'inquiry'; alias?: string }
   | { name: 'likeCount'; alias?: string }
   | { name: 'multiplans'; alias?: string }
@@ -5966,6 +4600,7 @@ export interface ServiceCreateWithoutCategoryInput {
   address?: string | null
   description?: string
   freetrial?: string | null
+  isOnline?: boolean | null
   inquiry?: string | null
   likeCount?: number | null
   multiplans?: string | null
@@ -5988,6 +4623,7 @@ export type ServiceCreateWithoutCategoryInputInputObject =
   | { name: 'address'; alias?: string }
   | { name: 'description'; alias?: string }
   | { name: 'freetrial'; alias?: string }
+  | { name: 'isOnline'; alias?: string }
   | { name: 'inquiry'; alias?: string }
   | { name: 'likeCount'; alias?: string }
   | { name: 'multiplans'; alias?: string }
@@ -6054,6 +4690,7 @@ export interface ServiceUpdateWithoutCategoryDataInput {
   address?: string | null
   description?: string | null
   freetrial?: string | null
+  isOnline?: boolean | null
   inquiry?: string | null
   likeCount?: number | null
   multiplans?: string | null
@@ -6076,6 +4713,7 @@ export type ServiceUpdateWithoutCategoryDataInputInputObject =
   | { name: 'address'; alias?: string }
   | { name: 'description'; alias?: string }
   | { name: 'freetrial'; alias?: string }
+  | { name: 'isOnline'; alias?: string }
   | { name: 'inquiry'; alias?: string }
   | { name: 'likeCount'; alias?: string }
   | { name: 'multiplans'; alias?: string }
@@ -6169,6 +4807,8 @@ export interface ServiceScalarWhereInput {
   id_not_starts_with?: string | null
   id_ends_with?: string | null
   id_not_ends_with?: string | null
+  isOnline?: boolean | null
+  isOnline_not?: boolean | null
   inquiry?: string | null
   inquiry_not?: string | null
   inquiry_in?: string[]
@@ -6427,6 +5067,8 @@ export type ServiceScalarWhereInputInputObject =
   | { name: 'id_not_starts_with'; alias?: string }
   | { name: 'id_ends_with'; alias?: string }
   | { name: 'id_not_ends_with'; alias?: string }
+  | { name: 'isOnline'; alias?: string }
+  | { name: 'isOnline_not'; alias?: string }
   | { name: 'inquiry'; alias?: string }
   | { name: 'inquiry_not'; alias?: string }
   | { name: 'inquiry_in'; alias?: string }
@@ -6632,6 +5274,7 @@ export interface ServiceUpdateManyDataInput {
   address?: string | null
   description?: string | null
   freetrial?: string | null
+  isOnline?: boolean | null
   inquiry?: string | null
   likeCount?: number | null
   multiplans?: string | null
@@ -6653,6 +5296,7 @@ export type ServiceUpdateManyDataInputInputObject =
   | { name: 'address'; alias?: string }
   | { name: 'description'; alias?: string }
   | { name: 'freetrial'; alias?: string }
+  | { name: 'isOnline'; alias?: string }
   | { name: 'inquiry'; alias?: string }
   | { name: 'likeCount'; alias?: string }
   | { name: 'multiplans'; alias?: string }
@@ -6685,6 +5329,7 @@ export interface ServiceUpdateInput {
   category?: CategoryUpdateOneWithoutServicesInput | null
   description?: string | null
   freetrial?: string | null
+  isOnline?: boolean | null
   inquiry?: string | null
   likeCount?: number | null
   multiplans?: string | null
@@ -6708,6 +5353,7 @@ export type ServiceUpdateInputInputObject =
   | { name: 'category'; alias?: string }
   | { name: 'description'; alias?: string }
   | { name: 'freetrial'; alias?: string }
+  | { name: 'isOnline'; alias?: string }
   | { name: 'inquiry'; alias?: string }
   | { name: 'likeCount'; alias?: string }
   | { name: 'multiplans'; alias?: string }
@@ -6729,6 +5375,7 @@ export interface ServiceUpdateManyMutationInput {
   address?: string | null
   description?: string | null
   freetrial?: string | null
+  isOnline?: boolean | null
   inquiry?: string | null
   likeCount?: number | null
   multiplans?: string | null
@@ -6750,6 +5397,7 @@ export type ServiceUpdateManyMutationInputInputObject =
   | { name: 'address'; alias?: string }
   | { name: 'description'; alias?: string }
   | { name: 'freetrial'; alias?: string }
+  | { name: 'isOnline'; alias?: string }
   | { name: 'inquiry'; alias?: string }
   | { name: 'likeCount'; alias?: string }
   | { name: 'multiplans'; alias?: string }
@@ -6765,48 +5413,6 @@ export type ServiceUpdateManyMutationInputInputObject =
   | { name: 'url'; alias?: string }
   | { name: 'viewCount'; alias?: string }
   | { name: 'yomigana'; alias?: string }
-
-export interface UserSubscriptionWhereInput {
-  mutation_in?: prisma.MutationType[]
-  updatedFields_contains?: string | null
-  updatedFields_contains_every?: string[]
-  updatedFields_contains_some?: string[]
-  node?: UserWhereInput | null
-  AND?: UserSubscriptionWhereInput[]
-  OR?: UserSubscriptionWhereInput[]
-  NOT?: UserSubscriptionWhereInput[]
-}
-export type UserSubscriptionWhereInputInputObject =
-  | Extract<keyof UserSubscriptionWhereInput, string>
-  | { name: 'mutation_in'; alias?: string }
-  | { name: 'updatedFields_contains'; alias?: string }
-  | { name: 'updatedFields_contains_every'; alias?: string }
-  | { name: 'updatedFields_contains_some'; alias?: string }
-  | { name: 'node'; alias?: string }
-  | { name: 'AND'; alias?: string }
-  | { name: 'OR'; alias?: string }
-  | { name: 'NOT'; alias?: string }
-
-export interface OwnerSubscriptionWhereInput {
-  mutation_in?: prisma.MutationType[]
-  updatedFields_contains?: string | null
-  updatedFields_contains_every?: string[]
-  updatedFields_contains_some?: string[]
-  node?: OwnerWhereInput | null
-  AND?: OwnerSubscriptionWhereInput[]
-  OR?: OwnerSubscriptionWhereInput[]
-  NOT?: OwnerSubscriptionWhereInput[]
-}
-export type OwnerSubscriptionWhereInputInputObject =
-  | Extract<keyof OwnerSubscriptionWhereInput, string>
-  | { name: 'mutation_in'; alias?: string }
-  | { name: 'updatedFields_contains'; alias?: string }
-  | { name: 'updatedFields_contains_every'; alias?: string }
-  | { name: 'updatedFields_contains_some'; alias?: string }
-  | { name: 'node'; alias?: string }
-  | { name: 'AND'; alias?: string }
-  | { name: 'OR'; alias?: string }
-  | { name: 'NOT'; alias?: string }
 
 export interface CommentSubscriptionWhereInput {
   mutation_in?: prisma.MutationType[]
@@ -6892,30 +5498,6 @@ export type ServiceSubscriptionWhereInputInputObject =
   | { name: 'OR'; alias?: string }
   | { name: 'NOT'; alias?: string }
 
-export type UserOrderByInputValues =
-  | 'id_ASC'
-  | 'id_DESC'
-  | 'createdAt_ASC'
-  | 'createdAt_DESC'
-  | 'updatedAt_ASC'
-  | 'updatedAt_DESC'
-  | 'name_ASC'
-  | 'name_DESC'
-
-export type OwnerOrderByInputValues =
-  | 'id_ASC'
-  | 'id_DESC'
-  | 'createdAt_ASC'
-  | 'createdAt_DESC'
-  | 'updatedAt_ASC'
-  | 'updatedAt_DESC'
-  | 'displayName_ASC'
-  | 'displayName_DESC'
-  | 'username_ASC'
-  | 'username_DESC'
-  | 'photoURL_ASC'
-  | 'photoURL_DESC'
-
 export type ServiceOrderByInputValues =
   | 'address_ASC'
   | 'address_DESC'
@@ -6927,6 +5509,8 @@ export type ServiceOrderByInputValues =
   | 'freetrial_DESC'
   | 'id_ASC'
   | 'id_DESC'
+  | 'isOnline_ASC'
+  | 'isOnline_DESC'
   | 'inquiry_ASC'
   | 'inquiry_DESC'
   | 'likeCount_ASC'

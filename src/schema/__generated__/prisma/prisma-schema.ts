@@ -11,19 +11,11 @@ export const typeDefs = /* GraphQL */ `
     count: Int!
   }
 
-  type AggregateOwner {
-    count: Int!
-  }
-
   type AggregateReview {
     count: Int!
   }
 
   type AggregateService {
-    count: Int!
-  }
-
-  type AggregateUser {
     count: Int!
   }
 
@@ -420,19 +412,6 @@ export const typeDefs = /* GraphQL */ `
     ): Comment!
     deleteComment(where: CommentWhereUniqueInput!): Comment
     deleteManyComments(where: CommentWhereInput): BatchPayload!
-    createOwner(data: OwnerCreateInput!): Owner!
-    updateOwner(data: OwnerUpdateInput!, where: OwnerWhereUniqueInput!): Owner
-    updateManyOwners(
-      data: OwnerUpdateManyMutationInput!
-      where: OwnerWhereInput
-    ): BatchPayload!
-    upsertOwner(
-      where: OwnerWhereUniqueInput!
-      create: OwnerCreateInput!
-      update: OwnerUpdateInput!
-    ): Owner!
-    deleteOwner(where: OwnerWhereUniqueInput!): Owner
-    deleteManyOwners(where: OwnerWhereInput): BatchPayload!
     createReview(data: ReviewCreateInput!): Review!
     updateReview(
       data: ReviewUpdateInput!
@@ -465,19 +444,6 @@ export const typeDefs = /* GraphQL */ `
     ): Service!
     deleteService(where: ServiceWhereUniqueInput!): Service
     deleteManyServices(where: ServiceWhereInput): BatchPayload!
-    createUser(data: UserCreateInput!): User!
-    updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
-    updateManyUsers(
-      data: UserUpdateManyMutationInput!
-      where: UserWhereInput
-    ): BatchPayload!
-    upsertUser(
-      where: UserWhereUniqueInput!
-      create: UserCreateInput!
-      update: UserUpdateInput!
-    ): User!
-    deleteUser(where: UserWhereUniqueInput!): User
-    deleteManyUsers(where: UserWhereInput): BatchPayload!
   }
 
   enum MutationType {
@@ -488,169 +454,6 @@ export const typeDefs = /* GraphQL */ `
 
   interface Node {
     id: ID!
-  }
-
-  type Owner {
-    id: ID!
-    createdAt: DateTime!
-    updatedAt: DateTime!
-    displayName: String!
-    username: String!
-    photoURL: String
-  }
-
-  type OwnerConnection {
-    pageInfo: PageInfo!
-    edges: [OwnerEdge]!
-    aggregate: AggregateOwner!
-  }
-
-  input OwnerCreateInput {
-    displayName: String!
-    username: String!
-    photoURL: String
-  }
-
-  type OwnerEdge {
-    node: Owner!
-    cursor: String!
-  }
-
-  enum OwnerOrderByInput {
-    id_ASC
-    id_DESC
-    createdAt_ASC
-    createdAt_DESC
-    updatedAt_ASC
-    updatedAt_DESC
-    displayName_ASC
-    displayName_DESC
-    username_ASC
-    username_DESC
-    photoURL_ASC
-    photoURL_DESC
-  }
-
-  type OwnerPreviousValues {
-    id: ID!
-    createdAt: DateTime!
-    updatedAt: DateTime!
-    displayName: String!
-    username: String!
-    photoURL: String
-  }
-
-  type OwnerSubscriptionPayload {
-    mutation: MutationType!
-    node: Owner
-    updatedFields: [String!]
-    previousValues: OwnerPreviousValues
-  }
-
-  input OwnerSubscriptionWhereInput {
-    mutation_in: [MutationType!]
-    updatedFields_contains: String
-    updatedFields_contains_every: [String!]
-    updatedFields_contains_some: [String!]
-    node: OwnerWhereInput
-    AND: [OwnerSubscriptionWhereInput!]
-    OR: [OwnerSubscriptionWhereInput!]
-    NOT: [OwnerSubscriptionWhereInput!]
-  }
-
-  input OwnerUpdateInput {
-    displayName: String
-    username: String
-    photoURL: String
-  }
-
-  input OwnerUpdateManyMutationInput {
-    displayName: String
-    username: String
-    photoURL: String
-  }
-
-  input OwnerWhereInput {
-    id: ID
-    id_not: ID
-    id_in: [ID!]
-    id_not_in: [ID!]
-    id_lt: ID
-    id_lte: ID
-    id_gt: ID
-    id_gte: ID
-    id_contains: ID
-    id_not_contains: ID
-    id_starts_with: ID
-    id_not_starts_with: ID
-    id_ends_with: ID
-    id_not_ends_with: ID
-    createdAt: DateTime
-    createdAt_not: DateTime
-    createdAt_in: [DateTime!]
-    createdAt_not_in: [DateTime!]
-    createdAt_lt: DateTime
-    createdAt_lte: DateTime
-    createdAt_gt: DateTime
-    createdAt_gte: DateTime
-    updatedAt: DateTime
-    updatedAt_not: DateTime
-    updatedAt_in: [DateTime!]
-    updatedAt_not_in: [DateTime!]
-    updatedAt_lt: DateTime
-    updatedAt_lte: DateTime
-    updatedAt_gt: DateTime
-    updatedAt_gte: DateTime
-    displayName: String
-    displayName_not: String
-    displayName_in: [String!]
-    displayName_not_in: [String!]
-    displayName_lt: String
-    displayName_lte: String
-    displayName_gt: String
-    displayName_gte: String
-    displayName_contains: String
-    displayName_not_contains: String
-    displayName_starts_with: String
-    displayName_not_starts_with: String
-    displayName_ends_with: String
-    displayName_not_ends_with: String
-    username: String
-    username_not: String
-    username_in: [String!]
-    username_not_in: [String!]
-    username_lt: String
-    username_lte: String
-    username_gt: String
-    username_gte: String
-    username_contains: String
-    username_not_contains: String
-    username_starts_with: String
-    username_not_starts_with: String
-    username_ends_with: String
-    username_not_ends_with: String
-    photoURL: String
-    photoURL_not: String
-    photoURL_in: [String!]
-    photoURL_not_in: [String!]
-    photoURL_lt: String
-    photoURL_lte: String
-    photoURL_gt: String
-    photoURL_gte: String
-    photoURL_contains: String
-    photoURL_not_contains: String
-    photoURL_starts_with: String
-    photoURL_not_starts_with: String
-    photoURL_ends_with: String
-    photoURL_not_ends_with: String
-    AND: [OwnerWhereInput!]
-    OR: [OwnerWhereInput!]
-    NOT: [OwnerWhereInput!]
-  }
-
-  input OwnerWhereUniqueInput {
-    id: ID
-    username: String
   }
 
   type PageInfo {
@@ -699,25 +502,6 @@ export const typeDefs = /* GraphQL */ `
       first: Int
       last: Int
     ): CommentConnection!
-    owner(where: OwnerWhereUniqueInput!): Owner
-    owners(
-      where: OwnerWhereInput
-      orderBy: OwnerOrderByInput
-      skip: Int
-      after: String
-      before: String
-      first: Int
-      last: Int
-    ): [Owner]!
-    ownersConnection(
-      where: OwnerWhereInput
-      orderBy: OwnerOrderByInput
-      skip: Int
-      after: String
-      before: String
-      first: Int
-      last: Int
-    ): OwnerConnection!
     review(where: ReviewWhereUniqueInput!): Review
     reviews(
       where: ReviewWhereInput
@@ -756,25 +540,6 @@ export const typeDefs = /* GraphQL */ `
       first: Int
       last: Int
     ): ServiceConnection!
-    user(where: UserWhereUniqueInput!): User
-    users(
-      where: UserWhereInput
-      orderBy: UserOrderByInput
-      skip: Int
-      after: String
-      before: String
-      first: Int
-      last: Int
-    ): [User]!
-    usersConnection(
-      where: UserWhereInput
-      orderBy: UserOrderByInput
-      skip: Int
-      after: String
-      before: String
-      first: Int
-      last: Int
-    ): UserConnection!
     node(id: ID!): Node
   }
 
@@ -1132,6 +897,7 @@ export const typeDefs = /* GraphQL */ `
     description: String!
     freetrial: String
     id: ID!
+    isOnline: Boolean
     inquiry: String
     likeCount: Int!
     multiplans: String
@@ -1170,6 +936,7 @@ export const typeDefs = /* GraphQL */ `
     category: CategoryCreateOneWithoutServicesInput
     description: String!
     freetrial: String
+    isOnline: Boolean
     inquiry: String
     likeCount: Int
     multiplans: String
@@ -1207,6 +974,7 @@ export const typeDefs = /* GraphQL */ `
     address: String
     description: String!
     freetrial: String
+    isOnline: Boolean
     inquiry: String
     likeCount: Int
     multiplans: String
@@ -1230,6 +998,7 @@ export const typeDefs = /* GraphQL */ `
     category: CategoryCreateOneWithoutServicesInput
     description: String!
     freetrial: String
+    isOnline: Boolean
     inquiry: String
     likeCount: Int
     multiplans: String
@@ -1263,6 +1032,8 @@ export const typeDefs = /* GraphQL */ `
     freetrial_DESC
     id_ASC
     id_DESC
+    isOnline_ASC
+    isOnline_DESC
     inquiry_ASC
     inquiry_DESC
     likeCount_ASC
@@ -1303,6 +1074,7 @@ export const typeDefs = /* GraphQL */ `
     description: String!
     freetrial: String
     id: ID!
+    isOnline: Boolean
     inquiry: String
     likeCount: Int!
     multiplans: String
@@ -1386,6 +1158,8 @@ export const typeDefs = /* GraphQL */ `
     id_not_starts_with: ID
     id_ends_with: ID
     id_not_ends_with: ID
+    isOnline: Boolean
+    isOnline_not: Boolean
     inquiry: String
     inquiry_not: String
     inquiry_in: [String!]
@@ -1602,6 +1376,7 @@ export const typeDefs = /* GraphQL */ `
     category: CategoryUpdateOneWithoutServicesInput
     description: String
     freetrial: String
+    isOnline: Boolean
     inquiry: String
     likeCount: Int
     multiplans: String
@@ -1625,6 +1400,7 @@ export const typeDefs = /* GraphQL */ `
     category: CategoryUpdateOneWithoutServicesInput
     description: String
     freetrial: String
+    isOnline: Boolean
     inquiry: String
     likeCount: Int
     multiplans: String
@@ -1647,6 +1423,7 @@ export const typeDefs = /* GraphQL */ `
     address: String
     description: String
     freetrial: String
+    isOnline: Boolean
     inquiry: String
     likeCount: Int
     multiplans: String
@@ -1668,6 +1445,7 @@ export const typeDefs = /* GraphQL */ `
     address: String
     description: String
     freetrial: String
+    isOnline: Boolean
     inquiry: String
     likeCount: Int
     multiplans: String
@@ -1720,6 +1498,7 @@ export const typeDefs = /* GraphQL */ `
     address: String
     description: String
     freetrial: String
+    isOnline: Boolean
     inquiry: String
     likeCount: Int
     multiplans: String
@@ -1743,6 +1522,7 @@ export const typeDefs = /* GraphQL */ `
     category: CategoryUpdateOneWithoutServicesInput
     description: String
     freetrial: String
+    isOnline: Boolean
     inquiry: String
     likeCount: Int
     multiplans: String
@@ -1847,6 +1627,8 @@ export const typeDefs = /* GraphQL */ `
     id_not_starts_with: ID
     id_ends_with: ID
     id_not_ends_with: ID
+    isOnline: Boolean
+    isOnline_not: Boolean
     inquiry: String
     inquiry_not: String
     inquiry_in: [String!]
@@ -2050,129 +1832,7 @@ export const typeDefs = /* GraphQL */ `
   type Subscription {
     category(where: CategorySubscriptionWhereInput): CategorySubscriptionPayload
     comment(where: CommentSubscriptionWhereInput): CommentSubscriptionPayload
-    owner(where: OwnerSubscriptionWhereInput): OwnerSubscriptionPayload
     review(where: ReviewSubscriptionWhereInput): ReviewSubscriptionPayload
     service(where: ServiceSubscriptionWhereInput): ServiceSubscriptionPayload
-    user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
-  }
-
-  type User {
-    id: ID!
-    createdAt: DateTime!
-    updatedAt: DateTime!
-    name: String!
-  }
-
-  type UserConnection {
-    pageInfo: PageInfo!
-    edges: [UserEdge]!
-    aggregate: AggregateUser!
-  }
-
-  input UserCreateInput {
-    name: String!
-  }
-
-  type UserEdge {
-    node: User!
-    cursor: String!
-  }
-
-  enum UserOrderByInput {
-    id_ASC
-    id_DESC
-    createdAt_ASC
-    createdAt_DESC
-    updatedAt_ASC
-    updatedAt_DESC
-    name_ASC
-    name_DESC
-  }
-
-  type UserPreviousValues {
-    id: ID!
-    createdAt: DateTime!
-    updatedAt: DateTime!
-    name: String!
-  }
-
-  type UserSubscriptionPayload {
-    mutation: MutationType!
-    node: User
-    updatedFields: [String!]
-    previousValues: UserPreviousValues
-  }
-
-  input UserSubscriptionWhereInput {
-    mutation_in: [MutationType!]
-    updatedFields_contains: String
-    updatedFields_contains_every: [String!]
-    updatedFields_contains_some: [String!]
-    node: UserWhereInput
-    AND: [UserSubscriptionWhereInput!]
-    OR: [UserSubscriptionWhereInput!]
-    NOT: [UserSubscriptionWhereInput!]
-  }
-
-  input UserUpdateInput {
-    name: String
-  }
-
-  input UserUpdateManyMutationInput {
-    name: String
-  }
-
-  input UserWhereInput {
-    id: ID
-    id_not: ID
-    id_in: [ID!]
-    id_not_in: [ID!]
-    id_lt: ID
-    id_lte: ID
-    id_gt: ID
-    id_gte: ID
-    id_contains: ID
-    id_not_contains: ID
-    id_starts_with: ID
-    id_not_starts_with: ID
-    id_ends_with: ID
-    id_not_ends_with: ID
-    createdAt: DateTime
-    createdAt_not: DateTime
-    createdAt_in: [DateTime!]
-    createdAt_not_in: [DateTime!]
-    createdAt_lt: DateTime
-    createdAt_lte: DateTime
-    createdAt_gt: DateTime
-    createdAt_gte: DateTime
-    updatedAt: DateTime
-    updatedAt_not: DateTime
-    updatedAt_in: [DateTime!]
-    updatedAt_not_in: [DateTime!]
-    updatedAt_lt: DateTime
-    updatedAt_lte: DateTime
-    updatedAt_gt: DateTime
-    updatedAt_gte: DateTime
-    name: String
-    name_not: String
-    name_in: [String!]
-    name_not_in: [String!]
-    name_lt: String
-    name_lte: String
-    name_gt: String
-    name_gte: String
-    name_contains: String
-    name_not_contains: String
-    name_starts_with: String
-    name_not_starts_with: String
-    name_ends_with: String
-    name_not_ends_with: String
-    AND: [UserWhereInput!]
-    OR: [UserWhereInput!]
-    NOT: [UserWhereInput!]
-  }
-
-  input UserWhereUniqueInput {
-    id: ID
   }
 `

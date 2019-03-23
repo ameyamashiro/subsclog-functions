@@ -16,10 +16,8 @@ export type AtLeastOne<T, U = { [K in keyof T]: Pick<T, K> }> = Partial<T> &
 export interface Exists {
   category: (where?: CategoryWhereInput) => Promise<boolean>
   comment: (where?: CommentWhereInput) => Promise<boolean>
-  owner: (where?: OwnerWhereInput) => Promise<boolean>
   review: (where?: ReviewWhereInput) => Promise<boolean>
   service: (where?: ServiceWhereInput) => Promise<boolean>
-  user: (where?: UserWhereInput) => Promise<boolean>
 }
 
 export interface Node {}
@@ -79,25 +77,6 @@ export interface Prisma {
     first?: Int
     last?: Int
   }) => CommentConnectionPromise
-  owner: (where: OwnerWhereUniqueInput) => OwnerPromise
-  owners: (args?: {
-    where?: OwnerWhereInput
-    orderBy?: OwnerOrderByInput
-    skip?: Int
-    after?: String
-    before?: String
-    first?: Int
-    last?: Int
-  }) => FragmentableArray<Owner>
-  ownersConnection: (args?: {
-    where?: OwnerWhereInput
-    orderBy?: OwnerOrderByInput
-    skip?: Int
-    after?: String
-    before?: String
-    first?: Int
-    last?: Int
-  }) => OwnerConnectionPromise
   review: (where: ReviewWhereUniqueInput) => ReviewPromise
   reviews: (args?: {
     where?: ReviewWhereInput
@@ -136,25 +115,6 @@ export interface Prisma {
     first?: Int
     last?: Int
   }) => ServiceConnectionPromise
-  user: (where: UserWhereUniqueInput) => UserPromise
-  users: (args?: {
-    where?: UserWhereInput
-    orderBy?: UserOrderByInput
-    skip?: Int
-    after?: String
-    before?: String
-    first?: Int
-    last?: Int
-  }) => FragmentableArray<User>
-  usersConnection: (args?: {
-    where?: UserWhereInput
-    orderBy?: UserOrderByInput
-    skip?: Int
-    after?: String
-    before?: String
-    first?: Int
-    last?: Int
-  }) => UserConnectionPromise
   node: (args: { id: ID_Output }) => Node
 
   /**
@@ -193,22 +153,6 @@ export interface Prisma {
   }) => CommentPromise
   deleteComment: (where: CommentWhereUniqueInput) => CommentPromise
   deleteManyComments: (where?: CommentWhereInput) => BatchPayloadPromise
-  createOwner: (data: OwnerCreateInput) => OwnerPromise
-  updateOwner: (args: {
-    data: OwnerUpdateInput
-    where: OwnerWhereUniqueInput
-  }) => OwnerPromise
-  updateManyOwners: (args: {
-    data: OwnerUpdateManyMutationInput
-    where?: OwnerWhereInput
-  }) => BatchPayloadPromise
-  upsertOwner: (args: {
-    where: OwnerWhereUniqueInput
-    create: OwnerCreateInput
-    update: OwnerUpdateInput
-  }) => OwnerPromise
-  deleteOwner: (where: OwnerWhereUniqueInput) => OwnerPromise
-  deleteManyOwners: (where?: OwnerWhereInput) => BatchPayloadPromise
   createReview: (data: ReviewCreateInput) => ReviewPromise
   updateReview: (args: {
     data: ReviewUpdateInput
@@ -241,22 +185,6 @@ export interface Prisma {
   }) => ServicePromise
   deleteService: (where: ServiceWhereUniqueInput) => ServicePromise
   deleteManyServices: (where?: ServiceWhereInput) => BatchPayloadPromise
-  createUser: (data: UserCreateInput) => UserPromise
-  updateUser: (args: {
-    data: UserUpdateInput
-    where: UserWhereUniqueInput
-  }) => UserPromise
-  updateManyUsers: (args: {
-    data: UserUpdateManyMutationInput
-    where?: UserWhereInput
-  }) => BatchPayloadPromise
-  upsertUser: (args: {
-    where: UserWhereUniqueInput
-    create: UserCreateInput
-    update: UserUpdateInput
-  }) => UserPromise
-  deleteUser: (where: UserWhereUniqueInput) => UserPromise
-  deleteManyUsers: (where?: UserWhereInput) => BatchPayloadPromise
 
   /**
    * Subscriptions
@@ -272,18 +200,12 @@ export interface Subscription {
   comment: (
     where?: CommentSubscriptionWhereInput
   ) => CommentSubscriptionPayloadSubscription
-  owner: (
-    where?: OwnerSubscriptionWhereInput
-  ) => OwnerSubscriptionPayloadSubscription
   review: (
     where?: ReviewSubscriptionWhereInput
   ) => ReviewSubscriptionPayloadSubscription
   service: (
     where?: ServiceSubscriptionWhereInput
   ) => ServiceSubscriptionPayloadSubscription
-  user: (
-    where?: UserSubscriptionWhereInput
-  ) => UserSubscriptionPayloadSubscription
 }
 
 export interface ClientConstructor<T> {
@@ -305,6 +227,8 @@ export type ServiceOrderByInput =
   | 'freetrial_DESC'
   | 'id_ASC'
   | 'id_DESC'
+  | 'isOnline_ASC'
+  | 'isOnline_DESC'
   | 'inquiry_ASC'
   | 'inquiry_DESC'
   | 'likeCount_ASC'
@@ -382,40 +306,24 @@ export type CommentOrderByInput =
   | 'ownerId_ASC'
   | 'ownerId_DESC'
 
-export type OwnerOrderByInput =
-  | 'id_ASC'
-  | 'id_DESC'
-  | 'createdAt_ASC'
-  | 'createdAt_DESC'
-  | 'updatedAt_ASC'
-  | 'updatedAt_DESC'
-  | 'displayName_ASC'
-  | 'displayName_DESC'
-  | 'username_ASC'
-  | 'username_DESC'
-  | 'photoURL_ASC'
-  | 'photoURL_DESC'
-
-export type UserOrderByInput =
-  | 'id_ASC'
-  | 'id_DESC'
-  | 'createdAt_ASC'
-  | 'createdAt_DESC'
-  | 'updatedAt_ASC'
-  | 'updatedAt_DESC'
-  | 'name_ASC'
-  | 'name_DESC'
-
 export type MutationType = 'CREATED' | 'UPDATED' | 'DELETED'
 
-export interface ReviewUpdateWithWhereUniqueWithoutServiceInput {
-  where: ReviewWhereUniqueInput
-  data: ReviewUpdateWithoutServiceDataInput
+export interface ReviewUpdateWithoutServiceDataInput {
+  rate?: Int
+  rating?: Int
+  text?: String
+  serviceId?: String
+  ownerId?: String
 }
 
 export type CategoryWhereUniqueInput = AtLeastOne<{
   id: ID_Input
 }>
+
+export interface CategoryCreateOneWithoutServicesInput {
+  create?: CategoryCreateWithoutServicesInput
+  connect?: CategoryWhereUniqueInput
+}
 
 export interface ReviewUpdateManyDataInput {
   rate?: Int
@@ -423,6 +331,13 @@ export interface ReviewUpdateManyDataInput {
   text?: String
   serviceId?: String
   ownerId?: String
+}
+
+export interface CategoryCreateInput {
+  name: String
+  services?: ServiceCreateManyWithoutCategoryInput
+  shortDescription: String
+  description: String
 }
 
 export interface ReviewWhereInput {
@@ -520,161 +435,11 @@ export interface ReviewWhereInput {
   NOT?: ReviewWhereInput[] | ReviewWhereInput
 }
 
-export interface UserWhereInput {
-  id?: ID_Input
-  id_not?: ID_Input
-  id_in?: ID_Input[] | ID_Input
-  id_not_in?: ID_Input[] | ID_Input
-  id_lt?: ID_Input
-  id_lte?: ID_Input
-  id_gt?: ID_Input
-  id_gte?: ID_Input
-  id_contains?: ID_Input
-  id_not_contains?: ID_Input
-  id_starts_with?: ID_Input
-  id_not_starts_with?: ID_Input
-  id_ends_with?: ID_Input
-  id_not_ends_with?: ID_Input
-  createdAt?: DateTimeInput
-  createdAt_not?: DateTimeInput
-  createdAt_in?: DateTimeInput[] | DateTimeInput
-  createdAt_not_in?: DateTimeInput[] | DateTimeInput
-  createdAt_lt?: DateTimeInput
-  createdAt_lte?: DateTimeInput
-  createdAt_gt?: DateTimeInput
-  createdAt_gte?: DateTimeInput
-  updatedAt?: DateTimeInput
-  updatedAt_not?: DateTimeInput
-  updatedAt_in?: DateTimeInput[] | DateTimeInput
-  updatedAt_not_in?: DateTimeInput[] | DateTimeInput
-  updatedAt_lt?: DateTimeInput
-  updatedAt_lte?: DateTimeInput
-  updatedAt_gt?: DateTimeInput
-  updatedAt_gte?: DateTimeInput
-  name?: String
-  name_not?: String
-  name_in?: String[] | String
-  name_not_in?: String[] | String
-  name_lt?: String
-  name_lte?: String
-  name_gt?: String
-  name_gte?: String
-  name_contains?: String
-  name_not_contains?: String
-  name_starts_with?: String
-  name_not_starts_with?: String
-  name_ends_with?: String
-  name_not_ends_with?: String
-  AND?: UserWhereInput[] | UserWhereInput
-  OR?: UserWhereInput[] | UserWhereInput
-  NOT?: UserWhereInput[] | UserWhereInput
-}
-
-export interface CategoryCreateOneWithoutServicesInput {
-  create?: CategoryCreateWithoutServicesInput
-  connect?: CategoryWhereUniqueInput
-}
-
-export interface CommentUpdateManyMutationInput {
-  text?: String
-  ownerId?: String
-}
-
-export interface ServiceUpsertWithWhereUniqueWithoutCategoryInput {
-  where: ServiceWhereUniqueInput
-  update: ServiceUpdateWithoutCategoryDataInput
-  create: ServiceCreateWithoutCategoryInput
-}
-
-export interface ServiceUpsertNestedInput {
-  update: ServiceUpdateDataInput
-  create: ServiceCreateInput
-}
-
-export interface CategoryWhereInput {
-  id?: ID_Input
-  id_not?: ID_Input
-  id_in?: ID_Input[] | ID_Input
-  id_not_in?: ID_Input[] | ID_Input
-  id_lt?: ID_Input
-  id_lte?: ID_Input
-  id_gt?: ID_Input
-  id_gte?: ID_Input
-  id_contains?: ID_Input
-  id_not_contains?: ID_Input
-  id_starts_with?: ID_Input
-  id_not_starts_with?: ID_Input
-  id_ends_with?: ID_Input
-  id_not_ends_with?: ID_Input
-  createdAt?: DateTimeInput
-  createdAt_not?: DateTimeInput
-  createdAt_in?: DateTimeInput[] | DateTimeInput
-  createdAt_not_in?: DateTimeInput[] | DateTimeInput
-  createdAt_lt?: DateTimeInput
-  createdAt_lte?: DateTimeInput
-  createdAt_gt?: DateTimeInput
-  createdAt_gte?: DateTimeInput
-  updatedAt?: DateTimeInput
-  updatedAt_not?: DateTimeInput
-  updatedAt_in?: DateTimeInput[] | DateTimeInput
-  updatedAt_not_in?: DateTimeInput[] | DateTimeInput
-  updatedAt_lt?: DateTimeInput
-  updatedAt_lte?: DateTimeInput
-  updatedAt_gt?: DateTimeInput
-  updatedAt_gte?: DateTimeInput
-  name?: String
-  name_not?: String
-  name_in?: String[] | String
-  name_not_in?: String[] | String
-  name_lt?: String
-  name_lte?: String
-  name_gt?: String
-  name_gte?: String
-  name_contains?: String
-  name_not_contains?: String
-  name_starts_with?: String
-  name_not_starts_with?: String
-  name_ends_with?: String
-  name_not_ends_with?: String
-  services_every?: ServiceWhereInput
-  services_some?: ServiceWhereInput
-  services_none?: ServiceWhereInput
-  shortDescription?: String
-  shortDescription_not?: String
-  shortDescription_in?: String[] | String
-  shortDescription_not_in?: String[] | String
-  shortDescription_lt?: String
-  shortDescription_lte?: String
-  shortDescription_gt?: String
-  shortDescription_gte?: String
-  shortDescription_contains?: String
-  shortDescription_not_contains?: String
-  shortDescription_starts_with?: String
-  shortDescription_not_starts_with?: String
-  shortDescription_ends_with?: String
-  shortDescription_not_ends_with?: String
-  description?: String
-  description_not?: String
-  description_in?: String[] | String
-  description_not_in?: String[] | String
-  description_lt?: String
-  description_lte?: String
-  description_gt?: String
-  description_gte?: String
-  description_contains?: String
-  description_not_contains?: String
-  description_starts_with?: String
-  description_not_starts_with?: String
-  description_ends_with?: String
-  description_not_ends_with?: String
-  AND?: CategoryWhereInput[] | CategoryWhereInput
-  OR?: CategoryWhereInput[] | CategoryWhereInput
-  NOT?: CategoryWhereInput[] | CategoryWhereInput
-}
-
-export interface CategoryUpsertWithoutServicesInput {
-  update: CategoryUpdateWithoutServicesDataInput
-  create: CategoryCreateWithoutServicesInput
+export interface ServiceCreateManyWithoutCategoryInput {
+  create?:
+    | ServiceCreateWithoutCategoryInput[]
+    | ServiceCreateWithoutCategoryInput
+  connect?: ServiceWhereUniqueInput[] | ServiceWhereUniqueInput
 }
 
 export interface ReviewSubscriptionWhereInput {
@@ -688,10 +453,27 @@ export interface ReviewSubscriptionWhereInput {
   NOT?: ReviewSubscriptionWhereInput[] | ReviewSubscriptionWhereInput
 }
 
-export interface CategoryUpdateWithoutServicesDataInput {
-  name?: String
-  shortDescription?: String
-  description?: String
+export interface ServiceCreateWithoutCategoryInput {
+  address?: String
+  description: String
+  freetrial?: String
+  isOnline?: Boolean
+  inquiry?: String
+  likeCount?: Int
+  multiplans?: String
+  note?: String
+  phonenumber?: String
+  photoURL?: String
+  place?: String
+  price?: Float
+  rating?: Int
+  ratingCount?: Int
+  reviews?: ReviewCreateManyWithoutServiceInput
+  tagline?: String
+  title: String
+  url?: String
+  viewCount?: Int
+  yomigana?: String
 }
 
 export interface CommentSubscriptionWhereInput {
@@ -705,9 +487,79 @@ export interface CommentSubscriptionWhereInput {
   NOT?: CommentSubscriptionWhereInput[] | CommentSubscriptionWhereInput
 }
 
+export interface ReviewCreateManyWithoutServiceInput {
+  create?: ReviewCreateWithoutServiceInput[] | ReviewCreateWithoutServiceInput
+  connect?: ReviewWhereUniqueInput[] | ReviewWhereUniqueInput
+}
+
+export interface ServiceUpdateManyMutationInput {
+  address?: String
+  description?: String
+  freetrial?: String
+  isOnline?: Boolean
+  inquiry?: String
+  likeCount?: Int
+  multiplans?: String
+  note?: String
+  phonenumber?: String
+  photoURL?: String
+  place?: String
+  price?: Float
+  rating?: Int
+  ratingCount?: Int
+  tagline?: String
+  title?: String
+  url?: String
+  viewCount?: Int
+  yomigana?: String
+}
+
+export interface ReviewCreateWithoutServiceInput {
+  rate?: Int
+  rating: Int
+  text: String
+  serviceId: String
+  ownerId?: String
+}
+
+export interface ReviewUpdateManyMutationInput {
+  rate?: Int
+  rating?: Int
+  text?: String
+  serviceId?: String
+  ownerId?: String
+}
+
+export interface CategoryUpdateInput {
+  name?: String
+  services?: ServiceUpdateManyWithoutCategoryInput
+  shortDescription?: String
+  description?: String
+}
+
 export type CommentWhereUniqueInput = AtLeastOne<{
   id: ID_Input
 }>
+
+export interface ServiceUpdateManyWithoutCategoryInput {
+  create?:
+    | ServiceCreateWithoutCategoryInput[]
+    | ServiceCreateWithoutCategoryInput
+  delete?: ServiceWhereUniqueInput[] | ServiceWhereUniqueInput
+  connect?: ServiceWhereUniqueInput[] | ServiceWhereUniqueInput
+  set?: ServiceWhereUniqueInput[] | ServiceWhereUniqueInput
+  disconnect?: ServiceWhereUniqueInput[] | ServiceWhereUniqueInput
+  update?:
+    | ServiceUpdateWithWhereUniqueWithoutCategoryInput[]
+    | ServiceUpdateWithWhereUniqueWithoutCategoryInput
+  upsert?:
+    | ServiceUpsertWithWhereUniqueWithoutCategoryInput[]
+    | ServiceUpsertWithWhereUniqueWithoutCategoryInput
+  deleteMany?: ServiceScalarWhereInput[] | ServiceScalarWhereInput
+  updateMany?:
+    | ServiceUpdateManyWithWhereNestedInput[]
+    | ServiceUpdateManyWithWhereNestedInput
+}
 
 export interface CommentWhereInput {
   id?: ID_Input
@@ -774,199 +626,25 @@ export interface CommentWhereInput {
   NOT?: CommentWhereInput[] | CommentWhereInput
 }
 
-export interface CategoryCreateInput {
-  name: String
-  services?: ServiceCreateManyWithoutCategoryInput
-  shortDescription: String
-  description: String
-}
-
-export interface UserUpdateInput {
-  name?: String
-}
-
-export interface ServiceCreateManyWithoutCategoryInput {
-  create?:
-    | ServiceCreateWithoutCategoryInput[]
-    | ServiceCreateWithoutCategoryInput
-  connect?: ServiceWhereUniqueInput[] | ServiceWhereUniqueInput
-}
-
-export interface ServiceUpdateManyMutationInput {
-  address?: String
-  description?: String
-  freetrial?: String
-  inquiry?: String
-  likeCount?: Int
-  multiplans?: String
-  note?: String
-  phonenumber?: String
-  photoURL?: String
-  place?: String
-  price?: Float
-  rating?: Int
-  ratingCount?: Int
-  tagline?: String
-  title?: String
-  url?: String
-  viewCount?: Int
-  yomigana?: String
-}
-
-export interface ServiceCreateWithoutCategoryInput {
-  address?: String
-  description: String
-  freetrial?: String
-  inquiry?: String
-  likeCount?: Int
-  multiplans?: String
-  note?: String
-  phonenumber?: String
-  photoURL?: String
-  place?: String
-  price?: Float
-  rating?: Int
-  ratingCount?: Int
-  reviews?: ReviewCreateManyWithoutServiceInput
-  tagline?: String
-  title: String
-  url?: String
-  viewCount?: Int
-  yomigana?: String
-}
-
-export interface ServiceUpdateInput {
-  address?: String
-  category?: CategoryUpdateOneWithoutServicesInput
-  description?: String
-  freetrial?: String
-  inquiry?: String
-  likeCount?: Int
-  multiplans?: String
-  note?: String
-  phonenumber?: String
-  photoURL?: String
-  place?: String
-  price?: Float
-  rating?: Int
-  ratingCount?: Int
-  reviews?: ReviewUpdateManyWithoutServiceInput
-  tagline?: String
-  title?: String
-  url?: String
-  viewCount?: Int
-  yomigana?: String
-}
-
-export interface ReviewCreateManyWithoutServiceInput {
-  create?: ReviewCreateWithoutServiceInput[] | ReviewCreateWithoutServiceInput
-  connect?: ReviewWhereUniqueInput[] | ReviewWhereUniqueInput
-}
-
-export interface ReviewUpdateManyMutationInput {
-  rate?: Int
-  rating?: Int
-  text?: String
-  serviceId?: String
-  ownerId?: String
-}
-
-export interface ReviewCreateWithoutServiceInput {
-  rate?: Int
-  rating: Int
-  text: String
-  serviceId: String
-  ownerId?: String
-}
-
-export interface ServiceUpdateWithoutReviewsDataInput {
-  address?: String
-  category?: CategoryUpdateOneWithoutServicesInput
-  description?: String
-  freetrial?: String
-  inquiry?: String
-  likeCount?: Int
-  multiplans?: String
-  note?: String
-  phonenumber?: String
-  photoURL?: String
-  place?: String
-  price?: Float
-  rating?: Int
-  ratingCount?: Int
-  tagline?: String
-  title?: String
-  url?: String
-  viewCount?: Int
-  yomigana?: String
-}
-
-export interface CategoryUpdateInput {
-  name?: String
-  services?: ServiceUpdateManyWithoutCategoryInput
-  shortDescription?: String
-  description?: String
-}
-
-export type ReviewWhereUniqueInput = AtLeastOne<{
-  id: ID_Input
-}>
-
-export interface ServiceUpdateManyWithoutCategoryInput {
-  create?:
-    | ServiceCreateWithoutCategoryInput[]
-    | ServiceCreateWithoutCategoryInput
-  delete?: ServiceWhereUniqueInput[] | ServiceWhereUniqueInput
-  connect?: ServiceWhereUniqueInput[] | ServiceWhereUniqueInput
-  set?: ServiceWhereUniqueInput[] | ServiceWhereUniqueInput
-  disconnect?: ServiceWhereUniqueInput[] | ServiceWhereUniqueInput
-  update?:
-    | ServiceUpdateWithWhereUniqueWithoutCategoryInput[]
-    | ServiceUpdateWithWhereUniqueWithoutCategoryInput
-  upsert?:
-    | ServiceUpsertWithWhereUniqueWithoutCategoryInput[]
-    | ServiceUpsertWithWhereUniqueWithoutCategoryInput
-  deleteMany?: ServiceScalarWhereInput[] | ServiceScalarWhereInput
-  updateMany?:
-    | ServiceUpdateManyWithWhereNestedInput[]
-    | ServiceUpdateManyWithWhereNestedInput
-}
-
-export interface ServiceCreateWithoutReviewsInput {
-  address?: String
-  category?: CategoryCreateOneWithoutServicesInput
-  description: String
-  freetrial?: String
-  inquiry?: String
-  likeCount?: Int
-  multiplans?: String
-  note?: String
-  phonenumber?: String
-  photoURL?: String
-  place?: String
-  price?: Float
-  rating?: Int
-  ratingCount?: Int
-  tagline?: String
-  title: String
-  url?: String
-  viewCount?: Int
-  yomigana?: String
-}
-
 export interface ServiceUpdateWithWhereUniqueWithoutCategoryInput {
   where: ServiceWhereUniqueInput
   data: ServiceUpdateWithoutCategoryDataInput
 }
 
-export type ServiceWhereUniqueInput = AtLeastOne<{
-  id: ID_Input
-}>
+export interface ReviewUpdateInput {
+  rate?: Int
+  rating?: Int
+  text?: String
+  serviceId?: String
+  service?: ServiceUpdateOneRequiredWithoutReviewsInput
+  ownerId?: String
+}
 
 export interface ServiceUpdateWithoutCategoryDataInput {
   address?: String
   description?: String
   freetrial?: String
+  isOnline?: Boolean
   inquiry?: String
   likeCount?: Int
   multiplans?: String
@@ -985,10 +663,9 @@ export interface ServiceUpdateWithoutCategoryDataInput {
   yomigana?: String
 }
 
-export interface OwnerUpdateManyMutationInput {
-  displayName?: String
-  username?: String
-  photoURL?: String
+export interface ServiceCreateOneWithoutReviewsInput {
+  create?: ServiceCreateWithoutReviewsInput
+  connect?: ServiceWhereUniqueInput
 }
 
 export interface ReviewUpdateManyWithoutServiceInput {
@@ -1009,47 +686,52 @@ export interface ReviewUpdateManyWithoutServiceInput {
     | ReviewUpdateManyWithWhereNestedInput
 }
 
-export type UserWhereUniqueInput = AtLeastOne<{
-  id: ID_Input
-}>
-
-export interface CategoryUpdateOneWithoutServicesInput {
-  create?: CategoryCreateWithoutServicesInput
-  update?: CategoryUpdateWithoutServicesDataInput
-  upsert?: CategoryUpsertWithoutServicesInput
-  delete?: Boolean
-  disconnect?: Boolean
-  connect?: CategoryWhereUniqueInput
-}
-
-export interface UserSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType
-  updatedFields_contains?: String
-  updatedFields_contains_every?: String[] | String
-  updatedFields_contains_some?: String[] | String
-  node?: UserWhereInput
-  AND?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput
-  OR?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput
-  NOT?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput
-}
-
-export interface ReviewUpdateWithoutServiceDataInput {
+export interface ReviewCreateInput {
   rate?: Int
-  rating?: Int
-  text?: String
-  serviceId?: String
+  rating: Int
+  text: String
+  serviceId: String
+  service: ServiceCreateOneWithoutReviewsInput
   ownerId?: String
 }
 
-export interface OwnerSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType
-  updatedFields_contains?: String
-  updatedFields_contains_every?: String[] | String
-  updatedFields_contains_some?: String[] | String
-  node?: OwnerWhereInput
-  AND?: OwnerSubscriptionWhereInput[] | OwnerSubscriptionWhereInput
-  OR?: OwnerSubscriptionWhereInput[] | OwnerSubscriptionWhereInput
-  NOT?: OwnerSubscriptionWhereInput[] | OwnerSubscriptionWhereInput
+export interface ReviewUpdateWithWhereUniqueWithoutServiceInput {
+  where: ReviewWhereUniqueInput
+  data: ReviewUpdateWithoutServiceDataInput
+}
+
+export interface ServiceUpsertNestedInput {
+  update: ServiceUpdateDataInput
+  create: ServiceCreateInput
+}
+
+export interface ServiceUpdateDataInput {
+  address?: String
+  category?: CategoryUpdateOneWithoutServicesInput
+  description?: String
+  freetrial?: String
+  isOnline?: Boolean
+  inquiry?: String
+  likeCount?: Int
+  multiplans?: String
+  note?: String
+  phonenumber?: String
+  photoURL?: String
+  place?: String
+  price?: Float
+  rating?: Int
+  ratingCount?: Int
+  reviews?: ReviewUpdateManyWithoutServiceInput
+  tagline?: String
+  title?: String
+  url?: String
+  viewCount?: Int
+  yomigana?: String
+}
+
+export interface CategoryUpsertWithoutServicesInput {
+  update: CategoryUpdateWithoutServicesDataInput
+  create: CategoryCreateWithoutServicesInput
 }
 
 export interface ReviewUpsertWithWhereUniqueWithoutServiceInput {
@@ -1058,8 +740,13 @@ export interface ReviewUpsertWithWhereUniqueWithoutServiceInput {
   create: ReviewCreateWithoutServiceInput
 }
 
-export interface UserUpdateManyMutationInput {
-  name?: String
+export interface CategoryUpdateOneWithoutServicesInput {
+  create?: CategoryCreateWithoutServicesInput
+  update?: CategoryUpdateWithoutServicesDataInput
+  upsert?: CategoryUpsertWithoutServicesInput
+  delete?: Boolean
+  disconnect?: Boolean
+  connect?: CategoryWhereUniqueInput
 }
 
 export interface ReviewScalarWhereInput {
@@ -1156,16 +843,7 @@ export interface ReviewScalarWhereInput {
   NOT?: ReviewScalarWhereInput[] | ReviewScalarWhereInput
 }
 
-export interface UserCreateInput {
-  name: String
-}
-
-export interface ReviewUpdateManyWithWhereNestedInput {
-  where: ReviewScalarWhereInput
-  data: ReviewUpdateManyDataInput
-}
-
-export interface OwnerWhereInput {
+export interface CategoryWhereInput {
   id?: ID_Input
   id_not?: ID_Input
   id_in?: ID_Input[] | ID_Input
@@ -1196,81 +874,70 @@ export interface OwnerWhereInput {
   updatedAt_lte?: DateTimeInput
   updatedAt_gt?: DateTimeInput
   updatedAt_gte?: DateTimeInput
-  displayName?: String
-  displayName_not?: String
-  displayName_in?: String[] | String
-  displayName_not_in?: String[] | String
-  displayName_lt?: String
-  displayName_lte?: String
-  displayName_gt?: String
-  displayName_gte?: String
-  displayName_contains?: String
-  displayName_not_contains?: String
-  displayName_starts_with?: String
-  displayName_not_starts_with?: String
-  displayName_ends_with?: String
-  displayName_not_ends_with?: String
-  username?: String
-  username_not?: String
-  username_in?: String[] | String
-  username_not_in?: String[] | String
-  username_lt?: String
-  username_lte?: String
-  username_gt?: String
-  username_gte?: String
-  username_contains?: String
-  username_not_contains?: String
-  username_starts_with?: String
-  username_not_starts_with?: String
-  username_ends_with?: String
-  username_not_ends_with?: String
-  photoURL?: String
-  photoURL_not?: String
-  photoURL_in?: String[] | String
-  photoURL_not_in?: String[] | String
-  photoURL_lt?: String
-  photoURL_lte?: String
-  photoURL_gt?: String
-  photoURL_gte?: String
-  photoURL_contains?: String
-  photoURL_not_contains?: String
-  photoURL_starts_with?: String
-  photoURL_not_starts_with?: String
-  photoURL_ends_with?: String
-  photoURL_not_ends_with?: String
-  AND?: OwnerWhereInput[] | OwnerWhereInput
-  OR?: OwnerWhereInput[] | OwnerWhereInput
-  NOT?: OwnerWhereInput[] | OwnerWhereInput
-}
-
-export interface ServiceUpdateDataInput {
-  address?: String
-  category?: CategoryUpdateOneWithoutServicesInput
+  name?: String
+  name_not?: String
+  name_in?: String[] | String
+  name_not_in?: String[] | String
+  name_lt?: String
+  name_lte?: String
+  name_gt?: String
+  name_gte?: String
+  name_contains?: String
+  name_not_contains?: String
+  name_starts_with?: String
+  name_not_starts_with?: String
+  name_ends_with?: String
+  name_not_ends_with?: String
+  services_every?: ServiceWhereInput
+  services_some?: ServiceWhereInput
+  services_none?: ServiceWhereInput
+  shortDescription?: String
+  shortDescription_not?: String
+  shortDescription_in?: String[] | String
+  shortDescription_not_in?: String[] | String
+  shortDescription_lt?: String
+  shortDescription_lte?: String
+  shortDescription_gt?: String
+  shortDescription_gte?: String
+  shortDescription_contains?: String
+  shortDescription_not_contains?: String
+  shortDescription_starts_with?: String
+  shortDescription_not_starts_with?: String
+  shortDescription_ends_with?: String
+  shortDescription_not_ends_with?: String
   description?: String
-  freetrial?: String
-  inquiry?: String
-  likeCount?: Int
-  multiplans?: String
-  note?: String
-  phonenumber?: String
-  photoURL?: String
-  place?: String
-  price?: Float
-  rating?: Int
-  ratingCount?: Int
-  reviews?: ReviewUpdateManyWithoutServiceInput
-  tagline?: String
-  title?: String
-  url?: String
-  viewCount?: Int
-  yomigana?: String
+  description_not?: String
+  description_in?: String[] | String
+  description_not_in?: String[] | String
+  description_lt?: String
+  description_lte?: String
+  description_gt?: String
+  description_gte?: String
+  description_contains?: String
+  description_not_contains?: String
+  description_starts_with?: String
+  description_not_starts_with?: String
+  description_ends_with?: String
+  description_not_ends_with?: String
+  AND?: CategoryWhereInput[] | CategoryWhereInput
+  OR?: CategoryWhereInput[] | CategoryWhereInput
+  NOT?: CategoryWhereInput[] | CategoryWhereInput
 }
 
-export interface ServiceUpdateOneRequiredWithoutReviewsInput {
-  create?: ServiceCreateWithoutReviewsInput
-  update?: ServiceUpdateWithoutReviewsDataInput
-  upsert?: ServiceUpsertWithoutReviewsInput
-  connect?: ServiceWhereUniqueInput
+export interface ReviewUpdateManyWithWhereNestedInput {
+  where: ReviewScalarWhereInput
+  data: ReviewUpdateManyDataInput
+}
+
+export interface CategorySubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType
+  updatedFields_contains?: String
+  updatedFields_contains_every?: String[] | String
+  updatedFields_contains_some?: String[] | String
+  node?: CategoryWhereInput
+  AND?: CategorySubscriptionWhereInput[] | CategorySubscriptionWhereInput
+  OR?: CategorySubscriptionWhereInput[] | CategorySubscriptionWhereInput
+  NOT?: CategorySubscriptionWhereInput[] | CategorySubscriptionWhereInput
 }
 
 export interface ServiceUpdateOneRequiredInput {
@@ -1280,8 +947,21 @@ export interface ServiceUpdateOneRequiredInput {
   connect?: ServiceWhereUniqueInput
 }
 
-export interface ServiceCreateOneWithoutReviewsInput {
+export interface ServiceUpsertWithoutReviewsInput {
+  update: ServiceUpdateWithoutReviewsDataInput
+  create: ServiceCreateWithoutReviewsInput
+}
+
+export interface ServiceUpsertWithWhereUniqueWithoutCategoryInput {
+  where: ServiceWhereUniqueInput
+  update: ServiceUpdateWithoutCategoryDataInput
+  create: ServiceCreateWithoutCategoryInput
+}
+
+export interface ServiceUpdateOneRequiredWithoutReviewsInput {
   create?: ServiceCreateWithoutReviewsInput
+  update?: ServiceUpdateWithoutReviewsDataInput
+  upsert?: ServiceUpsertWithoutReviewsInput
   connect?: ServiceWhereUniqueInput
 }
 
@@ -1350,6 +1030,8 @@ export interface ServiceScalarWhereInput {
   id_not_starts_with?: ID_Input
   id_ends_with?: ID_Input
   id_not_ends_with?: ID_Input
+  isOnline?: Boolean
+  isOnline_not?: Boolean
   inquiry?: String
   inquiry_not?: String
   inquiry_in?: String[] | String
@@ -1543,15 +1225,39 @@ export interface ServiceScalarWhereInput {
   NOT?: ServiceScalarWhereInput[] | ServiceScalarWhereInput
 }
 
-export interface OwnerUpdateInput {
-  displayName?: String
-  username?: String
-  photoURL?: String
-}
+export type ReviewWhereUniqueInput = AtLeastOne<{
+  id: ID_Input
+}>
 
 export interface ServiceUpdateManyWithWhereNestedInput {
   where: ServiceScalarWhereInput
   data: ServiceUpdateManyDataInput
+}
+
+export type ServiceWhereUniqueInput = AtLeastOne<{
+  id: ID_Input
+}>
+
+export interface ServiceUpdateManyDataInput {
+  address?: String
+  description?: String
+  freetrial?: String
+  isOnline?: Boolean
+  inquiry?: String
+  likeCount?: Int
+  multiplans?: String
+  note?: String
+  phonenumber?: String
+  photoURL?: String
+  place?: String
+  price?: Float
+  rating?: Int
+  ratingCount?: Int
+  tagline?: String
+  title?: String
+  url?: String
+  viewCount?: Int
+  yomigana?: String
 }
 
 export interface ServiceSubscriptionWhereInput {
@@ -1565,10 +1271,117 @@ export interface ServiceSubscriptionWhereInput {
   NOT?: ServiceSubscriptionWhereInput[] | ServiceSubscriptionWhereInput
 }
 
-export interface ServiceUpdateManyDataInput {
+export interface CategoryUpdateManyMutationInput {
+  name?: String
+  shortDescription?: String
+  description?: String
+}
+
+export interface ServiceUpdateInput {
   address?: String
+  category?: CategoryUpdateOneWithoutServicesInput
   description?: String
   freetrial?: String
+  isOnline?: Boolean
+  inquiry?: String
+  likeCount?: Int
+  multiplans?: String
+  note?: String
+  phonenumber?: String
+  photoURL?: String
+  place?: String
+  price?: Float
+  rating?: Int
+  ratingCount?: Int
+  reviews?: ReviewUpdateManyWithoutServiceInput
+  tagline?: String
+  title?: String
+  url?: String
+  viewCount?: Int
+  yomigana?: String
+}
+
+export interface CommentUpdateInput {
+  text?: String
+  service?: ServiceUpdateOneRequiredInput
+  ownerId?: String
+}
+
+export interface ServiceCreateWithoutReviewsInput {
+  address?: String
+  category?: CategoryCreateOneWithoutServicesInput
+  description: String
+  freetrial?: String
+  isOnline?: Boolean
+  inquiry?: String
+  likeCount?: Int
+  multiplans?: String
+  note?: String
+  phonenumber?: String
+  photoURL?: String
+  place?: String
+  price?: Float
+  rating?: Int
+  ratingCount?: Int
+  tagline?: String
+  title: String
+  url?: String
+  viewCount?: Int
+  yomigana?: String
+}
+
+export interface ServiceCreateInput {
+  address?: String
+  category?: CategoryCreateOneWithoutServicesInput
+  description: String
+  freetrial?: String
+  isOnline?: Boolean
+  inquiry?: String
+  likeCount?: Int
+  multiplans?: String
+  note?: String
+  phonenumber?: String
+  photoURL?: String
+  place?: String
+  price?: Float
+  rating?: Int
+  ratingCount?: Int
+  reviews?: ReviewCreateManyWithoutServiceInput
+  tagline?: String
+  title: String
+  url?: String
+  viewCount?: Int
+  yomigana?: String
+}
+
+export interface ServiceCreateOneInput {
+  create?: ServiceCreateInput
+  connect?: ServiceWhereUniqueInput
+}
+
+export interface CommentCreateInput {
+  text: String
+  service: ServiceCreateOneInput
+  ownerId?: String
+}
+
+export interface CategoryCreateWithoutServicesInput {
+  name: String
+  shortDescription: String
+  description: String
+}
+
+export interface CommentUpdateManyMutationInput {
+  text?: String
+  ownerId?: String
+}
+
+export interface ServiceUpdateWithoutReviewsDataInput {
+  address?: String
+  category?: CategoryUpdateOneWithoutServicesInput
+  description?: String
+  freetrial?: String
+  isOnline?: Boolean
   inquiry?: String
   likeCount?: Int
   multiplans?: String
@@ -1652,6 +1465,8 @@ export interface ServiceWhereInput {
   id_not_starts_with?: ID_Input
   id_ends_with?: ID_Input
   id_not_ends_with?: ID_Input
+  isOnline?: Boolean
+  isOnline_not?: Boolean
   inquiry?: String
   inquiry_not?: String
   inquiry_in?: String[] | String
@@ -1848,155 +1663,23 @@ export interface ServiceWhereInput {
   NOT?: ServiceWhereInput[] | ServiceWhereInput
 }
 
-export interface CategoryUpdateManyMutationInput {
+export interface CategoryUpdateWithoutServicesDataInput {
   name?: String
   shortDescription?: String
   description?: String
-}
-
-export interface ServiceUpsertWithoutReviewsInput {
-  update: ServiceUpdateWithoutReviewsDataInput
-  create: ServiceCreateWithoutReviewsInput
-}
-
-export interface CommentUpdateInput {
-  text?: String
-  service?: ServiceUpdateOneRequiredInput
-  ownerId?: String
-}
-
-export interface ReviewCreateInput {
-  rate?: Int
-  rating: Int
-  text: String
-  serviceId: String
-  service: ServiceCreateOneWithoutReviewsInput
-  ownerId?: String
-}
-
-export interface ServiceCreateInput {
-  address?: String
-  category?: CategoryCreateOneWithoutServicesInput
-  description: String
-  freetrial?: String
-  inquiry?: String
-  likeCount?: Int
-  multiplans?: String
-  note?: String
-  phonenumber?: String
-  photoURL?: String
-  place?: String
-  price?: Float
-  rating?: Int
-  ratingCount?: Int
-  reviews?: ReviewCreateManyWithoutServiceInput
-  tagline?: String
-  title: String
-  url?: String
-  viewCount?: Int
-  yomigana?: String
-}
-
-export interface ServiceCreateOneInput {
-  create?: ServiceCreateInput
-  connect?: ServiceWhereUniqueInput
-}
-
-export interface CommentCreateInput {
-  text: String
-  service: ServiceCreateOneInput
-  ownerId?: String
-}
-
-export interface CategoryCreateWithoutServicesInput {
-  name: String
-  shortDescription: String
-  description: String
-}
-
-export interface OwnerCreateInput {
-  displayName: String
-  username: String
-  photoURL?: String
-}
-
-export interface ReviewUpdateInput {
-  rate?: Int
-  rating?: Int
-  text?: String
-  serviceId?: String
-  service?: ServiceUpdateOneRequiredWithoutReviewsInput
-  ownerId?: String
-}
-
-export type OwnerWhereUniqueInput = AtLeastOne<{
-  id: ID_Input
-  username?: String
-}>
-
-export interface CategorySubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType
-  updatedFields_contains?: String
-  updatedFields_contains_every?: String[] | String
-  updatedFields_contains_some?: String[] | String
-  node?: CategoryWhereInput
-  AND?: CategorySubscriptionWhereInput[] | CategorySubscriptionWhereInput
-  OR?: CategorySubscriptionWhereInput[] | CategorySubscriptionWhereInput
-  NOT?: CategorySubscriptionWhereInput[] | CategorySubscriptionWhereInput
 }
 
 export interface NodeNode {
   id: ID_Output
 }
 
-export interface UserPreviousValues {
-  id: ID_Output
-  createdAt: DateTimeOutput
-  updatedAt: DateTimeOutput
-  name: String
-}
-
-export interface UserPreviousValuesPromise
-  extends Promise<UserPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>
-  createdAt: () => Promise<DateTimeOutput>
-  updatedAt: () => Promise<DateTimeOutput>
-  name: () => Promise<String>
-}
-
-export interface UserPreviousValuesSubscription
-  extends Promise<AsyncIterator<UserPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>
-  name: () => Promise<AsyncIterator<String>>
-}
-
-export interface CommentEdge {
-  node: Comment
-  cursor: String
-}
-
-export interface CommentEdgePromise extends Promise<CommentEdge>, Fragmentable {
-  node: <T = CommentPromise>() => T
-  cursor: () => Promise<String>
-}
-
-export interface CommentEdgeSubscription
-  extends Promise<AsyncIterator<CommentEdge>>,
-    Fragmentable {
-  node: <T = CommentSubscription>() => T
-  cursor: () => Promise<AsyncIterator<String>>
-}
-
-export interface Service {
+export interface ServicePreviousValues {
   address?: String
   createdAt: DateTimeOutput
   description: String
   freetrial?: String
   id: ID_Output
+  isOnline?: Boolean
   inquiry?: String
   likeCount: Int
   multiplans?: String
@@ -2015,13 +1698,15 @@ export interface Service {
   yomigana?: String
 }
 
-export interface ServicePromise extends Promise<Service>, Fragmentable {
+export interface ServicePreviousValuesPromise
+  extends Promise<ServicePreviousValues>,
+    Fragmentable {
   address: () => Promise<String>
-  category: <T = CategoryPromise>() => T
   createdAt: () => Promise<DateTimeOutput>
   description: () => Promise<String>
   freetrial: () => Promise<String>
   id: () => Promise<ID_Output>
+  isOnline: () => Promise<Boolean>
   inquiry: () => Promise<String>
   likeCount: () => Promise<Int>
   multiplans: () => Promise<String>
@@ -2032,15 +1717,6 @@ export interface ServicePromise extends Promise<Service>, Fragmentable {
   price: () => Promise<Float>
   rating: () => Promise<Int>
   ratingCount: () => Promise<Int>
-  reviews: <T = FragmentableArray<Review>>(args?: {
-    where?: ReviewWhereInput
-    orderBy?: ReviewOrderByInput
-    skip?: Int
-    after?: String
-    before?: String
-    first?: Int
-    last?: Int
-  }) => T
   tagline: () => Promise<String>
   title: () => Promise<String>
   updatedAt: () => Promise<DateTimeOutput>
@@ -2049,15 +1725,15 @@ export interface ServicePromise extends Promise<Service>, Fragmentable {
   yomigana: () => Promise<String>
 }
 
-export interface ServiceSubscription
-  extends Promise<AsyncIterator<Service>>,
+export interface ServicePreviousValuesSubscription
+  extends Promise<AsyncIterator<ServicePreviousValues>>,
     Fragmentable {
   address: () => Promise<AsyncIterator<String>>
-  category: <T = CategorySubscription>() => T
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>
   description: () => Promise<AsyncIterator<String>>
   freetrial: () => Promise<AsyncIterator<String>>
   id: () => Promise<AsyncIterator<ID_Output>>
+  isOnline: () => Promise<AsyncIterator<Boolean>>
   inquiry: () => Promise<AsyncIterator<String>>
   likeCount: () => Promise<AsyncIterator<Int>>
   multiplans: () => Promise<AsyncIterator<String>>
@@ -2068,15 +1744,6 @@ export interface ServiceSubscription
   price: () => Promise<AsyncIterator<Float>>
   rating: () => Promise<AsyncIterator<Int>>
   ratingCount: () => Promise<AsyncIterator<Int>>
-  reviews: <T = Promise<AsyncIterator<ReviewSubscription>>>(args?: {
-    where?: ReviewWhereInput
-    orderBy?: ReviewOrderByInput
-    skip?: Int
-    after?: String
-    before?: String
-    first?: Int
-    last?: Int
-  }) => T
   tagline: () => Promise<AsyncIterator<String>>
   title: () => Promise<AsyncIterator<String>>
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>
@@ -2085,33 +1752,120 @@ export interface ServiceSubscription
   yomigana: () => Promise<AsyncIterator<String>>
 }
 
-export interface Owner {
+export interface ReviewSubscriptionPayload {
+  mutation: MutationType
+  node: Review
+  updatedFields: String[]
+  previousValues: ReviewPreviousValues
+}
+
+export interface ReviewSubscriptionPayloadPromise
+  extends Promise<ReviewSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>
+  node: <T = ReviewPromise>() => T
+  updatedFields: () => Promise<String[]>
+  previousValues: <T = ReviewPreviousValuesPromise>() => T
+}
+
+export interface ReviewSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<ReviewSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>
+  node: <T = ReviewSubscription>() => T
+  updatedFields: () => Promise<AsyncIterator<String[]>>
+  previousValues: <T = ReviewPreviousValuesSubscription>() => T
+}
+
+export interface CommentPreviousValues {
   id: ID_Output
   createdAt: DateTimeOutput
   updatedAt: DateTimeOutput
-  displayName: String
-  username: String
-  photoURL?: String
+  text: String
+  ownerId?: String
 }
 
-export interface OwnerPromise extends Promise<Owner>, Fragmentable {
+export interface CommentPreviousValuesPromise
+  extends Promise<CommentPreviousValues>,
+    Fragmentable {
   id: () => Promise<ID_Output>
   createdAt: () => Promise<DateTimeOutput>
   updatedAt: () => Promise<DateTimeOutput>
-  displayName: () => Promise<String>
-  username: () => Promise<String>
-  photoURL: () => Promise<String>
+  text: () => Promise<String>
+  ownerId: () => Promise<String>
 }
 
-export interface OwnerSubscription
-  extends Promise<AsyncIterator<Owner>>,
+export interface CommentPreviousValuesSubscription
+  extends Promise<AsyncIterator<CommentPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>
-  displayName: () => Promise<AsyncIterator<String>>
-  username: () => Promise<AsyncIterator<String>>
-  photoURL: () => Promise<AsyncIterator<String>>
+  text: () => Promise<AsyncIterator<String>>
+  ownerId: () => Promise<AsyncIterator<String>>
+}
+
+export interface Comment {
+  id: ID_Output
+  createdAt: DateTimeOutput
+  updatedAt: DateTimeOutput
+  text: String
+  ownerId?: String
+}
+
+export interface CommentPromise extends Promise<Comment>, Fragmentable {
+  id: () => Promise<ID_Output>
+  createdAt: () => Promise<DateTimeOutput>
+  updatedAt: () => Promise<DateTimeOutput>
+  text: () => Promise<String>
+  service: <T = ServicePromise>() => T
+  ownerId: () => Promise<String>
+}
+
+export interface CommentSubscription
+  extends Promise<AsyncIterator<Comment>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>
+  text: () => Promise<AsyncIterator<String>>
+  service: <T = ServiceSubscription>() => T
+  ownerId: () => Promise<AsyncIterator<String>>
+}
+
+export interface CategoryEdge {
+  node: Category
+  cursor: String
+}
+
+export interface CategoryEdgePromise
+  extends Promise<CategoryEdge>,
+    Fragmentable {
+  node: <T = CategoryPromise>() => T
+  cursor: () => Promise<String>
+}
+
+export interface CategoryEdgeSubscription
+  extends Promise<AsyncIterator<CategoryEdge>>,
+    Fragmentable {
+  node: <T = CategorySubscription>() => T
+  cursor: () => Promise<AsyncIterator<String>>
+}
+
+export interface AggregateCategory {
+  count: Int
+}
+
+export interface AggregateCategoryPromise
+  extends Promise<AggregateCategory>,
+    Fragmentable {
+  count: () => Promise<Int>
+}
+
+export interface AggregateCategorySubscription
+  extends Promise<AsyncIterator<AggregateCategory>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>
 }
 
 export interface ReviewPreviousValues {
@@ -2151,43 +1905,6 @@ export interface ReviewPreviousValuesSubscription
   ownerId: () => Promise<AsyncIterator<String>>
 }
 
-export interface AggregateComment {
-  count: Int
-}
-
-export interface AggregateCommentPromise
-  extends Promise<AggregateComment>,
-    Fragmentable {
-  count: () => Promise<Int>
-}
-
-export interface AggregateCommentSubscription
-  extends Promise<AsyncIterator<AggregateComment>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>
-}
-
-export interface CommentConnection {
-  pageInfo: PageInfo
-  edges: CommentEdge[]
-}
-
-export interface CommentConnectionPromise
-  extends Promise<CommentConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T
-  edges: <T = FragmentableArray<CommentEdge>>() => T
-  aggregate: <T = AggregateCommentPromise>() => T
-}
-
-export interface CommentConnectionSubscription
-  extends Promise<AsyncIterator<CommentConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T
-  edges: <T = Promise<AsyncIterator<CommentEdgeSubscription>>>() => T
-  aggregate: <T = AggregateCommentSubscription>() => T
-}
-
 export interface BatchPayload {
   count: Long
 }
@@ -2204,135 +1921,6 @@ export interface BatchPayloadSubscription
   count: () => Promise<AsyncIterator<Long>>
 }
 
-export interface AggregateUser {
-  count: Int
-}
-
-export interface AggregateUserPromise
-  extends Promise<AggregateUser>,
-    Fragmentable {
-  count: () => Promise<Int>
-}
-
-export interface AggregateUserSubscription
-  extends Promise<AsyncIterator<AggregateUser>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>
-}
-
-export interface ServiceSubscriptionPayload {
-  mutation: MutationType
-  node: Service
-  updatedFields: String[]
-  previousValues: ServicePreviousValues
-}
-
-export interface ServiceSubscriptionPayloadPromise
-  extends Promise<ServiceSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>
-  node: <T = ServicePromise>() => T
-  updatedFields: () => Promise<String[]>
-  previousValues: <T = ServicePreviousValuesPromise>() => T
-}
-
-export interface ServiceSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<ServiceSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>
-  node: <T = ServiceSubscription>() => T
-  updatedFields: () => Promise<AsyncIterator<String[]>>
-  previousValues: <T = ServicePreviousValuesSubscription>() => T
-}
-
-export interface UserConnection {
-  pageInfo: PageInfo
-  edges: UserEdge[]
-}
-
-export interface UserConnectionPromise
-  extends Promise<UserConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T
-  edges: <T = FragmentableArray<UserEdge>>() => T
-  aggregate: <T = AggregateUserPromise>() => T
-}
-
-export interface UserConnectionSubscription
-  extends Promise<AsyncIterator<UserConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T
-  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T
-  aggregate: <T = AggregateUserSubscription>() => T
-}
-
-export interface Comment {
-  id: ID_Output
-  createdAt: DateTimeOutput
-  updatedAt: DateTimeOutput
-  text: String
-  ownerId?: String
-}
-
-export interface CommentPromise extends Promise<Comment>, Fragmentable {
-  id: () => Promise<ID_Output>
-  createdAt: () => Promise<DateTimeOutput>
-  updatedAt: () => Promise<DateTimeOutput>
-  text: () => Promise<String>
-  service: <T = ServicePromise>() => T
-  ownerId: () => Promise<String>
-}
-
-export interface CommentSubscription
-  extends Promise<AsyncIterator<Comment>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>
-  text: () => Promise<AsyncIterator<String>>
-  service: <T = ServiceSubscription>() => T
-  ownerId: () => Promise<AsyncIterator<String>>
-}
-
-export interface User {
-  id: ID_Output
-  createdAt: DateTimeOutput
-  updatedAt: DateTimeOutput
-  name: String
-}
-
-export interface UserPromise extends Promise<User>, Fragmentable {
-  id: () => Promise<ID_Output>
-  createdAt: () => Promise<DateTimeOutput>
-  updatedAt: () => Promise<DateTimeOutput>
-  name: () => Promise<String>
-}
-
-export interface UserSubscription
-  extends Promise<AsyncIterator<User>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>
-  name: () => Promise<AsyncIterator<String>>
-}
-
-export interface AggregateCategory {
-  count: Int
-}
-
-export interface AggregateCategoryPromise
-  extends Promise<AggregateCategory>,
-    Fragmentable {
-  count: () => Promise<Int>
-}
-
-export interface AggregateCategorySubscription
-  extends Promise<AsyncIterator<AggregateCategory>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>
-}
-
 export interface ServiceEdge {
   node: Service
   cursor: String
@@ -2347,6 +1935,201 @@ export interface ServiceEdgeSubscription
   extends Promise<AsyncIterator<ServiceEdge>>,
     Fragmentable {
   node: <T = ServiceSubscription>() => T
+  cursor: () => Promise<AsyncIterator<String>>
+}
+
+export interface PageInfo {
+  hasNextPage: Boolean
+  hasPreviousPage: Boolean
+  startCursor?: String
+  endCursor?: String
+}
+
+export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
+  hasNextPage: () => Promise<Boolean>
+  hasPreviousPage: () => Promise<Boolean>
+  startCursor: () => Promise<String>
+  endCursor: () => Promise<String>
+}
+
+export interface PageInfoSubscription
+  extends Promise<AsyncIterator<PageInfo>>,
+    Fragmentable {
+  hasNextPage: () => Promise<AsyncIterator<Boolean>>
+  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>
+  startCursor: () => Promise<AsyncIterator<String>>
+  endCursor: () => Promise<AsyncIterator<String>>
+}
+
+export interface AggregateReview {
+  count: Int
+}
+
+export interface AggregateReviewPromise
+  extends Promise<AggregateReview>,
+    Fragmentable {
+  count: () => Promise<Int>
+}
+
+export interface AggregateReviewSubscription
+  extends Promise<AsyncIterator<AggregateReview>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>
+}
+
+export interface CategoryConnection {
+  pageInfo: PageInfo
+  edges: CategoryEdge[]
+}
+
+export interface CategoryConnectionPromise
+  extends Promise<CategoryConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T
+  edges: <T = FragmentableArray<CategoryEdge>>() => T
+  aggregate: <T = AggregateCategoryPromise>() => T
+}
+
+export interface CategoryConnectionSubscription
+  extends Promise<AsyncIterator<CategoryConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T
+  edges: <T = Promise<AsyncIterator<CategoryEdgeSubscription>>>() => T
+  aggregate: <T = AggregateCategorySubscription>() => T
+}
+
+export interface ReviewConnection {
+  pageInfo: PageInfo
+  edges: ReviewEdge[]
+}
+
+export interface ReviewConnectionPromise
+  extends Promise<ReviewConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T
+  edges: <T = FragmentableArray<ReviewEdge>>() => T
+  aggregate: <T = AggregateReviewPromise>() => T
+}
+
+export interface ReviewConnectionSubscription
+  extends Promise<AsyncIterator<ReviewConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T
+  edges: <T = Promise<AsyncIterator<ReviewEdgeSubscription>>>() => T
+  aggregate: <T = AggregateReviewSubscription>() => T
+}
+
+export interface Service {
+  address?: String
+  createdAt: DateTimeOutput
+  description: String
+  freetrial?: String
+  id: ID_Output
+  isOnline?: Boolean
+  inquiry?: String
+  likeCount: Int
+  multiplans?: String
+  note?: String
+  phonenumber?: String
+  photoURL?: String
+  place?: String
+  price?: Float
+  rating?: Int
+  ratingCount?: Int
+  tagline?: String
+  title: String
+  updatedAt: DateTimeOutput
+  url?: String
+  viewCount: Int
+  yomigana?: String
+}
+
+export interface ServicePromise extends Promise<Service>, Fragmentable {
+  address: () => Promise<String>
+  category: <T = CategoryPromise>() => T
+  createdAt: () => Promise<DateTimeOutput>
+  description: () => Promise<String>
+  freetrial: () => Promise<String>
+  id: () => Promise<ID_Output>
+  isOnline: () => Promise<Boolean>
+  inquiry: () => Promise<String>
+  likeCount: () => Promise<Int>
+  multiplans: () => Promise<String>
+  note: () => Promise<String>
+  phonenumber: () => Promise<String>
+  photoURL: () => Promise<String>
+  place: () => Promise<String>
+  price: () => Promise<Float>
+  rating: () => Promise<Int>
+  ratingCount: () => Promise<Int>
+  reviews: <T = FragmentableArray<Review>>(args?: {
+    where?: ReviewWhereInput
+    orderBy?: ReviewOrderByInput
+    skip?: Int
+    after?: String
+    before?: String
+    first?: Int
+    last?: Int
+  }) => T
+  tagline: () => Promise<String>
+  title: () => Promise<String>
+  updatedAt: () => Promise<DateTimeOutput>
+  url: () => Promise<String>
+  viewCount: () => Promise<Int>
+  yomigana: () => Promise<String>
+}
+
+export interface ServiceSubscription
+  extends Promise<AsyncIterator<Service>>,
+    Fragmentable {
+  address: () => Promise<AsyncIterator<String>>
+  category: <T = CategorySubscription>() => T
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>
+  description: () => Promise<AsyncIterator<String>>
+  freetrial: () => Promise<AsyncIterator<String>>
+  id: () => Promise<AsyncIterator<ID_Output>>
+  isOnline: () => Promise<AsyncIterator<Boolean>>
+  inquiry: () => Promise<AsyncIterator<String>>
+  likeCount: () => Promise<AsyncIterator<Int>>
+  multiplans: () => Promise<AsyncIterator<String>>
+  note: () => Promise<AsyncIterator<String>>
+  phonenumber: () => Promise<AsyncIterator<String>>
+  photoURL: () => Promise<AsyncIterator<String>>
+  place: () => Promise<AsyncIterator<String>>
+  price: () => Promise<AsyncIterator<Float>>
+  rating: () => Promise<AsyncIterator<Int>>
+  ratingCount: () => Promise<AsyncIterator<Int>>
+  reviews: <T = Promise<AsyncIterator<ReviewSubscription>>>(args?: {
+    where?: ReviewWhereInput
+    orderBy?: ReviewOrderByInput
+    skip?: Int
+    after?: String
+    before?: String
+    first?: Int
+    last?: Int
+  }) => T
+  tagline: () => Promise<AsyncIterator<String>>
+  title: () => Promise<AsyncIterator<String>>
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>
+  url: () => Promise<AsyncIterator<String>>
+  viewCount: () => Promise<AsyncIterator<Int>>
+  yomigana: () => Promise<AsyncIterator<String>>
+}
+
+export interface CommentEdge {
+  node: Comment
+  cursor: String
+}
+
+export interface CommentEdgePromise extends Promise<CommentEdge>, Fragmentable {
+  node: <T = CommentPromise>() => T
+  cursor: () => Promise<String>
+}
+
+export interface CommentEdgeSubscription
+  extends Promise<AsyncIterator<CommentEdge>>,
+    Fragmentable {
+  node: <T = CommentSubscription>() => T
   cursor: () => Promise<AsyncIterator<String>>
 }
 
@@ -2397,209 +2180,50 @@ export interface CategorySubscription
   description: () => Promise<AsyncIterator<String>>
 }
 
-export interface AggregateReview {
-  count: Int
-}
-
-export interface AggregateReviewPromise
-  extends Promise<AggregateReview>,
-    Fragmentable {
-  count: () => Promise<Int>
-}
-
-export interface AggregateReviewSubscription
-  extends Promise<AsyncIterator<AggregateReview>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>
-}
-
-export interface CategorySubscriptionPayload {
+export interface ServiceSubscriptionPayload {
   mutation: MutationType
-  node: Category
+  node: Service
   updatedFields: String[]
-  previousValues: CategoryPreviousValues
+  previousValues: ServicePreviousValues
 }
 
-export interface CategorySubscriptionPayloadPromise
-  extends Promise<CategorySubscriptionPayload>,
+export interface ServiceSubscriptionPayloadPromise
+  extends Promise<ServiceSubscriptionPayload>,
     Fragmentable {
   mutation: () => Promise<MutationType>
-  node: <T = CategoryPromise>() => T
+  node: <T = ServicePromise>() => T
   updatedFields: () => Promise<String[]>
-  previousValues: <T = CategoryPreviousValuesPromise>() => T
+  previousValues: <T = ServicePreviousValuesPromise>() => T
 }
 
-export interface CategorySubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<CategorySubscriptionPayload>>,
+export interface ServiceSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<ServiceSubscriptionPayload>>,
     Fragmentable {
   mutation: () => Promise<AsyncIterator<MutationType>>
-  node: <T = CategorySubscription>() => T
+  node: <T = ServiceSubscription>() => T
   updatedFields: () => Promise<AsyncIterator<String[]>>
-  previousValues: <T = CategoryPreviousValuesSubscription>() => T
+  previousValues: <T = ServicePreviousValuesSubscription>() => T
 }
 
-export interface ReviewConnection {
+export interface ServiceConnection {
   pageInfo: PageInfo
-  edges: ReviewEdge[]
+  edges: ServiceEdge[]
 }
 
-export interface ReviewConnectionPromise
-  extends Promise<ReviewConnection>,
+export interface ServiceConnectionPromise
+  extends Promise<ServiceConnection>,
     Fragmentable {
   pageInfo: <T = PageInfoPromise>() => T
-  edges: <T = FragmentableArray<ReviewEdge>>() => T
-  aggregate: <T = AggregateReviewPromise>() => T
+  edges: <T = FragmentableArray<ServiceEdge>>() => T
+  aggregate: <T = AggregateServicePromise>() => T
 }
 
-export interface ReviewConnectionSubscription
-  extends Promise<AsyncIterator<ReviewConnection>>,
+export interface ServiceConnectionSubscription
+  extends Promise<AsyncIterator<ServiceConnection>>,
     Fragmentable {
   pageInfo: <T = PageInfoSubscription>() => T
-  edges: <T = Promise<AsyncIterator<ReviewEdgeSubscription>>>() => T
-  aggregate: <T = AggregateReviewSubscription>() => T
-}
-
-export interface CategoryPreviousValues {
-  id: ID_Output
-  createdAt: DateTimeOutput
-  updatedAt: DateTimeOutput
-  name: String
-  shortDescription: String
-  description: String
-}
-
-export interface CategoryPreviousValuesPromise
-  extends Promise<CategoryPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>
-  createdAt: () => Promise<DateTimeOutput>
-  updatedAt: () => Promise<DateTimeOutput>
-  name: () => Promise<String>
-  shortDescription: () => Promise<String>
-  description: () => Promise<String>
-}
-
-export interface CategoryPreviousValuesSubscription
-  extends Promise<AsyncIterator<CategoryPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>
-  name: () => Promise<AsyncIterator<String>>
-  shortDescription: () => Promise<AsyncIterator<String>>
-  description: () => Promise<AsyncIterator<String>>
-}
-
-export interface OwnerEdge {
-  node: Owner
-  cursor: String
-}
-
-export interface OwnerEdgePromise extends Promise<OwnerEdge>, Fragmentable {
-  node: <T = OwnerPromise>() => T
-  cursor: () => Promise<String>
-}
-
-export interface OwnerEdgeSubscription
-  extends Promise<AsyncIterator<OwnerEdge>>,
-    Fragmentable {
-  node: <T = OwnerSubscription>() => T
-  cursor: () => Promise<AsyncIterator<String>>
-}
-
-export interface CategoryEdge {
-  node: Category
-  cursor: String
-}
-
-export interface CategoryEdgePromise
-  extends Promise<CategoryEdge>,
-    Fragmentable {
-  node: <T = CategoryPromise>() => T
-  cursor: () => Promise<String>
-}
-
-export interface CategoryEdgeSubscription
-  extends Promise<AsyncIterator<CategoryEdge>>,
-    Fragmentable {
-  node: <T = CategorySubscription>() => T
-  cursor: () => Promise<AsyncIterator<String>>
-}
-
-export interface ServicePreviousValues {
-  address?: String
-  createdAt: DateTimeOutput
-  description: String
-  freetrial?: String
-  id: ID_Output
-  inquiry?: String
-  likeCount: Int
-  multiplans?: String
-  note?: String
-  phonenumber?: String
-  photoURL?: String
-  place?: String
-  price?: Float
-  rating?: Int
-  ratingCount?: Int
-  tagline?: String
-  title: String
-  updatedAt: DateTimeOutput
-  url?: String
-  viewCount: Int
-  yomigana?: String
-}
-
-export interface ServicePreviousValuesPromise
-  extends Promise<ServicePreviousValues>,
-    Fragmentable {
-  address: () => Promise<String>
-  createdAt: () => Promise<DateTimeOutput>
-  description: () => Promise<String>
-  freetrial: () => Promise<String>
-  id: () => Promise<ID_Output>
-  inquiry: () => Promise<String>
-  likeCount: () => Promise<Int>
-  multiplans: () => Promise<String>
-  note: () => Promise<String>
-  phonenumber: () => Promise<String>
-  photoURL: () => Promise<String>
-  place: () => Promise<String>
-  price: () => Promise<Float>
-  rating: () => Promise<Int>
-  ratingCount: () => Promise<Int>
-  tagline: () => Promise<String>
-  title: () => Promise<String>
-  updatedAt: () => Promise<DateTimeOutput>
-  url: () => Promise<String>
-  viewCount: () => Promise<Int>
-  yomigana: () => Promise<String>
-}
-
-export interface ServicePreviousValuesSubscription
-  extends Promise<AsyncIterator<ServicePreviousValues>>,
-    Fragmentable {
-  address: () => Promise<AsyncIterator<String>>
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>
-  description: () => Promise<AsyncIterator<String>>
-  freetrial: () => Promise<AsyncIterator<String>>
-  id: () => Promise<AsyncIterator<ID_Output>>
-  inquiry: () => Promise<AsyncIterator<String>>
-  likeCount: () => Promise<AsyncIterator<Int>>
-  multiplans: () => Promise<AsyncIterator<String>>
-  note: () => Promise<AsyncIterator<String>>
-  phonenumber: () => Promise<AsyncIterator<String>>
-  photoURL: () => Promise<AsyncIterator<String>>
-  place: () => Promise<AsyncIterator<String>>
-  price: () => Promise<AsyncIterator<Float>>
-  rating: () => Promise<AsyncIterator<Int>>
-  ratingCount: () => Promise<AsyncIterator<Int>>
-  tagline: () => Promise<AsyncIterator<String>>
-  title: () => Promise<AsyncIterator<String>>
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>
-  url: () => Promise<AsyncIterator<String>>
-  viewCount: () => Promise<AsyncIterator<Int>>
-  yomigana: () => Promise<AsyncIterator<String>>
+  edges: <T = Promise<AsyncIterator<ServiceEdgeSubscription>>>() => T
+  aggregate: <T = AggregateServiceSubscription>() => T
 }
 
 export interface CommentSubscriptionPayload {
@@ -2625,292 +2249,6 @@ export interface CommentSubscriptionPayloadSubscription
   node: <T = CommentSubscription>() => T
   updatedFields: () => Promise<AsyncIterator<String[]>>
   previousValues: <T = CommentPreviousValuesSubscription>() => T
-}
-
-export interface UserEdge {
-  node: User
-  cursor: String
-}
-
-export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
-  node: <T = UserPromise>() => T
-  cursor: () => Promise<String>
-}
-
-export interface UserEdgeSubscription
-  extends Promise<AsyncIterator<UserEdge>>,
-    Fragmentable {
-  node: <T = UserSubscription>() => T
-  cursor: () => Promise<AsyncIterator<String>>
-}
-
-export interface CommentPreviousValues {
-  id: ID_Output
-  createdAt: DateTimeOutput
-  updatedAt: DateTimeOutput
-  text: String
-  ownerId?: String
-}
-
-export interface CommentPreviousValuesPromise
-  extends Promise<CommentPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>
-  createdAt: () => Promise<DateTimeOutput>
-  updatedAt: () => Promise<DateTimeOutput>
-  text: () => Promise<String>
-  ownerId: () => Promise<String>
-}
-
-export interface CommentPreviousValuesSubscription
-  extends Promise<AsyncIterator<CommentPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>
-  text: () => Promise<AsyncIterator<String>>
-  ownerId: () => Promise<AsyncIterator<String>>
-}
-
-export interface AggregateService {
-  count: Int
-}
-
-export interface AggregateServicePromise
-  extends Promise<AggregateService>,
-    Fragmentable {
-  count: () => Promise<Int>
-}
-
-export interface AggregateServiceSubscription
-  extends Promise<AsyncIterator<AggregateService>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>
-}
-
-export interface CategoryConnection {
-  pageInfo: PageInfo
-  edges: CategoryEdge[]
-}
-
-export interface CategoryConnectionPromise
-  extends Promise<CategoryConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T
-  edges: <T = FragmentableArray<CategoryEdge>>() => T
-  aggregate: <T = AggregateCategoryPromise>() => T
-}
-
-export interface CategoryConnectionSubscription
-  extends Promise<AsyncIterator<CategoryConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T
-  edges: <T = Promise<AsyncIterator<CategoryEdgeSubscription>>>() => T
-  aggregate: <T = AggregateCategorySubscription>() => T
-}
-
-export interface ReviewEdge {
-  node: Review
-  cursor: String
-}
-
-export interface ReviewEdgePromise extends Promise<ReviewEdge>, Fragmentable {
-  node: <T = ReviewPromise>() => T
-  cursor: () => Promise<String>
-}
-
-export interface ReviewEdgeSubscription
-  extends Promise<AsyncIterator<ReviewEdge>>,
-    Fragmentable {
-  node: <T = ReviewSubscription>() => T
-  cursor: () => Promise<AsyncIterator<String>>
-}
-
-export interface OwnerConnection {
-  pageInfo: PageInfo
-  edges: OwnerEdge[]
-}
-
-export interface OwnerConnectionPromise
-  extends Promise<OwnerConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T
-  edges: <T = FragmentableArray<OwnerEdge>>() => T
-  aggregate: <T = AggregateOwnerPromise>() => T
-}
-
-export interface OwnerConnectionSubscription
-  extends Promise<AsyncIterator<OwnerConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T
-  edges: <T = Promise<AsyncIterator<OwnerEdgeSubscription>>>() => T
-  aggregate: <T = AggregateOwnerSubscription>() => T
-}
-
-export interface ReviewSubscriptionPayload {
-  mutation: MutationType
-  node: Review
-  updatedFields: String[]
-  previousValues: ReviewPreviousValues
-}
-
-export interface ReviewSubscriptionPayloadPromise
-  extends Promise<ReviewSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>
-  node: <T = ReviewPromise>() => T
-  updatedFields: () => Promise<String[]>
-  previousValues: <T = ReviewPreviousValuesPromise>() => T
-}
-
-export interface ReviewSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<ReviewSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>
-  node: <T = ReviewSubscription>() => T
-  updatedFields: () => Promise<AsyncIterator<String[]>>
-  previousValues: <T = ReviewPreviousValuesSubscription>() => T
-}
-
-export interface PageInfo {
-  hasNextPage: Boolean
-  hasPreviousPage: Boolean
-  startCursor?: String
-  endCursor?: String
-}
-
-export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
-  hasNextPage: () => Promise<Boolean>
-  hasPreviousPage: () => Promise<Boolean>
-  startCursor: () => Promise<String>
-  endCursor: () => Promise<String>
-}
-
-export interface PageInfoSubscription
-  extends Promise<AsyncIterator<PageInfo>>,
-    Fragmentable {
-  hasNextPage: () => Promise<AsyncIterator<Boolean>>
-  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>
-  startCursor: () => Promise<AsyncIterator<String>>
-  endCursor: () => Promise<AsyncIterator<String>>
-}
-
-export interface OwnerPreviousValues {
-  id: ID_Output
-  createdAt: DateTimeOutput
-  updatedAt: DateTimeOutput
-  displayName: String
-  username: String
-  photoURL?: String
-}
-
-export interface OwnerPreviousValuesPromise
-  extends Promise<OwnerPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>
-  createdAt: () => Promise<DateTimeOutput>
-  updatedAt: () => Promise<DateTimeOutput>
-  displayName: () => Promise<String>
-  username: () => Promise<String>
-  photoURL: () => Promise<String>
-}
-
-export interface OwnerPreviousValuesSubscription
-  extends Promise<AsyncIterator<OwnerPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>
-  displayName: () => Promise<AsyncIterator<String>>
-  username: () => Promise<AsyncIterator<String>>
-  photoURL: () => Promise<AsyncIterator<String>>
-}
-
-export interface OwnerSubscriptionPayload {
-  mutation: MutationType
-  node: Owner
-  updatedFields: String[]
-  previousValues: OwnerPreviousValues
-}
-
-export interface OwnerSubscriptionPayloadPromise
-  extends Promise<OwnerSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>
-  node: <T = OwnerPromise>() => T
-  updatedFields: () => Promise<String[]>
-  previousValues: <T = OwnerPreviousValuesPromise>() => T
-}
-
-export interface OwnerSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<OwnerSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>
-  node: <T = OwnerSubscription>() => T
-  updatedFields: () => Promise<AsyncIterator<String[]>>
-  previousValues: <T = OwnerPreviousValuesSubscription>() => T
-}
-
-export interface UserSubscriptionPayload {
-  mutation: MutationType
-  node: User
-  updatedFields: String[]
-  previousValues: UserPreviousValues
-}
-
-export interface UserSubscriptionPayloadPromise
-  extends Promise<UserSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>
-  node: <T = UserPromise>() => T
-  updatedFields: () => Promise<String[]>
-  previousValues: <T = UserPreviousValuesPromise>() => T
-}
-
-export interface UserSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<UserSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>
-  node: <T = UserSubscription>() => T
-  updatedFields: () => Promise<AsyncIterator<String[]>>
-  previousValues: <T = UserPreviousValuesSubscription>() => T
-}
-
-export interface AggregateOwner {
-  count: Int
-}
-
-export interface AggregateOwnerPromise
-  extends Promise<AggregateOwner>,
-    Fragmentable {
-  count: () => Promise<Int>
-}
-
-export interface AggregateOwnerSubscription
-  extends Promise<AsyncIterator<AggregateOwner>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>
-}
-
-export interface ServiceConnection {
-  pageInfo: PageInfo
-  edges: ServiceEdge[]
-}
-
-export interface ServiceConnectionPromise
-  extends Promise<ServiceConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T
-  edges: <T = FragmentableArray<ServiceEdge>>() => T
-  aggregate: <T = AggregateServicePromise>() => T
-}
-
-export interface ServiceConnectionSubscription
-  extends Promise<AsyncIterator<ServiceConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T
-  edges: <T = Promise<AsyncIterator<ServiceEdgeSubscription>>>() => T
-  aggregate: <T = AggregateServiceSubscription>() => T
 }
 
 export interface Review {
@@ -2950,12 +2288,148 @@ export interface ReviewSubscription
   ownerId: () => Promise<AsyncIterator<String>>
 }
 
+export interface CategoryPreviousValues {
+  id: ID_Output
+  createdAt: DateTimeOutput
+  updatedAt: DateTimeOutput
+  name: String
+  shortDescription: String
+  description: String
+}
+
+export interface CategoryPreviousValuesPromise
+  extends Promise<CategoryPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>
+  createdAt: () => Promise<DateTimeOutput>
+  updatedAt: () => Promise<DateTimeOutput>
+  name: () => Promise<String>
+  shortDescription: () => Promise<String>
+  description: () => Promise<String>
+}
+
+export interface CategoryPreviousValuesSubscription
+  extends Promise<AsyncIterator<CategoryPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>
+  name: () => Promise<AsyncIterator<String>>
+  shortDescription: () => Promise<AsyncIterator<String>>
+  description: () => Promise<AsyncIterator<String>>
+}
+
+export interface CategorySubscriptionPayload {
+  mutation: MutationType
+  node: Category
+  updatedFields: String[]
+  previousValues: CategoryPreviousValues
+}
+
+export interface CategorySubscriptionPayloadPromise
+  extends Promise<CategorySubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>
+  node: <T = CategoryPromise>() => T
+  updatedFields: () => Promise<String[]>
+  previousValues: <T = CategoryPreviousValuesPromise>() => T
+}
+
+export interface CategorySubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<CategorySubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>
+  node: <T = CategorySubscription>() => T
+  updatedFields: () => Promise<AsyncIterator<String[]>>
+  previousValues: <T = CategoryPreviousValuesSubscription>() => T
+}
+
+export interface ReviewEdge {
+  node: Review
+  cursor: String
+}
+
+export interface ReviewEdgePromise extends Promise<ReviewEdge>, Fragmentable {
+  node: <T = ReviewPromise>() => T
+  cursor: () => Promise<String>
+}
+
+export interface ReviewEdgeSubscription
+  extends Promise<AsyncIterator<ReviewEdge>>,
+    Fragmentable {
+  node: <T = ReviewSubscription>() => T
+  cursor: () => Promise<AsyncIterator<String>>
+}
+
+export interface AggregateService {
+  count: Int
+}
+
+export interface AggregateServicePromise
+  extends Promise<AggregateService>,
+    Fragmentable {
+  count: () => Promise<Int>
+}
+
+export interface AggregateServiceSubscription
+  extends Promise<AsyncIterator<AggregateService>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>
+}
+
+export interface CommentConnection {
+  pageInfo: PageInfo
+  edges: CommentEdge[]
+}
+
+export interface CommentConnectionPromise
+  extends Promise<CommentConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T
+  edges: <T = FragmentableArray<CommentEdge>>() => T
+  aggregate: <T = AggregateCommentPromise>() => T
+}
+
+export interface CommentConnectionSubscription
+  extends Promise<AsyncIterator<CommentConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T
+  edges: <T = Promise<AsyncIterator<CommentEdgeSubscription>>>() => T
+  aggregate: <T = AggregateCommentSubscription>() => T
+}
+
+export interface AggregateComment {
+  count: Int
+}
+
+export interface AggregateCommentPromise
+  extends Promise<AggregateComment>,
+    Fragmentable {
+  count: () => Promise<Int>
+}
+
+export interface AggregateCommentSubscription
+  extends Promise<AsyncIterator<AggregateComment>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>
+}
+
+/*
+The `Boolean` scalar type represents `true` or `false`.
+*/
+export type Boolean = boolean
+
 export type Long = string
 
 /*
 The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
 */
 export type Int = number
+
+/*
+The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point). 
+*/
+export type Float = number
 
 /*
 The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
@@ -2978,29 +2452,11 @@ The `String` scalar type represents textual data, represented as UTF-8 character
 */
 export type String = string
 
-/*
-The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point). 
-*/
-export type Float = number
-
-/*
-The `Boolean` scalar type represents `true` or `false`.
-*/
-export type Boolean = boolean
-
 /**
  * Model Metadata
  */
 
 export const models: Model[] = [
-  {
-    name: 'User',
-    embedded: false
-  },
-  {
-    name: 'Owner',
-    embedded: false
-  },
   {
     name: 'Comment',
     embedded: false
