@@ -3,7 +3,7 @@ import { region } from 'firebase-functions'
 import { IMAGES } from '../constants/collection'
 import { US_CENTRAL1 } from '../constants/region'
 import { deleteImageURL } from '../helpers/deleteImageURL'
-import { Image } from '../interfaces/model/image'
+import { Image } from '../types/firestore/image'
 
 const path = `${IMAGES}/{imageId}`
 

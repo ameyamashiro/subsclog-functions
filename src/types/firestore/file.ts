@@ -1,6 +1,6 @@
 import { Doc } from './doc'
 
-export interface File extends Doc {
+export type File = Doc & {
   bucketName: string
   contentType: string
   filePath: string

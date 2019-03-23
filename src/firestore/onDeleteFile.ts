@@ -2,7 +2,7 @@ import { firestore, storage } from 'firebase-admin'
 import { region } from 'firebase-functions'
 import { FILES } from '../constants/collection'
 import { US_CENTRAL1 } from '../constants/region'
-import { File } from '../interfaces/model/file'
+import { File } from '../types/firestore/file'
 
 const path = `${FILES}/{fileId}`
 

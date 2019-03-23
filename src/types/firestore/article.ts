@@ -1,5 +1,5 @@
 import { firestore } from 'firebase-admin'
-import { Doc } from '../../interfaces/model/doc'
+import { Doc } from './doc'
 
 export type Article = Doc & {
   author: string

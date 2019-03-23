@@ -1,11 +1,11 @@
-import { Image } from '../../interfaces/model/image'
+import { Image } from '../../types/firestore/image'
 import { systemFields } from '../../utils/systemFIelds'
 
 interface Input {
-  id: string;
-  imageURL: string;
-  bucketName: string;
-  filePath: string;
+  id: string
+  imageURL: string
+  bucketName: string
+  filePath: string
 }
 
 export const createImage = (input: Input): Image => {
