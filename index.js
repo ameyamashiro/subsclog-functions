@@ -46,3 +46,9 @@ if (!FUNCTION_NAME || FUNCTION_NAME === 'onDeleteStorageObject') {
 if (!FUNCTION_NAME || FUNCTION_NAME === 'onFinalizeStorageObject') {
   exports.onFinalizeStorageObject = require('./lib/storage/onFinalizeStorageObject')
 }
+
+// pubsub
+
+if (!FUNCTION_NAME || FUNCTION_NAME === 'onPublishPing') {
+  exports.onPublishPing = require('./lib/pubsub/onPublishPing')
+}
