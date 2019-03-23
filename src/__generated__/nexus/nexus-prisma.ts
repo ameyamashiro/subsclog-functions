@@ -15,12 +15,16 @@ export interface NexusPrismaTypes {
   objectTypes: {
     fields: {
       Query: QueryObject
+      Link: LinkObject
+      LinkConnection: LinkConnectionObject
+      PageInfo: PageInfoObject
+      LinkEdge: LinkEdgeObject
+      AggregateLink: AggregateLinkObject
       Comment: CommentObject
       Service: ServiceObject
       Category: CategoryObject
       Review: ReviewObject
       CommentConnection: CommentConnectionObject
-      PageInfo: PageInfoObject
       CommentEdge: CommentEdgeObject
       AggregateComment: AggregateCommentObject
       ReviewConnection: ReviewConnectionObject
@@ -35,6 +39,8 @@ export interface NexusPrismaTypes {
       Mutation: MutationObject
       BatchPayload: BatchPayloadObject
       Subscription: SubscriptionObject
+      LinkSubscriptionPayload: LinkSubscriptionPayloadObject
+      LinkPreviousValues: LinkPreviousValuesObject
       CommentSubscriptionPayload: CommentSubscriptionPayloadObject
       CommentPreviousValues: CommentPreviousValuesObject
       ReviewSubscriptionPayload: ReviewSubscriptionPayloadObject
@@ -46,12 +52,16 @@ export interface NexusPrismaTypes {
     }
     fieldsDetails: {
       Query: QueryFieldDetails
+      Link: LinkFieldDetails
+      LinkConnection: LinkConnectionFieldDetails
+      PageInfo: PageInfoFieldDetails
+      LinkEdge: LinkEdgeFieldDetails
+      AggregateLink: AggregateLinkFieldDetails
       Comment: CommentFieldDetails
       Service: ServiceFieldDetails
       Category: CategoryFieldDetails
       Review: ReviewFieldDetails
       CommentConnection: CommentConnectionFieldDetails
-      PageInfo: PageInfoFieldDetails
       CommentEdge: CommentEdgeFieldDetails
       AggregateComment: AggregateCommentFieldDetails
       ReviewConnection: ReviewConnectionFieldDetails
@@ -66,6 +76,8 @@ export interface NexusPrismaTypes {
       Mutation: MutationFieldDetails
       BatchPayload: BatchPayloadFieldDetails
       Subscription: SubscriptionFieldDetails
+      LinkSubscriptionPayload: LinkSubscriptionPayloadFieldDetails
+      LinkPreviousValues: LinkPreviousValuesFieldDetails
       CommentSubscriptionPayload: CommentSubscriptionPayloadFieldDetails
       CommentPreviousValues: CommentPreviousValuesFieldDetails
       ReviewSubscriptionPayload: ReviewSubscriptionPayloadFieldDetails
@@ -78,6 +90,8 @@ export interface NexusPrismaTypes {
   }
   inputTypes: {
     fields: {
+      LinkWhereUniqueInput: LinkWhereUniqueInputInputObject
+      LinkWhereInput: LinkWhereInputInputObject
       CommentWhereUniqueInput: CommentWhereUniqueInputInputObject
       ServiceWhereInput: ServiceWhereInputInputObject
       CategoryWhereInput: CategoryWhereInputInputObject
@@ -86,6 +100,9 @@ export interface NexusPrismaTypes {
       ReviewWhereUniqueInput: ReviewWhereUniqueInputInputObject
       CategoryWhereUniqueInput: CategoryWhereUniqueInputInputObject
       ServiceWhereUniqueInput: ServiceWhereUniqueInputInputObject
+      LinkCreateInput: LinkCreateInputInputObject
+      LinkUpdateInput: LinkUpdateInputInputObject
+      LinkUpdateManyMutationInput: LinkUpdateManyMutationInputInputObject
       CommentCreateInput: CommentCreateInputInputObject
       ServiceCreateOneInput: ServiceCreateOneInputInputObject
       ServiceCreateInput: ServiceCreateInputInputObject
@@ -130,6 +147,7 @@ export interface NexusPrismaTypes {
       CategoryUpdateManyMutationInput: CategoryUpdateManyMutationInputInputObject
       ServiceUpdateInput: ServiceUpdateInputInputObject
       ServiceUpdateManyMutationInput: ServiceUpdateManyMutationInputInputObject
+      LinkSubscriptionWhereInput: LinkSubscriptionWhereInputInputObject
       CommentSubscriptionWhereInput: CommentSubscriptionWhereInputInputObject
       ReviewSubscriptionWhereInput: ReviewSubscriptionWhereInputInputObject
       CategorySubscriptionWhereInput: CategorySubscriptionWhereInputInputObject
@@ -137,6 +155,7 @@ export interface NexusPrismaTypes {
     }
   }
   enumTypes: {
+    LinkOrderByInput: LinkOrderByInputValues
     ServiceOrderByInput: ServiceOrderByInputValues
     ReviewOrderByInput: ReviewOrderByInputValues
     CommentOrderByInput: CommentOrderByInputValues
@@ -149,6 +168,13 @@ export interface NexusPrismaTypes {
 
 type QueryObject =
   | QueryFields
+  | { name: 'link'; args?: QueryLinkArgs[] | false; alias?: string }
+  | { name: 'links'; args?: QueryLinksArgs[] | false; alias?: string }
+  | {
+      name: 'linksConnection'
+      args?: QueryLinksConnectionArgs[] | false
+      alias?: string
+    }
   | { name: 'comment'; args?: QueryCommentArgs[] | false; alias?: string }
   | { name: 'comments'; args?: QueryCommentsArgs[] | false; alias?: string }
   | {
@@ -179,6 +205,9 @@ type QueryObject =
     }
 
 type QueryFields =
+  | 'link'
+  | 'links'
+  | 'linksConnection'
   | 'comment'
   | 'comments'
   | 'commentsConnection'
@@ -192,6 +221,23 @@ type QueryFields =
   | 'services'
   | 'servicesConnection'
 
+type QueryLinkArgs = 'where'
+type QueryLinksArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryLinksConnectionArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
 type QueryCommentArgs = 'where'
 type QueryCommentsArgs =
   | 'where'
@@ -262,6 +308,61 @@ type QueryServicesConnectionArgs =
   | 'last'
 
 export interface QueryFieldDetails {
+  link: {
+    type: 'Link'
+    args: Record<QueryLinkArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<'Query'>,
+      args: { where: LinkWhereUniqueInput },
+      context: core.GetGen<'context'>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Link | null> | prisma.Link | null
+  }
+  links: {
+    type: 'Link'
+    args: Record<QueryLinksArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<'Query'>,
+      args: {
+        where?: LinkWhereInput | null
+        orderBy?: prisma.LinkOrderByInput | null
+        skip?: number | null
+        after?: string | null
+        before?: string | null
+        first?: number | null
+        last?: number | null
+      },
+      context: core.GetGen<'context'>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Link[]> | prisma.Link[]
+  }
+  linksConnection: {
+    type: 'LinkConnection'
+    args: Record<QueryLinksConnectionArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<'Query'>,
+      args: {
+        where?: LinkWhereInput | null
+        orderBy?: prisma.LinkOrderByInput | null
+        skip?: number | null
+        after?: string | null
+        before?: string | null
+        first?: number | null
+        last?: number | null
+      },
+      context: core.GetGen<'context'>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.LinkConnection> | prisma.LinkConnection
+  }
   comment: {
     type: 'Comment'
     args: Record<QueryCommentArgs, core.NexusArgDef<string>>
@@ -481,6 +582,260 @@ export interface QueryFieldDetails {
       context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.ServiceConnection> | prisma.ServiceConnection
+  }
+}
+
+// Types for Link
+
+type LinkObject =
+  | LinkFields
+  | { name: 'id'; args?: [] | false; alias?: string }
+  | { name: 'author'; args?: [] | false; alias?: string }
+  | { name: 'content'; args?: [] | false; alias?: string }
+  | { name: 'description'; args?: [] | false; alias?: string }
+  | { name: 'publishedAt'; args?: [] | false; alias?: string }
+  | { name: 'sourceId'; args?: [] | false; alias?: string }
+  | { name: 'sourceName'; args?: [] | false; alias?: string }
+  | { name: 'title'; args?: [] | false; alias?: string }
+  | { name: 'url'; args?: [] | false; alias?: string }
+
+type LinkFields =
+  | 'id'
+  | 'author'
+  | 'content'
+  | 'description'
+  | 'publishedAt'
+  | 'sourceId'
+  | 'sourceName'
+  | 'title'
+  | 'url'
+
+export interface LinkFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  author: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  content: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  description: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  publishedAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  sourceId: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  sourceName: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  title: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  url: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+
+// Types for LinkConnection
+
+type LinkConnectionObject =
+  | LinkConnectionFields
+  | { name: 'pageInfo'; args?: [] | false; alias?: string }
+  | { name: 'edges'; args?: [] | false; alias?: string }
+  | { name: 'aggregate'; args?: [] | false; alias?: string }
+
+type LinkConnectionFields = 'pageInfo' | 'edges' | 'aggregate'
+
+export interface LinkConnectionFieldDetails {
+  pageInfo: {
+    type: 'PageInfo'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<'LinkConnection'>,
+      args: {},
+      context: core.GetGen<'context'>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PageInfo> | prisma.PageInfo
+  }
+  edges: {
+    type: 'LinkEdge'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<'LinkConnection'>,
+      args: {},
+      context: core.GetGen<'context'>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.LinkEdge[]> | prisma.LinkEdge[]
+  }
+  aggregate: {
+    type: 'AggregateLink'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<'LinkConnection'>,
+      args: {},
+      context: core.GetGen<'context'>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.AggregateLink> | prisma.AggregateLink
+  }
+}
+
+// Types for PageInfo
+
+type PageInfoObject =
+  | PageInfoFields
+  | { name: 'hasNextPage'; args?: [] | false; alias?: string }
+  | { name: 'hasPreviousPage'; args?: [] | false; alias?: string }
+  | { name: 'startCursor'; args?: [] | false; alias?: string }
+  | { name: 'endCursor'; args?: [] | false; alias?: string }
+
+type PageInfoFields =
+  | 'hasNextPage'
+  | 'hasPreviousPage'
+  | 'startCursor'
+  | 'endCursor'
+
+export interface PageInfoFieldDetails {
+  hasNextPage: {
+    type: 'Boolean'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  hasPreviousPage: {
+    type: 'Boolean'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  startCursor: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  endCursor: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+}
+
+// Types for LinkEdge
+
+type LinkEdgeObject =
+  | LinkEdgeFields
+  | { name: 'node'; args?: [] | false; alias?: string }
+  | { name: 'cursor'; args?: [] | false; alias?: string }
+
+type LinkEdgeFields = 'node' | 'cursor'
+
+export interface LinkEdgeFieldDetails {
+  node: {
+    type: 'Link'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<'LinkEdge'>,
+      args: {},
+      context: core.GetGen<'context'>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Link> | prisma.Link
+  }
+  cursor: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+
+// Types for AggregateLink
+
+type AggregateLinkObject =
+  | AggregateLinkFields
+  | { name: 'count'; args?: [] | false; alias?: string }
+
+type AggregateLinkFields = 'count'
+
+export interface AggregateLinkFieldDetails {
+  count: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
   }
 }
 
@@ -1095,56 +1450,6 @@ export interface CommentConnectionFieldDetails {
   }
 }
 
-// Types for PageInfo
-
-type PageInfoObject =
-  | PageInfoFields
-  | { name: 'hasNextPage'; args?: [] | false; alias?: string }
-  | { name: 'hasPreviousPage'; args?: [] | false; alias?: string }
-  | { name: 'startCursor'; args?: [] | false; alias?: string }
-  | { name: 'endCursor'; args?: [] | false; alias?: string }
-
-type PageInfoFields =
-  | 'hasNextPage'
-  | 'hasPreviousPage'
-  | 'startCursor'
-  | 'endCursor'
-
-export interface PageInfoFieldDetails {
-  hasNextPage: {
-    type: 'Boolean'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  hasPreviousPage: {
-    type: 'Boolean'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  startCursor: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-  endCursor: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-}
-
 // Types for CommentEdge
 
 type CommentEdgeObject =
@@ -1514,6 +1819,36 @@ export interface AggregateServiceFieldDetails {
 type MutationObject =
   | MutationFields
   | {
+      name: 'createLink'
+      args?: MutationCreateLinkArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'updateLink'
+      args?: MutationUpdateLinkArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'updateManyLinks'
+      args?: MutationUpdateManyLinksArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'upsertLink'
+      args?: MutationUpsertLinkArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'deleteLink'
+      args?: MutationDeleteLinkArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'deleteManyLinks'
+      args?: MutationDeleteManyLinksArgs[] | false
+      alias?: string
+    }
+  | {
       name: 'createComment'
       args?: MutationCreateCommentArgs[] | false
       alias?: string
@@ -1635,6 +1970,12 @@ type MutationObject =
     }
 
 type MutationFields =
+  | 'createLink'
+  | 'updateLink'
+  | 'updateManyLinks'
+  | 'upsertLink'
+  | 'deleteLink'
+  | 'deleteManyLinks'
   | 'createComment'
   | 'updateComment'
   | 'updateManyComments'
@@ -1660,6 +2001,12 @@ type MutationFields =
   | 'deleteService'
   | 'deleteManyServices'
 
+type MutationCreateLinkArgs = 'data'
+type MutationUpdateLinkArgs = 'data' | 'where'
+type MutationUpdateManyLinksArgs = 'data' | 'where'
+type MutationUpsertLinkArgs = 'where' | 'create' | 'update'
+type MutationDeleteLinkArgs = 'where'
+type MutationDeleteManyLinksArgs = 'where'
 type MutationCreateCommentArgs = 'data'
 type MutationUpdateCommentArgs = 'data' | 'where'
 type MutationUpdateManyCommentsArgs = 'data' | 'where'
@@ -1686,6 +2033,91 @@ type MutationDeleteServiceArgs = 'where'
 type MutationDeleteManyServicesArgs = 'where'
 
 export interface MutationFieldDetails {
+  createLink: {
+    type: 'Link'
+    args: Record<MutationCreateLinkArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<'Mutation'>,
+      args: { data: LinkCreateInput },
+      context: core.GetGen<'context'>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Link> | prisma.Link
+  }
+  updateLink: {
+    type: 'Link'
+    args: Record<MutationUpdateLinkArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<'Mutation'>,
+      args: { data: LinkUpdateInput; where: LinkWhereUniqueInput },
+      context: core.GetGen<'context'>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Link | null> | prisma.Link | null
+  }
+  updateManyLinks: {
+    type: 'BatchPayload'
+    args: Record<MutationUpdateManyLinksArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<'Mutation'>,
+      args: {
+        data: LinkUpdateManyMutationInput
+        where?: LinkWhereInput | null
+      },
+      context: core.GetGen<'context'>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
+  upsertLink: {
+    type: 'Link'
+    args: Record<MutationUpsertLinkArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<'Mutation'>,
+      args: {
+        where: LinkWhereUniqueInput
+        create: LinkCreateInput
+        update: LinkUpdateInput
+      },
+      context: core.GetGen<'context'>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Link> | prisma.Link
+  }
+  deleteLink: {
+    type: 'Link'
+    args: Record<MutationDeleteLinkArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<'Mutation'>,
+      args: { where: LinkWhereUniqueInput },
+      context: core.GetGen<'context'>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Link | null> | prisma.Link | null
+  }
+  deleteManyLinks: {
+    type: 'BatchPayload'
+    args: Record<MutationDeleteManyLinksArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<'Mutation'>,
+      args: { where?: LinkWhereInput | null },
+      context: core.GetGen<'context'>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
   createComment: {
     type: 'Comment'
     args: Record<MutationCreateCommentArgs, core.NexusArgDef<string>>
@@ -2051,6 +2483,7 @@ export interface BatchPayloadFieldDetails {
 
 type SubscriptionObject =
   | SubscriptionFields
+  | { name: 'link'; args?: SubscriptionLinkArgs[] | false; alias?: string }
   | {
       name: 'comment'
       args?: SubscriptionCommentArgs[] | false
@@ -2068,14 +2501,31 @@ type SubscriptionObject =
       alias?: string
     }
 
-type SubscriptionFields = 'comment' | 'review' | 'category' | 'service'
+type SubscriptionFields = 'link' | 'comment' | 'review' | 'category' | 'service'
 
+type SubscriptionLinkArgs = 'where'
 type SubscriptionCommentArgs = 'where'
 type SubscriptionReviewArgs = 'where'
 type SubscriptionCategoryArgs = 'where'
 type SubscriptionServiceArgs = 'where'
 
 export interface SubscriptionFieldDetails {
+  link: {
+    type: 'LinkSubscriptionPayload'
+    args: Record<SubscriptionLinkArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<'Subscription'>,
+      args: { where?: LinkSubscriptionWhereInput | null },
+      context: core.GetGen<'context'>,
+      info?: GraphQLResolveInfo
+    ) =>
+      | Promise<prisma.LinkSubscriptionPayload | null>
+      | prisma.LinkSubscriptionPayload
+      | null
+  }
   comment: {
     type: 'CommentSubscriptionPayload'
     args: Record<SubscriptionCommentArgs, core.NexusArgDef<string>>
@@ -2139,6 +2589,174 @@ export interface SubscriptionFieldDetails {
       | Promise<prisma.ServiceSubscriptionPayload | null>
       | prisma.ServiceSubscriptionPayload
       | null
+  }
+}
+
+// Types for LinkSubscriptionPayload
+
+type LinkSubscriptionPayloadObject =
+  | LinkSubscriptionPayloadFields
+  | { name: 'mutation'; args?: [] | false; alias?: string }
+  | { name: 'node'; args?: [] | false; alias?: string }
+  | { name: 'updatedFields'; args?: [] | false; alias?: string }
+  | { name: 'previousValues'; args?: [] | false; alias?: string }
+
+type LinkSubscriptionPayloadFields =
+  | 'mutation'
+  | 'node'
+  | 'updatedFields'
+  | 'previousValues'
+
+export interface LinkSubscriptionPayloadFieldDetails {
+  mutation: {
+    type: 'MutationType'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<'LinkSubscriptionPayload'>,
+      args: {},
+      context: core.GetGen<'context'>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.MutationType> | prisma.MutationType
+  }
+  node: {
+    type: 'Link'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<'LinkSubscriptionPayload'>,
+      args: {},
+      context: core.GetGen<'context'>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Link | null> | prisma.Link | null
+  }
+  updatedFields: {
+    type: 'String'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: undefined
+  }
+  previousValues: {
+    type: 'LinkPreviousValues'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<'LinkSubscriptionPayload'>,
+      args: {},
+      context: core.GetGen<'context'>,
+      info?: GraphQLResolveInfo
+    ) =>
+      | Promise<prisma.LinkPreviousValues | null>
+      | prisma.LinkPreviousValues
+      | null
+  }
+}
+
+// Types for LinkPreviousValues
+
+type LinkPreviousValuesObject =
+  | LinkPreviousValuesFields
+  | { name: 'id'; args?: [] | false; alias?: string }
+  | { name: 'author'; args?: [] | false; alias?: string }
+  | { name: 'content'; args?: [] | false; alias?: string }
+  | { name: 'description'; args?: [] | false; alias?: string }
+  | { name: 'publishedAt'; args?: [] | false; alias?: string }
+  | { name: 'sourceId'; args?: [] | false; alias?: string }
+  | { name: 'sourceName'; args?: [] | false; alias?: string }
+  | { name: 'title'; args?: [] | false; alias?: string }
+  | { name: 'url'; args?: [] | false; alias?: string }
+
+type LinkPreviousValuesFields =
+  | 'id'
+  | 'author'
+  | 'content'
+  | 'description'
+  | 'publishedAt'
+  | 'sourceId'
+  | 'sourceName'
+  | 'title'
+  | 'url'
+
+export interface LinkPreviousValuesFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  author: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  content: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  description: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  publishedAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  sourceId: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  sourceName: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  title: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  url: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
   }
 }
 
@@ -2863,6 +3481,266 @@ export interface ServicePreviousValuesFieldDetails {
     resolve: undefined
   }
 }
+
+export interface LinkWhereUniqueInput {
+  id?: string | null
+  url?: string | null
+}
+export type LinkWhereUniqueInputInputObject =
+  | Extract<keyof LinkWhereUniqueInput, string>
+  | { name: 'id'; alias?: string }
+  | { name: 'url'; alias?: string }
+
+export interface LinkWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  author?: string | null
+  author_not?: string | null
+  author_in?: string[]
+  author_not_in?: string[]
+  author_lt?: string | null
+  author_lte?: string | null
+  author_gt?: string | null
+  author_gte?: string | null
+  author_contains?: string | null
+  author_not_contains?: string | null
+  author_starts_with?: string | null
+  author_not_starts_with?: string | null
+  author_ends_with?: string | null
+  author_not_ends_with?: string | null
+  content?: string | null
+  content_not?: string | null
+  content_in?: string[]
+  content_not_in?: string[]
+  content_lt?: string | null
+  content_lte?: string | null
+  content_gt?: string | null
+  content_gte?: string | null
+  content_contains?: string | null
+  content_not_contains?: string | null
+  content_starts_with?: string | null
+  content_not_starts_with?: string | null
+  content_ends_with?: string | null
+  content_not_ends_with?: string | null
+  description?: string | null
+  description_not?: string | null
+  description_in?: string[]
+  description_not_in?: string[]
+  description_lt?: string | null
+  description_lte?: string | null
+  description_gt?: string | null
+  description_gte?: string | null
+  description_contains?: string | null
+  description_not_contains?: string | null
+  description_starts_with?: string | null
+  description_not_starts_with?: string | null
+  description_ends_with?: string | null
+  description_not_ends_with?: string | null
+  publishedAt?: string | null
+  publishedAt_not?: string | null
+  publishedAt_in?: string[]
+  publishedAt_not_in?: string[]
+  publishedAt_lt?: string | null
+  publishedAt_lte?: string | null
+  publishedAt_gt?: string | null
+  publishedAt_gte?: string | null
+  sourceId?: string | null
+  sourceId_not?: string | null
+  sourceId_in?: string[]
+  sourceId_not_in?: string[]
+  sourceId_lt?: string | null
+  sourceId_lte?: string | null
+  sourceId_gt?: string | null
+  sourceId_gte?: string | null
+  sourceId_contains?: string | null
+  sourceId_not_contains?: string | null
+  sourceId_starts_with?: string | null
+  sourceId_not_starts_with?: string | null
+  sourceId_ends_with?: string | null
+  sourceId_not_ends_with?: string | null
+  sourceName?: string | null
+  sourceName_not?: string | null
+  sourceName_in?: string[]
+  sourceName_not_in?: string[]
+  sourceName_lt?: string | null
+  sourceName_lte?: string | null
+  sourceName_gt?: string | null
+  sourceName_gte?: string | null
+  sourceName_contains?: string | null
+  sourceName_not_contains?: string | null
+  sourceName_starts_with?: string | null
+  sourceName_not_starts_with?: string | null
+  sourceName_ends_with?: string | null
+  sourceName_not_ends_with?: string | null
+  title?: string | null
+  title_not?: string | null
+  title_in?: string[]
+  title_not_in?: string[]
+  title_lt?: string | null
+  title_lte?: string | null
+  title_gt?: string | null
+  title_gte?: string | null
+  title_contains?: string | null
+  title_not_contains?: string | null
+  title_starts_with?: string | null
+  title_not_starts_with?: string | null
+  title_ends_with?: string | null
+  title_not_ends_with?: string | null
+  url?: string | null
+  url_not?: string | null
+  url_in?: string[]
+  url_not_in?: string[]
+  url_lt?: string | null
+  url_lte?: string | null
+  url_gt?: string | null
+  url_gte?: string | null
+  url_contains?: string | null
+  url_not_contains?: string | null
+  url_starts_with?: string | null
+  url_not_starts_with?: string | null
+  url_ends_with?: string | null
+  url_not_ends_with?: string | null
+  AND?: LinkWhereInput[]
+  OR?: LinkWhereInput[]
+  NOT?: LinkWhereInput[]
+}
+export type LinkWhereInputInputObject =
+  | Extract<keyof LinkWhereInput, string>
+  | { name: 'id'; alias?: string }
+  | { name: 'id_not'; alias?: string }
+  | { name: 'id_in'; alias?: string }
+  | { name: 'id_not_in'; alias?: string }
+  | { name: 'id_lt'; alias?: string }
+  | { name: 'id_lte'; alias?: string }
+  | { name: 'id_gt'; alias?: string }
+  | { name: 'id_gte'; alias?: string }
+  | { name: 'id_contains'; alias?: string }
+  | { name: 'id_not_contains'; alias?: string }
+  | { name: 'id_starts_with'; alias?: string }
+  | { name: 'id_not_starts_with'; alias?: string }
+  | { name: 'id_ends_with'; alias?: string }
+  | { name: 'id_not_ends_with'; alias?: string }
+  | { name: 'author'; alias?: string }
+  | { name: 'author_not'; alias?: string }
+  | { name: 'author_in'; alias?: string }
+  | { name: 'author_not_in'; alias?: string }
+  | { name: 'author_lt'; alias?: string }
+  | { name: 'author_lte'; alias?: string }
+  | { name: 'author_gt'; alias?: string }
+  | { name: 'author_gte'; alias?: string }
+  | { name: 'author_contains'; alias?: string }
+  | { name: 'author_not_contains'; alias?: string }
+  | { name: 'author_starts_with'; alias?: string }
+  | { name: 'author_not_starts_with'; alias?: string }
+  | { name: 'author_ends_with'; alias?: string }
+  | { name: 'author_not_ends_with'; alias?: string }
+  | { name: 'content'; alias?: string }
+  | { name: 'content_not'; alias?: string }
+  | { name: 'content_in'; alias?: string }
+  | { name: 'content_not_in'; alias?: string }
+  | { name: 'content_lt'; alias?: string }
+  | { name: 'content_lte'; alias?: string }
+  | { name: 'content_gt'; alias?: string }
+  | { name: 'content_gte'; alias?: string }
+  | { name: 'content_contains'; alias?: string }
+  | { name: 'content_not_contains'; alias?: string }
+  | { name: 'content_starts_with'; alias?: string }
+  | { name: 'content_not_starts_with'; alias?: string }
+  | { name: 'content_ends_with'; alias?: string }
+  | { name: 'content_not_ends_with'; alias?: string }
+  | { name: 'description'; alias?: string }
+  | { name: 'description_not'; alias?: string }
+  | { name: 'description_in'; alias?: string }
+  | { name: 'description_not_in'; alias?: string }
+  | { name: 'description_lt'; alias?: string }
+  | { name: 'description_lte'; alias?: string }
+  | { name: 'description_gt'; alias?: string }
+  | { name: 'description_gte'; alias?: string }
+  | { name: 'description_contains'; alias?: string }
+  | { name: 'description_not_contains'; alias?: string }
+  | { name: 'description_starts_with'; alias?: string }
+  | { name: 'description_not_starts_with'; alias?: string }
+  | { name: 'description_ends_with'; alias?: string }
+  | { name: 'description_not_ends_with'; alias?: string }
+  | { name: 'publishedAt'; alias?: string }
+  | { name: 'publishedAt_not'; alias?: string }
+  | { name: 'publishedAt_in'; alias?: string }
+  | { name: 'publishedAt_not_in'; alias?: string }
+  | { name: 'publishedAt_lt'; alias?: string }
+  | { name: 'publishedAt_lte'; alias?: string }
+  | { name: 'publishedAt_gt'; alias?: string }
+  | { name: 'publishedAt_gte'; alias?: string }
+  | { name: 'sourceId'; alias?: string }
+  | { name: 'sourceId_not'; alias?: string }
+  | { name: 'sourceId_in'; alias?: string }
+  | { name: 'sourceId_not_in'; alias?: string }
+  | { name: 'sourceId_lt'; alias?: string }
+  | { name: 'sourceId_lte'; alias?: string }
+  | { name: 'sourceId_gt'; alias?: string }
+  | { name: 'sourceId_gte'; alias?: string }
+  | { name: 'sourceId_contains'; alias?: string }
+  | { name: 'sourceId_not_contains'; alias?: string }
+  | { name: 'sourceId_starts_with'; alias?: string }
+  | { name: 'sourceId_not_starts_with'; alias?: string }
+  | { name: 'sourceId_ends_with'; alias?: string }
+  | { name: 'sourceId_not_ends_with'; alias?: string }
+  | { name: 'sourceName'; alias?: string }
+  | { name: 'sourceName_not'; alias?: string }
+  | { name: 'sourceName_in'; alias?: string }
+  | { name: 'sourceName_not_in'; alias?: string }
+  | { name: 'sourceName_lt'; alias?: string }
+  | { name: 'sourceName_lte'; alias?: string }
+  | { name: 'sourceName_gt'; alias?: string }
+  | { name: 'sourceName_gte'; alias?: string }
+  | { name: 'sourceName_contains'; alias?: string }
+  | { name: 'sourceName_not_contains'; alias?: string }
+  | { name: 'sourceName_starts_with'; alias?: string }
+  | { name: 'sourceName_not_starts_with'; alias?: string }
+  | { name: 'sourceName_ends_with'; alias?: string }
+  | { name: 'sourceName_not_ends_with'; alias?: string }
+  | { name: 'title'; alias?: string }
+  | { name: 'title_not'; alias?: string }
+  | { name: 'title_in'; alias?: string }
+  | { name: 'title_not_in'; alias?: string }
+  | { name: 'title_lt'; alias?: string }
+  | { name: 'title_lte'; alias?: string }
+  | { name: 'title_gt'; alias?: string }
+  | { name: 'title_gte'; alias?: string }
+  | { name: 'title_contains'; alias?: string }
+  | { name: 'title_not_contains'; alias?: string }
+  | { name: 'title_starts_with'; alias?: string }
+  | { name: 'title_not_starts_with'; alias?: string }
+  | { name: 'title_ends_with'; alias?: string }
+  | { name: 'title_not_ends_with'; alias?: string }
+  | { name: 'url'; alias?: string }
+  | { name: 'url_not'; alias?: string }
+  | { name: 'url_in'; alias?: string }
+  | { name: 'url_not_in'; alias?: string }
+  | { name: 'url_lt'; alias?: string }
+  | { name: 'url_lte'; alias?: string }
+  | { name: 'url_gt'; alias?: string }
+  | { name: 'url_gte'; alias?: string }
+  | { name: 'url_contains'; alias?: string }
+  | { name: 'url_not_contains'; alias?: string }
+  | { name: 'url_starts_with'; alias?: string }
+  | { name: 'url_not_starts_with'; alias?: string }
+  | { name: 'url_ends_with'; alias?: string }
+  | { name: 'url_not_ends_with'; alias?: string }
+  | { name: 'AND'; alias?: string }
+  | { name: 'OR'; alias?: string }
+  | { name: 'NOT'; alias?: string }
 
 export interface CommentWhereUniqueInput {
   id?: string | null
@@ -3897,6 +4775,69 @@ export interface ServiceWhereUniqueInput {
 export type ServiceWhereUniqueInputInputObject =
   | Extract<keyof ServiceWhereUniqueInput, string>
   | { name: 'id'; alias?: string }
+
+export interface LinkCreateInput {
+  author?: string | null
+  content?: string | null
+  description?: string | null
+  publishedAt?: string
+  sourceId?: string | null
+  sourceName?: string | null
+  title?: string
+  url?: string
+}
+export type LinkCreateInputInputObject =
+  | Extract<keyof LinkCreateInput, string>
+  | { name: 'author'; alias?: string }
+  | { name: 'content'; alias?: string }
+  | { name: 'description'; alias?: string }
+  | { name: 'publishedAt'; alias?: string }
+  | { name: 'sourceId'; alias?: string }
+  | { name: 'sourceName'; alias?: string }
+  | { name: 'title'; alias?: string }
+  | { name: 'url'; alias?: string }
+
+export interface LinkUpdateInput {
+  author?: string | null
+  content?: string | null
+  description?: string | null
+  publishedAt?: string | null
+  sourceId?: string | null
+  sourceName?: string | null
+  title?: string | null
+  url?: string | null
+}
+export type LinkUpdateInputInputObject =
+  | Extract<keyof LinkUpdateInput, string>
+  | { name: 'author'; alias?: string }
+  | { name: 'content'; alias?: string }
+  | { name: 'description'; alias?: string }
+  | { name: 'publishedAt'; alias?: string }
+  | { name: 'sourceId'; alias?: string }
+  | { name: 'sourceName'; alias?: string }
+  | { name: 'title'; alias?: string }
+  | { name: 'url'; alias?: string }
+
+export interface LinkUpdateManyMutationInput {
+  author?: string | null
+  content?: string | null
+  description?: string | null
+  publishedAt?: string | null
+  sourceId?: string | null
+  sourceName?: string | null
+  title?: string | null
+  url?: string | null
+}
+export type LinkUpdateManyMutationInputInputObject =
+  | Extract<keyof LinkUpdateManyMutationInput, string>
+  | { name: 'author'; alias?: string }
+  | { name: 'content'; alias?: string }
+  | { name: 'description'; alias?: string }
+  | { name: 'publishedAt'; alias?: string }
+  | { name: 'sourceId'; alias?: string }
+  | { name: 'sourceName'; alias?: string }
+  | { name: 'title'; alias?: string }
+  | { name: 'url'; alias?: string }
 
 export interface CommentCreateInput {
   text?: string
@@ -5414,6 +6355,27 @@ export type ServiceUpdateManyMutationInputInputObject =
   | { name: 'viewCount'; alias?: string }
   | { name: 'yomigana'; alias?: string }
 
+export interface LinkSubscriptionWhereInput {
+  mutation_in?: prisma.MutationType[]
+  updatedFields_contains?: string | null
+  updatedFields_contains_every?: string[]
+  updatedFields_contains_some?: string[]
+  node?: LinkWhereInput | null
+  AND?: LinkSubscriptionWhereInput[]
+  OR?: LinkSubscriptionWhereInput[]
+  NOT?: LinkSubscriptionWhereInput[]
+}
+export type LinkSubscriptionWhereInputInputObject =
+  | Extract<keyof LinkSubscriptionWhereInput, string>
+  | { name: 'mutation_in'; alias?: string }
+  | { name: 'updatedFields_contains'; alias?: string }
+  | { name: 'updatedFields_contains_every'; alias?: string }
+  | { name: 'updatedFields_contains_some'; alias?: string }
+  | { name: 'node'; alias?: string }
+  | { name: 'AND'; alias?: string }
+  | { name: 'OR'; alias?: string }
+  | { name: 'NOT'; alias?: string }
+
 export interface CommentSubscriptionWhereInput {
   mutation_in?: prisma.MutationType[]
   updatedFields_contains?: string | null
@@ -5497,6 +6459,30 @@ export type ServiceSubscriptionWhereInputInputObject =
   | { name: 'AND'; alias?: string }
   | { name: 'OR'; alias?: string }
   | { name: 'NOT'; alias?: string }
+
+export type LinkOrderByInputValues =
+  | 'id_ASC'
+  | 'id_DESC'
+  | 'author_ASC'
+  | 'author_DESC'
+  | 'content_ASC'
+  | 'content_DESC'
+  | 'description_ASC'
+  | 'description_DESC'
+  | 'publishedAt_ASC'
+  | 'publishedAt_DESC'
+  | 'sourceId_ASC'
+  | 'sourceId_DESC'
+  | 'sourceName_ASC'
+  | 'sourceName_DESC'
+  | 'title_ASC'
+  | 'title_DESC'
+  | 'url_ASC'
+  | 'url_DESC'
+  | 'createdAt_ASC'
+  | 'createdAt_DESC'
+  | 'updatedAt_ASC'
+  | 'updatedAt_DESC'
 
 export type ServiceOrderByInputValues =
   | 'address_ASC'

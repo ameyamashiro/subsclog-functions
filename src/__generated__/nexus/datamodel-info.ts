@@ -5,6 +5,7 @@
 
 export default {
   uniqueFieldsByModel: {
+    Link: ['id', 'url'],
     Comment: ['id'],
     Review: ['id'],
     Category: ['id'],
@@ -29,6 +30,211 @@ export default {
           name: 'Query',
           description: null,
           fields: [
+            {
+              name: 'link',
+              description: null,
+              args: [
+                {
+                  name: 'where',
+                  description: null,
+                  type: {
+                    kind: 'NON_NULL',
+                    name: null,
+                    ofType: {
+                      kind: 'INPUT_OBJECT',
+                      name: 'LinkWhereUniqueInput',
+                      ofType: null
+                    }
+                  },
+                  defaultValue: null
+                }
+              ],
+              type: {
+                kind: 'OBJECT',
+                name: 'Link',
+                ofType: null
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'links',
+              description: null,
+              args: [
+                {
+                  name: 'where',
+                  description: null,
+                  type: {
+                    kind: 'INPUT_OBJECT',
+                    name: 'LinkWhereInput',
+                    ofType: null
+                  },
+                  defaultValue: null
+                },
+                {
+                  name: 'orderBy',
+                  description: null,
+                  type: {
+                    kind: 'ENUM',
+                    name: 'LinkOrderByInput',
+                    ofType: null
+                  },
+                  defaultValue: null
+                },
+                {
+                  name: 'skip',
+                  description: null,
+                  type: {
+                    kind: 'SCALAR',
+                    name: 'Int',
+                    ofType: null
+                  },
+                  defaultValue: null
+                },
+                {
+                  name: 'after',
+                  description: null,
+                  type: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null
+                  },
+                  defaultValue: null
+                },
+                {
+                  name: 'before',
+                  description: null,
+                  type: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null
+                  },
+                  defaultValue: null
+                },
+                {
+                  name: 'first',
+                  description: null,
+                  type: {
+                    kind: 'SCALAR',
+                    name: 'Int',
+                    ofType: null
+                  },
+                  defaultValue: null
+                },
+                {
+                  name: 'last',
+                  description: null,
+                  type: {
+                    kind: 'SCALAR',
+                    name: 'Int',
+                    ofType: null
+                  },
+                  defaultValue: null
+                }
+              ],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'LIST',
+                  name: null,
+                  ofType: {
+                    kind: 'OBJECT',
+                    name: 'Link',
+                    ofType: null
+                  }
+                }
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'linksConnection',
+              description: null,
+              args: [
+                {
+                  name: 'where',
+                  description: null,
+                  type: {
+                    kind: 'INPUT_OBJECT',
+                    name: 'LinkWhereInput',
+                    ofType: null
+                  },
+                  defaultValue: null
+                },
+                {
+                  name: 'orderBy',
+                  description: null,
+                  type: {
+                    kind: 'ENUM',
+                    name: 'LinkOrderByInput',
+                    ofType: null
+                  },
+                  defaultValue: null
+                },
+                {
+                  name: 'skip',
+                  description: null,
+                  type: {
+                    kind: 'SCALAR',
+                    name: 'Int',
+                    ofType: null
+                  },
+                  defaultValue: null
+                },
+                {
+                  name: 'after',
+                  description: null,
+                  type: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null
+                  },
+                  defaultValue: null
+                },
+                {
+                  name: 'before',
+                  description: null,
+                  type: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null
+                  },
+                  defaultValue: null
+                },
+                {
+                  name: 'first',
+                  description: null,
+                  type: {
+                    kind: 'SCALAR',
+                    name: 'Int',
+                    ofType: null
+                  },
+                  defaultValue: null
+                },
+                {
+                  name: 'last',
+                  description: null,
+                  type: {
+                    kind: 'SCALAR',
+                    name: 'Int',
+                    ofType: null
+                  },
+                  defaultValue: null
+                }
+              ],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'OBJECT',
+                  name: 'LinkConnection',
+                  ofType: null
+                }
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
             {
               name: 'comment',
               description: null,
@@ -884,7 +1090,7 @@ export default {
         },
         {
           kind: 'INPUT_OBJECT',
-          name: 'CommentWhereUniqueInput',
+          name: 'LinkWhereUniqueInput',
           description: null,
           fields: null,
           inputFields: [
@@ -894,6 +1100,16 @@ export default {
               type: {
                 kind: 'SCALAR',
                 name: 'ID',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'url',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
                 ofType: null
               },
               defaultValue: null
@@ -910,6 +1126,1957 @@ export default {
             'The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.',
           fields: null,
           inputFields: null,
+          interfaces: null,
+          enumValues: null,
+          possibleTypes: null
+        },
+        {
+          kind: 'SCALAR',
+          name: 'String',
+          description:
+            'The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.',
+          fields: null,
+          inputFields: null,
+          interfaces: null,
+          enumValues: null,
+          possibleTypes: null
+        },
+        {
+          kind: 'OBJECT',
+          name: 'Link',
+          description: null,
+          fields: [
+            {
+              name: 'id',
+              description: null,
+              args: [],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'SCALAR',
+                  name: 'ID',
+                  ofType: null
+                }
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'author',
+              description: null,
+              args: [],
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'content',
+              description: null,
+              args: [],
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'description',
+              description: null,
+              args: [],
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'publishedAt',
+              description: null,
+              args: [],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'SCALAR',
+                  name: 'DateTime',
+                  ofType: null
+                }
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'sourceId',
+              description: null,
+              args: [],
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'sourceName',
+              description: null,
+              args: [],
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'title',
+              description: null,
+              args: [],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'SCALAR',
+                  name: 'String',
+                  ofType: null
+                }
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'url',
+              description: null,
+              args: [],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'SCALAR',
+                  name: 'String',
+                  ofType: null
+                }
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            }
+          ],
+          inputFields: null,
+          interfaces: [],
+          enumValues: null,
+          possibleTypes: null
+        },
+        {
+          kind: 'SCALAR',
+          name: 'DateTime',
+          description: null,
+          fields: null,
+          inputFields: null,
+          interfaces: null,
+          enumValues: null,
+          possibleTypes: null
+        },
+        {
+          kind: 'INPUT_OBJECT',
+          name: 'LinkWhereInput',
+          description: null,
+          fields: null,
+          inputFields: [
+            {
+              name: 'id',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'ID',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'id_not',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'ID',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'id_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'ID',
+                    ofType: null
+                  }
+                }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'id_not_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'ID',
+                    ofType: null
+                  }
+                }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'id_lt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'ID',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'id_lte',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'ID',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'id_gt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'ID',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'id_gte',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'ID',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'id_contains',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'ID',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'id_not_contains',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'ID',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'id_starts_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'ID',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'id_not_starts_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'ID',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'id_ends_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'ID',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'id_not_ends_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'ID',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'author',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'author_not',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'author_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null
+                  }
+                }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'author_not_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null
+                  }
+                }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'author_lt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'author_lte',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'author_gt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'author_gte',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'author_contains',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'author_not_contains',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'author_starts_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'author_not_starts_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'author_ends_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'author_not_ends_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'content',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'content_not',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'content_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null
+                  }
+                }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'content_not_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null
+                  }
+                }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'content_lt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'content_lte',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'content_gt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'content_gte',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'content_contains',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'content_not_contains',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'content_starts_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'content_not_starts_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'content_ends_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'content_not_ends_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'description',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'description_not',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'description_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null
+                  }
+                }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'description_not_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null
+                  }
+                }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'description_lt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'description_lte',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'description_gt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'description_gte',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'description_contains',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'description_not_contains',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'description_starts_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'description_not_starts_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'description_ends_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'description_not_ends_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'publishedAt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'DateTime',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'publishedAt_not',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'DateTime',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'publishedAt_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'DateTime',
+                    ofType: null
+                  }
+                }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'publishedAt_not_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'DateTime',
+                    ofType: null
+                  }
+                }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'publishedAt_lt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'DateTime',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'publishedAt_lte',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'DateTime',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'publishedAt_gt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'DateTime',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'publishedAt_gte',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'DateTime',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'sourceId',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'sourceId_not',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'sourceId_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null
+                  }
+                }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'sourceId_not_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null
+                  }
+                }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'sourceId_lt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'sourceId_lte',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'sourceId_gt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'sourceId_gte',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'sourceId_contains',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'sourceId_not_contains',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'sourceId_starts_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'sourceId_not_starts_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'sourceId_ends_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'sourceId_not_ends_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'sourceName',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'sourceName_not',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'sourceName_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null
+                  }
+                }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'sourceName_not_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null
+                  }
+                }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'sourceName_lt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'sourceName_lte',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'sourceName_gt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'sourceName_gte',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'sourceName_contains',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'sourceName_not_contains',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'sourceName_starts_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'sourceName_not_starts_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'sourceName_ends_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'sourceName_not_ends_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'title',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'title_not',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'title_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null
+                  }
+                }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'title_not_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null
+                  }
+                }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'title_lt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'title_lte',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'title_gt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'title_gte',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'title_contains',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'title_not_contains',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'title_starts_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'title_not_starts_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'title_ends_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'title_not_ends_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'url',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'url_not',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'url_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null
+                  }
+                }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'url_not_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null
+                  }
+                }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'url_lt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'url_lte',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'url_gt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'url_gte',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'url_contains',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'url_not_contains',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'url_starts_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'url_not_starts_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'url_ends_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'url_not_ends_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'AND',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'INPUT_OBJECT',
+                    name: 'LinkWhereInput',
+                    ofType: null
+                  }
+                }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'OR',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'INPUT_OBJECT',
+                    name: 'LinkWhereInput',
+                    ofType: null
+                  }
+                }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'NOT',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'INPUT_OBJECT',
+                    name: 'LinkWhereInput',
+                    ofType: null
+                  }
+                }
+              },
+              defaultValue: null
+            }
+          ],
+          interfaces: null,
+          enumValues: null,
+          possibleTypes: null
+        },
+        {
+          kind: 'ENUM',
+          name: 'LinkOrderByInput',
+          description: null,
+          fields: null,
+          inputFields: null,
+          interfaces: null,
+          enumValues: [
+            {
+              name: 'id_ASC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'id_DESC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'author_ASC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'author_DESC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'content_ASC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'content_DESC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'description_ASC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'description_DESC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'publishedAt_ASC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'publishedAt_DESC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'sourceId_ASC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'sourceId_DESC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'sourceName_ASC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'sourceName_DESC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'title_ASC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'title_DESC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'url_ASC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'url_DESC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'createdAt_ASC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'createdAt_DESC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'updatedAt_ASC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'updatedAt_DESC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null
+            }
+          ],
+          possibleTypes: null
+        },
+        {
+          kind: 'SCALAR',
+          name: 'Int',
+          description:
+            'The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. ',
+          fields: null,
+          inputFields: null,
+          interfaces: null,
+          enumValues: null,
+          possibleTypes: null
+        },
+        {
+          kind: 'OBJECT',
+          name: 'LinkConnection',
+          description: null,
+          fields: [
+            {
+              name: 'pageInfo',
+              description: null,
+              args: [],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'OBJECT',
+                  name: 'PageInfo',
+                  ofType: null
+                }
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'edges',
+              description: null,
+              args: [],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'LIST',
+                  name: null,
+                  ofType: {
+                    kind: 'OBJECT',
+                    name: 'LinkEdge',
+                    ofType: null
+                  }
+                }
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'aggregate',
+              description: null,
+              args: [],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'OBJECT',
+                  name: 'AggregateLink',
+                  ofType: null
+                }
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            }
+          ],
+          inputFields: null,
+          interfaces: [],
+          enumValues: null,
+          possibleTypes: null
+        },
+        {
+          kind: 'OBJECT',
+          name: 'PageInfo',
+          description: null,
+          fields: [
+            {
+              name: 'hasNextPage',
+              description: null,
+              args: [],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'SCALAR',
+                  name: 'Boolean',
+                  ofType: null
+                }
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'hasPreviousPage',
+              description: null,
+              args: [],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'SCALAR',
+                  name: 'Boolean',
+                  ofType: null
+                }
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'startCursor',
+              description: null,
+              args: [],
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'endCursor',
+              description: null,
+              args: [],
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            }
+          ],
+          inputFields: null,
+          interfaces: [],
+          enumValues: null,
+          possibleTypes: null
+        },
+        {
+          kind: 'SCALAR',
+          name: 'Boolean',
+          description:
+            'The `Boolean` scalar type represents `true` or `false`.',
+          fields: null,
+          inputFields: null,
+          interfaces: null,
+          enumValues: null,
+          possibleTypes: null
+        },
+        {
+          kind: 'OBJECT',
+          name: 'LinkEdge',
+          description: null,
+          fields: [
+            {
+              name: 'node',
+              description: null,
+              args: [],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'OBJECT',
+                  name: 'Link',
+                  ofType: null
+                }
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'cursor',
+              description: null,
+              args: [],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'SCALAR',
+                  name: 'String',
+                  ofType: null
+                }
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            }
+          ],
+          inputFields: null,
+          interfaces: [],
+          enumValues: null,
+          possibleTypes: null
+        },
+        {
+          kind: 'OBJECT',
+          name: 'AggregateLink',
+          description: null,
+          fields: [
+            {
+              name: 'count',
+              description: null,
+              args: [],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'SCALAR',
+                  name: 'Int',
+                  ofType: null
+                }
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            }
+          ],
+          inputFields: null,
+          interfaces: [],
+          enumValues: null,
+          possibleTypes: null
+        },
+        {
+          kind: 'INPUT_OBJECT',
+          name: 'CommentWhereUniqueInput',
+          description: null,
+          fields: null,
+          inputFields: [
+            {
+              name: 'id',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'ID',
+                ofType: null
+              },
+              defaultValue: null
+            }
+          ],
           interfaces: null,
           enumValues: null,
           possibleTypes: null
@@ -1014,27 +3181,6 @@ export default {
           ],
           inputFields: null,
           interfaces: [],
-          enumValues: null,
-          possibleTypes: null
-        },
-        {
-          kind: 'SCALAR',
-          name: 'DateTime',
-          description: null,
-          fields: null,
-          inputFields: null,
-          interfaces: null,
-          enumValues: null,
-          possibleTypes: null
-        },
-        {
-          kind: 'SCALAR',
-          name: 'String',
-          description:
-            'The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.',
-          fields: null,
-          inputFields: null,
-          interfaces: null,
           enumValues: null,
           possibleTypes: null
         },
@@ -5536,28 +7682,6 @@ export default {
         },
         {
           kind: 'SCALAR',
-          name: 'Boolean',
-          description:
-            'The `Boolean` scalar type represents `true` or `false`.',
-          fields: null,
-          inputFields: null,
-          interfaces: null,
-          enumValues: null,
-          possibleTypes: null
-        },
-        {
-          kind: 'SCALAR',
-          name: 'Int',
-          description:
-            'The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. ',
-          fields: null,
-          inputFields: null,
-          interfaces: null,
-          enumValues: null,
-          possibleTypes: null
-        },
-        {
-          kind: 'SCALAR',
           name: 'Float',
           description:
             'The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point). ',
@@ -8050,73 +10174,6 @@ export default {
         },
         {
           kind: 'OBJECT',
-          name: 'PageInfo',
-          description: null,
-          fields: [
-            {
-              name: 'hasNextPage',
-              description: null,
-              args: [],
-              type: {
-                kind: 'NON_NULL',
-                name: null,
-                ofType: {
-                  kind: 'SCALAR',
-                  name: 'Boolean',
-                  ofType: null
-                }
-              },
-              isDeprecated: false,
-              deprecationReason: null
-            },
-            {
-              name: 'hasPreviousPage',
-              description: null,
-              args: [],
-              type: {
-                kind: 'NON_NULL',
-                name: null,
-                ofType: {
-                  kind: 'SCALAR',
-                  name: 'Boolean',
-                  ofType: null
-                }
-              },
-              isDeprecated: false,
-              deprecationReason: null
-            },
-            {
-              name: 'startCursor',
-              description: null,
-              args: [],
-              type: {
-                kind: 'SCALAR',
-                name: 'String',
-                ofType: null
-              },
-              isDeprecated: false,
-              deprecationReason: null
-            },
-            {
-              name: 'endCursor',
-              description: null,
-              args: [],
-              type: {
-                kind: 'SCALAR',
-                name: 'String',
-                ofType: null
-              },
-              isDeprecated: false,
-              deprecationReason: null
-            }
-          ],
-          inputFields: null,
-          interfaces: [],
-          enumValues: null,
-          possibleTypes: null
-        },
-        {
-          kind: 'OBJECT',
           name: 'CommentEdge',
           description: null,
           fields: [
@@ -8762,6 +10819,232 @@ export default {
           name: 'Mutation',
           description: null,
           fields: [
+            {
+              name: 'createLink',
+              description: null,
+              args: [
+                {
+                  name: 'data',
+                  description: null,
+                  type: {
+                    kind: 'NON_NULL',
+                    name: null,
+                    ofType: {
+                      kind: 'INPUT_OBJECT',
+                      name: 'LinkCreateInput',
+                      ofType: null
+                    }
+                  },
+                  defaultValue: null
+                }
+              ],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'OBJECT',
+                  name: 'Link',
+                  ofType: null
+                }
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'updateLink',
+              description: null,
+              args: [
+                {
+                  name: 'data',
+                  description: null,
+                  type: {
+                    kind: 'NON_NULL',
+                    name: null,
+                    ofType: {
+                      kind: 'INPUT_OBJECT',
+                      name: 'LinkUpdateInput',
+                      ofType: null
+                    }
+                  },
+                  defaultValue: null
+                },
+                {
+                  name: 'where',
+                  description: null,
+                  type: {
+                    kind: 'NON_NULL',
+                    name: null,
+                    ofType: {
+                      kind: 'INPUT_OBJECT',
+                      name: 'LinkWhereUniqueInput',
+                      ofType: null
+                    }
+                  },
+                  defaultValue: null
+                }
+              ],
+              type: {
+                kind: 'OBJECT',
+                name: 'Link',
+                ofType: null
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'updateManyLinks',
+              description: null,
+              args: [
+                {
+                  name: 'data',
+                  description: null,
+                  type: {
+                    kind: 'NON_NULL',
+                    name: null,
+                    ofType: {
+                      kind: 'INPUT_OBJECT',
+                      name: 'LinkUpdateManyMutationInput',
+                      ofType: null
+                    }
+                  },
+                  defaultValue: null
+                },
+                {
+                  name: 'where',
+                  description: null,
+                  type: {
+                    kind: 'INPUT_OBJECT',
+                    name: 'LinkWhereInput',
+                    ofType: null
+                  },
+                  defaultValue: null
+                }
+              ],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'OBJECT',
+                  name: 'BatchPayload',
+                  ofType: null
+                }
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'upsertLink',
+              description: null,
+              args: [
+                {
+                  name: 'where',
+                  description: null,
+                  type: {
+                    kind: 'NON_NULL',
+                    name: null,
+                    ofType: {
+                      kind: 'INPUT_OBJECT',
+                      name: 'LinkWhereUniqueInput',
+                      ofType: null
+                    }
+                  },
+                  defaultValue: null
+                },
+                {
+                  name: 'create',
+                  description: null,
+                  type: {
+                    kind: 'NON_NULL',
+                    name: null,
+                    ofType: {
+                      kind: 'INPUT_OBJECT',
+                      name: 'LinkCreateInput',
+                      ofType: null
+                    }
+                  },
+                  defaultValue: null
+                },
+                {
+                  name: 'update',
+                  description: null,
+                  type: {
+                    kind: 'NON_NULL',
+                    name: null,
+                    ofType: {
+                      kind: 'INPUT_OBJECT',
+                      name: 'LinkUpdateInput',
+                      ofType: null
+                    }
+                  },
+                  defaultValue: null
+                }
+              ],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'OBJECT',
+                  name: 'Link',
+                  ofType: null
+                }
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'deleteLink',
+              description: null,
+              args: [
+                {
+                  name: 'where',
+                  description: null,
+                  type: {
+                    kind: 'NON_NULL',
+                    name: null,
+                    ofType: {
+                      kind: 'INPUT_OBJECT',
+                      name: 'LinkWhereUniqueInput',
+                      ofType: null
+                    }
+                  },
+                  defaultValue: null
+                }
+              ],
+              type: {
+                kind: 'OBJECT',
+                name: 'Link',
+                ofType: null
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'deleteManyLinks',
+              description: null,
+              args: [
+                {
+                  name: 'where',
+                  description: null,
+                  type: {
+                    kind: 'INPUT_OBJECT',
+                    name: 'LinkWhereInput',
+                    ofType: null
+                  },
+                  defaultValue: null
+                }
+              ],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'OBJECT',
+                  name: 'BatchPayload',
+                  ofType: null
+                }
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
             {
               name: 'createComment',
               description: null,
@@ -9669,6 +11952,328 @@ export default {
           ],
           inputFields: null,
           interfaces: [],
+          enumValues: null,
+          possibleTypes: null
+        },
+        {
+          kind: 'INPUT_OBJECT',
+          name: 'LinkCreateInput',
+          description: null,
+          fields: null,
+          inputFields: [
+            {
+              name: 'author',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'content',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'description',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'publishedAt',
+              description: null,
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'SCALAR',
+                  name: 'DateTime',
+                  ofType: null
+                }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'sourceId',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'sourceName',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'title',
+              description: null,
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'SCALAR',
+                  name: 'String',
+                  ofType: null
+                }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'url',
+              description: null,
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'SCALAR',
+                  name: 'String',
+                  ofType: null
+                }
+              },
+              defaultValue: null
+            }
+          ],
+          interfaces: null,
+          enumValues: null,
+          possibleTypes: null
+        },
+        {
+          kind: 'INPUT_OBJECT',
+          name: 'LinkUpdateInput',
+          description: null,
+          fields: null,
+          inputFields: [
+            {
+              name: 'author',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'content',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'description',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'publishedAt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'DateTime',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'sourceId',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'sourceName',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'title',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'url',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            }
+          ],
+          interfaces: null,
+          enumValues: null,
+          possibleTypes: null
+        },
+        {
+          kind: 'INPUT_OBJECT',
+          name: 'LinkUpdateManyMutationInput',
+          description: null,
+          fields: null,
+          inputFields: [
+            {
+              name: 'author',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'content',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'description',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'publishedAt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'DateTime',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'sourceId',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'sourceName',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'title',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'url',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            }
+          ],
+          interfaces: null,
+          enumValues: null,
+          possibleTypes: null
+        },
+        {
+          kind: 'OBJECT',
+          name: 'BatchPayload',
+          description: null,
+          fields: [
+            {
+              name: 'count',
+              description: null,
+              args: [],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'SCALAR',
+                  name: 'Long',
+                  ofType: null
+                }
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            }
+          ],
+          inputFields: null,
+          interfaces: [],
+          enumValues: null,
+          possibleTypes: null
+        },
+        {
+          kind: 'SCALAR',
+          name: 'Long',
+          description: null,
+          fields: null,
+          inputFields: null,
+          interfaces: null,
           enumValues: null,
           possibleTypes: null
         },
@@ -12214,43 +14819,6 @@ export default {
               defaultValue: null
             }
           ],
-          interfaces: null,
-          enumValues: null,
-          possibleTypes: null
-        },
-        {
-          kind: 'OBJECT',
-          name: 'BatchPayload',
-          description: null,
-          fields: [
-            {
-              name: 'count',
-              description: null,
-              args: [],
-              type: {
-                kind: 'NON_NULL',
-                name: null,
-                ofType: {
-                  kind: 'SCALAR',
-                  name: 'Long',
-                  ofType: null
-                }
-              },
-              isDeprecated: false,
-              deprecationReason: null
-            }
-          ],
-          inputFields: null,
-          interfaces: [],
-          enumValues: null,
-          possibleTypes: null
-        },
-        {
-          kind: 'SCALAR',
-          name: 'Long',
-          description: null,
-          fields: null,
-          inputFields: null,
           interfaces: null,
           enumValues: null,
           possibleTypes: null
@@ -17531,6 +20099,29 @@ export default {
           description: null,
           fields: [
             {
+              name: 'link',
+              description: null,
+              args: [
+                {
+                  name: 'where',
+                  description: null,
+                  type: {
+                    kind: 'INPUT_OBJECT',
+                    name: 'LinkSubscriptionWhereInput',
+                    ofType: null
+                  },
+                  defaultValue: null
+                }
+              ],
+              type: {
+                kind: 'OBJECT',
+                name: 'LinkSubscriptionPayload',
+                ofType: null
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
               name: 'comment',
               description: null,
               args: [
@@ -17618,6 +20209,380 @@ export default {
                 kind: 'OBJECT',
                 name: 'ServiceSubscriptionPayload',
                 ofType: null
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            }
+          ],
+          inputFields: null,
+          interfaces: [],
+          enumValues: null,
+          possibleTypes: null
+        },
+        {
+          kind: 'INPUT_OBJECT',
+          name: 'LinkSubscriptionWhereInput',
+          description: null,
+          fields: null,
+          inputFields: [
+            {
+              name: 'mutation_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'ENUM',
+                    name: 'MutationType',
+                    ofType: null
+                  }
+                }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'updatedFields_contains',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'updatedFields_contains_every',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null
+                  }
+                }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'updatedFields_contains_some',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null
+                  }
+                }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'node',
+              description: null,
+              type: {
+                kind: 'INPUT_OBJECT',
+                name: 'LinkWhereInput',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'AND',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'INPUT_OBJECT',
+                    name: 'LinkSubscriptionWhereInput',
+                    ofType: null
+                  }
+                }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'OR',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'INPUT_OBJECT',
+                    name: 'LinkSubscriptionWhereInput',
+                    ofType: null
+                  }
+                }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'NOT',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'INPUT_OBJECT',
+                    name: 'LinkSubscriptionWhereInput',
+                    ofType: null
+                  }
+                }
+              },
+              defaultValue: null
+            }
+          ],
+          interfaces: null,
+          enumValues: null,
+          possibleTypes: null
+        },
+        {
+          kind: 'ENUM',
+          name: 'MutationType',
+          description: null,
+          fields: null,
+          inputFields: null,
+          interfaces: null,
+          enumValues: [
+            {
+              name: 'CREATED',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'UPDATED',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'DELETED',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null
+            }
+          ],
+          possibleTypes: null
+        },
+        {
+          kind: 'OBJECT',
+          name: 'LinkSubscriptionPayload',
+          description: null,
+          fields: [
+            {
+              name: 'mutation',
+              description: null,
+              args: [],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'ENUM',
+                  name: 'MutationType',
+                  ofType: null
+                }
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'node',
+              description: null,
+              args: [],
+              type: {
+                kind: 'OBJECT',
+                name: 'Link',
+                ofType: null
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'updatedFields',
+              description: null,
+              args: [],
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null
+                  }
+                }
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'previousValues',
+              description: null,
+              args: [],
+              type: {
+                kind: 'OBJECT',
+                name: 'LinkPreviousValues',
+                ofType: null
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            }
+          ],
+          inputFields: null,
+          interfaces: [],
+          enumValues: null,
+          possibleTypes: null
+        },
+        {
+          kind: 'OBJECT',
+          name: 'LinkPreviousValues',
+          description: null,
+          fields: [
+            {
+              name: 'id',
+              description: null,
+              args: [],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'SCALAR',
+                  name: 'ID',
+                  ofType: null
+                }
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'author',
+              description: null,
+              args: [],
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'content',
+              description: null,
+              args: [],
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'description',
+              description: null,
+              args: [],
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'publishedAt',
+              description: null,
+              args: [],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'SCALAR',
+                  name: 'DateTime',
+                  ofType: null
+                }
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'sourceId',
+              description: null,
+              args: [],
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'sourceName',
+              description: null,
+              args: [],
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'title',
+              description: null,
+              args: [],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'SCALAR',
+                  name: 'String',
+                  ofType: null
+                }
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'url',
+              description: null,
+              args: [],
+              type: {
+                kind: 'NON_NULL',
+                name: null,
+                ofType: {
+                  kind: 'SCALAR',
+                  name: 'String',
+                  ofType: null
+                }
               },
               isDeprecated: false,
               deprecationReason: null
@@ -17765,35 +20730,6 @@ export default {
           ],
           interfaces: null,
           enumValues: null,
-          possibleTypes: null
-        },
-        {
-          kind: 'ENUM',
-          name: 'MutationType',
-          description: null,
-          fields: null,
-          inputFields: null,
-          interfaces: null,
-          enumValues: [
-            {
-              name: 'CREATED',
-              description: null,
-              isDeprecated: false,
-              deprecationReason: null
-            },
-            {
-              name: 'UPDATED',
-              description: null,
-              isDeprecated: false,
-              deprecationReason: null
-            },
-            {
-              name: 'DELETED',
-              description: null,
-              isDeprecated: false,
-              deprecationReason: null
-            }
-          ],
           possibleTypes: null
         },
         {

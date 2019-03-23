@@ -1,4 +1,4 @@
-declare module 'newsapi' {
+declare module 'newsapi/src' {
   class NewsAPI {
     constructor(apiKey: string)
 

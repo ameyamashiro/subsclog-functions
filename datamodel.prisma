@@ -1,3 +1,15 @@
+type Link {
+  id: ID! @unique
+  author: String
+  content: String
+  description: String
+  publishedAt: DateTime!
+  sourceId: String
+  sourceName: String
+  title: String!
+  url: String! @unique
+}
+
 type Comment {
   id: ID! @unique
   createdAt: DateTime!

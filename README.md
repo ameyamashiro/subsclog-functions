@@ -1,27 +1,46 @@
-# Functions
+# Prisma Functions
 
-## Config
+## Install
 
 ```
-$ yarn firebase functions:config:set prisma.secret="prisma-service-secret"
+$ yarn global add prisma apollo
+```
+
+## Admin
+
+```
+$ export SECRET=<secret>
+$ prisma deploy
 ```
 
 ## Develop
 
 ```
-$ firebase functions:config:get > .runtimeconfig.json
-$ yarn firebase serve --only functions
+$ yarn build:watch
+```
+
+### Development server
+
+```
+$ yarn start
+```
+
+## Firebase Config
+
+```
+$ yarn firebase functions:config:set prisma.secret="prisma-service-secret"
 ```
 
 ## Deploy
 
 ```
-$ yarn firebase deploy --only functions
+$ deploy
 ```
 
-## Deploy Rrisma
+## Deploy Prisma
 
 ```
 $ prisma login
-$ prisima deploy
+$ export SECRET=<secret>
+$ prisma deploy
 ```

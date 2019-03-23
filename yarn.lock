@@ -38,7 +38,7 @@
   dependencies:
     "@babel/highlight" "^7.0.0"
 
-"@babel/core@^7.3.4":
+"@babel/core@^7.4.0":
   version "7.4.0"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.4.0.tgz#248fd6874b7d755010bfe61f557461d4f446d9e9"
   integrity sha512-Dzl7U0/T69DFOTwqz/FJdnOSWS57NpjNfCwMKHABr589Lg8uX1RrlBIJ7L5Dubt/xkLsx0xH5EBFzlBVes1ayA==
@@ -562,7 +562,7 @@
     core-js "^2.6.5"
     regenerator-runtime "^0.13.2"
 
-"@babel/preset-env@^7.3.4":
+"@babel/preset-env@^7.4.2":
   version "7.4.2"
   resolved "https://registry.yarnpkg.com/@babel/preset-env/-/preset-env-7.4.2.tgz#2f5ba1de2daefa9dcca653848f96c7ce2e406676"
   integrity sha512-OEz6VOZaI9LW08CWVS3d9g/0jZA6YCn1gsKIy/fut7yZCJti5Lm1/Hi+uo/U+ODm7g4I6gULrCP+/+laT8xAsA==
@@ -3232,7 +3232,7 @@ find-up@^3.0.0:
   dependencies:
     locate-path "^3.0.0"
 
-firebase-admin@^7.1.0:
+firebase-admin@^7.1.1:
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/firebase-admin/-/firebase-admin-7.1.1.tgz#4889149d40f0fac03821ff270268c81ea8805508"
   integrity sha512-AitJc9vUBOzxpM5OKJw2018L0iccRusnBnXcKoWNiKoplajYQGfDBvUkhd7NUqEQigxw/xx8+DrZrlBlPaKV5A==
@@ -3247,7 +3247,7 @@ firebase-admin@^7.1.0:
     "@google-cloud/firestore" "^1.1.0"
     "@google-cloud/storage" "^2.3.0"
 
-firebase-functions@^2.2.0:
+firebase-functions@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/firebase-functions/-/firebase-functions-2.2.1.tgz#f5b6de47860819eb8d41b969c8d6d2c1000dc422"
   integrity sha512-k2FA3j8XFGPOGBjgKoBUQQc4Hfqe4PdcG8hfS/RHireW1vQhkplx8XhzaknJNqsBCIoglMFuUsXpuAh9pbhtxw==
@@ -5585,7 +5585,7 @@ nexus-prisma@^0.3.5:
   resolved "https://registry.yarnpkg.com/nexus-prisma/-/nexus-prisma-0.3.5.tgz#b4e662d368ede3d1a8e04ed2400d0b576af06e06"
   integrity sha512-wmSXtyzvHsRJp/DwrQx31sSbGbokPh2kkvUgYHM315MPhSRXY3X3vxg1wbETWfdIoCTZhVbSEIxbDCbR/VxYNQ==
 
-nexus@^0.11.4:
+nexus@^0.11.5:
   version "0.11.5"
   resolved "https://registry.yarnpkg.com/nexus/-/nexus-0.11.5.tgz#80786b86834c4b28dfc0e9d3811ae9aff82642b6"
   integrity sha512-g2cxJZMa1/9vDZwUaL29XnpiuMnYtnhr8qSbGSmLn0KS/6Ah4FUWdrYDIfBPGgaB9MiZwPcmy5DAhRSd6d/0XA==
@@ -6469,7 +6469,7 @@ prisma-yml@1.29.1:
     scuid "^1.0.2"
     yaml-ast-parser "^0.0.40"
 
-prisma@^1.28.5:
+prisma@^1.29.1:
   version "1.29.1"
   resolved "https://registry.yarnpkg.com/prisma/-/prisma-1.29.1.tgz#0db66025410a001ebc4b82cc077e7215afa2664e"
   integrity sha512-3kcBjan16LFTwtPS0w6iNUnXNzaS8aCOeck3tXpTbVgnnMyqfB3JCAHgB7IyMUtTLq01usxPCNcRi3SPx+Litg==
@@ -7907,7 +7907,7 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@^3.3.3333:
+typescript@^3.3.4000:
   version "3.3.4000"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.3.4000.tgz#76b0f89cfdbf97827e1112d64f283f1151d6adf0"
   integrity sha512-jjOcCZvpkl2+z7JFn0yBOoLQyLoIkNZAs/fYJkUG6VKy6zLPHJGfQJYFHzibB6GJaF/8QrcECtlQ5cpvRHSMEA==

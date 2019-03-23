@@ -6,6 +6,7 @@ export type Article = Doc & {
   content: string | null
   description: string
   publishedAt: firestore.Timestamp
+  serviceId: string
   sourceId: string | null
   sourceName: string
   title: string

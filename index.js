@@ -33,6 +33,10 @@ if (!FUNCTION_NAME || FUNCTION_NAME === 'graphql') {
   exports.graphql = require('./lib/https/graphql')
 }
 
+if (!FUNCTION_NAME || FUNCTION_NAME === 'updateArticles') {
+  exports.updateArticles = require('./lib/https/updateArticles')
+}
+
 // storage
 
 if (!FUNCTION_NAME || FUNCTION_NAME === 'onDeleteStorageObject') {

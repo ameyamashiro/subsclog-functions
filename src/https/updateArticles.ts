@@ -1,15 +1,10 @@
-import { firestore } from 'firebase-admin'
 import { config, region, Request, Response } from 'firebase-functions'
-import NewsAPI from 'newsapi'
-import { ARTICLES } from '../constants/collection'
-import { US_CENTRAL1 } from '../constants/region'
-import { get4DaysAgoDate } from '../helpers/get4DaysAgoDate'
-import { createNewsApiDate } from '../helpers/createNewsApiDate'
-import { Article } from '../types/firestore/article'
-import { NewsapiEverything } from '../types/newapi/everything'
-import { createId } from '../utils/createId'
-import { systemFields } from '../utils/systemFIelds'
+import NewsAPI from 'newsapi/src'
 import { prisma } from '../__generated__/prisma'
+import { US_CENTRAL1 } from '../constants/region'
+import { createNewsApiDate } from '../helpers/createNewsApiDate'
+import { get4DaysAgoDate } from '../helpers/get4DaysAgoDate'
+import { NewsapiEverything } from '../types/newapi/everything'
 
 const handler = async (req: Request, res: Response) => {
   const apiKey = config().newsapi.api_key
@@ -18,62 +13,33 @@ const handler = async (req: Request, res: Response) => {
 
   const fromDate = get4DaysAgoDate()
 
-  const services = await prisma.services()
-
-  console.log(services)
-
   const result = await newsapi.v2.everything({
     q: 'サブスク',
     from: createNewsApiDate(fromDate)
   })
 
-  if (result.status !== 'ok') {
-    res.end(result)
-    return
-  }
+  const articles = result.articles as NewsapiEverything[]
 
-  const articlesQuerySnap = await firestore()
-    .collection(ARTICLES)
-    .where('publishedAt', '>=', fromDate)
-    .get()
+  const upsertLinks = articles.map(article => {
+    return prisma.upsertLink({
+      where: { url: article.url },
+      create: {
+        author: article.author,
+        content: article.content || undefined,
+        description: article.description,
+        publishedAt: new Date(article.publishedAt),
+        sourceId: article.source.id || undefined,
+        sourceName: article.source.name,
+        title: article.title,
+        url: article.url
+      },
+      update: { title: article.title }
+    })
+  })
 
-  const articleUrls: string[] = articlesQuerySnap.docs.map(
-    snap => snap.data().url
-  )
+  await Promise.all(upsertLinks)
 
-  const newsapiArticles = result.articles as NewsapiEverything[]
-
-  const newArticles = newsapiArticles.filter(
-    article => !articleUrls.includes(article.url)
-  )
-
-  const batch = firestore().batch()
-
-  for (const newArticle of newArticles) {
-    const publishedAt = new Date(newArticle.publishedAt)
-    const articleId = createId()
-    const article: Article = {
-      ...systemFields(articleId),
-      author: newArticle.author,
-      content: newArticle.content,
-      description: newArticle.description,
-      publishedAt: firestore.Timestamp.fromDate(publishedAt),
-      sourceId: newArticle.source.id,
-      sourceName: newArticle.source.name,
-      title: newArticle.title,
-      url: newArticle.url,
-      urlToImage: newArticle.urlToImage
-    }
-    const ref = firestore()
-      .collection(ARTICLES)
-      .doc(articleId)
-
-    batch.set(ref, article)
-  }
-
-  await batch.commit()
-
-  res.json({ articles: newArticles })
+  res.json({ articles })
 }
 
 module.exports = region(US_CENTRAL1).https.onRequest(handler)
