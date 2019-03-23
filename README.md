@@ -6,6 +6,13 @@
 $ yarn firebase functions:config:set prisma.secret="prisma-service-secret"
 ```
 
+## Develop
+
+```
+$ firebase functions:config:get > .runtimeconfig.json
+$ yarn firebase serve --only functions
+```
+
 ## Deploy
 
 ```
