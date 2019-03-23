@@ -1,10 +1,10 @@
 import { config, region, Request, Response } from 'firebase-functions'
 import NewsAPI from 'newsapi/src'
-import { prisma } from '../__generated__/prisma'
-import { US_CENTRAL1 } from '../constants/region'
-import { createNewsApiDate } from '../helpers/createNewsApiDate'
-import { get4DaysAgoDate } from '../helpers/get4DaysAgoDate'
-import { NewsapiEverything } from '../types/newapi/everything'
+import { prisma } from './__generated__/prisma'
+import { US_CENTRAL1 } from './constants/region'
+import { createNewsApiDate } from './helpers/createNewsApiDate'
+import { get4DaysAgoDate } from './helpers/get4DaysAgoDate'
+import { NewsapiEverything } from './types/newapi/everything'
 
 const handler = async (req: Request, res: Response) => {
   const apiKey = config().newsapi.api_key

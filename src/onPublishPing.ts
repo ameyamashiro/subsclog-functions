@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { region } from 'firebase-functions'
-import { US_CENTRAL1 } from '../constants/region'
+import { US_CENTRAL1 } from './constants/region'
 
 const handler = async () => {
   const functionNames: string[] = []
@@ -14,12 +14,12 @@ const handler = async () => {
   })
 }
 
-const createUrl = (fn: string) => {
+const createUrl = (functionName: string) => {
   const { projectId } = JSON.parse(process.env.FIREBASE_CONFIG as any)
 
-  return `https://us-central1-${projectId}.cloudfunctions.net/${fn}`
+  return `https://us-central1-${projectId}.cloudfunctions.net/${functionName}`
 }
 
-export = region(US_CENTRAL1)
+module.exports = region(US_CENTRAL1)
   .pubsub.topic('ping')
   .onPublish(handler)

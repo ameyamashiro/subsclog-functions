@@ -1,6 +1,6 @@
-import { region, Request, Response } from 'firebase-functions'
-import { US_CENTRAL1 } from '../constants/region'
 import language from '@google-cloud/language'
+import { region, Request, Response } from 'firebase-functions'
+import { US_CENTRAL1 } from './constants/region'
 
 const handler = async (req: Request, res: Response) => {
   const client = new language.LanguageServiceClient()

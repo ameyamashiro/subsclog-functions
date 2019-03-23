@@ -1,5 +1,5 @@
-import { File } from '../../types/firestore/file'
-import { systemFields } from '../../utils/systemFIelds'
+import { File } from '../types/firestore/file'
+import { systemFields } from '../utils/systemFIelds'
 
 interface Input {
   id: string

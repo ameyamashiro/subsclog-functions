@@ -12,43 +12,43 @@ process.env['SECRET'] = config().prisma.secret
 // firestore
 
 if (!FUNCTION_NAME || FUNCTION_NAME === 'onDeleteFile') {
-  exports.onDeleteFile = require('./lib/firestore/onDeleteFile')
+  exports.onDeleteFile = require('./lib/onDeleteFile')
 }
 
 if (!FUNCTION_NAME || FUNCTION_NAME === 'onDeleteImage') {
-  exports.onDeleteImage = require('./lib/firestore/onDeleteImage')
+  exports.onDeleteImage = require('./lib/onDeleteImage')
 }
 
 // https
 
 if (!FUNCTION_NAME || FUNCTION_NAME === 'deleteFile') {
-  exports.deleteFile = require('./lib/https/deleteFile')
+  exports.deleteFile = require('./lib/deleteFile')
 }
 
 if (!FUNCTION_NAME || FUNCTION_NAME === 'getSitemap') {
-  exports.getSitemap = require('./lib/https/getSitemap')
+  exports.getSitemap = require('./lib/getSitemap')
 }
 
 if (!FUNCTION_NAME || FUNCTION_NAME === 'graphql') {
-  exports.graphql = require('./lib/https/graphql')
+  exports.graphql = require('./lib/graphql')
 }
 
 if (!FUNCTION_NAME || FUNCTION_NAME === 'updateArticles') {
-  exports.updateArticles = require('./lib/https/updateArticles')
+  exports.updateArticles = require('./lib/updateArticles')
 }
 
 // storage
 
 if (!FUNCTION_NAME || FUNCTION_NAME === 'onDeleteStorageObject') {
-  exports.onDeleteStorageObject = require('./lib/storage/onDeleteStorageObject')
+  exports.onDeleteStorageObject = require('./lib/onDeleteStorageObject')
 }
 
 if (!FUNCTION_NAME || FUNCTION_NAME === 'onFinalizeStorageObject') {
-  exports.onFinalizeStorageObject = require('./lib/storage/onFinalizeStorageObject')
+  exports.onFinalizeStorageObject = require('./lib/onFinalizeStorageObject')
 }
 
 // pubsub
 
 if (!FUNCTION_NAME || FUNCTION_NAME === 'onPublishPing') {
-  exports.onPublishPing = require('./lib/pubsub/onPublishPing')
+  exports.onPublishPing = require('./lib/onPublishPing')
 }

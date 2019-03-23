@@ -1,8 +1,6 @@
 import axios from 'axios'
-import * as cors from 'cors'
-import * as express from 'express'
 import { region, Request, Response } from 'firebase-functions'
-import { US_CENTRAL1 } from '../constants/region'
+import { US_CENTRAL1 } from './constants/region'
 
 const handler = async (request: Request, response: Response) => {
   const serviceIds = await getServiceIds()

@@ -1,12 +1,12 @@
 import { https, region } from 'firebase-functions'
-import { CODE } from '../constants/code'
-import { FILES } from '../constants/collection'
-import { US_CENTRAL1 } from '../constants/region'
-import { DeleteFile } from '../types/https/DeleteFile'
-import { doc } from '../utils/doc'
-import { getUserId } from '../utils/getUserId'
-import { HttpsErrorInternal } from '../utils/httpsErrorInternal'
-import { isUndefined } from '../utils/isUndefined'
+import { CODE } from './constants/code'
+import { FILES } from './constants/collection'
+import { US_CENTRAL1 } from './constants/region'
+import { DeleteFile } from './types/https/DeleteFile'
+import { doc } from './utils/doc'
+import { getUserId } from './utils/getUserId'
+import { HttpsErrorInternal } from './utils/httpsErrorInternal'
+import { isUndefined } from './utils/isUndefined'
 
 const handler = async (
   data: DeleteFile,

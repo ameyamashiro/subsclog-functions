@@ -1,14 +1,12 @@
 import { region } from 'firebase-functions'
 import { ObjectMetadata } from 'firebase-functions/lib/providers/storage'
-import { FILES, IMAGES } from '../constants/collection'
-import { US_CENTRAL1 } from '../constants/region'
-import { createImageURL } from '../helpers/createImageURL'
-import { Image } from '../types/firestore/image'
-import { createFile } from '../models/file/createFile'
-import { createImage } from '../models/image/createImage'
-import { doc } from '../utils/doc'
-import { systemFields } from '../utils/systemFIelds'
-import { toFileName } from '../utils/toFileName'
+import { FILES, IMAGES } from './constants/collection'
+import { US_CENTRAL1 } from './constants/region'
+import { createImageURL } from './helpers/createImageURL'
+import { Image } from './types/firestore/image'
+import { doc } from './utils/doc'
+import { systemFields } from './utils/systemFIelds'
+import { toFileName } from './utils/toFileName'
 
 const handler = async (object: ObjectMetadata) => {
   if (typeof object.name !== 'string') {

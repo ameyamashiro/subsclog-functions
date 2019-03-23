@@ -1,9 +1,9 @@
 import { region } from 'firebase-functions'
 import { ObjectMetadata } from 'firebase-functions/lib/providers/storage'
-import { FILES, IMAGES } from '../constants/collection'
-import { US_CENTRAL1 } from '../constants/region'
-import { doc } from '../utils/doc'
-import { toFileName } from '../utils/toFileName'
+import { FILES, IMAGES } from './constants/collection'
+import { US_CENTRAL1 } from './constants/region'
+import { doc } from './utils/doc'
+import { toFileName } from './utils/toFileName'
 
 const handler = async (object: ObjectMetadata) => {
   if (typeof object.name !== 'string') {
