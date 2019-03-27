@@ -10,7 +10,7 @@ $ yarn global add prisma apollo
 
 ```
 $ export SECRET=<secret>
-$ prisma deploy
+$ prisma admin
 ```
 
 ## Develop
