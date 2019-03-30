@@ -8,8 +8,6 @@ export const getTwitterAccessToken = async () => {
     return null
   }
 
-  const consumer_key = '58Mc26786cmv0UoxEYG4eJ7CR'
-  const consumer_secret = 'IXVUNPKhrSMPfCWi03bBlKTbQ0gHAArcoV94HRZIXlKmvgY6bM'
   const source = twitterConfig.api_key + ':' + twitterConfig.api_secret_key
   const token = Buffer.from(source).toString('base64')
 
