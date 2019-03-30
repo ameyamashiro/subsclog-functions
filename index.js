@@ -9,18 +9,6 @@ const FUNCTION_NAME = process.env.FUNCTION_NAME
 
 process.env['SECRET'] = config().prisma.secret
 
-// firestore
-
-if (!FUNCTION_NAME || FUNCTION_NAME === 'onDeleteFile') {
-  exports.onDeleteFile = require('./lib/onDeleteFile')
-}
-
-if (!FUNCTION_NAME || FUNCTION_NAME === 'onDeleteImage') {
-  exports.onDeleteImage = require('./lib/onDeleteImage')
-}
-
-// https
-
 if (!FUNCTION_NAME || FUNCTION_NAME === 'deleteFile') {
   exports.deleteFile = require('./lib/deleteFile')
 }
@@ -33,7 +21,13 @@ if (!FUNCTION_NAME || FUNCTION_NAME === 'graphql') {
   exports.graphql = require('./lib/graphql')
 }
 
-// storage
+if (!FUNCTION_NAME || FUNCTION_NAME === 'onDeleteFile') {
+  exports.onDeleteFile = require('./lib/onDeleteFile')
+}
+
+if (!FUNCTION_NAME || FUNCTION_NAME === 'onDeleteImage') {
+  exports.onDeleteImage = require('./lib/onDeleteImage')
+}
 
 if (!FUNCTION_NAME || FUNCTION_NAME === 'onDeleteStorageObject') {
   exports.onDeleteStorageObject = require('./lib/onDeleteStorageObject')
@@ -43,12 +37,14 @@ if (!FUNCTION_NAME || FUNCTION_NAME === 'onFinalizeStorageObject') {
   exports.onFinalizeStorageObject = require('./lib/onFinalizeStorageObject')
 }
 
-// pubsub
-
 if (!FUNCTION_NAME || FUNCTION_NAME === 'onPublishPing') {
   exports.onPublishPing = require('./lib/onPublishPing')
 }
 
 if (!FUNCTION_NAME || FUNCTION_NAME === 'onPublishPrisma') {
   exports.onPublishPrisma = require('./lib/onPublishPrisma')
+}
+
+if (!FUNCTION_NAME || FUNCTION_NAME === 'searchTweets') {
+  exports.searchTweets = require('./lib/searchTweets')
 }
