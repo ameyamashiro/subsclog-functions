@@ -47,9 +47,10 @@ type Service {
   createdAt: DateTime!
   description: String!
   freetrial: String
+  hashtag: String
   id: ID! @unique
-  isOnline: Boolean @default(value: false)
   inquiry: String
+  isOnline: Boolean @default(value: false)
   likeCount: Int! @default(value: 0)
   multiplans: String
   note: String

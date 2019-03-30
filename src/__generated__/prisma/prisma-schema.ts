@@ -1174,9 +1174,10 @@ export const typeDefs = /* GraphQL */ `
     createdAt: DateTime!
     description: String!
     freetrial: String
+    hashtag: String
     id: ID!
-    isOnline: Boolean
     inquiry: String
+    isOnline: Boolean
     likeCount: Int!
     multiplans: String
     note: String
@@ -1214,8 +1215,9 @@ export const typeDefs = /* GraphQL */ `
     category: CategoryCreateOneWithoutServicesInput
     description: String!
     freetrial: String
-    isOnline: Boolean
+    hashtag: String
     inquiry: String
+    isOnline: Boolean
     likeCount: Int
     multiplans: String
     note: String
@@ -1252,8 +1254,9 @@ export const typeDefs = /* GraphQL */ `
     address: String
     description: String!
     freetrial: String
-    isOnline: Boolean
+    hashtag: String
     inquiry: String
+    isOnline: Boolean
     likeCount: Int
     multiplans: String
     note: String
@@ -1276,8 +1279,9 @@ export const typeDefs = /* GraphQL */ `
     category: CategoryCreateOneWithoutServicesInput
     description: String!
     freetrial: String
-    isOnline: Boolean
+    hashtag: String
     inquiry: String
+    isOnline: Boolean
     likeCount: Int
     multiplans: String
     note: String
@@ -1308,12 +1312,14 @@ export const typeDefs = /* GraphQL */ `
     description_DESC
     freetrial_ASC
     freetrial_DESC
+    hashtag_ASC
+    hashtag_DESC
     id_ASC
     id_DESC
-    isOnline_ASC
-    isOnline_DESC
     inquiry_ASC
     inquiry_DESC
+    isOnline_ASC
+    isOnline_DESC
     likeCount_ASC
     likeCount_DESC
     multiplans_ASC
@@ -1351,9 +1357,10 @@ export const typeDefs = /* GraphQL */ `
     createdAt: DateTime!
     description: String!
     freetrial: String
+    hashtag: String
     id: ID!
-    isOnline: Boolean
     inquiry: String
+    isOnline: Boolean
     likeCount: Int!
     multiplans: String
     note: String
@@ -1422,6 +1429,20 @@ export const typeDefs = /* GraphQL */ `
     freetrial_not_starts_with: String
     freetrial_ends_with: String
     freetrial_not_ends_with: String
+    hashtag: String
+    hashtag_not: String
+    hashtag_in: [String!]
+    hashtag_not_in: [String!]
+    hashtag_lt: String
+    hashtag_lte: String
+    hashtag_gt: String
+    hashtag_gte: String
+    hashtag_contains: String
+    hashtag_not_contains: String
+    hashtag_starts_with: String
+    hashtag_not_starts_with: String
+    hashtag_ends_with: String
+    hashtag_not_ends_with: String
     id: ID
     id_not: ID
     id_in: [ID!]
@@ -1436,8 +1457,6 @@ export const typeDefs = /* GraphQL */ `
     id_not_starts_with: ID
     id_ends_with: ID
     id_not_ends_with: ID
-    isOnline: Boolean
-    isOnline_not: Boolean
     inquiry: String
     inquiry_not: String
     inquiry_in: [String!]
@@ -1452,6 +1471,8 @@ export const typeDefs = /* GraphQL */ `
     inquiry_not_starts_with: String
     inquiry_ends_with: String
     inquiry_not_ends_with: String
+    isOnline: Boolean
+    isOnline_not: Boolean
     likeCount: Int
     likeCount_not: Int
     likeCount_in: [Int!]
@@ -1654,8 +1675,9 @@ export const typeDefs = /* GraphQL */ `
     category: CategoryUpdateOneWithoutServicesInput
     description: String
     freetrial: String
-    isOnline: Boolean
+    hashtag: String
     inquiry: String
+    isOnline: Boolean
     likeCount: Int
     multiplans: String
     note: String
@@ -1678,8 +1700,9 @@ export const typeDefs = /* GraphQL */ `
     category: CategoryUpdateOneWithoutServicesInput
     description: String
     freetrial: String
-    isOnline: Boolean
+    hashtag: String
     inquiry: String
+    isOnline: Boolean
     likeCount: Int
     multiplans: String
     note: String
@@ -1701,8 +1724,9 @@ export const typeDefs = /* GraphQL */ `
     address: String
     description: String
     freetrial: String
-    isOnline: Boolean
+    hashtag: String
     inquiry: String
+    isOnline: Boolean
     likeCount: Int
     multiplans: String
     note: String
@@ -1723,8 +1747,9 @@ export const typeDefs = /* GraphQL */ `
     address: String
     description: String
     freetrial: String
-    isOnline: Boolean
+    hashtag: String
     inquiry: String
+    isOnline: Boolean
     likeCount: Int
     multiplans: String
     note: String
@@ -1776,8 +1801,9 @@ export const typeDefs = /* GraphQL */ `
     address: String
     description: String
     freetrial: String
-    isOnline: Boolean
+    hashtag: String
     inquiry: String
+    isOnline: Boolean
     likeCount: Int
     multiplans: String
     note: String
@@ -1800,8 +1826,9 @@ export const typeDefs = /* GraphQL */ `
     category: CategoryUpdateOneWithoutServicesInput
     description: String
     freetrial: String
-    isOnline: Boolean
+    hashtag: String
     inquiry: String
+    isOnline: Boolean
     likeCount: Int
     multiplans: String
     note: String
@@ -1891,6 +1918,20 @@ export const typeDefs = /* GraphQL */ `
     freetrial_not_starts_with: String
     freetrial_ends_with: String
     freetrial_not_ends_with: String
+    hashtag: String
+    hashtag_not: String
+    hashtag_in: [String!]
+    hashtag_not_in: [String!]
+    hashtag_lt: String
+    hashtag_lte: String
+    hashtag_gt: String
+    hashtag_gte: String
+    hashtag_contains: String
+    hashtag_not_contains: String
+    hashtag_starts_with: String
+    hashtag_not_starts_with: String
+    hashtag_ends_with: String
+    hashtag_not_ends_with: String
     id: ID
     id_not: ID
     id_in: [ID!]
@@ -1905,8 +1946,6 @@ export const typeDefs = /* GraphQL */ `
     id_not_starts_with: ID
     id_ends_with: ID
     id_not_ends_with: ID
-    isOnline: Boolean
-    isOnline_not: Boolean
     inquiry: String
     inquiry_not: String
     inquiry_in: [String!]
@@ -1921,6 +1960,8 @@ export const typeDefs = /* GraphQL */ `
     inquiry_not_starts_with: String
     inquiry_ends_with: String
     inquiry_not_ends_with: String
+    isOnline: Boolean
+    isOnline_not: Boolean
     likeCount: Int
     likeCount_not: Int
     likeCount_in: [Int!]

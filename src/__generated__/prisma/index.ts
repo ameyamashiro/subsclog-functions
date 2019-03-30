@@ -4,8 +4,8 @@
 
 import { DocumentNode } from 'graphql'
 import {
-  BaseClientOptions,
   makePrismaClientClass,
+  BaseClientOptions,
   Model
 } from 'prisma-client-lib'
 import { typeDefs } from './prisma-schema'
@@ -264,12 +264,14 @@ export type ServiceOrderByInput =
   | 'description_DESC'
   | 'freetrial_ASC'
   | 'freetrial_DESC'
+  | 'hashtag_ASC'
+  | 'hashtag_DESC'
   | 'id_ASC'
   | 'id_DESC'
-  | 'isOnline_ASC'
-  | 'isOnline_DESC'
   | 'inquiry_ASC'
   | 'inquiry_DESC'
+  | 'isOnline_ASC'
+  | 'isOnline_DESC'
   | 'likeCount_ASC'
   | 'likeCount_DESC'
   | 'multiplans_ASC'
@@ -560,6 +562,20 @@ export interface ServiceWhereInput {
   freetrial_not_starts_with?: String
   freetrial_ends_with?: String
   freetrial_not_ends_with?: String
+  hashtag?: String
+  hashtag_not?: String
+  hashtag_in?: String[] | String
+  hashtag_not_in?: String[] | String
+  hashtag_lt?: String
+  hashtag_lte?: String
+  hashtag_gt?: String
+  hashtag_gte?: String
+  hashtag_contains?: String
+  hashtag_not_contains?: String
+  hashtag_starts_with?: String
+  hashtag_not_starts_with?: String
+  hashtag_ends_with?: String
+  hashtag_not_ends_with?: String
   id?: ID_Input
   id_not?: ID_Input
   id_in?: ID_Input[] | ID_Input
@@ -574,8 +590,6 @@ export interface ServiceWhereInput {
   id_not_starts_with?: ID_Input
   id_ends_with?: ID_Input
   id_not_ends_with?: ID_Input
-  isOnline?: Boolean
-  isOnline_not?: Boolean
   inquiry?: String
   inquiry_not?: String
   inquiry_in?: String[] | String
@@ -590,6 +604,8 @@ export interface ServiceWhereInput {
   inquiry_not_starts_with?: String
   inquiry_ends_with?: String
   inquiry_not_ends_with?: String
+  isOnline?: Boolean
+  isOnline_not?: Boolean
   likeCount?: Int
   likeCount_not?: Int
   likeCount_in?: Int[] | Int
@@ -802,8 +818,9 @@ export interface ServiceUpdateInput {
   category?: CategoryUpdateOneWithoutServicesInput
   description?: String
   freetrial?: String
-  isOnline?: Boolean
+  hashtag?: String
   inquiry?: String
+  isOnline?: Boolean
   likeCount?: Int
   multiplans?: String
   note?: String
@@ -825,8 +842,9 @@ export interface ServiceCreateWithoutCategoryInput {
   address?: String
   description: String
   freetrial?: String
-  isOnline?: Boolean
+  hashtag?: String
   inquiry?: String
+  isOnline?: Boolean
   likeCount?: Int
   multiplans?: String
   note?: String
@@ -1053,8 +1071,9 @@ export interface ServiceUpdateWithoutCategoryDataInput {
   address?: String
   description?: String
   freetrial?: String
-  isOnline?: Boolean
+  hashtag?: String
   inquiry?: String
+  isOnline?: Boolean
   likeCount?: Int
   multiplans?: String
   note?: String
@@ -1127,8 +1146,9 @@ export interface ServiceUpdateDataInput {
   category?: CategoryUpdateOneWithoutServicesInput
   description?: String
   freetrial?: String
-  isOnline?: Boolean
+  hashtag?: String
   inquiry?: String
+  isOnline?: Boolean
   likeCount?: Int
   multiplans?: String
   note?: String
@@ -1356,8 +1376,9 @@ export interface ServiceUpdateManyMutationInput {
   address?: String
   description?: String
   freetrial?: String
-  isOnline?: Boolean
+  hashtag?: String
   inquiry?: String
+  isOnline?: Boolean
   likeCount?: Int
   multiplans?: String
   note?: String
@@ -1522,6 +1543,20 @@ export interface ServiceScalarWhereInput {
   freetrial_not_starts_with?: String
   freetrial_ends_with?: String
   freetrial_not_ends_with?: String
+  hashtag?: String
+  hashtag_not?: String
+  hashtag_in?: String[] | String
+  hashtag_not_in?: String[] | String
+  hashtag_lt?: String
+  hashtag_lte?: String
+  hashtag_gt?: String
+  hashtag_gte?: String
+  hashtag_contains?: String
+  hashtag_not_contains?: String
+  hashtag_starts_with?: String
+  hashtag_not_starts_with?: String
+  hashtag_ends_with?: String
+  hashtag_not_ends_with?: String
   id?: ID_Input
   id_not?: ID_Input
   id_in?: ID_Input[] | ID_Input
@@ -1536,8 +1571,6 @@ export interface ServiceScalarWhereInput {
   id_not_starts_with?: ID_Input
   id_ends_with?: ID_Input
   id_not_ends_with?: ID_Input
-  isOnline?: Boolean
-  isOnline_not?: Boolean
   inquiry?: String
   inquiry_not?: String
   inquiry_in?: String[] | String
@@ -1552,6 +1585,8 @@ export interface ServiceScalarWhereInput {
   inquiry_not_starts_with?: String
   inquiry_ends_with?: String
   inquiry_not_ends_with?: String
+  isOnline?: Boolean
+  isOnline_not?: Boolean
   likeCount?: Int
   likeCount_not?: Int
   likeCount_in?: Int[] | Int
@@ -1748,8 +1783,9 @@ export interface ServiceUpdateManyDataInput {
   address?: String
   description?: String
   freetrial?: String
-  isOnline?: Boolean
+  hashtag?: String
   inquiry?: String
+  isOnline?: Boolean
   likeCount?: Int
   multiplans?: String
   note?: String
@@ -1788,8 +1824,9 @@ export interface ServiceUpdateWithoutReviewsDataInput {
   category?: CategoryUpdateOneWithoutServicesInput
   description?: String
   freetrial?: String
-  isOnline?: Boolean
+  hashtag?: String
   inquiry?: String
+  isOnline?: Boolean
   likeCount?: Int
   multiplans?: String
   note?: String
@@ -1828,8 +1865,9 @@ export interface ServiceCreateInput {
   category?: CategoryCreateOneWithoutServicesInput
   description: String
   freetrial?: String
-  isOnline?: Boolean
+  hashtag?: String
   inquiry?: String
+  isOnline?: Boolean
   likeCount?: Int
   multiplans?: String
   note?: String
@@ -1874,8 +1912,9 @@ export interface ServiceCreateWithoutReviewsInput {
   category?: CategoryCreateOneWithoutServicesInput
   description: String
   freetrial?: String
-  isOnline?: Boolean
+  hashtag?: String
   inquiry?: String
+  isOnline?: Boolean
   likeCount?: Int
   multiplans?: String
   note?: String
@@ -1916,9 +1955,10 @@ export interface ServicePreviousValues {
   createdAt: DateTimeOutput
   description: String
   freetrial?: String
+  hashtag?: String
   id: ID_Output
-  isOnline?: Boolean
   inquiry?: String
+  isOnline?: Boolean
   likeCount: Int
   multiplans?: String
   note?: String
@@ -1943,9 +1983,10 @@ export interface ServicePreviousValuesPromise
   createdAt: () => Promise<DateTimeOutput>
   description: () => Promise<String>
   freetrial: () => Promise<String>
+  hashtag: () => Promise<String>
   id: () => Promise<ID_Output>
-  isOnline: () => Promise<Boolean>
   inquiry: () => Promise<String>
+  isOnline: () => Promise<Boolean>
   likeCount: () => Promise<Int>
   multiplans: () => Promise<String>
   note: () => Promise<String>
@@ -1970,9 +2011,10 @@ export interface ServicePreviousValuesSubscription
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>
   description: () => Promise<AsyncIterator<String>>
   freetrial: () => Promise<AsyncIterator<String>>
+  hashtag: () => Promise<AsyncIterator<String>>
   id: () => Promise<AsyncIterator<ID_Output>>
-  isOnline: () => Promise<AsyncIterator<Boolean>>
   inquiry: () => Promise<AsyncIterator<String>>
+  isOnline: () => Promise<AsyncIterator<Boolean>>
   likeCount: () => Promise<AsyncIterator<Int>>
   multiplans: () => Promise<AsyncIterator<String>>
   note: () => Promise<AsyncIterator<String>>
@@ -2101,9 +2143,10 @@ export interface Service {
   createdAt: DateTimeOutput
   description: String
   freetrial?: String
+  hashtag?: String
   id: ID_Output
-  isOnline?: Boolean
   inquiry?: String
+  isOnline?: Boolean
   likeCount: Int
   multiplans?: String
   note?: String
@@ -2127,9 +2170,10 @@ export interface ServicePromise extends Promise<Service>, Fragmentable {
   createdAt: () => Promise<DateTimeOutput>
   description: () => Promise<String>
   freetrial: () => Promise<String>
+  hashtag: () => Promise<String>
   id: () => Promise<ID_Output>
-  isOnline: () => Promise<Boolean>
   inquiry: () => Promise<String>
+  isOnline: () => Promise<Boolean>
   likeCount: () => Promise<Int>
   multiplans: () => Promise<String>
   note: () => Promise<String>
@@ -2164,9 +2208,10 @@ export interface ServiceSubscription
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>
   description: () => Promise<AsyncIterator<String>>
   freetrial: () => Promise<AsyncIterator<String>>
+  hashtag: () => Promise<AsyncIterator<String>>
   id: () => Promise<AsyncIterator<ID_Output>>
-  isOnline: () => Promise<AsyncIterator<Boolean>>
   inquiry: () => Promise<AsyncIterator<String>>
+  isOnline: () => Promise<AsyncIterator<Boolean>>
   likeCount: () => Promise<AsyncIterator<Int>>
   multiplans: () => Promise<AsyncIterator<String>>
   note: () => Promise<AsyncIterator<String>>

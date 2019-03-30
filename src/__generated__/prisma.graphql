@@ -1166,9 +1166,10 @@ type Service {
   createdAt: DateTime!
   description: String!
   freetrial: String
+  hashtag: String
   id: ID!
-  isOnline: Boolean
   inquiry: String
+  isOnline: Boolean
   likeCount: Int!
   multiplans: String
   note: String
@@ -1206,8 +1207,9 @@ input ServiceCreateInput {
   category: CategoryCreateOneWithoutServicesInput
   description: String!
   freetrial: String
-  isOnline: Boolean
+  hashtag: String
   inquiry: String
+  isOnline: Boolean
   likeCount: Int
   multiplans: String
   note: String
@@ -1244,8 +1246,9 @@ input ServiceCreateWithoutCategoryInput {
   address: String
   description: String!
   freetrial: String
-  isOnline: Boolean
+  hashtag: String
   inquiry: String
+  isOnline: Boolean
   likeCount: Int
   multiplans: String
   note: String
@@ -1268,8 +1271,9 @@ input ServiceCreateWithoutReviewsInput {
   category: CategoryCreateOneWithoutServicesInput
   description: String!
   freetrial: String
-  isOnline: Boolean
+  hashtag: String
   inquiry: String
+  isOnline: Boolean
   likeCount: Int
   multiplans: String
   note: String
@@ -1300,12 +1304,14 @@ enum ServiceOrderByInput {
   description_DESC
   freetrial_ASC
   freetrial_DESC
+  hashtag_ASC
+  hashtag_DESC
   id_ASC
   id_DESC
-  isOnline_ASC
-  isOnline_DESC
   inquiry_ASC
   inquiry_DESC
+  isOnline_ASC
+  isOnline_DESC
   likeCount_ASC
   likeCount_DESC
   multiplans_ASC
@@ -1343,9 +1349,10 @@ type ServicePreviousValues {
   createdAt: DateTime!
   description: String!
   freetrial: String
+  hashtag: String
   id: ID!
-  isOnline: Boolean
   inquiry: String
+  isOnline: Boolean
   likeCount: Int!
   multiplans: String
   note: String
@@ -1414,6 +1421,20 @@ input ServiceScalarWhereInput {
   freetrial_not_starts_with: String
   freetrial_ends_with: String
   freetrial_not_ends_with: String
+  hashtag: String
+  hashtag_not: String
+  hashtag_in: [String!]
+  hashtag_not_in: [String!]
+  hashtag_lt: String
+  hashtag_lte: String
+  hashtag_gt: String
+  hashtag_gte: String
+  hashtag_contains: String
+  hashtag_not_contains: String
+  hashtag_starts_with: String
+  hashtag_not_starts_with: String
+  hashtag_ends_with: String
+  hashtag_not_ends_with: String
   id: ID
   id_not: ID
   id_in: [ID!]
@@ -1428,8 +1449,6 @@ input ServiceScalarWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  isOnline: Boolean
-  isOnline_not: Boolean
   inquiry: String
   inquiry_not: String
   inquiry_in: [String!]
@@ -1444,6 +1463,8 @@ input ServiceScalarWhereInput {
   inquiry_not_starts_with: String
   inquiry_ends_with: String
   inquiry_not_ends_with: String
+  isOnline: Boolean
+  isOnline_not: Boolean
   likeCount: Int
   likeCount_not: Int
   likeCount_in: [Int!]
@@ -1646,8 +1667,9 @@ input ServiceUpdateDataInput {
   category: CategoryUpdateOneWithoutServicesInput
   description: String
   freetrial: String
-  isOnline: Boolean
+  hashtag: String
   inquiry: String
+  isOnline: Boolean
   likeCount: Int
   multiplans: String
   note: String
@@ -1670,8 +1692,9 @@ input ServiceUpdateInput {
   category: CategoryUpdateOneWithoutServicesInput
   description: String
   freetrial: String
-  isOnline: Boolean
+  hashtag: String
   inquiry: String
+  isOnline: Boolean
   likeCount: Int
   multiplans: String
   note: String
@@ -1693,8 +1716,9 @@ input ServiceUpdateManyDataInput {
   address: String
   description: String
   freetrial: String
-  isOnline: Boolean
+  hashtag: String
   inquiry: String
+  isOnline: Boolean
   likeCount: Int
   multiplans: String
   note: String
@@ -1715,8 +1739,9 @@ input ServiceUpdateManyMutationInput {
   address: String
   description: String
   freetrial: String
-  isOnline: Boolean
+  hashtag: String
   inquiry: String
+  isOnline: Boolean
   likeCount: Int
   multiplans: String
   note: String
@@ -1768,8 +1793,9 @@ input ServiceUpdateWithoutCategoryDataInput {
   address: String
   description: String
   freetrial: String
-  isOnline: Boolean
+  hashtag: String
   inquiry: String
+  isOnline: Boolean
   likeCount: Int
   multiplans: String
   note: String
@@ -1792,8 +1818,9 @@ input ServiceUpdateWithoutReviewsDataInput {
   category: CategoryUpdateOneWithoutServicesInput
   description: String
   freetrial: String
-  isOnline: Boolean
+  hashtag: String
   inquiry: String
+  isOnline: Boolean
   likeCount: Int
   multiplans: String
   note: String
@@ -1883,6 +1910,20 @@ input ServiceWhereInput {
   freetrial_not_starts_with: String
   freetrial_ends_with: String
   freetrial_not_ends_with: String
+  hashtag: String
+  hashtag_not: String
+  hashtag_in: [String!]
+  hashtag_not_in: [String!]
+  hashtag_lt: String
+  hashtag_lte: String
+  hashtag_gt: String
+  hashtag_gte: String
+  hashtag_contains: String
+  hashtag_not_contains: String
+  hashtag_starts_with: String
+  hashtag_not_starts_with: String
+  hashtag_ends_with: String
+  hashtag_not_ends_with: String
   id: ID
   id_not: ID
   id_in: [ID!]
@@ -1897,8 +1938,6 @@ input ServiceWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  isOnline: Boolean
-  isOnline_not: Boolean
   inquiry: String
   inquiry_not: String
   inquiry_in: [String!]
@@ -1913,6 +1952,8 @@ input ServiceWhereInput {
   inquiry_not_starts_with: String
   inquiry_ends_with: String
   inquiry_not_ends_with: String
+  isOnline: Boolean
+  isOnline_not: Boolean
   likeCount: Int
   likeCount_not: Int
   likeCount_in: [Int!]
