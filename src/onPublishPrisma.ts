@@ -1,3 +1,4 @@
+import 'core-js/es/object/entries'
 import { config, region } from 'firebase-functions'
 import NewsAPI from 'newsapi/src'
 import { prisma } from './__generated__/prisma'
