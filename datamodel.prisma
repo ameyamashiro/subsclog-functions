@@ -70,3 +70,14 @@ type Service {
   viewCount: Int! @default(value: 0)
   yomigana: String
 }
+
+type Tweet {
+  id: ID! @unique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  text: String!
+  userId: String!
+  date: DateTime!
+  service: Service!
+  status: String!
+}
