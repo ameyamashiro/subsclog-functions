@@ -41,6 +41,10 @@ if (!FUNCTION_NAME || FUNCTION_NAME === 'onFinalizeStorageObject') {
   exports.onFinalizeStorageObject = require('./lib/onFinalizeStorageObject')
 }
 
+if (!FUNCTION_NAME || FUNCTION_NAME === 'onPublishPrisma') {
+  exports.onPublishPrisma = require('./lib/onPublishPrisma')
+}
+
 if (!FUNCTION_NAME || FUNCTION_NAME === 'onPublishPing') {
   exports.onPublishPing = require('./lib/onPublishPing')
 }
