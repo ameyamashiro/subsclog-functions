@@ -63,6 +63,8 @@ type Service {
   reviews: [Review!]!
   tagline: String
   title: String!
+  twitterId: String
+  twitterUserId: String
   updatedAt: DateTime!
   url: String
   viewCount: Int! @default(value: 0)

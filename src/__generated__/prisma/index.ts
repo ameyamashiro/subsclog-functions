@@ -294,6 +294,10 @@ export type ServiceOrderByInput =
   | 'tagline_DESC'
   | 'title_ASC'
   | 'title_DESC'
+  | 'twitterId_ASC'
+  | 'twitterId_DESC'
+  | 'twitterUserId_ASC'
+  | 'twitterUserId_DESC'
   | 'updatedAt_ASC'
   | 'updatedAt_DESC'
   | 'url_ASC'
@@ -739,6 +743,34 @@ export interface ServiceWhereInput {
   title_not_starts_with?: String
   title_ends_with?: String
   title_not_ends_with?: String
+  twitterId?: String
+  twitterId_not?: String
+  twitterId_in?: String[] | String
+  twitterId_not_in?: String[] | String
+  twitterId_lt?: String
+  twitterId_lte?: String
+  twitterId_gt?: String
+  twitterId_gte?: String
+  twitterId_contains?: String
+  twitterId_not_contains?: String
+  twitterId_starts_with?: String
+  twitterId_not_starts_with?: String
+  twitterId_ends_with?: String
+  twitterId_not_ends_with?: String
+  twitterUserId?: String
+  twitterUserId_not?: String
+  twitterUserId_in?: String[] | String
+  twitterUserId_not_in?: String[] | String
+  twitterUserId_lt?: String
+  twitterUserId_lte?: String
+  twitterUserId_gt?: String
+  twitterUserId_gte?: String
+  twitterUserId_contains?: String
+  twitterUserId_not_contains?: String
+  twitterUserId_starts_with?: String
+  twitterUserId_not_starts_with?: String
+  twitterUserId_ends_with?: String
+  twitterUserId_not_ends_with?: String
   updatedAt?: DateTimeInput
   updatedAt_not?: DateTimeInput
   updatedAt_in?: DateTimeInput[] | DateTimeInput
@@ -833,6 +865,8 @@ export interface ServiceUpdateInput {
   reviews?: ReviewUpdateManyWithoutServiceInput
   tagline?: String
   title?: String
+  twitterId?: String
+  twitterUserId?: String
   url?: String
   viewCount?: Int
   yomigana?: String
@@ -857,6 +891,8 @@ export interface ServiceCreateWithoutCategoryInput {
   reviews?: ReviewCreateManyWithoutServiceInput
   tagline?: String
   title: String
+  twitterId?: String
+  twitterUserId?: String
   url?: String
   viewCount?: Int
   yomigana?: String
@@ -1086,6 +1122,8 @@ export interface ServiceUpdateWithoutCategoryDataInput {
   reviews?: ReviewUpdateManyWithoutServiceInput
   tagline?: String
   title?: String
+  twitterId?: String
+  twitterUserId?: String
   url?: String
   viewCount?: Int
   yomigana?: String
@@ -1161,6 +1199,8 @@ export interface ServiceUpdateDataInput {
   reviews?: ReviewUpdateManyWithoutServiceInput
   tagline?: String
   title?: String
+  twitterId?: String
+  twitterUserId?: String
   url?: String
   viewCount?: Int
   yomigana?: String
@@ -1390,6 +1430,8 @@ export interface ServiceUpdateManyMutationInput {
   ratingCount?: Int
   tagline?: String
   title?: String
+  twitterId?: String
+  twitterUserId?: String
   url?: String
   viewCount?: Int
   yomigana?: String
@@ -1717,6 +1759,34 @@ export interface ServiceScalarWhereInput {
   title_not_starts_with?: String
   title_ends_with?: String
   title_not_ends_with?: String
+  twitterId?: String
+  twitterId_not?: String
+  twitterId_in?: String[] | String
+  twitterId_not_in?: String[] | String
+  twitterId_lt?: String
+  twitterId_lte?: String
+  twitterId_gt?: String
+  twitterId_gte?: String
+  twitterId_contains?: String
+  twitterId_not_contains?: String
+  twitterId_starts_with?: String
+  twitterId_not_starts_with?: String
+  twitterId_ends_with?: String
+  twitterId_not_ends_with?: String
+  twitterUserId?: String
+  twitterUserId_not?: String
+  twitterUserId_in?: String[] | String
+  twitterUserId_not_in?: String[] | String
+  twitterUserId_lt?: String
+  twitterUserId_lte?: String
+  twitterUserId_gt?: String
+  twitterUserId_gte?: String
+  twitterUserId_contains?: String
+  twitterUserId_not_contains?: String
+  twitterUserId_starts_with?: String
+  twitterUserId_not_starts_with?: String
+  twitterUserId_ends_with?: String
+  twitterUserId_not_ends_with?: String
   updatedAt?: DateTimeInput
   updatedAt_not?: DateTimeInput
   updatedAt_in?: DateTimeInput[] | DateTimeInput
@@ -1797,6 +1867,8 @@ export interface ServiceUpdateManyDataInput {
   ratingCount?: Int
   tagline?: String
   title?: String
+  twitterId?: String
+  twitterUserId?: String
   url?: String
   viewCount?: Int
   yomigana?: String
@@ -1838,6 +1910,8 @@ export interface ServiceUpdateWithoutReviewsDataInput {
   ratingCount?: Int
   tagline?: String
   title?: String
+  twitterId?: String
+  twitterUserId?: String
   url?: String
   viewCount?: Int
   yomigana?: String
@@ -1880,6 +1954,8 @@ export interface ServiceCreateInput {
   reviews?: ReviewCreateManyWithoutServiceInput
   tagline?: String
   title: String
+  twitterId?: String
+  twitterUserId?: String
   url?: String
   viewCount?: Int
   yomigana?: String
@@ -1926,6 +2002,8 @@ export interface ServiceCreateWithoutReviewsInput {
   ratingCount?: Int
   tagline?: String
   title: String
+  twitterId?: String
+  twitterUserId?: String
   url?: String
   viewCount?: Int
   yomigana?: String
@@ -1970,6 +2048,8 @@ export interface ServicePreviousValues {
   ratingCount?: Int
   tagline?: String
   title: String
+  twitterId?: String
+  twitterUserId?: String
   updatedAt: DateTimeOutput
   url?: String
   viewCount: Int
@@ -1998,6 +2078,8 @@ export interface ServicePreviousValuesPromise
   ratingCount: () => Promise<Int>
   tagline: () => Promise<String>
   title: () => Promise<String>
+  twitterId: () => Promise<String>
+  twitterUserId: () => Promise<String>
   updatedAt: () => Promise<DateTimeOutput>
   url: () => Promise<String>
   viewCount: () => Promise<Int>
@@ -2026,6 +2108,8 @@ export interface ServicePreviousValuesSubscription
   ratingCount: () => Promise<AsyncIterator<Int>>
   tagline: () => Promise<AsyncIterator<String>>
   title: () => Promise<AsyncIterator<String>>
+  twitterId: () => Promise<AsyncIterator<String>>
+  twitterUserId: () => Promise<AsyncIterator<String>>
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>
   url: () => Promise<AsyncIterator<String>>
   viewCount: () => Promise<AsyncIterator<Int>>
@@ -2158,6 +2242,8 @@ export interface Service {
   ratingCount?: Int
   tagline?: String
   title: String
+  twitterId?: String
+  twitterUserId?: String
   updatedAt: DateTimeOutput
   url?: String
   viewCount: Int
@@ -2194,6 +2280,8 @@ export interface ServicePromise extends Promise<Service>, Fragmentable {
   }) => T
   tagline: () => Promise<String>
   title: () => Promise<String>
+  twitterId: () => Promise<String>
+  twitterUserId: () => Promise<String>
   updatedAt: () => Promise<DateTimeOutput>
   url: () => Promise<String>
   viewCount: () => Promise<Int>
@@ -2232,6 +2320,8 @@ export interface ServiceSubscription
   }) => T
   tagline: () => Promise<AsyncIterator<String>>
   title: () => Promise<AsyncIterator<String>>
+  twitterId: () => Promise<AsyncIterator<String>>
+  twitterUserId: () => Promise<AsyncIterator<String>>
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>
   url: () => Promise<AsyncIterator<String>>
   viewCount: () => Promise<AsyncIterator<Int>>

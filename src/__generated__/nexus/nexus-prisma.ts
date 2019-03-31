@@ -939,6 +939,8 @@ type ServiceObject =
   | { name: 'reviews'; args?: ServiceReviewsArgs[] | false; alias?: string }
   | { name: 'tagline'; args?: [] | false; alias?: string }
   | { name: 'title'; args?: [] | false; alias?: string }
+  | { name: 'twitterId'; args?: [] | false; alias?: string }
+  | { name: 'twitterUserId'; args?: [] | false; alias?: string }
   | { name: 'updatedAt'; args?: [] | false; alias?: string }
   | { name: 'url'; args?: [] | false; alias?: string }
   | { name: 'viewCount'; args?: [] | false; alias?: string }
@@ -966,6 +968,8 @@ type ServiceFields =
   | 'reviews'
   | 'tagline'
   | 'title'
+  | 'twitterId'
+  | 'twitterUserId'
   | 'updatedAt'
   | 'url'
   | 'viewCount'
@@ -1165,6 +1169,22 @@ export interface ServiceFieldDetails {
     description: string
     list: undefined
     nullable: false
+    resolve: undefined
+  }
+  twitterId: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  twitterUserId: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
     resolve: undefined
   }
   updatedAt: {
@@ -3285,6 +3305,8 @@ type ServicePreviousValuesObject =
   | { name: 'ratingCount'; args?: [] | false; alias?: string }
   | { name: 'tagline'; args?: [] | false; alias?: string }
   | { name: 'title'; args?: [] | false; alias?: string }
+  | { name: 'twitterId'; args?: [] | false; alias?: string }
+  | { name: 'twitterUserId'; args?: [] | false; alias?: string }
   | { name: 'updatedAt'; args?: [] | false; alias?: string }
   | { name: 'url'; args?: [] | false; alias?: string }
   | { name: 'viewCount'; args?: [] | false; alias?: string }
@@ -3310,6 +3332,8 @@ type ServicePreviousValuesFields =
   | 'ratingCount'
   | 'tagline'
   | 'title'
+  | 'twitterId'
+  | 'twitterUserId'
   | 'updatedAt'
   | 'url'
   | 'viewCount'
@@ -3466,6 +3490,22 @@ export interface ServicePreviousValuesFieldDetails {
     description: string
     list: undefined
     nullable: false
+    resolve: undefined
+  }
+  twitterId: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  twitterUserId: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
     resolve: undefined
   }
   updatedAt: {
@@ -3998,6 +4038,34 @@ export interface ServiceWhereInput {
   title_not_starts_with?: string | null
   title_ends_with?: string | null
   title_not_ends_with?: string | null
+  twitterId?: string | null
+  twitterId_not?: string | null
+  twitterId_in?: string[]
+  twitterId_not_in?: string[]
+  twitterId_lt?: string | null
+  twitterId_lte?: string | null
+  twitterId_gt?: string | null
+  twitterId_gte?: string | null
+  twitterId_contains?: string | null
+  twitterId_not_contains?: string | null
+  twitterId_starts_with?: string | null
+  twitterId_not_starts_with?: string | null
+  twitterId_ends_with?: string | null
+  twitterId_not_ends_with?: string | null
+  twitterUserId?: string | null
+  twitterUserId_not?: string | null
+  twitterUserId_in?: string[]
+  twitterUserId_not_in?: string[]
+  twitterUserId_lt?: string | null
+  twitterUserId_lte?: string | null
+  twitterUserId_gt?: string | null
+  twitterUserId_gte?: string | null
+  twitterUserId_contains?: string | null
+  twitterUserId_not_contains?: string | null
+  twitterUserId_starts_with?: string | null
+  twitterUserId_not_starts_with?: string | null
+  twitterUserId_ends_with?: string | null
+  twitterUserId_not_ends_with?: string | null
   updatedAt?: string | null
   updatedAt_not?: string | null
   updatedAt_in?: string[]
@@ -4276,6 +4344,34 @@ export type ServiceWhereInputInputObject =
   | { name: 'title_not_starts_with'; alias?: string }
   | { name: 'title_ends_with'; alias?: string }
   | { name: 'title_not_ends_with'; alias?: string }
+  | { name: 'twitterId'; alias?: string }
+  | { name: 'twitterId_not'; alias?: string }
+  | { name: 'twitterId_in'; alias?: string }
+  | { name: 'twitterId_not_in'; alias?: string }
+  | { name: 'twitterId_lt'; alias?: string }
+  | { name: 'twitterId_lte'; alias?: string }
+  | { name: 'twitterId_gt'; alias?: string }
+  | { name: 'twitterId_gte'; alias?: string }
+  | { name: 'twitterId_contains'; alias?: string }
+  | { name: 'twitterId_not_contains'; alias?: string }
+  | { name: 'twitterId_starts_with'; alias?: string }
+  | { name: 'twitterId_not_starts_with'; alias?: string }
+  | { name: 'twitterId_ends_with'; alias?: string }
+  | { name: 'twitterId_not_ends_with'; alias?: string }
+  | { name: 'twitterUserId'; alias?: string }
+  | { name: 'twitterUserId_not'; alias?: string }
+  | { name: 'twitterUserId_in'; alias?: string }
+  | { name: 'twitterUserId_not_in'; alias?: string }
+  | { name: 'twitterUserId_lt'; alias?: string }
+  | { name: 'twitterUserId_lte'; alias?: string }
+  | { name: 'twitterUserId_gt'; alias?: string }
+  | { name: 'twitterUserId_gte'; alias?: string }
+  | { name: 'twitterUserId_contains'; alias?: string }
+  | { name: 'twitterUserId_not_contains'; alias?: string }
+  | { name: 'twitterUserId_starts_with'; alias?: string }
+  | { name: 'twitterUserId_not_starts_with'; alias?: string }
+  | { name: 'twitterUserId_ends_with'; alias?: string }
+  | { name: 'twitterUserId_not_ends_with'; alias?: string }
   | { name: 'updatedAt'; alias?: string }
   | { name: 'updatedAt_not'; alias?: string }
   | { name: 'updatedAt_in'; alias?: string }
@@ -4927,6 +5023,8 @@ export interface ServiceCreateInput {
   reviews?: ReviewCreateManyWithoutServiceInput | null
   tagline?: string | null
   title?: string
+  twitterId?: string | null
+  twitterUserId?: string | null
   url?: string | null
   viewCount?: number | null
   yomigana?: string | null
@@ -4952,6 +5050,8 @@ export type ServiceCreateInputInputObject =
   | { name: 'reviews'; alias?: string }
   | { name: 'tagline'; alias?: string }
   | { name: 'title'; alias?: string }
+  | { name: 'twitterId'; alias?: string }
+  | { name: 'twitterUserId'; alias?: string }
   | { name: 'url'; alias?: string }
   | { name: 'viewCount'; alias?: string }
   | { name: 'yomigana'; alias?: string }
@@ -5044,6 +5144,8 @@ export interface ServiceUpdateDataInput {
   reviews?: ReviewUpdateManyWithoutServiceInput | null
   tagline?: string | null
   title?: string | null
+  twitterId?: string | null
+  twitterUserId?: string | null
   url?: string | null
   viewCount?: number | null
   yomigana?: string | null
@@ -5069,6 +5171,8 @@ export type ServiceUpdateDataInputInputObject =
   | { name: 'reviews'; alias?: string }
   | { name: 'tagline'; alias?: string }
   | { name: 'title'; alias?: string }
+  | { name: 'twitterId'; alias?: string }
+  | { name: 'twitterUserId'; alias?: string }
   | { name: 'url'; alias?: string }
   | { name: 'viewCount'; alias?: string }
   | { name: 'yomigana'; alias?: string }
@@ -5442,6 +5546,8 @@ export interface ServiceCreateWithoutReviewsInput {
   ratingCount?: number | null
   tagline?: string | null
   title?: string
+  twitterId?: string | null
+  twitterUserId?: string | null
   url?: string | null
   viewCount?: number | null
   yomigana?: string | null
@@ -5466,6 +5572,8 @@ export type ServiceCreateWithoutReviewsInputInputObject =
   | { name: 'ratingCount'; alias?: string }
   | { name: 'tagline'; alias?: string }
   | { name: 'title'; alias?: string }
+  | { name: 'twitterId'; alias?: string }
+  | { name: 'twitterUserId'; alias?: string }
   | { name: 'url'; alias?: string }
   | { name: 'viewCount'; alias?: string }
   | { name: 'yomigana'; alias?: string }
@@ -5519,6 +5627,8 @@ export interface ServiceUpdateWithoutReviewsDataInput {
   ratingCount?: number | null
   tagline?: string | null
   title?: string | null
+  twitterId?: string | null
+  twitterUserId?: string | null
   url?: string | null
   viewCount?: number | null
   yomigana?: string | null
@@ -5543,6 +5653,8 @@ export type ServiceUpdateWithoutReviewsDataInputInputObject =
   | { name: 'ratingCount'; alias?: string }
   | { name: 'tagline'; alias?: string }
   | { name: 'title'; alias?: string }
+  | { name: 'twitterId'; alias?: string }
+  | { name: 'twitterUserId'; alias?: string }
   | { name: 'url'; alias?: string }
   | { name: 'viewCount'; alias?: string }
   | { name: 'yomigana'; alias?: string }
@@ -5612,6 +5724,8 @@ export interface ServiceCreateWithoutCategoryInput {
   reviews?: ReviewCreateManyWithoutServiceInput | null
   tagline?: string | null
   title?: string
+  twitterId?: string | null
+  twitterUserId?: string | null
   url?: string | null
   viewCount?: number | null
   yomigana?: string | null
@@ -5636,6 +5750,8 @@ export type ServiceCreateWithoutCategoryInputInputObject =
   | { name: 'reviews'; alias?: string }
   | { name: 'tagline'; alias?: string }
   | { name: 'title'; alias?: string }
+  | { name: 'twitterId'; alias?: string }
+  | { name: 'twitterUserId'; alias?: string }
   | { name: 'url'; alias?: string }
   | { name: 'viewCount'; alias?: string }
   | { name: 'yomigana'; alias?: string }
@@ -5704,6 +5820,8 @@ export interface ServiceUpdateWithoutCategoryDataInput {
   reviews?: ReviewUpdateManyWithoutServiceInput | null
   tagline?: string | null
   title?: string | null
+  twitterId?: string | null
+  twitterUserId?: string | null
   url?: string | null
   viewCount?: number | null
   yomigana?: string | null
@@ -5728,6 +5846,8 @@ export type ServiceUpdateWithoutCategoryDataInputInputObject =
   | { name: 'reviews'; alias?: string }
   | { name: 'tagline'; alias?: string }
   | { name: 'title'; alias?: string }
+  | { name: 'twitterId'; alias?: string }
+  | { name: 'twitterUserId'; alias?: string }
   | { name: 'url'; alias?: string }
   | { name: 'viewCount'; alias?: string }
   | { name: 'yomigana'; alias?: string }
@@ -5968,6 +6088,34 @@ export interface ServiceScalarWhereInput {
   title_not_starts_with?: string | null
   title_ends_with?: string | null
   title_not_ends_with?: string | null
+  twitterId?: string | null
+  twitterId_not?: string | null
+  twitterId_in?: string[]
+  twitterId_not_in?: string[]
+  twitterId_lt?: string | null
+  twitterId_lte?: string | null
+  twitterId_gt?: string | null
+  twitterId_gte?: string | null
+  twitterId_contains?: string | null
+  twitterId_not_contains?: string | null
+  twitterId_starts_with?: string | null
+  twitterId_not_starts_with?: string | null
+  twitterId_ends_with?: string | null
+  twitterId_not_ends_with?: string | null
+  twitterUserId?: string | null
+  twitterUserId_not?: string | null
+  twitterUserId_in?: string[]
+  twitterUserId_not_in?: string[]
+  twitterUserId_lt?: string | null
+  twitterUserId_lte?: string | null
+  twitterUserId_gt?: string | null
+  twitterUserId_gte?: string | null
+  twitterUserId_contains?: string | null
+  twitterUserId_not_contains?: string | null
+  twitterUserId_starts_with?: string | null
+  twitterUserId_not_starts_with?: string | null
+  twitterUserId_ends_with?: string | null
+  twitterUserId_not_ends_with?: string | null
   updatedAt?: string | null
   updatedAt_not?: string | null
   updatedAt_in?: string[]
@@ -6242,6 +6390,34 @@ export type ServiceScalarWhereInputInputObject =
   | { name: 'title_not_starts_with'; alias?: string }
   | { name: 'title_ends_with'; alias?: string }
   | { name: 'title_not_ends_with'; alias?: string }
+  | { name: 'twitterId'; alias?: string }
+  | { name: 'twitterId_not'; alias?: string }
+  | { name: 'twitterId_in'; alias?: string }
+  | { name: 'twitterId_not_in'; alias?: string }
+  | { name: 'twitterId_lt'; alias?: string }
+  | { name: 'twitterId_lte'; alias?: string }
+  | { name: 'twitterId_gt'; alias?: string }
+  | { name: 'twitterId_gte'; alias?: string }
+  | { name: 'twitterId_contains'; alias?: string }
+  | { name: 'twitterId_not_contains'; alias?: string }
+  | { name: 'twitterId_starts_with'; alias?: string }
+  | { name: 'twitterId_not_starts_with'; alias?: string }
+  | { name: 'twitterId_ends_with'; alias?: string }
+  | { name: 'twitterId_not_ends_with'; alias?: string }
+  | { name: 'twitterUserId'; alias?: string }
+  | { name: 'twitterUserId_not'; alias?: string }
+  | { name: 'twitterUserId_in'; alias?: string }
+  | { name: 'twitterUserId_not_in'; alias?: string }
+  | { name: 'twitterUserId_lt'; alias?: string }
+  | { name: 'twitterUserId_lte'; alias?: string }
+  | { name: 'twitterUserId_gt'; alias?: string }
+  | { name: 'twitterUserId_gte'; alias?: string }
+  | { name: 'twitterUserId_contains'; alias?: string }
+  | { name: 'twitterUserId_not_contains'; alias?: string }
+  | { name: 'twitterUserId_starts_with'; alias?: string }
+  | { name: 'twitterUserId_not_starts_with'; alias?: string }
+  | { name: 'twitterUserId_ends_with'; alias?: string }
+  | { name: 'twitterUserId_not_ends_with'; alias?: string }
   | { name: 'updatedAt'; alias?: string }
   | { name: 'updatedAt_not'; alias?: string }
   | { name: 'updatedAt_in'; alias?: string }
@@ -6317,6 +6493,8 @@ export interface ServiceUpdateManyDataInput {
   ratingCount?: number | null
   tagline?: string | null
   title?: string | null
+  twitterId?: string | null
+  twitterUserId?: string | null
   url?: string | null
   viewCount?: number | null
   yomigana?: string | null
@@ -6340,6 +6518,8 @@ export type ServiceUpdateManyDataInputInputObject =
   | { name: 'ratingCount'; alias?: string }
   | { name: 'tagline'; alias?: string }
   | { name: 'title'; alias?: string }
+  | { name: 'twitterId'; alias?: string }
+  | { name: 'twitterUserId'; alias?: string }
   | { name: 'url'; alias?: string }
   | { name: 'viewCount'; alias?: string }
   | { name: 'yomigana'; alias?: string }
@@ -6375,6 +6555,8 @@ export interface ServiceUpdateInput {
   reviews?: ReviewUpdateManyWithoutServiceInput | null
   tagline?: string | null
   title?: string | null
+  twitterId?: string | null
+  twitterUserId?: string | null
   url?: string | null
   viewCount?: number | null
   yomigana?: string | null
@@ -6400,6 +6582,8 @@ export type ServiceUpdateInputInputObject =
   | { name: 'reviews'; alias?: string }
   | { name: 'tagline'; alias?: string }
   | { name: 'title'; alias?: string }
+  | { name: 'twitterId'; alias?: string }
+  | { name: 'twitterUserId'; alias?: string }
   | { name: 'url'; alias?: string }
   | { name: 'viewCount'; alias?: string }
   | { name: 'yomigana'; alias?: string }
@@ -6422,6 +6606,8 @@ export interface ServiceUpdateManyMutationInput {
   ratingCount?: number | null
   tagline?: string | null
   title?: string | null
+  twitterId?: string | null
+  twitterUserId?: string | null
   url?: string | null
   viewCount?: number | null
   yomigana?: string | null
@@ -6445,6 +6631,8 @@ export type ServiceUpdateManyMutationInputInputObject =
   | { name: 'ratingCount'; alias?: string }
   | { name: 'tagline'; alias?: string }
   | { name: 'title'; alias?: string }
+  | { name: 'twitterId'; alias?: string }
+  | { name: 'twitterUserId'; alias?: string }
   | { name: 'url'; alias?: string }
   | { name: 'viewCount'; alias?: string }
   | { name: 'yomigana'; alias?: string }
@@ -6617,6 +6805,10 @@ export type ServiceOrderByInputValues =
   | 'tagline_DESC'
   | 'title_ASC'
   | 'title_DESC'
+  | 'twitterId_ASC'
+  | 'twitterId_DESC'
+  | 'twitterUserId_ASC'
+  | 'twitterUserId_DESC'
   | 'updatedAt_ASC'
   | 'updatedAt_DESC'
   | 'url_ASC'

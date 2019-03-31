@@ -1198,6 +1198,8 @@ export const typeDefs = /* GraphQL */ `
     ): [Review!]
     tagline: String
     title: String!
+    twitterId: String
+    twitterUserId: String
     updatedAt: DateTime!
     url: String
     viewCount: Int!
@@ -1230,6 +1232,8 @@ export const typeDefs = /* GraphQL */ `
     reviews: ReviewCreateManyWithoutServiceInput
     tagline: String
     title: String!
+    twitterId: String
+    twitterUserId: String
     url: String
     viewCount: Int
     yomigana: String
@@ -1269,6 +1273,8 @@ export const typeDefs = /* GraphQL */ `
     reviews: ReviewCreateManyWithoutServiceInput
     tagline: String
     title: String!
+    twitterId: String
+    twitterUserId: String
     url: String
     viewCount: Int
     yomigana: String
@@ -1293,6 +1299,8 @@ export const typeDefs = /* GraphQL */ `
     ratingCount: Int
     tagline: String
     title: String!
+    twitterId: String
+    twitterUserId: String
     url: String
     viewCount: Int
     yomigana: String
@@ -1342,6 +1350,10 @@ export const typeDefs = /* GraphQL */ `
     tagline_DESC
     title_ASC
     title_DESC
+    twitterId_ASC
+    twitterId_DESC
+    twitterUserId_ASC
+    twitterUserId_DESC
     updatedAt_ASC
     updatedAt_DESC
     url_ASC
@@ -1372,6 +1384,8 @@ export const typeDefs = /* GraphQL */ `
     ratingCount: Int
     tagline: String
     title: String!
+    twitterId: String
+    twitterUserId: String
     updatedAt: DateTime!
     url: String
     viewCount: Int!
@@ -1603,6 +1617,34 @@ export const typeDefs = /* GraphQL */ `
     title_not_starts_with: String
     title_ends_with: String
     title_not_ends_with: String
+    twitterId: String
+    twitterId_not: String
+    twitterId_in: [String!]
+    twitterId_not_in: [String!]
+    twitterId_lt: String
+    twitterId_lte: String
+    twitterId_gt: String
+    twitterId_gte: String
+    twitterId_contains: String
+    twitterId_not_contains: String
+    twitterId_starts_with: String
+    twitterId_not_starts_with: String
+    twitterId_ends_with: String
+    twitterId_not_ends_with: String
+    twitterUserId: String
+    twitterUserId_not: String
+    twitterUserId_in: [String!]
+    twitterUserId_not_in: [String!]
+    twitterUserId_lt: String
+    twitterUserId_lte: String
+    twitterUserId_gt: String
+    twitterUserId_gte: String
+    twitterUserId_contains: String
+    twitterUserId_not_contains: String
+    twitterUserId_starts_with: String
+    twitterUserId_not_starts_with: String
+    twitterUserId_ends_with: String
+    twitterUserId_not_ends_with: String
     updatedAt: DateTime
     updatedAt_not: DateTime
     updatedAt_in: [DateTime!]
@@ -1690,6 +1732,8 @@ export const typeDefs = /* GraphQL */ `
     reviews: ReviewUpdateManyWithoutServiceInput
     tagline: String
     title: String
+    twitterId: String
+    twitterUserId: String
     url: String
     viewCount: Int
     yomigana: String
@@ -1715,6 +1759,8 @@ export const typeDefs = /* GraphQL */ `
     reviews: ReviewUpdateManyWithoutServiceInput
     tagline: String
     title: String
+    twitterId: String
+    twitterUserId: String
     url: String
     viewCount: Int
     yomigana: String
@@ -1738,6 +1784,8 @@ export const typeDefs = /* GraphQL */ `
     ratingCount: Int
     tagline: String
     title: String
+    twitterId: String
+    twitterUserId: String
     url: String
     viewCount: Int
     yomigana: String
@@ -1761,6 +1809,8 @@ export const typeDefs = /* GraphQL */ `
     ratingCount: Int
     tagline: String
     title: String
+    twitterId: String
+    twitterUserId: String
     url: String
     viewCount: Int
     yomigana: String
@@ -1816,6 +1866,8 @@ export const typeDefs = /* GraphQL */ `
     reviews: ReviewUpdateManyWithoutServiceInput
     tagline: String
     title: String
+    twitterId: String
+    twitterUserId: String
     url: String
     viewCount: Int
     yomigana: String
@@ -1840,6 +1892,8 @@ export const typeDefs = /* GraphQL */ `
     ratingCount: Int
     tagline: String
     title: String
+    twitterId: String
+    twitterUserId: String
     url: String
     viewCount: Int
     yomigana: String
@@ -2095,6 +2149,34 @@ export const typeDefs = /* GraphQL */ `
     title_not_starts_with: String
     title_ends_with: String
     title_not_ends_with: String
+    twitterId: String
+    twitterId_not: String
+    twitterId_in: [String!]
+    twitterId_not_in: [String!]
+    twitterId_lt: String
+    twitterId_lte: String
+    twitterId_gt: String
+    twitterId_gte: String
+    twitterId_contains: String
+    twitterId_not_contains: String
+    twitterId_starts_with: String
+    twitterId_not_starts_with: String
+    twitterId_ends_with: String
+    twitterId_not_ends_with: String
+    twitterUserId: String
+    twitterUserId_not: String
+    twitterUserId_in: [String!]
+    twitterUserId_not_in: [String!]
+    twitterUserId_lt: String
+    twitterUserId_lte: String
+    twitterUserId_gt: String
+    twitterUserId_gte: String
+    twitterUserId_contains: String
+    twitterUserId_not_contains: String
+    twitterUserId_starts_with: String
+    twitterUserId_not_starts_with: String
+    twitterUserId_ends_with: String
+    twitterUserId_not_ends_with: String
     updatedAt: DateTime
     updatedAt_not: DateTime
     updatedAt_in: [DateTime!]

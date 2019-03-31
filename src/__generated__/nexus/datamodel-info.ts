@@ -3541,6 +3541,30 @@ export default {
               deprecationReason: null
             },
             {
+              name: 'twitterId',
+              description: null,
+              args: [],
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'twitterUserId',
+              description: null,
+              args: [],
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
               name: 'updatedAt',
               description: null,
               args: [],
@@ -6375,6 +6399,318 @@ export default {
               defaultValue: null
             },
             {
+              name: 'twitterId',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterId_not',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterId_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null
+                  }
+                }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterId_not_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null
+                  }
+                }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterId_lt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterId_lte',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterId_gt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterId_gte',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterId_contains',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterId_not_contains',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterId_starts_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterId_not_starts_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterId_ends_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterId_not_ends_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId_not',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null
+                  }
+                }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId_not_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null
+                  }
+                }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId_lt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId_lte',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId_gt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId_gte',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId_contains',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId_not_contains',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId_starts_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId_not_starts_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId_ends_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId_not_ends_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
               name: 'updatedAt',
               description: null,
               type: {
@@ -9174,6 +9510,30 @@ export default {
             },
             {
               name: 'title_DESC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'twitterId_ASC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'twitterId_DESC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'twitterUserId_ASC',
+              description: null,
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'twitterUserId_DESC',
               description: null,
               isDeprecated: false,
               deprecationReason: null
@@ -12742,6 +13102,26 @@ export default {
               defaultValue: null
             },
             {
+              name: 'twitterId',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
               name: 'url',
               description: null,
               type: {
@@ -13260,6 +13640,26 @@ export default {
             },
             {
               name: 'title',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterId',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -15336,6 +15736,26 @@ export default {
               defaultValue: null
             },
             {
+              name: 'twitterId',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
               name: 'url',
               description: null,
               type: {
@@ -15670,6 +16090,26 @@ export default {
             },
             {
               name: 'title',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterId',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -16114,6 +16554,26 @@ export default {
                   name: 'String',
                   ofType: null
                 }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterId',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
               },
               defaultValue: null
             },
@@ -16593,6 +17053,26 @@ export default {
             },
             {
               name: 'title',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterId',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -19224,6 +19704,318 @@ export default {
               defaultValue: null
             },
             {
+              name: 'twitterId',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterId_not',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterId_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null
+                  }
+                }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterId_not_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null
+                  }
+                }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterId_lt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterId_lte',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterId_gt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterId_gte',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterId_contains',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterId_not_contains',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterId_starts_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterId_not_starts_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterId_ends_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterId_not_ends_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId_not',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null
+                  }
+                }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId_not_in',
+              description: null,
+              type: {
+                kind: 'LIST',
+                name: null,
+                ofType: {
+                  kind: 'NON_NULL',
+                  name: null,
+                  ofType: {
+                    kind: 'SCALAR',
+                    name: 'String',
+                    ofType: null
+                  }
+                }
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId_lt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId_lte',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId_gt',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId_gte',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId_contains',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId_not_contains',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId_starts_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId_not_starts_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId_ends_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId_not_ends_with',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
               name: 'updatedAt',
               description: null,
               type: {
@@ -20002,6 +20794,26 @@ export default {
               defaultValue: null
             },
             {
+              name: 'twitterId',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
               name: 'url',
               description: null,
               type: {
@@ -20274,6 +21086,26 @@ export default {
               defaultValue: null
             },
             {
+              name: 'twitterId',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
               name: 'url',
               description: null,
               type: {
@@ -20476,6 +21308,26 @@ export default {
             },
             {
               name: 'title',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterId',
+              description: null,
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              defaultValue: null
+            },
+            {
+              name: 'twitterUserId',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -22433,6 +23285,30 @@ export default {
                   name: 'String',
                   ofType: null
                 }
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'twitterId',
+              description: null,
+              args: [],
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
+              },
+              isDeprecated: false,
+              deprecationReason: null
+            },
+            {
+              name: 'twitterUserId',
+              description: null,
+              args: [],
+              type: {
+                kind: 'SCALAR',
+                name: 'String',
+                ofType: null
               },
               isDeprecated: false,
               deprecationReason: null
