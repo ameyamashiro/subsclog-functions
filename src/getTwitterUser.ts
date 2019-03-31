@@ -2,14 +2,13 @@ import { region, Request, Response } from 'firebase-functions'
 import { GET } from './constants/method'
 import { US_CENTRAL1 } from './constants/region'
 import { createAxiosTwitter } from './helpers/axiosTwitter'
-import { getTwitterAccessToken } from './helpers/getTwitterAccessToken'
 
 const handler = async (request: Request, response: Response) => {
-  const { q } = request.query
+  const { screenName } = request.query
 
-  if (!q) {
+  if (!screenName) {
     response.status(500)
-    response.json({ error: true, message: 'q not found' })
+    response.json({ error: true, message: 'screenName not found' })
     return
   }
 
@@ -18,15 +17,11 @@ const handler = async (request: Request, response: Response) => {
   try {
     const result = await axios({
       method: GET,
-      params: { q },
-      url: '/search/tweets.json'
+      params: { screen_name: screenName },
+      url: '/users/show'
     })
 
-    const tweets = result.data.statuses.map((statuse: any) => {
-      return { id: statuse.id_str, text: statuse.text, userId: statuse.user.id }
-    })
-
-    response.json(tweets)
+    response.json(result.data)
   } catch (e) {
     response.status(e.response.status)
     response.header(e.response.header)

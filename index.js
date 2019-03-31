@@ -17,6 +17,10 @@ if (!FUNCTION_NAME || FUNCTION_NAME === 'getSitemap') {
   exports.getSitemap = require('./lib/getSitemap')
 }
 
+if (!FUNCTION_NAME || FUNCTION_NAME === 'getTwitterUser') {
+  exports.getTwitterUser = require('./lib/getTwitterUser')
+}
+
 if (!FUNCTION_NAME || FUNCTION_NAME === 'graphql') {
   exports.graphql = require('./lib/graphql')
 }
@@ -39,10 +43,6 @@ if (!FUNCTION_NAME || FUNCTION_NAME === 'onFinalizeStorageObject') {
 
 if (!FUNCTION_NAME || FUNCTION_NAME === 'onPublishPing') {
   exports.onPublishPing = require('./lib/onPublishPing')
-}
-
-if (!FUNCTION_NAME || FUNCTION_NAME === 'onPublishPrisma') {
-  exports.onPublishPrisma = require('./lib/onPublishPrisma')
 }
 
 if (!FUNCTION_NAME || FUNCTION_NAME === 'searchTweets') {
