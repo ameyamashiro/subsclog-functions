@@ -6,7 +6,7 @@ import { getTwitterAccessToken } from './helpers/getTwitterAccessToken'
 import { searchTweets } from './helpers/searchTweets'
 
 const handler = async (req: Request, res: Response) => {
-  if (!('hashtag' in req.query)) {
+  if (!('q' in req.query)) {
     res.status(500)
     res.json({ error: true, message: 'hashtag not found' })
     return
@@ -14,13 +14,7 @@ const handler = async (req: Request, res: Response) => {
 
   const accessToken = await getTwitterAccessToken()
 
-  if (!accessToken) {
-    res.status(500)
-    res.json({ error: true, message: 'internal errors' })
-    return
-  }
-
-  const tweets = await searchTweets(accessToken, req.query.hashtag)
+  const tweets = await searchTweets(accessToken, req.query.q)
 
   res.json(tweets)
 }
