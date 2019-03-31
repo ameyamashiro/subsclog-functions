@@ -64,7 +64,7 @@ type Service {
   tagline: String
   title: String!
   twitterId: String
-  twitterUserId: String
+  twitterScreenName: String
   updatedAt: DateTime!
   url: String
   viewCount: Int! @default(value: 0)

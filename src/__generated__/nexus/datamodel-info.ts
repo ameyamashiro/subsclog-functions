@@ -3553,7 +3553,7 @@ export default {
               deprecationReason: null
             },
             {
-              name: 'twitterUserId',
+              name: 'twitterScreenName',
               description: null,
               args: [],
               type: {
@@ -6555,7 +6555,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId',
+              name: 'twitterScreenName',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -6565,7 +6565,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId_not',
+              name: 'twitterScreenName_not',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -6575,7 +6575,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId_in',
+              name: 'twitterScreenName_in',
               description: null,
               type: {
                 kind: 'LIST',
@@ -6593,7 +6593,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId_not_in',
+              name: 'twitterScreenName_not_in',
               description: null,
               type: {
                 kind: 'LIST',
@@ -6611,7 +6611,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId_lt',
+              name: 'twitterScreenName_lt',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -6621,7 +6621,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId_lte',
+              name: 'twitterScreenName_lte',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -6631,7 +6631,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId_gt',
+              name: 'twitterScreenName_gt',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -6641,7 +6641,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId_gte',
+              name: 'twitterScreenName_gte',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -6651,7 +6651,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId_contains',
+              name: 'twitterScreenName_contains',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -6661,7 +6661,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId_not_contains',
+              name: 'twitterScreenName_not_contains',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -6671,7 +6671,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId_starts_with',
+              name: 'twitterScreenName_starts_with',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -6681,7 +6681,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId_not_starts_with',
+              name: 'twitterScreenName_not_starts_with',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -6691,7 +6691,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId_ends_with',
+              name: 'twitterScreenName_ends_with',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -6701,7 +6701,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId_not_ends_with',
+              name: 'twitterScreenName_not_ends_with',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -9527,13 +9527,13 @@ export default {
               deprecationReason: null
             },
             {
-              name: 'twitterUserId_ASC',
+              name: 'twitterScreenName_ASC',
               description: null,
               isDeprecated: false,
               deprecationReason: null
             },
             {
-              name: 'twitterUserId_DESC',
+              name: 'twitterScreenName_DESC',
               description: null,
               isDeprecated: false,
               deprecationReason: null
@@ -13112,7 +13112,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId',
+              name: 'twitterScreenName',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -13659,7 +13659,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId',
+              name: 'twitterScreenName',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -15746,7 +15746,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId',
+              name: 'twitterScreenName',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -16109,7 +16109,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId',
+              name: 'twitterScreenName',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -16568,7 +16568,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId',
+              name: 'twitterScreenName',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -17072,7 +17072,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId',
+              name: 'twitterScreenName',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -19860,7 +19860,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId',
+              name: 'twitterScreenName',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -19870,7 +19870,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId_not',
+              name: 'twitterScreenName_not',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -19880,7 +19880,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId_in',
+              name: 'twitterScreenName_in',
               description: null,
               type: {
                 kind: 'LIST',
@@ -19898,7 +19898,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId_not_in',
+              name: 'twitterScreenName_not_in',
               description: null,
               type: {
                 kind: 'LIST',
@@ -19916,7 +19916,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId_lt',
+              name: 'twitterScreenName_lt',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -19926,7 +19926,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId_lte',
+              name: 'twitterScreenName_lte',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -19936,7 +19936,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId_gt',
+              name: 'twitterScreenName_gt',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -19946,7 +19946,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId_gte',
+              name: 'twitterScreenName_gte',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -19956,7 +19956,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId_contains',
+              name: 'twitterScreenName_contains',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -19966,7 +19966,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId_not_contains',
+              name: 'twitterScreenName_not_contains',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -19976,7 +19976,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId_starts_with',
+              name: 'twitterScreenName_starts_with',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -19986,7 +19986,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId_not_starts_with',
+              name: 'twitterScreenName_not_starts_with',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -19996,7 +19996,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId_ends_with',
+              name: 'twitterScreenName_ends_with',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -20006,7 +20006,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId_not_ends_with',
+              name: 'twitterScreenName_not_ends_with',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -20804,7 +20804,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId',
+              name: 'twitterScreenName',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -21096,7 +21096,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId',
+              name: 'twitterScreenName',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -21327,7 +21327,7 @@ export default {
               defaultValue: null
             },
             {
-              name: 'twitterUserId',
+              name: 'twitterScreenName',
               description: null,
               type: {
                 kind: 'SCALAR',
@@ -23302,7 +23302,7 @@ export default {
               deprecationReason: null
             },
             {
-              name: 'twitterUserId',
+              name: 'twitterScreenName',
               description: null,
               args: [],
               type: {
